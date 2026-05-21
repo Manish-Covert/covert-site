@@ -238,11 +238,10 @@
 /* ---------------- FOOTER ---------------- */
 .footer { position: relative; overflow: hidden; }
 .footer__art {
-  height: 200px;
+  position: absolute; inset: 0;
   background: linear-gradient(110deg, #1f7fc4 0%, #28b56a 42%, #6fd23a 72%, #b4e84a 100%);
   background-size: 200% 200%;
   animation: gradient-flow 14s ease-in-out infinite;
-  position: relative;
 }
 .footer__art::before {
   content: ''; position: absolute; inset: 0;
@@ -251,17 +250,18 @@
     radial-gradient(90% 120% at 85% -20%, rgba(255,255,255,.22), transparent 50%);
 }
 .footer__inner {
-  text-align: center; padding: 26px 24px 30px;
-  display: flex; flex-direction: column; align-items: center; gap: 14px;
-  margin-top: -120px; position: relative; z-index: 2;
+  text-align: center; padding: 48px 24px 32px;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  position: relative; z-index: 2;
 }
-.footer__mark { width: 56px; height: 56px; }
-.footer__mark svg { width: 100%; height: 100%; }
-.footer__social { display: flex; gap: 16px; }
+.footer__mark { width: 72px; height: 72px; }
+.footer__mark svg { width: 100%; height: 100%; display: block; }
+.footer__social { display: flex; gap: 18px; align-items: center; justify-content: center; }
 .footer__social a {
-  width: 34px; height: 34px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: rgba(0,0,0,.55); color: #fff; font-size: 14px; font-weight: 600;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.6); color: #fff; font-size: 15px; font-weight: 700;
+  line-height: 1; text-decoration: none;
   transition: transform .25s var(--ease), background .25s var(--ease);
 }
 .footer__social a:hover { transform: translateY(-3px); background: #000; }
