@@ -198,6 +198,8 @@ export default function App() {
             <a href="#" aria-label="Facebook">f</a>
             <a href="#" aria-label="Instagram">&#9678;</a>
           </div>
+        </div>
+        <div className="footer__legalbar">
           <p className="footer__legal">
             Copyright 2026 Covert Communication LLC | All Rights Reserved | Privacy Policy |
             Cookie Preferences | Terms of Service | Site Map | 808-272-9952
