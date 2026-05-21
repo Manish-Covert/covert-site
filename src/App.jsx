@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Emblem from './Emblem'
 import { useReveal } from './useReveal'
 import './App.css'
@@ -75,6 +76,7 @@ export default function App() {
           <nav className="nav__links">
             <a href="#about" className="nav__link">About</a>
             <a href="#why" className="nav__link">Why Us</a>
+            <Link to="/anna-covert" className="nav__link">Anna Covert</Link>
             <a href="#contact" className="btn btn--pill-white">Book a Meeting</a>
           </nav>
         </div>

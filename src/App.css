@@ -251,6 +251,37 @@
 .why__card h3 { font-size: 20px; margin: 14px 0 10px; }
 .why__card p { color: var(--ink-faint); font-size: 14.5px; line-height: 1.6; margin: 0; }
 
+/* ---------------- ANNA COVERT PAGE ---------------- */
+.anna { padding: 120px 0 100px; }
+.anna__role {
+  color: var(--green-bright); letter-spacing: 2px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  text-transform: uppercase; margin-top: -6px;
+}
+.anna__portrait {
+  margin: 36px auto 40px; max-width: 320px;
+}
+.anna__portrait .portrait__frame {
+  aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+}
+.anna__body p { color: var(--ink-dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 18px; }
+.anna__body h2 {
+  margin: 40px 0 14px; font-size: 24px;
+  background: linear-gradient(90deg, var(--green-bright), #6fd23a);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.anna__quote {
+  margin: 36px 0; padding: 22px 26px;
+  border-left: 3px solid var(--green-bright);
+  background: linear-gradient(160deg, rgba(139,212,25,.06), rgba(255,255,255,.01));
+  font-size: 18px; line-height: 1.6; color: var(--ink);
+  border-radius: 0 12px 12px 0;
+}
+.anna__cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+.nav__link--active { color: var(--green-bright); }
+
 /* ---------------- CONTACT ---------------- */
 .contact { padding: 30px 0 120px; }
 .form { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
