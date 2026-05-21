@@ -1,0 +1,104 @@
+/* ============================================================
+   COVERT COMMUNICATION — Global Styles & Design Tokens
+   Aesthetic: dark futuristic, neon-green tech glow,
+   Lesse-Studio-style smooth reveals & micro-interactions.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #000000;
+  --bg-soft: #070908;
+  --ink: #ffffff;
+  --ink-dim: #b9c2bc;
+  --ink-faint: #6f7a74;
+
+  --green: #8bd419;
+  --green-bright: #a6f23c;
+  --green-deep: #3f9d3a;
+  --teal: #34c7a0;
+  --cyan: #38c6e8;
+
+  --ring-glow: 0 0 60px rgba(139, 212, 25, 0.25), 0 0 120px rgba(52, 199, 160, 0.15);
+  --pill-border: rgba(166, 242, 60, 0.55);
+
+  --maxw: 1200px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Sora', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---- Selection ---- */
+::selection { background: var(--green); color: #04210a; }
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+/* slow rotation for the emblem outer ring */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes spin-rev  { to { transform: rotate(-360deg); } }
+
+/* breathing glow behind the emblem */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.9;  transform: scale(1.06); }
+}
+
+/* gentle floating drift for service pills */
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+/* animated footer gradient */
+@keyframes gradient-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* shimmer sweep on hover */
+@keyframes shimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+
+/* ============================================================
+   SCROLL REVEAL (Lesse-style)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
