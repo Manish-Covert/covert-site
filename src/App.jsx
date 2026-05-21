@@ -74,6 +74,7 @@ export default function App() {
 
           <nav className="nav__links">
             <a href="#about" className="nav__link">About</a>
+            <a href="#why" className="nav__link">Why Us</a>
             <a href="#contact" className="btn btn--pill-white">Book a Meeting</a>
           </nav>
         </div>
@@ -136,6 +137,53 @@ export default function App() {
                   <span className="card__num">0{i + 1}</span>
                   <h3>{c}</h3>
                   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam.</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== WHY US ===================== */}
+        <section id="why" className="why">
+          <div className="container">
+            <p className="section__eyebrow reveal">Why Us</p>
+            <h2 className="section__title reveal">
+              <span className="why__title-muted">A MODERN APPROACH TO</span>{' '}
+              <span className="why__title-accent">REAL-TIME TARGETING</span>
+            </h2>
+            <p className="section__lead reveal">
+              Leverage cutting-edge online solutions to target customers at every stage of
+              the purchase funnel. Our advanced strategies and proprietary tools let us
+              connect with prospects like no other agency.
+            </p>
+
+            <div className="why__grid">
+              {[
+                {
+                  title: 'Awareness',
+                  text: 'Broad-based consumer lifestyle and life-stage targeting that introduces your brand to the right audiences at scale.',
+                },
+                {
+                  title: 'Consideration',
+                  text: 'Direct response, real-time targeting that keeps your brand front-and-center while prospects are actively evaluating their options.',
+                },
+                {
+                  title: 'Intent',
+                  text: 'Competitive and category conquesting that intercepts in-market shoppers the moment they signal purchase intent.',
+                },
+                {
+                  title: 'Action',
+                  text: 'Performance optimization that turns engaged online prospects into measurable, paying customers.',
+                },
+              ].map((item, i) => (
+                <article
+                  className="why__card reveal"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                  key={item.title}
+                >
+                  <span className="why__step">0{i + 1}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
                 </article>
               ))}
             </div>

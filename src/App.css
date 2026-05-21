@@ -207,6 +207,50 @@
 .card h3 { font-size: 19px; margin: 12px 0 10px; }
 .card p { color: var(--ink-faint); font-size: 14.5px; line-height: 1.55; }
 
+/* ---------------- WHY US ---------------- */
+.why {
+  padding: 110px 0 90px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  position: relative;
+}
+.why::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 80% 0%, rgba(139,212,25,.08), transparent 60%),
+    radial-gradient(50% 50% at 0% 100%, rgba(31,127,196,.08), transparent 60%);
+}
+.why > .container { position: relative; z-index: 1; }
+.why__title-muted { color: var(--ink-dim); font-weight: 500; }
+.why__title-accent {
+  background: linear-gradient(90deg, var(--green-bright), #6fd23a);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.why__grid {
+  margin-top: 52px;
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.why__card {
+  position: relative; padding: 32px 26px 28px; border-radius: 18px;
+  background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
+}
+.why__card:hover {
+  transform: translateY(-6px);
+  border-color: var(--pill-border);
+  box-shadow: 0 18px 40px rgba(0,0,0,.5), 0 0 30px rgba(139,212,25,.14);
+}
+.why__step {
+  display: inline-block; font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; letter-spacing: 2px; color: var(--green-bright);
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid rgba(139,212,25,.35);
+  background: rgba(139,212,25,.06);
+}
+.why__card h3 { font-size: 20px; margin: 14px 0 10px; }
+.why__card p { color: var(--ink-faint); font-size: 14.5px; line-height: 1.6; margin: 0; }
+
 /* ---------------- CONTACT ---------------- */
 .contact { padding: 30px 0 120px; }
 .form { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
