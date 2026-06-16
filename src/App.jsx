@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Emblem from './Emblem'
 import { useReveal } from './useReveal'
 import './App.css'
 
@@ -80,18 +79,11 @@ export default function App() {
       <header className="nav">
         <div className="nav__inner">
           <a className="brand" href="#top" aria-label="Covert Communication home">
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 60 60"><path d="M44 18 A20 20 0 1 0 44 42"
-                fill="none" stroke="url(#bg)" strokeWidth="9" strokeLinecap="round" />
-                <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#c8f95a" /><stop offset="100%" stopColor="#2f7d3a" />
-                </linearGradient></defs>
-              </svg>
-            </span>
-            <span className="brand__text">
-              <strong>COVERT</strong>
-              <em>COMMUNICATION</em>
-            </span>
+            <img
+              className="brand__logo"
+              src="https://covertcommunication.com/wp-content/uploads/2018/03/Covert-Communications_F-1.png"
+              alt="Covert Communication"
+            />
           </a>
 
           <nav className="nav__links">
@@ -162,7 +154,11 @@ export default function App() {
             </div>
 
             <div className="hero__emblem reveal">
-              <Emblem />
+              <img
+                className="hero__emblem-img"
+                src="https://covertcommunication.com/wp-content/uploads/2025/12/Untitled-270-x-270-px.png"
+                alt="Covert Communication icon"
+              />
             </div>
 
             <div className="tags tags--right">
