@@ -19,9 +19,31 @@ const SERVICES_RIGHT = [
   { lines: ['Brand Specialties'] },
 ]
 
+const MEGA_SERVICES = [
+  {
+    heading: 'Performance',
+    items: [
+      { title: 'Programmatic', desc: 'Targeted media buying across every channel.' },
+      { title: 'SEM / AEO / GEO / SEO', desc: 'Search, answer-engine, and local visibility.' },
+      { title: 'Social Media', desc: 'Paid and organic strategy that converts.' },
+      { title: 'Fraud Protection', desc: 'Keep your ad spend honest and clean.' },
+    ],
+  },
+  {
+    heading: 'Brand & Strategy',
+    items: [
+      { title: 'Brand Creation', desc: 'Identity systems built to scale.' },
+      { title: 'Brand Building', desc: 'Long-term equity, not one-off campaigns.' },
+      { title: 'Traditional Full Service', desc: 'TV, print, radio &mdash; done right.' },
+      { title: 'Technology Consulting', desc: 'The stack and systems behind the brand.' },
+    ],
+  },
+]
+
 export default function App() {
   useReveal()
   const [status, setStatus] = useState('idle') // idle | sending | ok | error
+  const [megaOpen, setMegaOpen] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -74,7 +96,56 @@ export default function App() {
 
           <nav className="nav__links">
             <a href="#about" className="nav__link">About</a>
-            <a href="#contact" className="btn btn--pill-white">Book a Meeting</a>
+
+            <div
+              className="nav__item nav__item--mega"
+              onMouseEnter={() => setMegaOpen(true)}
+              onMouseLeave={() => setMegaOpen(false)}
+            >
+              <button
+                type="button"
+                className="nav__link nav__link--trigger"
+                aria-expanded={megaOpen}
+                onClick={() => setMegaOpen((v) => !v)}
+              >
+                Services
+                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6"
+                    strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div className={`mega ${megaOpen ? 'mega--open' : ''}`}>
+                <div className="mega__inner">
+                  <div className="mega__cols">
+                    {MEGA_SERVICES.map((col) => (
+                      <div className="mega__col" key={col.heading}>
+                        <p className="mega__heading">{col.heading}</p>
+                        {col.items.map((item) => (
+                          <a href="#about" className="mega__item" key={item.title}>
+                            <span className="mega__item-title">{item.title}</span>
+                            <span className="mega__item-desc">{item.desc}</span>
+                          </a>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mega__feature">
+                    <p className="mega__feature-eyebrow">Why Covert</p>
+                    <h4 className="mega__feature-title">One team, every channel.</h4>
+                    <p className="mega__feature-copy">
+                      Strategy, media, and brand under one roof &mdash; built to move fast.
+                    </p>
+                    <a href="#contact" className="btn btn--green mega__feature-btn">Book Meeting &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="#case-studies" className="nav__link">Case Studies</a>
+            <a href="#latest" className="nav__link">The Latest</a>
+            <a href="#contact" className="nav__link">Contact</a>
+            <a href="#contact" className="btn btn--pill-white">Book Meeting &rarr;</a>
           </nav>
         </div>
       </header>
@@ -139,6 +210,30 @@ export default function App() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ===================== CASE STUDIES ===================== */}
+        <section id="case-studies" className="case-studies">
+          <div className="container">
+            <p className="section__eyebrow reveal">Case Studies</p>
+            <h2 className="section__title reveal">Work that moved the needle</h2>
+            <p className="section__lead reveal">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Selected results
+              across brand, performance, and full-service campaigns.
+            </p>
+          </div>
+        </section>
+
+        {/* ===================== THE LATEST ===================== */}
+        <section id="latest" className="latest">
+          <div className="container">
+            <p className="section__eyebrow reveal">The Latest</p>
+            <h2 className="section__title reveal">News &amp; insights</h2>
+            <p className="section__lead reveal">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Updates from the
+              Covert Communication team.
+            </p>
           </div>
         </section>
 
