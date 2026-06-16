@@ -65,6 +65,37 @@ button { font-family: inherit; cursor: pointer; }
   50%      { transform: translateY(-9px); }
 }
 
+/* wandering paths for the hero service tags — each one loops a different course
+   around the emblem, drifting up under the sticky header along the way */
+@keyframes wander-1 {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(26px, -70px); }
+  45%  { transform: translate(64px, 10px); }
+  70%  { transform: translate(18px, 60px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-2 {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-34px, -50px); }
+  50%  { transform: translate(40px, -90px); }
+  75%  { transform: translate(50px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-3 {
+  0%   { transform: translate(0, 0); }
+  30%  { transform: translate(46px, -40px); }
+  60%  { transform: translate(-20px, -80px); }
+  85%  { transform: translate(-50px, 0); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-4 {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-40px, -90px); }
+  50%  { transform: translate(-60px, -10px); }
+  80%  { transform: translate(-10px, 50px); }
+  100% { transform: translate(0, 0); }
+}
+
 /* animated footer gradient */
 @keyframes gradient-flow {
   0%   { background-position: 0% 50%; }

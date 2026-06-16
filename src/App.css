@@ -141,6 +141,7 @@
 /* ---------------- HERO ---------------- */
 .hero {
   position: relative;
+  z-index: 1;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 40px 24px 0;
@@ -152,28 +153,47 @@
     "portrait portrait portrait";
   align-items: center;
   gap: 8px 18px;
+  overflow: visible;
 }
 .hero__emblem { grid-area: emblem; }
-.tags--left  { grid-area: tl; }
-.tags--right { grid-area: tr; }
 .hero__copy  { grid-area: copy; text-align: center; padding: 8px 0 18px; }
 .hero__portrait { grid-area: portrait; }
 
+/* tags float freely over the whole hero (and slightly under the sticky
+   header) instead of sitting in the grid, so they can wander around the
+   emblem rather than stack in two static columns */
 .tags {
-  display: flex; flex-direction: column; gap: 26px;
-  padding-top: 10px;
+  position: absolute;
+  top: -60px;
+  bottom: 0;
+  width: 46%;
+  pointer-events: none;
+  z-index: 5;
 }
-.tags--left  { align-items: flex-start; }
-.tags--right { align-items: flex-end; }
-/* staircase the tags like the design */
-.tags--left  .tag:nth-child(1) { margin-left: 8px; }
-.tags--left  .tag:nth-child(2) { margin-left: 34px; }
-.tags--left  .tag:nth-child(3) { margin-left: 0; }
-.tags--left  .tag:nth-child(4) { margin-left: 46px; }
-.tags--right .tag:nth-child(1) { margin-right: 6px; }
-.tags--right .tag:nth-child(2) { margin-right: 0; }
-.tags--right .tag:nth-child(3) { margin-right: 30px; }
-.tags--right .tag:nth-child(4) { margin-right: 14px; }
+.tags--left  { left: 0; }
+.tags--right { right: 0; }
+
+.tags .tag { position: absolute; pointer-events: auto; margin: 0; }
+
+/* scatter the start positions like the original staircase, but anywhere
+   across the hero height so the wander animation has room to roam */
+.tags--left  .tag:nth-child(1) { top: 8%;  left: 4%; }
+.tags--left  .tag:nth-child(2) { top: 32%; left: 24%; }
+.tags--left  .tag:nth-child(3) { top: 56%; left: 2%; }
+.tags--left  .tag:nth-child(4) { top: 80%; left: 28%; }
+.tags--right .tag:nth-child(1) { top: 6%;  right: 2%; }
+.tags--right .tag:nth-child(2) { top: 30%; right: 24%; }
+.tags--right .tag:nth-child(3) { top: 54%; right: 0%; }
+.tags--right .tag:nth-child(4) { top: 78%; right: 26%; }
+
+.tags--left  .tag:nth-child(1) { animation-name: wander-1; animation-duration: 19s; }
+.tags--left  .tag:nth-child(2) { animation-name: wander-2; animation-duration: 23s; }
+.tags--left  .tag:nth-child(3) { animation-name: wander-3; animation-duration: 27s; }
+.tags--left  .tag:nth-child(4) { animation-name: wander-4; animation-duration: 21s; }
+.tags--right .tag:nth-child(1) { animation-name: wander-2; animation-duration: 25s; }
+.tags--right .tag:nth-child(2) { animation-name: wander-4; animation-duration: 18s; }
+.tags--right .tag:nth-child(3) { animation-name: wander-1; animation-duration: 24s; }
+.tags--right .tag:nth-child(4) { animation-name: wander-3; animation-duration: 20s; }
 
 .tag {
   display: inline-flex; flex-direction: column; align-items: center;
@@ -184,7 +204,8 @@
   font-size: 15px; color: var(--ink);
   white-space: nowrap;
   box-shadow: 0 0 0 rgba(139,212,25,0);
-  animation: drift 6s ease-in-out infinite;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
   cursor: default;
 }
@@ -342,9 +363,19 @@
       "portrait";
     text-align: center;
   }
-  .tags { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 12px; }
-  .tags--left, .tags--right { align-items: center; }
-  .tags .tag { margin: 0 !important; }
+  /* below this width the wandering pills would just collide with the copy,
+     so drop back to a simple static row under the emblem */
+  .tags--left  { grid-area: tl; }
+  .tags--right { grid-area: tr; }
+  .tags {
+    position: static; top: auto; bottom: auto; width: auto;
+    display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;
+    gap: 12px; pointer-events: auto;
+  }
+  .tags .tag {
+    position: static; top: auto; left: auto; right: auto;
+    animation: none; margin: 0 !important;
+  }
   .form__row { grid-template-columns: 1fr; }
 }
 
