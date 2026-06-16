@@ -153,21 +153,23 @@ export default function App() {
       {/* ===================== HERO ===================== */}
       <main id="top">
         <section className="hero">
-          {/* floating service tags */}
-          <div className="tags tags--left">
-            {SERVICES_LEFT.map((s, i) => (
-              <Tag key={i} index={i} side="left" lines={s.lines} />
-            ))}
-          </div>
+          {/* emblem + floating service tags, clipped to this row only */}
+          <div className="hero__top">
+            <div className="tags tags--left">
+              {SERVICES_LEFT.map((s, i) => (
+                <Tag key={i} index={i} side="left" lines={s.lines} />
+              ))}
+            </div>
 
-          <div className="hero__emblem reveal">
-            <Emblem />
-          </div>
+            <div className="hero__emblem reveal">
+              <Emblem />
+            </div>
 
-          <div className="tags tags--right">
-            {SERVICES_RIGHT.map((s, i) => (
-              <Tag key={i} index={i} side="right" lines={s.lines} />
-            ))}
+            <div className="tags tags--right">
+              {SERVICES_RIGHT.map((s, i) => (
+                <Tag key={i} index={i} side="right" lines={s.lines} />
+              ))}
+            </div>
           </div>
 
           {/* headline */}

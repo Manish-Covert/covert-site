@@ -146,25 +146,35 @@
   margin: 0 auto;
   padding: 40px 24px 0;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "tl emblem tr"
-    "copy copy copy"
-    "portrait portrait portrait";
+    "top"
+    "copy"
+    "portrait";
   align-items: center;
   gap: 8px 18px;
-  overflow: visible;
 }
-.hero__emblem { grid-area: emblem; }
 .hero__copy  { grid-area: copy; text-align: center; padding: 8px 0 18px; }
 .hero__portrait { grid-area: portrait; }
 
-/* tags float freely over the whole hero (and slightly under the sticky
-   header) instead of sitting in the grid, so they can wander around the
-   emblem rather than stack in two static columns */
+/* the row holding the emblem and the wandering tags — sized and clipped to
+   itself so the tags never roam into the header above or the copy below */
+.hero__top {
+  grid-area: top;
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+/* tags float freely within the hero__top row only, wandering around the
+   emblem rather than stacking in two static columns */
 .tags {
   position: absolute;
-  top: -60px;
+  top: 0;
   bottom: 0;
   width: 46%;
   pointer-events: none;
@@ -353,16 +363,13 @@
 
 /* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 860px) {
-  .hero {
+  .hero { text-align: center; }
+  .hero__top {
+    min-height: 0;
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "emblem"
-      "tl"
-      "tr"
-      "copy"
-      "portrait";
-    text-align: center;
+    grid-template-areas: "emblem" "tl" "tr";
   }
+  .hero__emblem { grid-area: emblem; }
   /* below this width the wandering pills would just collide with the copy,
      so drop back to a simple static row under the emblem */
   .tags--left  { grid-area: tl; }
