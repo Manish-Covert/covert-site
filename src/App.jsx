@@ -80,18 +80,7 @@ export default function App() {
       <header className="nav">
         <div className="nav__inner">
           <a className="brand" href="#top" aria-label="Covert Communication home">
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 60 60"><path d="M44 18 A20 20 0 1 0 44 42"
-                fill="none" stroke="url(#bg)" strokeWidth="9" strokeLinecap="round" />
-                <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#c8f95a" /><stop offset="100%" stopColor="#2f7d3a" />
-                </linearGradient></defs>
-              </svg>
-            </span>
-            <span className="brand__text">
-              <strong>COVERT</strong>
-              <em>COMMUNICATION</em>
-            </span>
+            <img src="/logo.png" alt="Covert Communication" className="brand__logo" />
           </a>
 
           <nav className="nav__links">
@@ -286,10 +275,7 @@ export default function App() {
       <footer className="footer">
         <div className="footer__art" aria-hidden="true" />
         <div className="footer__inner">
-          <span className="footer__mark" aria-hidden="true">
-            <svg viewBox="0 0 60 60"><path d="M44 18 A20 20 0 1 0 44 42"
-              fill="none" stroke="#0a0a0a" strokeWidth="7" strokeLinecap="round" /></svg>
-          </span>
+          <img src="/logo.png" alt="Covert Communication" className="footer__logo" />
           <div className="footer__social" aria-label="Social links">
             <a href="#" aria-label="LinkedIn">in</a>
             <a href="#" aria-label="Facebook">f</a>
