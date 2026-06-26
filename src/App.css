@@ -242,9 +242,8 @@
   font-weight: 500;
   line-height: 1.35;
   white-space: nowrap;
-  background: rgba(0,0,0,0.35) padding-box,
+  background: transparent padding-box,
               linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%) border-box;
-  backdrop-filter: blur(8px);
   z-index: 2;
   animation: wander-p1 22s ease-in-out infinite;
   transition: border-color .3s var(--ease), color .3s var(--ease),
