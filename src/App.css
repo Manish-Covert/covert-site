@@ -590,7 +590,8 @@
 
 .svc-card--hovered .svc-card__hover-bg {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1.06);
+  filter: blur(8px);
 }
 
 .svc-card__overlay {
@@ -608,7 +609,7 @@
 }
 
 .svc-card--hovered .svc-card__overlay {
-  opacity: 0.84;
+  opacity: 0.92;
 }
 
 /* Header always at the top */
@@ -620,6 +621,11 @@
   gap: 8px;
   padding: 18px 16px 0;
   z-index: 2;
+  transition: opacity .3s var(--ease);
+}
+
+.svc-card--hovered .svc-card__header {
+  opacity: 0;
 }
 
 .svc-card__title {
