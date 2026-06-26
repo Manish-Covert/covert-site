@@ -1,61 +1,31 @@
-import { useState, useRef, Suspense, lazy } from 'react'
+import { useState, useRef, useEffect, Suspense, lazy } from 'react'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
+import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HOW_DID_YOU_HEAR, HERO_PILLS } from './data'
+import ServicePage from './ServicePage'
+import AboutPage from './AboutPage'
 import './App.css'
 
 const HeroLogo = lazy(() => import('./HeroLogo'))
 
-const SERVICES = [
-  { id: 'technology', title: 'Technology Consulting', count: 3, img: '/categories/technology.webp', icon: '/icons/tech.svg', subs: null },
-  { id: 'programmatic', title: 'Programmatic', count: 4, img: '/categories/programmatic.webp', icon: '/icons/programmatic.svg', subs: ['SEM', 'AEO', 'GEO', 'SEO'] },
-  { id: 'social', title: 'Social Media', count: 4, img: '/categories/social.webp', icon: '/icons/social.svg', subs: null },
-  { id: 'fraud', title: 'Fraud Protection Gurus', count: 3, img: '/categories/fraud.webp', icon: '/icons/fraud.svg', subs: null },
-  { id: 'brand-creation', title: 'Brand Creation', count: 3, img: '/categories/brand-creation.webp', icon: '/icons/brand-creation.svg', subs: null },
-  { id: 'trad', title: 'Traditional Full Service', count: 6, img: '/categories/trad-full-service.webp', icon: '/icons/trad-full-service.svg', subs: null },
-  { id: 'brand-building', title: 'Brand Building', count: 4, img: '/categories/brand-building.webp', icon: '/icons/brand-building.svg', subs: null },
-  { id: 'brand-specialties', title: 'Brand Specialties', count: 7, img: '/categories/brand-specialties.webp', icon: '/icons/brand-specialties.svg', subs: null },
-]
-
-const MEGA_SERVICES = [
-  {
-    heading: 'Performance',
-    items: [
-      { title: 'Programmatic', desc: 'Targeted media buying across every channel.' },
-      { title: 'SEM / AEO / GEO / SEO', desc: 'Search, answer-engine, and local visibility.' },
-      { title: 'Social Media', desc: 'Paid and organic strategy that converts.' },
-      { title: 'Fraud Protection', desc: 'Keep your ad spend honest and clean.' },
-    ],
-  },
-  {
-    heading: 'Brand & Strategy',
-    items: [
-      { title: 'Brand Creation', desc: 'Identity systems built to scale.' },
-      { title: 'Brand Building', desc: 'Long-term equity, not one-off campaigns.' },
-      { title: 'Traditional Full Service', desc: 'TV, print, radio — done right.' },
-      { title: 'Technology Consulting', desc: 'The stack and systems behind the brand.' },
-    ],
-  },
-]
-
-const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
-
-/* Scattered pill positions with unique wander animation per pill */
-const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 410px)', top: '14%' },
-  { label: 'Social Media',                          left: 'calc(50% - 480px)', top: '42%' },
-  { label: 'Fraud Protection Gurus',                left: 'calc(50% - 460px)', top: '64%' },
-  { label: 'Technology Consulting',                 left: 'calc(50% - 370px)', top: '78%' },
-  { label: 'Brand Creation',                        left: 'calc(50% + 250px)', top: '10%' },
-  { label: 'Traditional Full Service',              left: 'calc(50% + 300px)', top: '40%' },
-  { label: 'Brand Building',                        left: 'calc(50% + 320px)', top: '63%' },
-  { label: 'Brand Specialties',                     left: 'calc(50% + 210px)', top: '78%' },
-]
-
 export default function App() {
   useReveal()
+  const location = useLocation()
   const [status, setStatus] = useState('idle')
   const [megaOpen, setMegaOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
+  const [hoveredAbout, setHoveredAbout] = useState(null)
+  const [hoveredMegaService, setHoveredMegaService] = useState(null)
   const [hoveredService, setHoveredService] = useState(null)
   const heroRef = useRef(null)
+
+  useEffect(() => {
+    setMegaOpen(false)
+    setAboutOpen(false)
+    setHoveredAbout(null)
+    setHoveredMegaService(null)
+    setHoveredService(null)
+  }, [location.pathname])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -79,6 +49,32 @@ export default function App() {
   }
 
   return (
+    <Routes>
+      <Route path="/services/:id" element={<ServicePage />} />
+      <Route path="/about/:id" element={<AboutPage />} />
+      <Route path="*" element={<HomePage
+        status={status} setStatus={setStatus}
+        megaOpen={megaOpen} setMegaOpen={setMegaOpen}
+        aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
+        hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
+        hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
+        hoveredService={hoveredService} setHoveredService={setHoveredService}
+        heroRef={heroRef} handleSubmit={handleSubmit}
+      />} />
+    </Routes>
+  )
+}
+
+function HomePage({
+  status, setStatus,
+  megaOpen, setMegaOpen,
+  aboutOpen, setAboutOpen,
+  hoveredAbout, setHoveredAbout,
+  hoveredMegaService, setHoveredMegaService,
+  hoveredService, setHoveredService,
+  heroRef, handleSubmit,
+}) {
+  return (
     <>
       {/* ===================== NAV ===================== */}
       <header className="nav-wrap">
@@ -88,8 +84,48 @@ export default function App() {
           </a>
 
           <div className="nav__links">
-            <a href="#about" className="nav__link">About</a>
+            {/* ---- ABOUT MEGA ---- */}
+            <div
+              className="nav__item nav__item--mega"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null); }}
+            >
+              <button
+                type="button"
+                className="nav__link nav__link--trigger"
+                aria-expanded={aboutOpen}
+                onClick={() => setAboutOpen(v => !v)}
+              >
+                About
+                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
+                    strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
 
+              <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
+                <div className="mega-about__grid">
+                  {MEGA_ABOUT.map(item => (
+                    <Link
+                      key={item.id}
+                      to={item.href}
+                      className={`ma-card${hoveredAbout === item.id ? ' ma-card--hovered' : ''}`}
+                      onMouseEnter={() => setHoveredAbout(item.id)}
+                      onMouseLeave={() => setHoveredAbout(null)}
+                    >
+                      <div className="ma-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
+                      <div className="ma-card__inner">
+                        <img className="ma-card__icon" src={item.icon} alt="" aria-hidden="true" />
+                        <span className="ma-card__label">{item.label}</span>
+                        {item.badge && <span className="ma-card__badge">{item.badge}</span>}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ---- SERVICES MEGA ---- */}
             <div
               className="nav__item nav__item--mega"
               onMouseEnter={() => setMegaOpen(true)}
@@ -108,35 +144,30 @@ export default function App() {
                 </svg>
               </button>
 
-              <div className={`mega ${megaOpen ? 'mega--open' : ''}`}>
-                <div className="mega__inner">
-                  <div className="mega__cols">
-                    {MEGA_SERVICES.map(col => (
-                      <div className="mega__col" key={col.heading}>
-                        <p className="mega__heading">{col.heading}</p>
-                        {col.items.map(item => (
-                          <a href="#services" className="mega__item" key={item.title}>
-                            <span className="mega__item-title">{item.title}</span>
-                            <span className="mega__item-desc">{item.desc}</span>
-                          </a>
-                        ))}
+              <div className={`mega mega--services ${megaOpen ? 'mega--open' : ''}`}>
+                <div className="mega-services__grid">
+                  {MEGA_SERVICES.map(item => (
+                    <Link
+                      key={item.id}
+                      to={`/services/${item.id}`}
+                      className={`ms-card${hoveredMegaService === item.id ? ' ms-card--hovered' : ''}`}
+                      onMouseEnter={() => setHoveredMegaService(item.id)}
+                      onMouseLeave={() => setHoveredMegaService(null)}
+                    >
+                      <div className="ms-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
+                      <div className="ms-card__inner">
+                        <img className="ms-card__icon" src={item.icon} alt="" aria-hidden="true" />
+                        <span className="ms-card__title">{item.title}</span>
+                        <span className="ms-card__count">{item.count}</span>
                       </div>
-                    ))}
-                  </div>
-                  <div className="mega__feature">
-                    <p className="mega__feature-eyebrow">Why Covert</p>
-                    <h4 className="mega__feature-title">One team, every channel.</h4>
-                    <p className="mega__feature-copy">
-                      Strategy, media, and brand under one roof — built to move fast.
-                    </p>
-                    <a href="#contact" className="btn btn--green mega__feature-btn">Book Meeting &rarr;</a>
-                  </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <a href="#case-studies" className="nav__link">Case Studies</a>
-            <a href="#latest" className="nav__link">The Latest</a>
+            <a href="#" className="nav__link">Case Studies</a>
+            <a href="#" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
           </div>
           <div className="nav__cta">
@@ -197,48 +228,32 @@ export default function App() {
         <section id="services" className="services-hero">
           <div className="services-grid">
             {SERVICES.map(svc => (
-              <article
+              <Link
                 key={svc.id}
+                to={`/services/${svc.id}`}
                 className={`svc-card${hoveredService === svc.id ? ' svc-card--hovered' : ''}`}
                 onMouseEnter={() => setHoveredService(svc.id)}
                 onMouseLeave={() => setHoveredService(null)}
-                style={{ backgroundImage: `url(${svc.img})` }}
               >
+                <div className="svc-card__bg" style={{ backgroundImage: `url(${svc.img})` }} />
+                <div className="svc-card__hover-bg" style={{ backgroundImage: `url(${svc.hoverImg})` }} />
                 <div className="svc-card__overlay" />
-                <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
-                <div className="svc-card__body">
-                  {svc.subs && hoveredService === svc.id ? (
-                    <ul className="svc-card__subs">
-                      {svc.subs.map(s => (
-                        <li key={s}><a href="#contact">{s}</a></li>
-                      ))}
-                    </ul>
-                  ) : null}
-                  <div className="svc-card__footer">
-                    <h2 className="svc-card__title">{svc.title}</h2>
-                    <span className="svc-card__count">{svc.count} Services</span>
-                  </div>
+                <div className="svc-card__header">
+                  <h2 className="svc-card__title">{svc.title}</h2>
+                  <span className="svc-card__count">{svc.count} Services ▾</span>
                 </div>
-              </article>
+                {svc.subs && (
+                  <ul className="svc-card__subs">
+                    {svc.subs.map((s, i) => (
+                      <li key={s} style={{ transitionDelay: hoveredService === svc.id ? `${i * 50}ms` : '0ms' }}>
+                        <span className="chip-btn">{s}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
+              </Link>
             ))}
-          </div>
-        </section>
-
-        {/* ===================== CASE STUDIES ===================== */}
-        <section id="case-studies" className="case-studies">
-          <div className="container">
-            <p className="section__eyebrow reveal">Case Studies</p>
-            <h2 className="section__title reveal">Work that moved the needle</h2>
-            <p className="section__lead reveal">Selected results across brand, performance, and full-service campaigns.</p>
-          </div>
-        </section>
-
-        {/* ===================== THE LATEST ===================== */}
-        <section id="latest" className="latest">
-          <div className="container">
-            <p className="section__eyebrow reveal">The Latest</p>
-            <h2 className="section__title reveal">News &amp; insights</h2>
-            <p className="section__lead reveal">Updates from the Covert Communication team.</p>
           </div>
         </section>
 
@@ -295,17 +310,25 @@ export default function App() {
 
       {/* ===================== FOOTER ===================== */}
       <footer className="footer">
-        <div className="footer__art" aria-hidden="true" />
         <div className="footer__inner">
-          <img src="/logo-icon.png" alt="Covert Communication" className="footer__logo" />
+          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
           <div className="footer__social" aria-label="Social links">
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">&#9678;</a>
+            <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />
+            </a>
+            <a href="https://facebook.com/covertcommunication" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="/icons/sm_fb.svg" alt="Facebook" />
+            </a>
+            <a href="mailto:anna@covertcommunication.com" aria-label="Email">
+              <img src="/icons/sm_email.svg" alt="Email" />
+            </a>
           </div>
           <p className="footer__legal">
-            Copyright 2026 Covert Communication LLC | All Rights Reserved | Privacy Policy |
-            Cookie Preferences | Terms of Service | Site Map | 808-272-9952
+            Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
+            <a href="#">Privacy Policy</a> |{' '}
+            <a href="#">Cookie Preferences</a> |{' '}
+            <a href="#">Terms of Service</a> |{' '}
+            <a href="#">Site Map</a> | 808-272-9952
           </p>
         </div>
       </footer>
