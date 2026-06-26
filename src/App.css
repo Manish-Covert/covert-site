@@ -15,12 +15,10 @@
    ============================================================ */
 .nav-wrap {
   position: fixed;
-  top: 20px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  display: flex;
-  justify-content: center;
   pointer-events: none;
 }
 
@@ -30,20 +28,17 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 16px;
-  padding: 10px 12px 10px 18px;
-  background: rgba(8, 10, 8, 0.82);
+  padding: 0 32px;
+  background: rgba(8, 10, 8, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(166,242,60,0.06);
-  max-width: 1200px;
-  width: calc(100% - 48px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
 
 .brand { display: flex; align-items: center; flex-shrink: 0; }
 .brand__logo {
-  height: 56px;
+  height: 115px;
   width: auto;
   object-fit: contain;
   filter: brightness(1.05);
@@ -202,14 +197,11 @@
   overflow: hidden;
 }
 
-/* 1200px container that holds pills + logo */
+/* Full-width container that holds pills + logo */
 .hero__container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
   height: 100vh;
-  margin: 0 auto;
-  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: center;
