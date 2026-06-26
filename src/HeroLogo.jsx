@@ -18,7 +18,7 @@ function Model() {
     box.getCenter(center)
     box.getSize(size)
     const maxDim = Math.max(size.x, size.y, size.z)
-    const scale = 3.2 / maxDim
+    const scale = 4.2 / maxDim
     scene.scale.setScalar(scale)
     box.setFromObject(scene)
     box.getCenter(center)

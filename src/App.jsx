@@ -38,16 +38,16 @@ const MEGA_SERVICES = [
 
 const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
 
-/* Scattered pill positions: [left%, top%, animDelay] */
+/* Scattered pill positions: left%, top%, animDelay, animDuration */
 const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: '3%',  top: '18%', delay: '0s' },
-  { label: 'Social Media',                          left: '6%',  top: '48%', delay: '1.4s' },
-  { label: 'Fraud Protection Gurus',                left: '2%',  top: '72%', delay: '0.7s' },
-  { label: 'Technology Consulting',                 left: '18%', top: '82%', delay: '2.1s' },
-  { label: 'Brand Creation',                        left: '72%', top: '14%', delay: '0.5s' },
-  { label: 'Traditional Full Service',              left: '68%', top: '42%', delay: '1.8s' },
-  { label: 'Brand Building',                        left: '74%', top: '68%', delay: '1.1s' },
-  { label: 'Brand Specialties',                     left: '62%', top: '85%', delay: '2.5s' },
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: '2%',  top: '20%', delay: '0s',    dur: '3.8s' },
+  { label: 'Social Media',                          left: '5%',  top: '47%', delay: '1.1s',  dur: '4.4s' },
+  { label: 'Fraud Protection Gurus',                left: '1%',  top: '70%', delay: '0.5s',  dur: '3.5s' },
+  { label: 'Technology Consulting',                 left: '17%', top: '83%', delay: '1.9s',  dur: '4.8s' },
+  { label: 'Brand Creation',                        left: '73%', top: '15%', delay: '0.3s',  dur: '4.2s' },
+  { label: 'Traditional Full Service',              left: '67%', top: '43%', delay: '1.6s',  dur: '3.6s' },
+  { label: 'Brand Building',                        left: '75%', top: '67%', delay: '0.9s',  dur: '4.6s' },
+  { label: 'Brand Specialties',                     left: '61%', top: '84%', delay: '2.3s',  dur: '3.9s' },
 ]
 
 export default function App() {
@@ -138,12 +138,14 @@ export default function App() {
             <a href="#case-studies" className="nav__link">Case Studies</a>
             <a href="#latest" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
-            <a href="#contact" className="btn btn--pill-outline">
-              <span className="btn__icon" aria-hidden="true">
-                <img src="/logo-icon.png" alt="" className="btn__icon-img" />
-              </span>
-              Book a Meeting &rarr;
-            </a>
+            <div className="nav__cta">
+              <a href="#contact" className="btn btn--pill-outline">
+                <span className="btn__icon" aria-hidden="true">
+                  <img src="/logo-icon.png" alt="" className="btn__icon-img" />
+                </span>
+                Book a Meeting &rarr;
+              </a>
+            </div>
           </div>
         </nav>
       </header>
@@ -158,7 +160,7 @@ export default function App() {
                 key={i}
                 href="#services"
                 className="hero__pill"
-                style={{ left: pill.left, top: pill.top, animationDelay: pill.delay }}
+                style={{ left: pill.left, top: pill.top, animationDelay: pill.delay, animationDuration: pill.dur }}
               >
                 {pill.label.split('\n').map((line, j) => (
                   <span key={j}>{line}</span>
