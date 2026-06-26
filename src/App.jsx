@@ -40,14 +40,14 @@ const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referr
 
 /* Scattered pill positions with unique wander animation per pill */
 const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: '8%',  top: '22%', delay: '0s',   dur: '26s', anim: 'wander-p1' },
-  { label: 'Social Media',                          left: '6%',  top: '50%', delay: '3.5s', dur: '22s', anim: 'wander-p2' },
-  { label: 'Fraud Protection Gurus',                left: '5%',  top: '72%', delay: '1.2s', dur: '28s', anim: 'wander-p3' },
-  { label: 'Technology Consulting',                 left: '22%', top: '82%', delay: '5s',   dur: '24s', anim: 'wander-p4' },
-  { label: 'Brand Creation',                        left: '70%', top: '14%', delay: '0.8s', dur: '25s', anim: 'wander-p5' },
-  { label: 'Traditional Full Service',              left: '65%', top: '44%', delay: '4s',   dur: '20s', anim: 'wander-p6' },
-  { label: 'Brand Building',                        left: '72%', top: '68%', delay: '2s',   dur: '27s', anim: 'wander-p7' },
-  { label: 'Brand Specialties',                     left: '58%', top: '82%', delay: '6s',   dur: '23s', anim: 'wander-p8' },
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 500px)', top: '14%' },
+  { label: 'Social Media',                          left: 'calc(50% - 480px)', top: '42%' },
+  { label: 'Fraud Protection Gurus',                left: 'calc(50% - 460px)', top: '64%' },
+  { label: 'Technology Consulting',                 left: 'calc(50% - 370px)', top: '78%' },
+  { label: 'Brand Creation',                        left: 'calc(50% + 330px)', top: '10%' },
+  { label: 'Traditional Full Service',              left: 'calc(50% + 300px)', top: '40%' },
+  { label: 'Brand Building',                        left: 'calc(50% + 320px)', top: '63%' },
+  { label: 'Brand Specialties',                     left: 'calc(50% + 210px)', top: '78%' },
 ]
 
 export default function App() {
