@@ -151,27 +151,29 @@ export default function App() {
       <main id="top">
         {/* ===================== HERO ===================== */}
         <section className="hero" ref={heroRef}>
-          {/* Scattered pills — absolute positioned across full width */}
-          {HERO_PILLS.map((pill, i) => (
-            <a
-              key={i}
-              href="#services"
-              className="hero__pill"
-              style={{ left: pill.left, top: pill.top, animationDelay: pill.delay }}
-            >
-              {pill.label.split('\n').map((line, j) => (
-                <span key={j}>{line}</span>
-              ))}
-            </a>
-          ))}
+          <div className="hero__container">
+            {/* Scattered pills — absolute positioned within 1200px container */}
+            {HERO_PILLS.map((pill, i) => (
+              <a
+                key={i}
+                href="#services"
+                className="hero__pill"
+                style={{ left: pill.left, top: pill.top, animationDelay: pill.delay }}
+              >
+                {pill.label.split('\n').map((line, j) => (
+                  <span key={j}>{line}</span>
+                ))}
+              </a>
+            ))}
 
-          {/* Center 3D logo */}
-          <div className="hero__logo-wrap">
-            <Suspense fallback={
-              <img src="/hero-logo.png" alt="Covert Communication" className="hero__logo-fallback" />
-            }>
-              <HeroLogo containerRef={heroRef} />
-            </Suspense>
+            {/* Center 3D logo */}
+            <div className="hero__logo-wrap">
+              <Suspense fallback={
+                <img src="/hero-logo.png" alt="Covert Communication" className="hero__logo-fallback" />
+              }>
+                <HeroLogo containerRef={heroRef} />
+              </Suspense>
+            </div>
           </div>
         </section>
 

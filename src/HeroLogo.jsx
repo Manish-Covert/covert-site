@@ -1,37 +1,41 @@
 import { useRef, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useGLTF, Environment, ContactShadows } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
-/* Mouse position shared across the component tree */
 const mouse = { x: 0, y: 0, tx: 0, ty: 0 }
 
 function Model() {
   const group = useRef()
   const { scene } = useGLTF('/logo-3d.gltf')
 
+  /* Auto-fit model to fill the camera view on first load */
   useEffect(() => {
-    scene.traverse(obj => {
-      if (obj.isMesh) {
-        obj.castShadow = true
-        obj.receiveShadow = false
-      }
-    })
+    if (!scene) return
+    const box = new THREE.Box3().setFromObject(scene)
+    const center = new THREE.Vector3()
+    const size = new THREE.Vector3()
+    box.getCenter(center)
+    box.getSize(size)
+    const maxDim = Math.max(size.x, size.y, size.z)
+    const scale = 3.2 / maxDim
+    scene.scale.setScalar(scale)
+    box.setFromObject(scene)
+    box.getCenter(center)
+    scene.position.sub(center)
   }, [scene])
 
-  useFrame((_, delta) => {
+  useFrame(() => {
     if (!group.current) return
-    /* Smooth lerp toward mouse target */
     mouse.tx += (mouse.x - mouse.tx) * 0.06
     mouse.ty += (mouse.y - mouse.ty) * 0.06
-
-    group.current.rotation.y = mouse.tx * 0.45
-    group.current.rotation.x = -mouse.ty * 0.25
+    group.current.rotation.y = mouse.tx * 0.5
+    group.current.rotation.x = -mouse.ty * 0.28
   })
 
   return (
     <group ref={group}>
-      <primitive object={scene} scale={1} />
+      <primitive object={scene} />
     </group>
   )
 }
@@ -39,8 +43,8 @@ function Model() {
 function Rig() {
   const { camera } = useThree()
   useFrame(() => {
-    camera.position.x += (mouse.tx * 0.3 - camera.position.x) * 0.04
-    camera.position.y += (-mouse.ty * 0.15 - camera.position.y) * 0.04
+    camera.position.x += (mouse.tx * 0.4 - camera.position.x) * 0.05
+    camera.position.y += (-mouse.ty * 0.2 - camera.position.y) * 0.05
     camera.lookAt(0, 0, 0)
   })
   return null
@@ -61,17 +65,16 @@ export default function HeroLogo({ containerRef }) {
 
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 40 }}
+      camera={{ position: [0, 0, 5], fov: 42 }}
       style={{ width: '100%', height: '100%', background: 'transparent' }}
       gl={{ alpha: true, antialias: true }}
     >
       <Rig />
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 8, 5]} intensity={1.4} color="#ffffff" />
-      <directionalLight position={[-4, -2, -4]} intensity={0.4} color="#a6f23c" />
-      <pointLight position={[0, 4, 3]} intensity={0.8} color="#38c6e8" />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 8, 5]} intensity={1.6} color="#ffffff" />
+      <directionalLight position={[-4, -2, -4]} intensity={0.5} color="#a6f23c" />
+      <pointLight position={[0, 4, 3]} intensity={1} color="#38c6e8" />
       <Model />
-      <Environment preset="city" />
     </Canvas>
   )
 }

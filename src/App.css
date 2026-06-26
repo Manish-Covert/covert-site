@@ -200,10 +200,23 @@
   overflow: hidden;
 }
 
+/* 1200px container that holds pills + logo */
+.hero__container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Center 3D logo canvas */
 .hero__logo-wrap {
-  width: clamp(320px, 38vw, 480px);
-  height: clamp(320px, 38vw, 480px);
+  width: clamp(360px, 42vw, 520px);
+  height: clamp(360px, 42vw, 520px);
   position: relative;
   z-index: 2;
   flex-shrink: 0;
@@ -215,7 +228,7 @@
   object-fit: contain;
 }
 
-/* Scattered pills — absolutely positioned across full section */
+/* Scattered pills — absolutely positioned within hero__container */
 .hero__pill {
   position: absolute;
   display: flex;
@@ -606,7 +619,7 @@
 }
 
 @media (max-width: 680px) {
-  .hero__logo-wrap { width: 260px; height: 260px; }
+  .hero__logo-wrap { width: 280px; height: 280px; }
   .hero__pill { display: none; }
 
   .services-grid {
