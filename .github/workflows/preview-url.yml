@@ -1,0 +1,36 @@
+name: Get Vercel Preview URL
+
+on:
+  push:
+    branches-ignore:
+      - main  # skip production branch
+
+jobs:
+  preview-url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel to build
+        run: sleep 30
+
+      - name: Fetch Preview URL
+        id: get_url
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          RESPONSE=$(curl -s "https://api.vercel.com/v7/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&branch=$BRANCH&limit=1&state=READY&target=preview" \
+            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}")
+          URL=$(echo $RESPONSE | python3 -c "import sys,json; d=json.load(sys.stdin); print('https://' + d['deployments'][0]['url'])" 2>/dev/null)
+          echo "preview_url=$URL" >> $GITHUB_OUTPUT
+          echo "✅ Preview URL: $URL"
+
+      - name: Comment on commit
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.get_url.outputs.preview_url }}';
+            if (!url || url === 'https://') return;
+            await github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: `🚀 **Vercel Preview Ready**\n\n${url}`
+            });
