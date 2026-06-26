@@ -135,8 +135,6 @@ export default function App() {
               </div>
             </div>
 
-            <a href="#case-studies" className="nav__link">Case Studies</a>
-            <a href="#latest" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
           </div>
           <div className="nav__cta">
@@ -227,24 +225,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* ===================== CASE STUDIES ===================== */}
-        <section id="case-studies" className="case-studies">
-          <div className="container">
-            <p className="section__eyebrow reveal">Case Studies</p>
-            <h2 className="section__title reveal">Work that moved the needle</h2>
-            <p className="section__lead reveal">Selected results across brand, performance, and full-service campaigns.</p>
-          </div>
-        </section>
-
-        {/* ===================== THE LATEST ===================== */}
-        <section id="latest" className="latest">
-          <div className="container">
-            <p className="section__eyebrow reveal">The Latest</p>
-            <h2 className="section__title reveal">News &amp; insights</h2>
-            <p className="section__lead reveal">Updates from the Covert Communication team.</p>
-          </div>
-        </section>
-
         {/* ===================== CONTACT ===================== */}
         <section id="contact" className="contact">
           <div className="contact__bg" aria-hidden="true" />
@@ -300,15 +280,24 @@ export default function App() {
       <footer className="footer">
         <div className="footer__art" aria-hidden="true" />
         <div className="footer__inner">
-          <img src="/logo-icon.png" alt="Covert Communication" className="footer__logo" />
+          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
           <div className="footer__social" aria-label="Social links">
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">&#9678;</a>
+            <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />
+            </a>
+            <a href="https://facebook.com/covertcommunication" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="/icons/sm_fb.svg" alt="Facebook" />
+            </a>
+            <a href="mailto:anna@covertcommunication.com" aria-label="Email">
+              <img src="/icons/sm_email.svg" alt="Email" />
+            </a>
           </div>
           <p className="footer__legal">
-            Copyright 2026 Covert Communication LLC | All Rights Reserved | Privacy Policy |
-            Cookie Preferences | Terms of Service | Site Map | 808-272-9952
+            Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
+            <a href="#">Privacy Policy</a> |{' '}
+            <a href="#">Cookie Preferences</a> |{' '}
+            <a href="#">Terms of Service</a> |{' '}
+            <a href="#">Site Map</a> | 808-272-9952
           </p>
         </div>
       </footer>
