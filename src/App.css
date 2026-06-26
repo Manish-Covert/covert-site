@@ -42,7 +42,7 @@
 
 .brand { display: flex; align-items: center; flex-shrink: 0; }
 .brand__logo {
-  height: 115px;
+  height: 85px;
   width: auto;
   object-fit: contain;
   filter: brightness(1.05);
@@ -128,7 +128,7 @@
   background: #fff;
   color: #0a0a0a;
   border: none;
-  padding: 9px 20px 9px 10px;
+  padding: 16px 30px;
   gap: 9px;
   font-size: 13.5px;
   font-weight: 600;
