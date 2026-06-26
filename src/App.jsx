@@ -278,7 +278,6 @@ export default function App() {
 
       {/* ===================== FOOTER ===================== */}
       <footer className="footer">
-        <div className="footer__art" aria-hidden="true" />
         <div className="footer__inner">
           <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
           <div className="footer__social" aria-label="Social links">
