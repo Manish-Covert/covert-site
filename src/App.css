@@ -163,13 +163,24 @@
 /* about section CTA — gradient border pill */
 .btn--outline-pill {
   color: var(--ink);
-  border: 1.5px solid transparent;
+  border: none;
   padding: 12px 38px;
   font-size: 16px;
   border-radius: 999px;
-  background:
-    linear-gradient(#0000 0%, #0000 100%) padding-box,
-    linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%) border-box;
+  background: transparent;
+  position: relative;
+}
+.btn--outline-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 .btn--outline-pill:hover {
   color: var(--green-bright);
@@ -236,24 +247,34 @@
   align-items: center;
   text-align: center;
   padding: 10px 22px;
-  border: 1.5px solid transparent;
+  border: none;
   border-radius: 999px;
   color: var(--ink);
   font-size: 13px;
   font-weight: 500;
   line-height: 1.35;
   white-space: nowrap;
-  background:
-    linear-gradient(#0000 0%, #0000 100%) padding-box,
-    linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%) border-box;
+  background: transparent;
   z-index: 2;
   animation: wander-p1 22s ease-in-out infinite;
-  transition: border-color .3s var(--ease), color .3s var(--ease),
-              box-shadow .3s var(--ease);
+  transition: color .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+/* Gradient border via mask — only the 1.5px ring shows the gradient */
+.hero__pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .hero__pill:hover {
-  border-color: var(--green-bright);
   color: var(--green-bright);
   box-shadow: 0 0 28px rgba(166,242,60,.25);
 }
