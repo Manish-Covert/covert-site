@@ -43,7 +43,7 @@
 
 .brand { display: flex; align-items: center; flex-shrink: 0; }
 .brand__logo {
-  height: 44px;
+  height: 56px;
   width: auto;
   object-fit: contain;
   filter: brightness(1.05);
@@ -52,7 +52,7 @@
 .nav__links { display: flex; align-items: center; justify-content: center; gap: 20px; }
 .nav__cta { display: flex; align-items: center; justify-content: flex-end; flex-shrink: 0; }
 .nav__link {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--ink-dim);
   transition: color .25s var(--ease);
   white-space: nowrap;
