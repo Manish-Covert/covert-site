@@ -36,6 +36,54 @@ const MEGA_SERVICES = [
   },
 ]
 
+const MEGA_ABOUT = [
+  {
+    id: 'covertcom',
+    label: 'Covert Communication',
+    icon: '/icons/programmatic.svg',
+    img: '/about/about-covertcom-rollover.png',
+    href: '#',
+  },
+  {
+    id: 'anna',
+    label: 'Anna Covert',
+    icon: '/icons/brand-creation.svg',
+    img: '/about/about-anna-rollover.png',
+    href: '#',
+  },
+  {
+    id: 'covertteam',
+    label: 'The Covert Team',
+    icon: '/icons/social.svg',
+    img: '/about/about-covertteam-rollover.png',
+    href: '#',
+  },
+  {
+    id: 'books',
+    label: 'Books',
+    badge: '2 Titles',
+    icon: '/icons/brand-building.svg',
+    img: '/about/about-books-rollover.png',
+    href: '#',
+  },
+  {
+    id: 'podcasts',
+    label: 'Podcasts',
+    badge: '2 Series',
+    icon: '/icons/trad-full-service.svg',
+    img: '/about/about-podcasts-rollover.png',
+    href: '#',
+  },
+  {
+    id: 'otherbrands',
+    label: 'Other Brands',
+    badge: '3 Brands',
+    icon: '/icons/tech.svg',
+    img: '/about/about-otherbrands-rollover.png',
+    href: '#',
+  },
+]
+
 const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
 
 /* Scattered pill positions with unique wander animation per pill */
@@ -54,6 +102,8 @@ export default function App() {
   useReveal()
   const [status, setStatus] = useState('idle')
   const [megaOpen, setMegaOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
+  const [hoveredAbout, setHoveredAbout] = useState(null)
   const [hoveredService, setHoveredService] = useState(null)
   const heroRef = useRef(null)
 
@@ -88,8 +138,51 @@ export default function App() {
           </a>
 
           <div className="nav__links">
-            <a href="#about" className="nav__link">About</a>
+            {/* ---- ABOUT MEGA ---- */}
+            <div
+              className="nav__item nav__item--mega"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null); }}
+            >
+              <button
+                type="button"
+                className="nav__link nav__link--trigger"
+                aria-expanded={aboutOpen}
+                onClick={() => setAboutOpen(v => !v)}
+              >
+                About
+                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
+                    strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
 
+              <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
+                <div className="mega-about__grid">
+                  {MEGA_ABOUT.map(item => (
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      className={`ma-card${hoveredAbout === item.id ? ' ma-card--hovered' : ''}`}
+                      onMouseEnter={() => setHoveredAbout(item.id)}
+                      onMouseLeave={() => setHoveredAbout(null)}
+                    >
+                      <div
+                        className="ma-card__bg"
+                        style={{ backgroundImage: `url(${item.img})` }}
+                      />
+                      <div className="ma-card__inner">
+                        <img className="ma-card__icon" src={item.icon} alt="" aria-hidden="true" />
+                        <span className="ma-card__label">{item.label}</span>
+                        {item.badge && <span className="ma-card__badge">{item.badge}</span>}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ---- SERVICES MEGA ---- */}
             <div
               className="nav__item nav__item--mega"
               onMouseEnter={() => setMegaOpen(true)}
