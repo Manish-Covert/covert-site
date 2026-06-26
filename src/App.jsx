@@ -1,75 +1,18 @@
-import { useState } from 'react'
-import Emblem from './Emblem'
+import { useState, useRef, Suspense, lazy } from 'react'
 import { useReveal } from './useReveal'
 import './App.css'
 
-const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE'
+const HeroLogo = lazy(() => import('./HeroLogo'))
 
 const SERVICES = [
-  {
-    id: 'technology',
-    title: 'Technology Consulting',
-    count: 3,
-    img: '/categories/technology.webp',
-    icon: '/icons/tech.svg',
-    subs: null,
-  },
-  {
-    id: 'programmatic',
-    title: 'Programmatic',
-    count: 4,
-    img: '/categories/programmatic.webp',
-    icon: '/icons/programmatic.svg',
-    subs: ['SEM', 'AEO', 'GEO', 'SEO'],
-  },
-  {
-    id: 'social',
-    title: 'Social Media',
-    count: 4,
-    img: '/categories/social.webp',
-    icon: '/icons/social.svg',
-    subs: null,
-  },
-  {
-    id: 'fraud',
-    title: 'Fraud Protection Gurus',
-    count: 3,
-    img: '/categories/fraud.webp',
-    icon: '/icons/fraud.svg',
-    subs: null,
-  },
-  {
-    id: 'brand-creation',
-    title: 'Brand Creation',
-    count: 3,
-    img: '/categories/brand-creation.webp',
-    icon: '/icons/brand-creation.svg',
-    subs: null,
-  },
-  {
-    id: 'trad',
-    title: 'Traditional Full Service',
-    count: 6,
-    img: '/categories/trad-full-service.webp',
-    icon: '/icons/trad-full-service.svg',
-    subs: null,
-  },
-  {
-    id: 'brand-building',
-    title: 'Brand Building',
-    count: 4,
-    img: '/categories/brand-building.webp',
-    icon: '/icons/brand-building.svg',
-    subs: null,
-  },
-  {
-    id: 'brand-specialties',
-    title: 'Brand Specialties',
-    count: 7,
-    img: '/categories/brand-specialties.webp',
-    icon: '/icons/brand-specialties.svg',
-    subs: null,
-  },
+  { id: 'technology', title: 'Technology Consulting', count: 3, img: '/categories/technology.webp', icon: '/icons/tech.svg', subs: null },
+  { id: 'programmatic', title: 'Programmatic', count: 4, img: '/categories/programmatic.webp', icon: '/icons/programmatic.svg', subs: ['SEM', 'AEO', 'GEO', 'SEO'] },
+  { id: 'social', title: 'Social Media', count: 4, img: '/categories/social.webp', icon: '/icons/social.svg', subs: null },
+  { id: 'fraud', title: 'Fraud Protection Gurus', count: 3, img: '/categories/fraud.webp', icon: '/icons/fraud.svg', subs: null },
+  { id: 'brand-creation', title: 'Brand Creation', count: 3, img: '/categories/brand-creation.webp', icon: '/icons/brand-creation.svg', subs: null },
+  { id: 'trad', title: 'Traditional Full Service', count: 6, img: '/categories/trad-full-service.webp', icon: '/icons/trad-full-service.svg', subs: null },
+  { id: 'brand-building', title: 'Brand Building', count: 4, img: '/categories/brand-building.webp', icon: '/icons/brand-building.svg', subs: null },
+  { id: 'brand-specialties', title: 'Brand Specialties', count: 7, img: '/categories/brand-specialties.webp', icon: '/icons/brand-specialties.svg', subs: null },
 ]
 
 const MEGA_SERVICES = [
@@ -93,13 +36,18 @@ const MEGA_SERVICES = [
   },
 ]
 
-const HOW_DID_YOU_HEAR = [
-  'Please choose one',
-  'Google',
-  'Social Media',
-  'Referral',
-  'Event',
-  'Other',
+const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
+
+/* Scattered pill positions with unique wander animation per pill */
+const HERO_PILLS = [
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: '8%',  top: '22%', delay: '0s',   dur: '26s', anim: 'wander-p1' },
+  { label: 'Social Media',                          left: '6%',  top: '50%', delay: '3.5s', dur: '22s', anim: 'wander-p2' },
+  { label: 'Fraud Protection Gurus',                left: '5%',  top: '72%', delay: '1.2s', dur: '28s', anim: 'wander-p3' },
+  { label: 'Technology Consulting',                 left: '22%', top: '82%', delay: '5s',   dur: '24s', anim: 'wander-p4' },
+  { label: 'Brand Creation',                        left: '70%', top: '14%', delay: '0.8s', dur: '25s', anim: 'wander-p5' },
+  { label: 'Traditional Full Service',              left: '65%', top: '44%', delay: '4s',   dur: '20s', anim: 'wander-p6' },
+  { label: 'Brand Building',                        left: '72%', top: '68%', delay: '2s',   dur: '27s', anim: 'wander-p7' },
+  { label: 'Brand Specialties',                     left: '58%', top: '82%', delay: '6s',   dur: '23s', anim: 'wander-p8' },
 ]
 
 export default function App() {
@@ -107,12 +55,13 @@ export default function App() {
   const [status, setStatus] = useState('idle')
   const [megaOpen, setMegaOpen] = useState(false)
   const [hoveredService, setHoveredService] = useState(null)
+  const heroRef = useRef(null)
 
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('sending')
     const data = Object.fromEntries(new FormData(e.target))
-    if (!WEB3FORMS_KEY || WEB3FORMS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+    if (!window.WEB3FORMS_KEY || window.WEB3FORMS_KEY === 'YOUR_ACCESS_KEY_HERE') {
       setTimeout(() => setStatus('ok'), 700)
       e.target.reset()
       return
@@ -121,41 +70,24 @@ export default function App() {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ access_key: WEB3FORMS_KEY, ...data }),
+        body: JSON.stringify({ access_key: window.WEB3FORMS_KEY, ...data }),
       })
       const json = await res.json()
       if (json.success) { setStatus('ok'); e.target.reset() }
       else setStatus('error')
-    } catch {
-      setStatus('error')
-    }
+    } catch { setStatus('error') }
   }
 
   return (
     <>
       {/* ===================== NAV ===================== */}
-      <header className="nav">
-        <div className="nav__inner">
+      <header className="nav-wrap">
+        <nav className="nav">
           <a className="brand" href="#top" aria-label="Covert Communication home">
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 60 60">
-                <path d="M44 18 A20 20 0 1 0 44 42"
-                  fill="none" stroke="url(#ng)" strokeWidth="9" strokeLinecap="round" />
-                <defs>
-                  <linearGradient id="ng" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#c8f95a" />
-                    <stop offset="100%" stopColor="#2f7d3a" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-            <span className="brand__text">
-              <strong>COVERT</strong>
-              <em>COMMUNICATION</em>
-            </span>
+            <img src="/logo-horiz.png" alt="Covert Communication" className="brand__logo" />
           </a>
 
-          <nav className="nav__links">
+          <div className="nav__links">
             <a href="#about" className="nav__link">About</a>
 
             <div
@@ -206,13 +138,60 @@ export default function App() {
             <a href="#case-studies" className="nav__link">Case Studies</a>
             <a href="#latest" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
-            <a href="#contact" className="btn btn--pill-white">Book a Meeting &rarr;</a>
-          </nav>
-        </div>
+          </div>
+          <div className="nav__cta">
+            <a href="#contact" className="btn btn--pill-outline">
+              Book a Meeting &rarr;
+            </a>
+          </div>
+        </nav>
       </header>
 
-      {/* ===================== HERO — SERVICE GRID ===================== */}
       <main id="top">
+        {/* ===================== HERO ===================== */}
+        <section className="hero" ref={heroRef}>
+          <div className="hero__container">
+            {/* Scattered pills — absolute positioned within 1200px container */}
+            {HERO_PILLS.map((pill, i) => (
+              <a
+                key={i}
+                href="#services"
+                className="hero__pill"
+                style={{ left: pill.left, top: pill.top, animationName: pill.anim, animationDelay: pill.delay, animationDuration: pill.dur }}
+              >
+                {pill.label.split('\n').map((line, j) => (
+                  <span key={j}>{line}</span>
+                ))}
+              </a>
+            ))}
+
+            {/* Center 3D logo */}
+            <div className="hero__logo-wrap">
+              <Suspense fallback={
+                <img src="/hero-logo.png" alt="Covert Communication" className="hero__logo-fallback" />
+              }>
+                <HeroLogo containerRef={heroRef} />
+              </Suspense>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== WE DO IT ALL ===================== */}
+        <section id="about" className="about">
+          <div className="container">
+            <p className="section__eyebrow reveal">WE DO IT ALL</p>
+            <h2 className="section__title reveal">
+              Lorem ipsum dolor sit amet,<br />
+              consectetue Lorem ipsum dolor<br />
+              sit amet, consectetuer
+            </h2>
+            <div className="about__actions reveal">
+              <a href="#contact" className="btn btn--outline-pill">Get Started</a>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== SERVICES GRID ===================== */}
         <section id="services" className="services-hero">
           <div className="services-grid">
             {SERVICES.map(svc => (
@@ -224,16 +203,12 @@ export default function App() {
                 style={{ backgroundImage: `url(${svc.img})` }}
               >
                 <div className="svc-card__overlay" />
-
                 <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
-
                 <div className="svc-card__body">
                   {svc.subs && hoveredService === svc.id ? (
                     <ul className="svc-card__subs">
                       {svc.subs.map(s => (
-                        <li key={s}>
-                          <a href="#contact">{s}</a>
-                        </li>
+                        <li key={s}><a href="#contact">{s}</a></li>
                       ))}
                     </ul>
                   ) : null}
@@ -247,32 +222,12 @@ export default function App() {
           </div>
         </section>
 
-        {/* ===================== WE DO IT ALL ===================== */}
-        <section id="about" className="about">
-          <div className="container">
-            <p className="section__eyebrow reveal">WE DO IT ALL</p>
-            <h2 className="section__title reveal">
-              Your full-service partner for brand, media, and technology.
-            </h2>
-            <p className="section__lead reveal">
-              From programmatic media buying to brand identity, fraud protection to technology
-              consulting — Covert Communication brings every discipline under one roof so your
-              strategy moves fast and stays cohesive.
-            </p>
-            <div className="about__actions reveal">
-              <a href="#contact" className="btn btn--green">Get Started</a>
-            </div>
-          </div>
-        </section>
-
         {/* ===================== CASE STUDIES ===================== */}
         <section id="case-studies" className="case-studies">
           <div className="container">
             <p className="section__eyebrow reveal">Case Studies</p>
             <h2 className="section__title reveal">Work that moved the needle</h2>
-            <p className="section__lead reveal">
-              Selected results across brand, performance, and full-service campaigns.
-            </p>
+            <p className="section__lead reveal">Selected results across brand, performance, and full-service campaigns.</p>
           </div>
         </section>
 
@@ -281,9 +236,7 @@ export default function App() {
           <div className="container">
             <p className="section__eyebrow reveal">The Latest</p>
             <h2 className="section__title reveal">News &amp; insights</h2>
-            <p className="section__lead reveal">
-              Updates from the Covert Communication team.
-            </p>
+            <p className="section__lead reveal">Updates from the Covert Communication team.</p>
           </div>
         </section>
 
@@ -297,7 +250,6 @@ export default function App() {
               Call 808-518-4298 or fill out the form below to learn more about our services
               and innovative agency approach.
             </p>
-
             {status === 'ok' ? (
               <div className="form__success reveal">
                 <strong>Thank you!</strong> Your message has been sent. We&rsquo;ll be in touch shortly.
@@ -305,24 +257,12 @@ export default function App() {
             ) : (
               <form className="form reveal" onSubmit={handleSubmit}>
                 <div className="form__row">
-                  <label>
-                    <span>First Name *</span>
-                    <input name="first_name" type="text" required placeholder="Jane" />
-                  </label>
-                  <label>
-                    <span>Last Name *</span>
-                    <input name="last_name" type="text" required placeholder="Doe" />
-                  </label>
+                  <label><span>First Name *</span><input name="first_name" type="text" required placeholder="Jane" /></label>
+                  <label><span>Last Name *</span><input name="last_name" type="text" required placeholder="Doe" /></label>
                 </div>
                 <div className="form__row">
-                  <label>
-                    <span>Email *</span>
-                    <input name="email" type="email" required placeholder="jane@email.com" />
-                  </label>
-                  <label>
-                    <span>Phone No *</span>
-                    <input name="phone" type="tel" required placeholder="808-555-0100" />
-                  </label>
+                  <label><span>Email *</span><input name="email" type="email" required placeholder="jane@email.com" /></label>
+                  <label><span>Phone No *</span><input name="phone" type="tel" required placeholder="808-555-0100" /></label>
                 </div>
                 <label>
                   <span>How did you hear about us?</span>
@@ -334,8 +274,7 @@ export default function App() {
                 </label>
                 <label>
                   <span>Message</span>
-                  <textarea name="message" rows="4"
-                    placeholder="Tell us about your project…" />
+                  <textarea name="message" rows="4" placeholder="Tell us about your project…" />
                 </label>
                 <p className="form__consent">
                   I authorize Covert Communication to contact me about products and services.
@@ -345,9 +284,7 @@ export default function App() {
                 <button className="btn btn--green" type="submit" disabled={status === 'sending'}>
                   {status === 'sending' ? 'Sending…' : 'Submit'}
                 </button>
-                {status === 'error' && (
-                  <p className="form__error">Something went wrong. Please try again.</p>
-                )}
+                {status === 'error' && <p className="form__error">Something went wrong. Please try again.</p>}
               </form>
             )}
           </div>
@@ -358,12 +295,7 @@ export default function App() {
       <footer className="footer">
         <div className="footer__art" aria-hidden="true" />
         <div className="footer__inner">
-          <span className="footer__mark" aria-hidden="true">
-            <svg viewBox="0 0 60 60">
-              <path d="M44 18 A20 20 0 1 0 44 42"
-                fill="none" stroke="#0a0a0a" strokeWidth="7" strokeLinecap="round" />
-            </svg>
-          </span>
+          <img src="/logo-icon.png" alt="Covert Communication" className="footer__logo" />
           <div className="footer__social" aria-label="Social links">
             <a href="#" aria-label="LinkedIn">in</a>
             <a href="#" aria-label="Facebook">f</a>
