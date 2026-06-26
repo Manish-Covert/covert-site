@@ -102,6 +102,20 @@ const HOW_DID_YOU_HEAR = [
   'Other',
 ]
 
+const HERO_PILLS_LEFT = [
+  'Programmatic\nSEM / AEO / GEO / SEO',
+  'Social Media',
+  'Fraud Protection Gurus',
+  'Technology Consulting',
+]
+
+const HERO_PILLS_RIGHT = [
+  'Brand Creation',
+  'Traditional Full Service',
+  'Brand Building',
+  'Brand Specialties',
+]
+
 export default function App() {
   useReveal()
   const [status, setStatus] = useState('idle')
@@ -134,28 +148,13 @@ export default function App() {
   return (
     <>
       {/* ===================== NAV ===================== */}
-      <header className="nav">
-        <div className="nav__inner">
+      <header className="nav-wrap">
+        <nav className="nav">
           <a className="brand" href="#top" aria-label="Covert Communication home">
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 60 60">
-                <path d="M44 18 A20 20 0 1 0 44 42"
-                  fill="none" stroke="url(#ng)" strokeWidth="9" strokeLinecap="round" />
-                <defs>
-                  <linearGradient id="ng" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#c8f95a" />
-                    <stop offset="100%" stopColor="#2f7d3a" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-            <span className="brand__text">
-              <strong>COVERT</strong>
-              <em>COMMUNICATION</em>
-            </span>
+            <img src="/logo-horiz.png" alt="Covert Communication" className="brand__logo" />
           </a>
 
-          <nav className="nav__links">
+          <div className="nav__links">
             <a href="#about" className="nav__link">About</a>
 
             <div
@@ -206,13 +205,63 @@ export default function App() {
             <a href="#case-studies" className="nav__link">Case Studies</a>
             <a href="#latest" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
-            <a href="#contact" className="btn btn--pill-white">Book a Meeting &rarr;</a>
-          </nav>
-        </div>
+            <a href="#contact" className="btn btn--pill-outline">
+              <span className="btn__icon" aria-hidden="true">
+                <img src="/logo-icon.png" alt="" className="btn__icon-img" />
+              </span>
+              Book a Meeting &rarr;
+            </a>
+          </div>
+        </nav>
       </header>
 
-      {/* ===================== HERO — SERVICE GRID ===================== */}
       <main id="top">
+        {/* ===================== HERO ===================== */}
+        <section className="hero">
+          <div className="hero__inner">
+            {/* Left pills */}
+            <div className="hero__pills hero__pills--left">
+              {HERO_PILLS_LEFT.map((label, i) => (
+                <a href="#services" key={i} className={`hero__pill hero__pill--l${i + 1}`}>
+                  {label.split('\n').map((line, j) => (
+                    <span key={j}>{line}</span>
+                  ))}
+                </a>
+              ))}
+            </div>
+
+            {/* Center emblem */}
+            <div className="hero__emblem">
+              <Emblem />
+            </div>
+
+            {/* Right pills */}
+            <div className="hero__pills hero__pills--right">
+              {HERO_PILLS_RIGHT.map((label, i) => (
+                <a href="#services" key={i} className={`hero__pill hero__pill--r${i + 1}`}>
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== WE DO IT ALL ===================== */}
+        <section id="about" className="about">
+          <div className="container">
+            <p className="section__eyebrow reveal">WE DO IT ALL</p>
+            <h2 className="section__title reveal">
+              Lorem ipsum dolor sit amet,<br />
+              consectetue Lorem ipsum dolor<br />
+              sit amet, consectetuer
+            </h2>
+            <div className="about__actions reveal">
+              <a href="#contact" className="btn btn--outline-pill">Get Started</a>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== SERVICES GRID ===================== */}
         <section id="services" className="services-hero">
           <div className="services-grid">
             {SERVICES.map(svc => (
@@ -244,24 +293,6 @@ export default function App() {
                 </div>
               </article>
             ))}
-          </div>
-        </section>
-
-        {/* ===================== WE DO IT ALL ===================== */}
-        <section id="about" className="about">
-          <div className="container">
-            <p className="section__eyebrow reveal">WE DO IT ALL</p>
-            <h2 className="section__title reveal">
-              Your full-service partner for brand, media, and technology.
-            </h2>
-            <p className="section__lead reveal">
-              From programmatic media buying to brand identity, fraud protection to technology
-              consulting — Covert Communication brings every discipline under one roof so your
-              strategy moves fast and stays cohesive.
-            </p>
-            <div className="about__actions reveal">
-              <a href="#contact" className="btn btn--green">Get Started</a>
-            </div>
           </div>
         </section>
 
@@ -358,12 +389,7 @@ export default function App() {
       <footer className="footer">
         <div className="footer__art" aria-hidden="true" />
         <div className="footer__inner">
-          <span className="footer__mark" aria-hidden="true">
-            <svg viewBox="0 0 60 60">
-              <path d="M44 18 A20 20 0 1 0 44 42"
-                fill="none" stroke="#0a0a0a" strokeWidth="7" strokeLinecap="round" />
-            </svg>
-          </span>
+          <img src="/logo-icon.png" alt="Covert Communication" className="footer__logo" />
           <div className="footer__social" aria-label="Social links">
             <a href="#" aria-label="LinkedIn">in</a>
             <a href="#" aria-label="Facebook">f</a>
