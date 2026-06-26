@@ -135,6 +135,8 @@ export default function App() {
               </div>
             </div>
 
+            <a href="#" className="nav__link">Case Studies</a>
+            <a href="#" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
           </div>
           <div className="nav__cta">
