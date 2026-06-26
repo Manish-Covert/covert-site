@@ -139,6 +139,11 @@ export default function App() {
             <a href="#latest" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
           </div>
+          <div className="nav__cta">
+            <a href="#contact" className="btn btn--pill-outline">
+              Book a Meeting &rarr;
+            </a>
+          </div>
         </nav>
       </header>
 
