@@ -1,5 +1,5 @@
-import { useState, useRef, Suspense, lazy } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { useState, useRef, useEffect, Suspense, lazy } from 'react'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HOW_DID_YOU_HEAR, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
@@ -10,6 +10,7 @@ const HeroLogo = lazy(() => import('./HeroLogo'))
 
 export default function App() {
   useReveal()
+  const location = useLocation()
   const [status, setStatus] = useState('idle')
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -17,6 +18,14 @@ export default function App() {
   const [hoveredMegaService, setHoveredMegaService] = useState(null)
   const [hoveredService, setHoveredService] = useState(null)
   const heroRef = useRef(null)
+
+  useEffect(() => {
+    setMegaOpen(false)
+    setAboutOpen(false)
+    setHoveredAbout(null)
+    setHoveredMegaService(null)
+    setHoveredService(null)
+  }, [location.pathname])
 
   async function handleSubmit(e) {
     e.preventDefault()
