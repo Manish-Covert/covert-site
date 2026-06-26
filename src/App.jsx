@@ -214,8 +214,10 @@ export default function App() {
                 </div>
                 {hoveredService === svc.id && svc.subs ? (
                   <ul className="svc-card__subs">
-                    {svc.subs.map(s => (
-                      <li key={s}><a href="#contact">{s}</a></li>
+                    {svc.subs.map((s, i) => (
+                      <li key={s} style={{ animationDelay: `${(svc.subs.length - 1 - i) * 55}ms` }}>
+                        <a href="#contact" className="chip-btn">{s}</a>
+                      </li>
                     ))}
                   </ul>
                 ) : null}

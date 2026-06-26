@@ -363,7 +363,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 320px);
   gap: 16px;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -456,37 +456,66 @@
 
 .svc-card__subs {
   position: absolute;
-  inset: 0;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 8px;
-  padding: 60px 20px 20px;
+  align-items: flex-start;
+  gap: 6px;
   z-index: 3;
-  animation: subs-in .3s var(--ease) both;
 }
 
-@keyframes subs-in {
-  from { opacity: 0; transform: translateY(8px); }
+.svc-card__subs li {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: sub-rise .3s var(--ease) both;
+}
+
+@keyframes sub-rise {
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.svc-card__subs a {
-  display: inline-block;
-  color: #1a3a1a;
-  font-size: 13px;
+/* ============================================================
+   GLOBAL CHIP BUTTON
+   ============================================================ */
+.chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
   font-weight: 600;
+  letter-spacing: .3px;
+  color: #1a3a1a;
   background: rgba(255,255,255,0.92);
+  border: 1.5px solid transparent;
   border-radius: 8px;
-  padding: 7px 14px;
-  transition: background .2s var(--ease), color .2s var(--ease);
+  padding: 6px 13px;
+  cursor: pointer;
   text-decoration: none;
+  transition:
+    background .22s var(--ease),
+    color .22s var(--ease),
+    border-color .22s var(--ease),
+    transform .18s var(--ease),
+    box-shadow .22s var(--ease);
+  white-space: nowrap;
 }
 
-.svc-card__subs a:hover {
+.chip-btn:hover {
   background: #fff;
-  color: #0a2a0a;
+  color: #0d2b0d;
+  border-color: rgba(40,160,90,0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(40,160,90,0.25);
+}
+
+.chip-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 /* ---------------- CASE STUDIES / LATEST ---------------- */
