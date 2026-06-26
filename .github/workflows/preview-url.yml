@@ -3,34 +3,64 @@ name: Get Vercel Preview URL
 on:
   push:
     branches-ignore:
-      - main  # skip production branch
+      - main
 
 jobs:
   preview-url:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Vercel to build
-        run: sleep 30
-
-      - name: Fetch Preview URL
+      - name: Poll Vercel until deployment is READY
         id: get_url
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           BRANCH="${GITHUB_REF#refs/heads/}"
-          RESPONSE=$(curl -s "https://api.vercel.com/v7/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&branch=$BRANCH&limit=1&state=READY&target=preview" \
-            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}")
-          URL=$(echo $RESPONSE | python3 -c "import sys,json; d=json.load(sys.stdin); print('https://' + d['deployments'][0]['url'])" 2>/dev/null)
-          echo "preview_url=$URL" >> $GITHUB_OUTPUT
-          echo "✅ Preview URL: $URL"
+          echo "Waiting for Vercel deployment on branch: $BRANCH"
+          for i in $(seq 1 20); do
+            sleep 15
+            RESPONSE=$(curl -s "https://api.vercel.com/v7/deployments?projectId=$VERCEL_PROJECT_ID&branch=$BRANCH&limit=1&state=READY&target=preview" \
+              -H "Authorization: Bearer $VERCEL_TOKEN")
+            URL=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print('https://' + d['deployments'][0]['url'])" 2>/dev/null)
+            if [ -n "$URL" ] && [ "$URL" != "https://" ]; then
+              echo "preview_url=$URL" >> $GITHUB_OUTPUT
+              echo "✅ Preview URL: $URL"
+              break
+            fi
+            echo "Attempt $i: not ready yet..."
+          done
 
-      - name: Comment on commit
+      - name: Comment on PR (if open)
         uses: actions/github-script@v7
         with:
           script: |
             const url = '${{ steps.get_url.outputs.preview_url }}';
-            if (!url || url === 'https://') return;
-            await github.rest.repos.createCommitComment({
+            if (!url || url === 'https://') {
+              console.log('No preview URL found, skipping comment.');
+              return;
+            }
+            const branch = process.env.GITHUB_REF.replace('refs/heads/', '');
+            const prs = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              commit_sha: context.sha,
-              body: `🚀 **Vercel Preview Ready**\n\n${url}`
+              head: `${context.repo.owner}:${branch}`,
+              state: 'open',
             });
+            if (prs.data.length > 0) {
+              const prNumber = prs.data[0].number;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: `🚀 **Vercel Preview Ready**\n\n**URL:** ${url}\n\n_Branch: \`${branch}\`_`,
+              });
+              console.log(`Commented on PR #${prNumber}`);
+            } else {
+              // Fall back to commit comment when no PR exists
+              await github.rest.repos.createCommitComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: context.sha,
+                body: `🚀 **Vercel Preview Ready**\n\n**URL:** ${url}\n\n_No open PR found — commenting on commit instead._`,
+              });
+            }
