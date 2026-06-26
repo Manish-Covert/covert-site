@@ -248,7 +248,7 @@
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(8px);
   z-index: 2;
-  animation: pill-float 4s ease-in-out infinite;
+  animation: wander-p1 7s ease-in-out infinite;
   transition: border-color .3s var(--ease), color .3s var(--ease),
               box-shadow .3s var(--ease);
 }
@@ -259,9 +259,62 @@
   box-shadow: 0 0 28px rgba(166,242,60,.25);
 }
 
-@keyframes pill-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+/* 8 unique wander paths — each pill moves freely around its anchor */
+@keyframes wander-p1 {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(26px, -70px); }
+  45%  { transform: translate(64px, 10px); }
+  70%  { transform: translate(18px, 60px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p2 {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-34px, -50px); }
+  50%  { transform: translate(40px, -85px); }
+  75%  { transform: translate(50px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p3 {
+  0%   { transform: translate(0, 0); }
+  30%  { transform: translate(46px, -40px); }
+  55%  { transform: translate(80px, -80px); }
+  80%  { transform: translate(20px, 55px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p4 {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-40px, -90px); }
+  50%  { transform: translate(60px, -30px); }
+  75%  { transform: translate(-10px, 50px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p5 {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-60px, 40px); }
+  50%  { transform: translate(-30px, 80px); }
+  75%  { transform: translate(-80px, -20px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p6 {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-50px, -60px); }
+  45%  { transform: translate(20px, -90px); }
+  70%  { transform: translate(-70px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p7 {
+  0%   { transform: translate(0, 0); }
+  30%  { transform: translate(-40px, 70px); }
+  60%  { transform: translate(-80px, -10px); }
+  85%  { transform: translate(10px, -60px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes wander-p8 {
+  0%   { transform: translate(0, 0); }
+  22%  { transform: translate(30px, -55px); }
+  48%  { transform: translate(-50px, -80px); }
+  72%  { transform: translate(-60px, 40px); }
+  100% { transform: translate(0, 0); }
 }
 
 /* ============================================================

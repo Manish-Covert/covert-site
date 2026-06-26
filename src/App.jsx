@@ -38,16 +38,16 @@ const MEGA_SERVICES = [
 
 const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
 
-/* Scattered pill positions: left%, top%, animDelay, animDuration */
+/* Scattered pill positions with unique wander animation per pill */
 const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: '2%',  top: '20%', delay: '0s',    dur: '3.8s' },
-  { label: 'Social Media',                          left: '5%',  top: '47%', delay: '1.1s',  dur: '4.4s' },
-  { label: 'Fraud Protection Gurus',                left: '1%',  top: '70%', delay: '0.5s',  dur: '3.5s' },
-  { label: 'Technology Consulting',                 left: '17%', top: '83%', delay: '1.9s',  dur: '4.8s' },
-  { label: 'Brand Creation',                        left: '73%', top: '15%', delay: '0.3s',  dur: '4.2s' },
-  { label: 'Traditional Full Service',              left: '67%', top: '43%', delay: '1.6s',  dur: '3.6s' },
-  { label: 'Brand Building',                        left: '75%', top: '67%', delay: '0.9s',  dur: '4.6s' },
-  { label: 'Brand Specialties',                     left: '61%', top: '84%', delay: '2.3s',  dur: '3.9s' },
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: '2%',  top: '18%', delay: '0s',   dur: '7s',  anim: 'wander-p1' },
+  { label: 'Social Media',                          left: '4%',  top: '46%', delay: '1.2s', dur: '8s',  anim: 'wander-p2' },
+  { label: 'Fraud Protection Gurus',                left: '1%',  top: '70%', delay: '0.4s', dur: '6s',  anim: 'wander-p3' },
+  { label: 'Technology Consulting',                 left: '16%', top: '82%', delay: '2s',   dur: '9s',  anim: 'wander-p4' },
+  { label: 'Brand Creation',                        left: '73%', top: '13%', delay: '0.2s', dur: '7.5s',anim: 'wander-p5' },
+  { label: 'Traditional Full Service',              left: '67%', top: '42%', delay: '1.7s', dur: '6.5s',anim: 'wander-p6' },
+  { label: 'Brand Building',                        left: '75%', top: '66%', delay: '0.8s', dur: '8.5s',anim: 'wander-p7' },
+  { label: 'Brand Specialties',                     left: '61%', top: '83%', delay: '2.4s', dur: '7s',  anim: 'wander-p8' },
 ]
 
 export default function App() {
@@ -160,7 +160,7 @@ export default function App() {
                 key={i}
                 href="#services"
                 className="hero__pill"
-                style={{ left: pill.left, top: pill.top, animationDelay: pill.delay, animationDuration: pill.dur }}
+                style={{ left: pill.left, top: pill.top, animationName: pill.anim, animationDelay: pill.delay, animationDuration: pill.dur }}
               >
                 {pill.label.split('\n').map((line, j) => (
                   <span key={j}>{line}</span>
