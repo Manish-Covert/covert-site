@@ -138,14 +138,6 @@ export default function App() {
             <a href="#case-studies" className="nav__link">Case Studies</a>
             <a href="#latest" className="nav__link">The Latest</a>
             <a href="#contact" className="nav__link">Contact</a>
-            <div className="nav__cta">
-              <a href="#contact" className="btn btn--pill-outline">
-                <span className="btn__icon" aria-hidden="true">
-                  <img src="/logo-icon.png" alt="" className="btn__icon-img" />
-                </span>
-                Book a Meeting &rarr;
-              </a>
-            </div>
           </div>
         </nav>
       </header>
