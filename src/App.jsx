@@ -5,14 +5,14 @@ import './App.css'
 const HeroLogo = lazy(() => import('./HeroLogo'))
 
 const SERVICES = [
-  { id: 'technology', title: 'Technology Consulting', count: 3, img: '/categories/technology.webp', icon: '/icons/tech.svg', subs: null },
+  { id: 'technology', title: 'Technology Consulting', count: 3, img: '/categories/technology.webp', icon: '/icons/tech.svg', subs: ['Web Development', 'App Development', 'Tech Strategy'] },
   { id: 'programmatic', title: 'Programmatic', count: 4, img: '/categories/programmatic.webp', icon: '/icons/programmatic.svg', subs: ['SEM', 'AEO', 'GEO', 'SEO'] },
-  { id: 'social', title: 'Social Media', count: 4, img: '/categories/social.webp', icon: '/icons/social.svg', subs: null },
-  { id: 'fraud', title: 'Fraud Protection Gurus', count: 3, img: '/categories/fraud.webp', icon: '/icons/fraud.svg', subs: null },
-  { id: 'brand-creation', title: 'Brand Creation', count: 3, img: '/categories/brand-creation.webp', icon: '/icons/brand-creation.svg', subs: null },
-  { id: 'trad', title: 'Traditional Full Service', count: 6, img: '/categories/trad-full-service.webp', icon: '/icons/trad-full-service.svg', subs: null },
-  { id: 'brand-building', title: 'Brand Building', count: 4, img: '/categories/brand-building.webp', icon: '/icons/brand-building.svg', subs: null },
-  { id: 'brand-specialties', title: 'Brand Specialties', count: 7, img: '/categories/brand-specialties.webp', icon: '/icons/brand-specialties.svg', subs: null },
+  { id: 'social', title: 'Social Media', count: 4, img: '/categories/social.webp', icon: '/icons/social.svg', subs: ['Content Creation', 'Paid Social', 'Community Mgmt', 'Influencer Mktg'] },
+  { id: 'fraud', title: 'Fraud Protection Gurus', count: 3, img: '/categories/fraud.webp', icon: '/icons/fraud.svg', subs: ['Ad Fraud Detection', 'Click Fraud', 'Brand Safety'] },
+  { id: 'brand-creation', title: 'Brand Creation', count: 3, img: '/categories/brand-creation.webp', icon: '/icons/brand-creation.svg', subs: ['Brand Identity', 'Logo Design', 'Brand Guidelines'] },
+  { id: 'trad', title: 'Traditional Full Service', count: 6, img: '/categories/trad-full-service.webp', icon: '/icons/trad-full-service.svg', subs: ['Print', 'TV & Radio', 'Out of Home', 'Direct Mail', 'Events', 'PR'] },
+  { id: 'brand-building', title: 'Brand Building', count: 4, img: '/categories/brand-building.webp', icon: '/icons/brand-building.svg', subs: ['Strategy', 'Positioning', 'Campaigns', 'Analytics'] },
+  { id: 'brand-specialties', title: 'Brand Specialties', count: 7, img: '/categories/brand-specialties.webp', icon: '/icons/brand-specialties.svg', subs: ['Packaging', 'Copywriting', 'Photography', 'Video Prod.', 'Experiential', 'Activation', 'Sponsorship'] },
 ]
 
 const MEGA_SERVICES = [
@@ -202,23 +202,24 @@ export default function App() {
                 className={`svc-card${hoveredService === svc.id ? ' svc-card--hovered' : ''}`}
                 onMouseEnter={() => setHoveredService(svc.id)}
                 onMouseLeave={() => setHoveredService(null)}
-                style={{ backgroundImage: `url(${svc.img})` }}
               >
+                <div
+                  className="svc-card__bg"
+                  style={{ backgroundImage: `url(${svc.img})` }}
+                />
                 <div className="svc-card__overlay" />
-                <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
-                <div className="svc-card__body">
-                  {svc.subs && hoveredService === svc.id ? (
-                    <ul className="svc-card__subs">
-                      {svc.subs.map(s => (
-                        <li key={s}><a href="#contact">{s}</a></li>
-                      ))}
-                    </ul>
-                  ) : null}
-                  <div className="svc-card__footer">
-                    <h2 className="svc-card__title">{svc.title}</h2>
-                    <span className="svc-card__count">{svc.count} Services</span>
-                  </div>
+                <div className="svc-card__header">
+                  <h2 className="svc-card__title">{svc.title}</h2>
+                  <span className="svc-card__count">{svc.count} Services ▾</span>
                 </div>
+                {hoveredService === svc.id && svc.subs ? (
+                  <ul className="svc-card__subs">
+                    {svc.subs.map(s => (
+                      <li key={s}><a href="#contact">{s}</a></li>
+                    ))}
+                  </ul>
+                ) : null}
+                <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
               </article>
             ))}
           </div>
