@@ -151,19 +151,21 @@ export default function App() {
         {/* ===================== HERO ===================== */}
         <section className="hero" ref={heroRef}>
           <div className="hero__container">
-            {/* Scattered pills — absolute positioned within 1200px container */}
-            {HERO_PILLS.map((pill, i) => (
-              <a
-                key={i}
-                href="#services"
-                className="hero__pill"
-                style={{ left: pill.left, top: pill.top, animationName: pill.anim, animationDelay: pill.delay, animationDuration: pill.dur }}
-              >
-                {pill.label.split('\n').map((line, j) => (
-                  <span key={j}>{line}</span>
-                ))}
-              </a>
-            ))}
+            {/* Pills orbit CW then CCW around the logo */}
+            <div className="hero__pills-orbit">
+              {HERO_PILLS.map((pill, i) => (
+                <a
+                  key={i}
+                  href="#services"
+                  className="hero__pill"
+                  style={{ left: pill.left, top: pill.top }}
+                >
+                  {pill.label.split('\n').map((line, j) => (
+                    <span key={j}>{line}</span>
+                  ))}
+                </a>
+              ))}
+            </div>
 
             {/* Center 3D logo */}
             <div className="hero__logo-wrap">

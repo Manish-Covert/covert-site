@@ -240,7 +240,23 @@
   object-fit: contain;
 }
 
-/* Scattered pills — absolutely positioned within hero__container */
+/* Orbit ring — rotates CW then CCW carrying all pills */
+.hero__pills-orbit {
+  position: absolute;
+  inset: 0;
+  animation: orbit-swing 9s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes orbit-swing {
+  0%   { transform: rotate(0deg); }
+  28%  { transform: rotate(12deg); }
+  50%  { transform: rotate(0deg); }
+  78%  { transform: rotate(-12deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Pills — absolutely positioned within the orbit ring */
 .hero__pill {
   position: absolute;
   display: flex;
@@ -255,10 +271,18 @@
   font-weight: 500;
   line-height: 1.35;
   white-space: nowrap;
-  background: transparent;
-  z-index: 2;
-  animation: wander-p1 22s ease-in-out infinite;
+  background: rgba(4, 8, 4, 0.82);
+  /* counter-rotate to keep text upright while orbit ring spins */
+  animation: pill-upright 9s ease-in-out infinite;
   transition: color .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+@keyframes pill-upright {
+  0%   { transform: rotate(0deg); }
+  28%  { transform: rotate(-12deg); }
+  50%  { transform: rotate(0deg); }
+  78%  { transform: rotate(12deg); }
+  100% { transform: rotate(0deg); }
 }
 
 /* Gradient border via mask — only the 1.5px ring shows the gradient */
@@ -278,65 +302,6 @@
 .hero__pill:hover {
   color: var(--green-bright);
   box-shadow: 0 0 28px rgba(166,242,60,.25);
-}
-
-/* 8 orbital fish-in-water paths — pills orbit slowly around the center logo */
-@keyframes wander-p1 {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(180px, -120px); }
-  40%  { transform: translate(300px, 40px); }
-  60%  { transform: translate(120px, 140px); }
-  80%  { transform: translate(-60px, 60px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p2 {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(200px, -100px); }
-  50%  { transform: translate(280px, 100px); }
-  75%  { transform: translate(60px, 140px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p3 {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(160px, 80px); }
-  45%  { transform: translate(280px, -80px); }
-  70%  { transform: translate(80px, -200px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p4 {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(180px, -160px); }
-  50%  { transform: translate(-60px, -240px); }
-  75%  { transform: translate(-200px, -80px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p5 {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-200px, -120px); }
-  45%  { transform: translate(-320px, 80px); }
-  70%  { transform: translate(-100px, 220px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p6 {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-140px, 160px); }
-  50%  { transform: translate(-280px, -40px); }
-  75%  { transform: translate(-60px, -220px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p7 {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-180px, -140px); }
-  45%  { transform: translate(-60px, -260px); }
-  70%  { transform: translate(160px, -140px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes wander-p8 {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-200px, -80px); }
-  50%  { transform: translate(-60px, -200px); }
-  75%  { transform: translate(120px, -120px); }
-  100% { transform: translate(0, 0); }
 }
 
 /* ============================================================
