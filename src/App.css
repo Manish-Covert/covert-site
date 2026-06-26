@@ -107,11 +107,14 @@
   border: 1.5px solid rgba(40,200,100,.25);
   background: #0a0f0a;
   text-decoration: none;
-  transition: border-color .3s var(--ease);
+  transition: border-color .3s var(--ease), min-height .35s var(--ease);
   cursor: pointer;
 }
 
-.ms-card--hovered { border-color: rgba(40,200,100,.7); }
+.ms-card--hovered {
+  border-color: rgba(40,200,100,.7);
+  min-height: 100px;
+}
 
 .ms-card__bg {
   position: absolute;
@@ -526,13 +529,16 @@
   padding: 60px 40px;
 }
 
+/* Grid: fixed 300px rows. align-items:start lets cards grow
+   individually without stretching the whole row. */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
+  grid-template-rows: repeat(2, 300px);
   gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
+  align-items: start;
 }
 
 .svc-card {
@@ -542,11 +548,21 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: stretch;
   min-height: 300px;
+  align-self: start;  /* card height = content, not row height */
+  z-index: 1;
+  text-decoration: none;
+  /* delay z-index reset so it doesn't pop under cards mid-animation */
+  transition: z-index 0s .45s;
 }
 
-/* Base (static) background */
+.svc-card--hovered {
+  z-index: 10;
+  transition: z-index 0s;
+}
+
+/* Base background */
 .svc-card__bg {
   position: absolute;
   inset: 0;
@@ -556,7 +572,7 @@
   z-index: 0;
 }
 
-/* Rollover background fades in on hover */
+/* Rollover BG fades in on hover */
 .svc-card__hover-bg {
   position: absolute;
   inset: 0;
@@ -580,7 +596,7 @@
     160deg,
     rgba(180,230,60,0.45) 0%,
     rgba(40,180,120,0.55) 60%,
-    rgba(20,140,90,0.70) 100%
+    rgba(20,140,90,0.72) 100%
   );
   opacity: 0.6;
   transition: opacity .4s var(--ease);
@@ -588,9 +604,10 @@
 }
 
 .svc-card--hovered .svc-card__overlay {
-  opacity: 0.82;
+  opacity: 0.84;
 }
 
+/* Header always at the top */
 .svc-card__header {
   position: relative;
   display: flex;
@@ -620,12 +637,45 @@
   opacity: 0.9;
 }
 
-.svc-card__icon {
+/* Sub-services: in flow so card actually grows in height */
+.svc-card__subs {
   position: relative;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0 16px;
+  z-index: 3;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .45s var(--ease), padding .45s var(--ease);
+}
+
+.svc-card--hovered .svc-card__subs {
+  max-height: 320px;
+  padding-top: 12px;
+  padding-bottom: 18px;
+}
+
+.svc-card__subs li {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .22s var(--ease), transform .22s var(--ease);
+}
+
+.svc-card--hovered .svc-card__subs li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Icon: absolutely at bottom, fades out on hover */
+.svc-card__icon {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
   width: 42px;
   height: 42px;
-  margin: auto 18px 18px;
-  align-self: flex-start;
   object-fit: contain;
   filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3));
   transition: opacity .3s var(--ease);
@@ -636,37 +686,6 @@
 .svc-card--hovered .svc-card__icon {
   opacity: 0;
   pointer-events: none;
-}
-
-/* Sub-services list — in normal flow so card expands */
-.svc-card__subs {
-  position: relative;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 0 16px 18px;
-  z-index: 3;
-  /* collapsed by default */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .45s var(--ease), padding .45s var(--ease);
-}
-
-.svc-card--hovered .svc-card__subs {
-  max-height: 300px;
-}
-
-.svc-card__subs li {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .25s var(--ease), transform .25s var(--ease);
-}
-
-.svc-card--hovered .svc-card__subs li {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* ============================================================
@@ -873,6 +892,7 @@
   .services-hero { padding: 40px 20px; }
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 260px);
     gap: 12px;
   }
   .svc-card { min-height: 260px; }
@@ -885,6 +905,7 @@
   .services-hero { padding: 24px 14px; }
   .services-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, 220px);
     gap: 10px;
   }
   .svc-card { min-height: 220px; }

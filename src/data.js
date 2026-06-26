@@ -1,0 +1,43 @@
+export const SERVICES = [
+  { id: 'technology',       title: 'Technology Consulting',   count: 3, img: '/categories/technology.webp',       hoverImg: '/services/svc-tech-rollover.png',            icon: '/icons/tech.svg',             subs: ['Web Development', 'App Development', 'Tech Strategy'] },
+  { id: 'programmatic',     title: 'Programmatic',            count: 4, img: '/categories/programmatic.webp',     hoverImg: '/services/svc-programmatic-rollover.png',    icon: '/icons/programmatic.svg',     subs: ['SEM', 'AEO', 'GEO', 'SEO'] },
+  { id: 'social',           title: 'Social Media',            count: 4, img: '/categories/social.webp',           hoverImg: '/services/svc-social-rollover.png',          icon: '/icons/social.svg',           subs: ['Content Creation', 'Paid Social', 'Community Mgmt', 'Influencer Mktg'] },
+  { id: 'fraud',            title: 'Fraud Protection Gurus',  count: 3, img: '/categories/fraud.webp',            hoverImg: '/services/svc-fraud-rollover.png',           icon: '/icons/fraud.svg',            subs: ['Ad Fraud Detection', 'Click Fraud', 'Brand Safety'] },
+  { id: 'brand-creation',   title: 'Brand Creation',          count: 3, img: '/categories/brand-creation.webp',   hoverImg: '/categories/brand-creation.webp',            icon: '/icons/brand-creation.svg',   subs: ['Brand Identity', 'Logo Design', 'Brand Guidelines'] },
+  { id: 'trad',             title: 'Traditional Full Service', count: 6, img: '/categories/trad-full-service.webp', hoverImg: '/services/svc-trad-rollover.png',           icon: '/icons/trad-full-service.svg', subs: ['Print', 'TV & Radio', 'Out of Home', 'Direct Mail', 'Events', 'PR'] },
+  { id: 'brand-building',   title: 'Brand Building',          count: 4, img: '/categories/brand-building.webp',   hoverImg: '/categories/brand-building.webp',            icon: '/icons/brand-building.svg',   subs: ['Strategy', 'Positioning', 'Campaigns', 'Analytics'] },
+  { id: 'brand-specialties',title: 'Brand Specialties',       count: 7, img: '/categories/brand-specialties.webp', hoverImg: '/services/svc-brandspecialties-rollover.png', icon: '/icons/brand-specialties.svg', subs: ['Packaging', 'Copywriting', 'Photography', 'Video Prod.', 'Experiential', 'Activation', 'Sponsorship'] },
+]
+
+export const MEGA_SERVICES = [
+  { id: 'programmatic',  title: 'Programmatic',            count: 4, img: '/services/svc-programmatic-rollover.png',    icon: '/icons/programmatic.svg' },
+  { id: 'social',        title: 'Social Media',            count: 4, img: '/services/svc-social-rollover.png',          icon: '/icons/social.svg' },
+  { id: 'fraud',         title: 'Fraud Protection',        count: 3, img: '/services/svc-fraud-rollover.png',           icon: '/icons/fraud.svg' },
+  { id: 'technology',    title: 'Technology Consulting',   count: 3, img: '/services/svc-tech-rollover.png',            icon: '/icons/tech.svg' },
+  { id: 'brand-creation',title: 'Brand Creation',          count: 3, img: '/categories/brand-creation.webp',           icon: '/icons/brand-creation.svg' },
+  { id: 'brand-building',title: 'Brand Building',          count: 4, img: '/categories/brand-building.webp',           icon: '/icons/brand-building.svg' },
+  { id: 'trad',          title: 'Traditional Full Service',count: 6, img: '/services/svc-trad-rollover.png',           icon: '/icons/trad-full-service.svg' },
+  { id: 'brand-specialties', title: 'Brand Specialties',   count: 7, img: '/services/svc-brandspecialties-rollover.png', icon: '/icons/brand-specialties.svg' },
+]
+
+export const MEGA_ABOUT = [
+  { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   href: '#' },
+  { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        href: '#' },
+  { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '#' },
+  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '#' },
+  { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', href: '#' },
+  { id: 'otherbrands',label: 'Other Brands',badge: '3 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '#' },
+]
+
+export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
+
+export const HERO_PILLS = [
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 410px)', top: '14%' },
+  { label: 'Social Media',                          left: 'calc(50% - 480px)', top: '42%' },
+  { label: 'Fraud Protection Gurus',                left: 'calc(50% - 460px)', top: '64%' },
+  { label: 'Technology Consulting',                 left: 'calc(50% - 370px)', top: '78%' },
+  { label: 'Brand Creation',                        left: 'calc(50% + 250px)', top: '10%' },
+  { label: 'Traditional Full Service',              left: 'calc(50% + 300px)', top: '40%' },
+  { label: 'Brand Building',                        left: 'calc(50% + 320px)', top: '63%' },
+  { label: 'Brand Specialties',                     left: 'calc(50% + 210px)', top: '78%' },
+]
