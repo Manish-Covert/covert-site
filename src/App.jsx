@@ -5,35 +5,25 @@ import './App.css'
 const HeroLogo = lazy(() => import('./HeroLogo'))
 
 const SERVICES = [
-  { id: 'technology', title: 'Technology Consulting', count: 3, img: '/categories/technology.webp', icon: '/icons/tech.svg', subs: ['Web Development', 'App Development', 'Tech Strategy'] },
-  { id: 'programmatic', title: 'Programmatic', count: 4, img: '/categories/programmatic.webp', icon: '/icons/programmatic.svg', subs: ['SEM', 'AEO', 'GEO', 'SEO'] },
-  { id: 'social', title: 'Social Media', count: 4, img: '/categories/social.webp', icon: '/icons/social.svg', subs: ['Content Creation', 'Paid Social', 'Community Mgmt', 'Influencer Mktg'] },
-  { id: 'fraud', title: 'Fraud Protection Gurus', count: 3, img: '/categories/fraud.webp', icon: '/icons/fraud.svg', subs: ['Ad Fraud Detection', 'Click Fraud', 'Brand Safety'] },
-  { id: 'brand-creation', title: 'Brand Creation', count: 3, img: '/categories/brand-creation.webp', icon: '/icons/brand-creation.svg', subs: ['Brand Identity', 'Logo Design', 'Brand Guidelines'] },
-  { id: 'trad', title: 'Traditional Full Service', count: 6, img: '/categories/trad-full-service.webp', icon: '/icons/trad-full-service.svg', subs: ['Print', 'TV & Radio', 'Out of Home', 'Direct Mail', 'Events', 'PR'] },
-  { id: 'brand-building', title: 'Brand Building', count: 4, img: '/categories/brand-building.webp', icon: '/icons/brand-building.svg', subs: ['Strategy', 'Positioning', 'Campaigns', 'Analytics'] },
-  { id: 'brand-specialties', title: 'Brand Specialties', count: 7, img: '/categories/brand-specialties.webp', icon: '/icons/brand-specialties.svg', subs: ['Packaging', 'Copywriting', 'Photography', 'Video Prod.', 'Experiential', 'Activation', 'Sponsorship'] },
+  { id: 'technology',       title: 'Technology Consulting',  count: 3, img: '/categories/technology.webp',      hoverImg: '/services/svc-tech-rollover.png',           icon: '/icons/tech.svg',            subs: ['Web Development', 'App Development', 'Tech Strategy'] },
+  { id: 'programmatic',     title: 'Programmatic',           count: 4, img: '/categories/programmatic.webp',    hoverImg: '/services/svc-programmatic-rollover.png',   icon: '/icons/programmatic.svg',    subs: ['SEM', 'AEO', 'GEO', 'SEO'] },
+  { id: 'social',           title: 'Social Media',           count: 4, img: '/categories/social.webp',          hoverImg: '/services/svc-social-rollover.png',         icon: '/icons/social.svg',          subs: ['Content Creation', 'Paid Social', 'Community Mgmt', 'Influencer Mktg'] },
+  { id: 'fraud',            title: 'Fraud Protection Gurus', count: 3, img: '/categories/fraud.webp',           hoverImg: '/services/svc-fraud-rollover.png',          icon: '/icons/fraud.svg',           subs: ['Ad Fraud Detection', 'Click Fraud', 'Brand Safety'] },
+  { id: 'brand-creation',   title: 'Brand Creation',         count: 3, img: '/categories/brand-creation.webp',  hoverImg: '/categories/brand-creation.webp',           icon: '/icons/brand-creation.svg',  subs: ['Brand Identity', 'Logo Design', 'Brand Guidelines'] },
+  { id: 'trad',             title: 'Traditional Full Service',count: 6, img: '/categories/trad-full-service.webp',hoverImg: '/services/svc-trad-rollover.png',          icon: '/icons/trad-full-service.svg',subs: ['Print', 'TV & Radio', 'Out of Home', 'Direct Mail', 'Events', 'PR'] },
+  { id: 'brand-building',   title: 'Brand Building',         count: 4, img: '/categories/brand-building.webp',  hoverImg: '/categories/brand-building.webp',           icon: '/icons/brand-building.svg',  subs: ['Strategy', 'Positioning', 'Campaigns', 'Analytics'] },
+  { id: 'brand-specialties',title: 'Brand Specialties',      count: 7, img: '/categories/brand-specialties.webp',hoverImg: '/services/svc-brandspecialties-rollover.png',icon: '/icons/brand-specialties.svg',subs: ['Packaging', 'Copywriting', 'Photography', 'Video Prod.', 'Experiential', 'Activation', 'Sponsorship'] },
 ]
 
 const MEGA_SERVICES = [
-  {
-    heading: 'Performance',
-    items: [
-      { title: 'Programmatic', desc: 'Targeted media buying across every channel.' },
-      { title: 'SEM / AEO / GEO / SEO', desc: 'Search, answer-engine, and local visibility.' },
-      { title: 'Social Media', desc: 'Paid and organic strategy that converts.' },
-      { title: 'Fraud Protection', desc: 'Keep your ad spend honest and clean.' },
-    ],
-  },
-  {
-    heading: 'Brand & Strategy',
-    items: [
-      { title: 'Brand Creation', desc: 'Identity systems built to scale.' },
-      { title: 'Brand Building', desc: 'Long-term equity, not one-off campaigns.' },
-      { title: 'Traditional Full Service', desc: 'TV, print, radio — done right.' },
-      { title: 'Technology Consulting', desc: 'The stack and systems behind the brand.' },
-    ],
-  },
+  { id: 'programmatic', title: 'Programmatic',           count: 4, img: '/services/svc-programmatic-rollover.png',   icon: '/icons/programmatic.svg' },
+  { id: 'social',       title: 'Social Media',            count: 4, img: '/services/svc-social-rollover.png',         icon: '/icons/social.svg' },
+  { id: 'fraud',        title: 'Fraud Protection',        count: 3, img: '/services/svc-fraud-rollover.png',          icon: '/icons/fraud.svg' },
+  { id: 'tech',         title: 'Technology Consulting',   count: 3, img: '/services/svc-tech-rollover.png',           icon: '/icons/tech.svg' },
+  { id: 'brand-create', title: 'Brand Creation',          count: 3, img: '/categories/brand-creation.webp',          icon: '/icons/brand-creation.svg' },
+  { id: 'brand-build',  title: 'Brand Building',          count: 4, img: '/categories/brand-building.webp',          icon: '/icons/brand-building.svg' },
+  { id: 'trad',         title: 'Traditional Full Service',count: 6, img: '/services/svc-trad-rollover.png',          icon: '/icons/trad-full-service.svg' },
+  { id: 'brand-spec',   title: 'Brand Specialties',       count: 7, img: '/services/svc-brandspecialties-rollover.png', icon: '/icons/brand-specialties.svg' },
 ]
 
 const MEGA_ABOUT = [
@@ -104,6 +94,7 @@ export default function App() {
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [hoveredAbout, setHoveredAbout] = useState(null)
+  const [hoveredMegaService, setHoveredMegaService] = useState(null)
   const [hoveredService, setHoveredService] = useState(null)
   const heroRef = useRef(null)
 
@@ -201,29 +192,24 @@ export default function App() {
                 </svg>
               </button>
 
-              <div className={`mega ${megaOpen ? 'mega--open' : ''}`}>
-                <div className="mega__inner">
-                  <div className="mega__cols">
-                    {MEGA_SERVICES.map(col => (
-                      <div className="mega__col" key={col.heading}>
-                        <p className="mega__heading">{col.heading}</p>
-                        {col.items.map(item => (
-                          <a href="#services" className="mega__item" key={item.title}>
-                            <span className="mega__item-title">{item.title}</span>
-                            <span className="mega__item-desc">{item.desc}</span>
-                          </a>
-                        ))}
+              <div className={`mega mega--services ${megaOpen ? 'mega--open' : ''}`}>
+                <div className="mega-services__grid">
+                  {MEGA_SERVICES.map(item => (
+                    <a
+                      key={item.id}
+                      href="#services"
+                      className={`ms-card${hoveredMegaService === item.id ? ' ms-card--hovered' : ''}`}
+                      onMouseEnter={() => setHoveredMegaService(item.id)}
+                      onMouseLeave={() => setHoveredMegaService(null)}
+                    >
+                      <div className="ms-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
+                      <div className="ms-card__inner">
+                        <img className="ms-card__icon" src={item.icon} alt="" aria-hidden="true" />
+                        <span className="ms-card__title">{item.title}</span>
+                        <span className="ms-card__count">{item.count}</span>
                       </div>
-                    ))}
-                  </div>
-                  <div className="mega__feature">
-                    <p className="mega__feature-eyebrow">Why Covert</p>
-                    <h4 className="mega__feature-title">One team, every channel.</h4>
-                    <p className="mega__feature-copy">
-                      Strategy, media, and brand under one roof — built to move fast.
-                    </p>
-                    <a href="#contact" className="btn btn--green mega__feature-btn">Book Meeting &rarr;</a>
-                  </div>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -296,25 +282,23 @@ export default function App() {
                 onMouseEnter={() => setHoveredService(svc.id)}
                 onMouseLeave={() => setHoveredService(null)}
               >
-                <div
-                  className="svc-card__bg"
-                  style={{ backgroundImage: `url(${svc.img})` }}
-                />
+                <div className="svc-card__bg" style={{ backgroundImage: `url(${svc.img})` }} />
+                <div className="svc-card__hover-bg" style={{ backgroundImage: `url(${svc.hoverImg})` }} />
                 <div className="svc-card__overlay" />
                 <div className="svc-card__header">
                   <h2 className="svc-card__title">{svc.title}</h2>
                   <span className="svc-card__count">{svc.count} Services ▾</span>
                 </div>
-                {hoveredService === svc.id && svc.subs ? (
+                <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
+                {svc.subs && (
                   <ul className="svc-card__subs">
                     {svc.subs.map((s, i) => (
-                      <li key={s} style={{ animationDelay: `${(svc.subs.length - 1 - i) * 55}ms` }}>
+                      <li key={s} style={{ transitionDelay: hoveredService === svc.id ? `${i * 50}ms` : '0ms' }}>
                         <a href="#contact" className="chip-btn">{s}</a>
                       </li>
                     ))}
                   </ul>
-                ) : null}
-                <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
+                )}
               </article>
             ))}
           </div>
