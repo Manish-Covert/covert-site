@@ -3,34 +3,79 @@ name: Get Vercel Preview URL
 on:
   push:
     branches-ignore:
-      - main  # skip production branch
+      - main
 
 jobs:
   preview-url:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - name: Wait for Vercel to build
-        run: sleep 30
-
-      - name: Fetch Preview URL
+      - name: Poll Vercel until deployment is READY
         id: get_url
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           BRANCH="${GITHUB_REF#refs/heads/}"
-          RESPONSE=$(curl -s "https://api.vercel.com/v7/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&branch=$BRANCH&limit=1&state=READY&target=preview" \
-            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}")
-          URL=$(echo $RESPONSE | python3 -c "import sys,json; d=json.load(sys.stdin); print('https://' + d['deployments'][0]['url'])" 2>/dev/null)
-          echo "preview_url=$URL" >> $GITHUB_OUTPUT
-          echo "✅ Preview URL: $URL"
+          echo "Waiting for Vercel deployment on branch: $BRANCH"
+          for i in $(seq 1 20); do
+            sleep 15
+            RESPONSE=$(curl -s "https://api.vercel.com/v7/deployments?projectId=$VERCEL_PROJECT_ID&branch=$BRANCH&limit=1&state=READY&target=preview" \
+              -H "Authorization: Bearer $VERCEL_TOKEN")
+            URL=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print('https://' + d['deployments'][0]['url'])" 2>/dev/null)
+            if [ -n "$URL" ] && [ "$URL" != "https://" ]; then
+              echo "preview_url=$URL" >> $GITHUB_OUTPUT
+              echo "✅ Preview URL: $URL"
+              break
+            fi
+            echo "Attempt $i: not ready yet..."
+          done
 
-      - name: Comment on commit
+      - name: Ensure draft PR exists, then comment preview URL
         uses: actions/github-script@v7
         with:
           script: |
             const url = '${{ steps.get_url.outputs.preview_url }}';
-            if (!url || url === 'https://') return;
-            await github.rest.repos.createCommitComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              commit_sha: context.sha,
-              body: `🚀 **Vercel Preview Ready**\n\n${url}`
+            if (!url || url === 'https://') {
+              console.log('No preview URL found, skipping.');
+              return;
+            }
+
+            const branch = process.env.GITHUB_REF.replace('refs/heads/', '');
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Check for an existing open PR for this branch
+            const { data: prs } = await github.rest.pulls.list({
+              owner, repo,
+              head: `${owner}:${branch}`,
+              state: 'open',
             });
+
+            let prNumber;
+            if (prs.length > 0) {
+              prNumber = prs[0].number;
+              console.log(`Found existing PR #${prNumber}`);
+            } else {
+              // Auto-create a draft PR so the URL has a home
+              const { data: pr } = await github.rest.pulls.create({
+                owner, repo,
+                head: branch,
+                base: 'main',
+                title: `Draft: ${branch}`,
+                body: '_Auto-created draft PR to surface Vercel preview URLs in Claude Code. Mark as Ready for Review when this branch is done._',
+                draft: true,
+              });
+              prNumber = pr.number;
+              console.log(`Created draft PR #${prNumber}`);
+            }
+
+            // Post the preview URL as a PR comment
+            await github.rest.issues.createComment({
+              owner, repo,
+              issue_number: prNumber,
+              body: `🚀 **Vercel Preview Ready**\n\n**URL:** ${url}\n\n_Branch: \`${branch}\` — pushed at ${new Date().toUTCString()}_`,
+            });
+            console.log(`Preview URL commented on PR #${prNumber}`);
