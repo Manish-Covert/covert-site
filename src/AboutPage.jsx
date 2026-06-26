@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { SERVICES, MEGA_ABOUT, MEGA_SERVICES } from './data'
+import { MEGA_ABOUT, MEGA_SERVICES } from './data'
 import './App.css'
 import './ServicePage.css'
 
-export default function ServicePage() {
+export default function AboutPage() {
   const { id } = useParams()
-  const svc = SERVICES.find(s => s.id === id) || SERVICES[0]
+  const item = MEGA_ABOUT.find(a => a.id === id) || MEGA_ABOUT[0]
 
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -37,16 +37,16 @@ export default function ServicePage() {
               </button>
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
-                  {MEGA_ABOUT.map(item => (
-                    <Link key={item.id} to={item.href}
-                      className={`ma-card${hoveredAbout === item.id ? ' ma-card--hovered' : ''}`}
-                      onMouseEnter={() => setHoveredAbout(item.id)}
+                  {MEGA_ABOUT.map(a => (
+                    <Link key={a.id} to={a.href}
+                      className={`ma-card${hoveredAbout === a.id ? ' ma-card--hovered' : ''}`}
+                      onMouseEnter={() => setHoveredAbout(a.id)}
                       onMouseLeave={() => setHoveredAbout(null)}>
-                      <div className="ma-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
+                      <div className="ma-card__bg" style={{ backgroundImage: `url(${a.img})` }} />
                       <div className="ma-card__inner">
-                        <img className="ma-card__icon" src={item.icon} alt="" aria-hidden="true" />
-                        <span className="ma-card__label">{item.label}</span>
-                        {item.badge && <span className="ma-card__badge">{item.badge}</span>}
+                        <img className="ma-card__icon" src={a.icon} alt="" aria-hidden="true" />
+                        <span className="ma-card__label">{a.label}</span>
+                        {a.badge && <span className="ma-card__badge">{a.badge}</span>}
                       </div>
                     </Link>
                   ))}
@@ -68,16 +68,16 @@ export default function ServicePage() {
               </button>
               <div className={`mega mega--services ${megaOpen ? 'mega--open' : ''}`}>
                 <div className="mega-services__grid">
-                  {MEGA_SERVICES.map(item => (
-                    <Link key={item.id} to={`/services/${item.id}`}
-                      className={`ms-card${hoveredMegaService === item.id ? ' ms-card--hovered' : ''}`}
-                      onMouseEnter={() => setHoveredMegaService(item.id)}
+                  {MEGA_SERVICES.map(svc => (
+                    <Link key={svc.id} to={`/services/${svc.id}`}
+                      className={`ms-card${hoveredMegaService === svc.id ? ' ms-card--hovered' : ''}`}
+                      onMouseEnter={() => setHoveredMegaService(svc.id)}
                       onMouseLeave={() => setHoveredMegaService(null)}>
-                      <div className="ms-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
+                      <div className="ms-card__bg" style={{ backgroundImage: `url(${svc.img})` }} />
                       <div className="ms-card__inner">
-                        <img className="ms-card__icon" src={item.icon} alt="" aria-hidden="true" />
-                        <span className="ms-card__title">{item.title}</span>
-                        <span className="ms-card__count">{item.count}</span>
+                        <img className="ms-card__icon" src={svc.icon} alt="" aria-hidden="true" />
+                        <span className="ms-card__title">{svc.title}</span>
+                        <span className="ms-card__count">{svc.count}</span>
                       </div>
                     </Link>
                   ))}
@@ -98,23 +98,18 @@ export default function ServicePage() {
 
       <main>
         {/* ===================== HERO ===================== */}
-        <section className="svcpage__hero" style={{ backgroundImage: `url(${svc.hoverImg})` }}>
+        <section className="svcpage__hero" style={{ backgroundImage: `url(${item.img})` }}>
           <div className="svcpage__hero-overlay" />
           <div className="svcpage__hero-content">
-            <p className="svcpage__eyebrow">{svc.count} Services</p>
-            <h1 className="svcpage__title">{svc.title}</h1>
-            <div className="svcpage__subs">
-              {svc.subs.map(s => (
-                <span key={s} className="chip-btn">{s}</span>
-              ))}
-            </div>
+            {item.badge && <p className="svcpage__eyebrow">{item.badge}</p>}
+            <h1 className="svcpage__title">{item.label}</h1>
           </div>
         </section>
 
         {/* ===================== CONTENT ===================== */}
         <section className="svcpage__body">
           <div className="container container--narrow">
-            <h2 className="svcpage__body-title">What We Do</h2>
+            <h2 className="svcpage__body-title">About {item.label}</h2>
             <p className="svcpage__lead">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
               ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco

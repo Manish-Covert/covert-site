@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import { useReveal } from './useReveal'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HOW_DID_YOU_HEAR, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
+import AboutPage from './AboutPage'
 import './App.css'
 
 const HeroLogo = lazy(() => import('./HeroLogo'))
@@ -41,6 +42,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/services/:id" element={<ServicePage />} />
+      <Route path="/about/:id" element={<AboutPage />} />
       <Route path="*" element={<HomePage
         status={status} setStatus={setStatus}
         megaOpen={megaOpen} setMegaOpen={setMegaOpen}
@@ -95,23 +97,20 @@ function HomePage({
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
                   {MEGA_ABOUT.map(item => (
-                    <a
+                    <Link
                       key={item.id}
-                      href={item.href}
+                      to={item.href}
                       className={`ma-card${hoveredAbout === item.id ? ' ma-card--hovered' : ''}`}
                       onMouseEnter={() => setHoveredAbout(item.id)}
                       onMouseLeave={() => setHoveredAbout(null)}
                     >
-                      <div
-                        className="ma-card__bg"
-                        style={{ backgroundImage: `url(${item.img})` }}
-                      />
+                      <div className="ma-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
                       <div className="ma-card__inner">
                         <img className="ma-card__icon" src={item.icon} alt="" aria-hidden="true" />
                         <span className="ma-card__label">{item.label}</span>
                         {item.badge && <span className="ma-card__badge">{item.badge}</span>}
                       </div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
