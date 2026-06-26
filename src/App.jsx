@@ -40,11 +40,11 @@ const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referr
 
 /* Scattered pill positions with unique wander animation per pill */
 const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 500px)', top: '14%' },
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 410px)', top: '14%' },
   { label: 'Social Media',                          left: 'calc(50% - 480px)', top: '42%' },
   { label: 'Fraud Protection Gurus',                left: 'calc(50% - 460px)', top: '64%' },
   { label: 'Technology Consulting',                 left: 'calc(50% - 370px)', top: '78%' },
-  { label: 'Brand Creation',                        left: 'calc(50% + 330px)', top: '10%' },
+  { label: 'Brand Creation',                        left: 'calc(50% + 250px)', top: '10%' },
   { label: 'Traditional Full Service',              left: 'calc(50% + 300px)', top: '40%' },
   { label: 'Brand Building',                        left: 'calc(50% + 320px)', top: '63%' },
   { label: 'Brand Specialties',                     left: 'calc(50% + 210px)', top: '78%' },
