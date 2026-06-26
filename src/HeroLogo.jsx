@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
-const mouse = { x: 0, y: 0, tx: 0, ty: 0 }
+const mouse = { x: 0, y: 0, tx: 0, ty: 0, active: false }
 
 function Model() {
   const group = useRef()
@@ -28,7 +28,6 @@ function Model() {
     const aspect = size.width / size.height
     const fitHeightDist = sphere.radius / Math.tan(fovRad / 2)
     const fitWidthDist  = sphere.radius / (Math.tan(fovRad / 2) * aspect)
-    /* Use 88% of the tighter dimension so it fills without clipping */
     camera.position.z = Math.max(fitHeightDist, fitWidthDist) * 0.88
     camera.near = 0.01
     camera.updateProjectionMatrix()
@@ -36,10 +35,12 @@ function Model() {
 
   useFrame(() => {
     if (!group.current) return
-    mouse.tx += (mouse.x - mouse.tx) * 0.025
-    mouse.ty += (mouse.y - mouse.ty) * 0.025
-    group.current.rotation.y = mouse.tx * 0.22
-    group.current.rotation.x = -mouse.ty * 0.12
+    const target = mouse.active ? mouse.x : 0
+    const targetY = mouse.active ? mouse.y : 0
+    mouse.tx += (target  - mouse.tx) * 0.06
+    mouse.ty += (targetY - mouse.ty) * 0.06
+    group.current.rotation.y = mouse.tx * 0.28
+    group.current.rotation.x = -mouse.ty * 0.16
   })
 
   return (
@@ -51,11 +52,11 @@ function Model() {
 
 function Rig() {
   const { camera } = useThree()
-  const baseZ = useRef(null)
   useFrame(() => {
-    if (baseZ.current === null) baseZ.current = camera.position.z
-    camera.position.x += (mouse.tx * 0.12 - camera.position.x) * 0.04
-    camera.position.y += (-mouse.ty * 0.07 - camera.position.y) * 0.04
+    const target = mouse.active ? mouse.tx : 0
+    const targetY = mouse.active ? mouse.ty : 0
+    camera.position.x += (target  * 0.14 - camera.position.x) * 0.05
+    camera.position.y += (-targetY * 0.08 - camera.position.y) * 0.05
     camera.lookAt(0, 0, 0)
   })
   return null
@@ -63,15 +64,33 @@ function Rig() {
 
 export default function HeroLogo({ containerRef }) {
   useEffect(() => {
+    const el = containerRef?.current
+    if (!el) return
+
+    /* Reset position + disable mouse when hero leaves viewport */
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        mouse.active = entry.isIntersecting
+        if (!entry.isIntersecting) {
+          mouse.x = 0; mouse.y = 0; mouse.tx = 0; mouse.ty = 0
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+
     function onMove(e) {
-      const el = containerRef?.current
-      if (!el) return
+      if (!mouse.active) return
       const rect = el.getBoundingClientRect()
       mouse.x = ((e.clientX - rect.left) / rect.width  - 0.5) * 2
       mouse.y = ((e.clientY - rect.top)  / rect.height - 0.5) * 2
     }
     window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('mousemove', onMove)
+    }
   }, [containerRef])
 
   return (

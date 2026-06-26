@@ -160,17 +160,17 @@
   box-shadow: var(--ring-glow); transform: translateY(-2px);
 }
 
-/* about section CTA — thin outline pill like the screenshot */
+/* about section CTA — gradient border pill */
 .btn--outline-pill {
-  background: transparent;
   color: var(--ink);
-  border: 1.5px solid rgba(255,255,255,.45);
+  border: 1.5px solid transparent;
   padding: 12px 38px;
   font-size: 16px;
   border-radius: 999px;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)) padding-box,
+              linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%) border-box;
 }
 .btn--outline-pill:hover {
-  border-color: var(--green-bright);
   color: var(--green-bright);
   transform: translateY(-2px);
 }
@@ -206,6 +206,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,14 +235,15 @@
   align-items: center;
   text-align: center;
   padding: 10px 22px;
-  border: 1.5px solid rgba(166, 242, 60, 0.55);
+  border: 1.5px solid transparent;
   border-radius: 999px;
   color: var(--ink);
   font-size: 13px;
   font-weight: 500;
   line-height: 1.35;
   white-space: nowrap;
-  background: rgba(0, 0, 0, 0.35);
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)) padding-box,
+              linear-gradient(135deg, #a6f23c 0%, #34c7a0 100%) border-box;
   backdrop-filter: blur(8px);
   z-index: 2;
   animation: wander-p1 22s ease-in-out infinite;
