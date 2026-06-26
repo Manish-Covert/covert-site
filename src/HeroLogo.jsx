@@ -36,10 +36,10 @@ function Model() {
 
   useFrame(() => {
     if (!group.current) return
-    mouse.tx += (mouse.x - mouse.tx) * 0.055
-    mouse.ty += (mouse.y - mouse.ty) * 0.055
-    group.current.rotation.y = mouse.tx * 0.55
-    group.current.rotation.x = -mouse.ty * 0.3
+    mouse.tx += (mouse.x - mouse.tx) * 0.025
+    mouse.ty += (mouse.y - mouse.ty) * 0.025
+    group.current.rotation.y = mouse.tx * 0.22
+    group.current.rotation.x = -mouse.ty * 0.12
   })
 
   return (
@@ -54,8 +54,8 @@ function Rig() {
   const baseZ = useRef(null)
   useFrame(() => {
     if (baseZ.current === null) baseZ.current = camera.position.z
-    camera.position.x += (mouse.tx * 0.35 - camera.position.x) * 0.05
-    camera.position.y += (-mouse.ty * 0.18 - camera.position.y) * 0.05
+    camera.position.x += (mouse.tx * 0.12 - camera.position.x) * 0.04
+    camera.position.y += (-mouse.ty * 0.07 - camera.position.y) * 0.04
     camera.lookAt(0, 0, 0)
   })
   return null

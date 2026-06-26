@@ -15,10 +15,12 @@
    ============================================================ */
 .nav-wrap {
   position: fixed;
-  top: 0;
+  top: 18px;
   left: 0;
   right: 0;
   z-index: 50;
+  display: flex;
+  justify-content: center;
   pointer-events: none;
 }
 
@@ -27,13 +29,16 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 16px;
-  padding: 0 32px;
-  background: rgba(8, 10, 8, 0.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  width: 100%;
+  gap: 24px;
+  padding: 8px 12px 8px 20px;
+  background: rgba(8, 10, 8, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(166,242,60,0.06);
+  max-width: 1280px;
+  width: calc(100% - 48px);
 }
 
 .brand { display: flex; align-items: center; flex-shrink: 0; }
@@ -240,7 +245,7 @@
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(8px);
   z-index: 2;
-  animation: wander-p1 7s ease-in-out infinite;
+  animation: wander-p1 22s ease-in-out infinite;
   transition: border-color .3s var(--ease), color .3s var(--ease),
               box-shadow .3s var(--ease);
 }
@@ -251,61 +256,62 @@
   box-shadow: 0 0 28px rgba(166,242,60,.25);
 }
 
-/* 8 unique wander paths — each pill moves freely around its anchor */
+/* 8 orbital fish-in-water paths — pills orbit slowly around the center logo */
 @keyframes wander-p1 {
   0%   { transform: translate(0, 0); }
-  20%  { transform: translate(26px, -70px); }
-  45%  { transform: translate(64px, 10px); }
-  70%  { transform: translate(18px, 60px); }
+  20%  { transform: translate(180px, -140px); }
+  40%  { transform: translate(320px, 60px); }
+  60%  { transform: translate(140px, 220px); }
+  80%  { transform: translate(-80px, 100px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p2 {
   0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-34px, -50px); }
-  50%  { transform: translate(40px, -85px); }
-  75%  { transform: translate(50px, 30px); }
+  25%  { transform: translate(200px, -100px); }
+  50%  { transform: translate(300px, 160px); }
+  75%  { transform: translate(60px, 240px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p3 {
   0%   { transform: translate(0, 0); }
-  30%  { transform: translate(46px, -40px); }
-  55%  { transform: translate(80px, -80px); }
-  80%  { transform: translate(20px, 55px); }
+  20%  { transform: translate(160px, 80px); }
+  45%  { transform: translate(280px, -80px); }
+  70%  { transform: translate(80px, -200px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p4 {
   0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-40px, -90px); }
-  50%  { transform: translate(60px, -30px); }
-  75%  { transform: translate(-10px, 50px); }
+  25%  { transform: translate(180px, -160px); }
+  50%  { transform: translate(-60px, -240px); }
+  75%  { transform: translate(-200px, -80px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p5 {
   0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-60px, 40px); }
-  50%  { transform: translate(-30px, 80px); }
-  75%  { transform: translate(-80px, -20px); }
+  20%  { transform: translate(-200px, -120px); }
+  45%  { transform: translate(-320px, 80px); }
+  70%  { transform: translate(-100px, 220px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p6 {
   0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-50px, -60px); }
-  45%  { transform: translate(20px, -90px); }
-  70%  { transform: translate(-70px, 30px); }
+  25%  { transform: translate(-140px, 160px); }
+  50%  { transform: translate(-280px, -40px); }
+  75%  { transform: translate(-60px, -220px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p7 {
   0%   { transform: translate(0, 0); }
-  30%  { transform: translate(-40px, 70px); }
-  60%  { transform: translate(-80px, -10px); }
-  85%  { transform: translate(10px, -60px); }
+  20%  { transform: translate(-180px, -140px); }
+  45%  { transform: translate(-60px, -260px); }
+  70%  { transform: translate(160px, -140px); }
   100% { transform: translate(0, 0); }
 }
 @keyframes wander-p8 {
   0%   { transform: translate(0, 0); }
-  22%  { transform: translate(30px, -55px); }
-  48%  { transform: translate(-50px, -80px); }
-  72%  { transform: translate(-60px, 40px); }
+  25%  { transform: translate(-220px, 80px); }
+  50%  { transform: translate(-80px, 240px); }
+  75%  { transform: translate(120px, 140px); }
   100% { transform: translate(0, 0); }
 }
 
