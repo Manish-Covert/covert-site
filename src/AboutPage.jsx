@@ -99,7 +99,7 @@ export default function AboutPage() {
 
       <main>
         {/* ===================== HERO ===================== */}
-        <section className="svcpage__hero" style={{ backgroundImage: `url(${item.img})` }}>
+        <section className="svcpage__hero" style={{ backgroundImage: `url(${item.heroImg || item.img})` }}>
           <div className="svcpage__hero-overlay" />
           <div className="svcpage__hero-content">
             {item.badge && <p className="svcpage__eyebrow">{item.badge}</p>}
@@ -158,7 +158,7 @@ function CovertCommunicationBody({ item }) {
     <section className="svcpage__body">
       <div className="container">
         <div className="about-split">
-          <div className="about-split__media" style={{ backgroundImage: `url(${item.img})` }} />
+          <div className="about-split__media" style={{ backgroundImage: `url(${item.heroImg || item.img})` }} />
           <div className="about-split__bar" />
           <div className="about-split__copy">
             <h2 className="about-split__title">WHO WE ARE</h2>
@@ -184,7 +184,7 @@ function AnnaCovertBody({ item }) {
     <section className="svcpage__body">
       <div className="container">
         <div className="about-split">
-          <img className="about-split__portrait" src={item.img} alt="Anna Covert" />
+          <img className="about-split__portrait" src={item.photo || item.img} alt="Anna Covert" />
           <div className="about-split__bar" />
           <div className="about-split__copy">
             <h2 className="about-split__title">MEET ANNA</h2>

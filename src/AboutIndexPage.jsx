@@ -98,7 +98,7 @@ export default function AboutIndexPage() {
         {/* ===================== HERO ===================== */}
         <section className="about-index__hero">
           <div className="about-index__hero-inner">
-            <img src="/logo-icon.png" alt="" className="about-index__hero-emblem" aria-hidden="true" />
+            <img src="/about/about-us-emblem.webp" alt="" className="about-index__hero-emblem" aria-hidden="true" />
             <div>
               <h1 className="svcpage__title">About Us</h1>
               <p className="svcpage__lead">
