@@ -1,0 +1,273 @@
+/* ============================================================
+   ABOUT INDEX PAGE
+   ============================================================ */
+.about-index__hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background: #0a0a0a;
+  padding: 120px 60px 60px;
+}
+
+.about-index__hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 960px;
+}
+
+.about-index__hero-emblem {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  opacity: .9;
+  flex-shrink: 0;
+}
+
+.about-index__body {
+  background: #000;
+  padding: 40px 0 120px;
+}
+
+.about-index__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 960px;
+}
+
+.ai-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 120px;
+  border: 1.5px solid rgba(40,200,100,.25);
+  background: #0a0f0a;
+  text-decoration: none;
+  transition: border-color .3s var(--ease);
+}
+
+.ai-card:hover { border-color: rgba(40,200,100,.7); }
+
+.ai-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: .55;
+}
+
+.ai-card__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.25) 100%);
+}
+
+.ai-card__icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: .85;
+  flex-shrink: 0;
+}
+
+.ai-card__label {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.ai-card__badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   ABOUT SUBPAGE — SPLIT SECTION (image/photo + copy)
+   ============================================================ */
+.about-split {
+  display: grid;
+  grid-template-columns: minmax(260px, 460px) 3px 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.about-split__media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-color: #1a1a1a;
+}
+
+.about-split__portrait {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.about-split__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  border-radius: 16px;
+  background: #111;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px;
+}
+
+.about-split__bar {
+  width: 3px;
+  align-self: stretch;
+  background: linear-gradient(180deg, #2fd48a, #7fe33c);
+  border-radius: 2px;
+}
+
+.about-split__title {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 780px) {
+  .about-split { grid-template-columns: 1fr; }
+  .about-split__bar { display: none; }
+}
+
+/* ============================================================
+   ABOUT SUBPAGE — CARD GRIDS (books / podcasts)
+   ============================================================ */
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.about-book-card,
+.about-podcast-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.about-book-card__cover {
+  width: 140px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.about-book-card__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.about-book-card__badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0a0a0a;
+  background: #a6f23c;
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.about-book-card__title,
+.about-podcast-card__title {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.about-book-card__subtitle,
+.about-podcast-card__subscribers {
+  font-size: 13px;
+  color: #a6f23c;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 780px) {
+  .about-cards { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   ABOUT SUBPAGE — OTHER BRANDS
+   ============================================================ */
+.about-brand-grid__title {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.about-brand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.about-brand-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+  border: 1.5px solid rgba(40,200,100,.35);
+  border-radius: 12px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 20px;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+
+.about-brand-card:hover {
+  border-color: rgba(40,200,100,.8);
+  background: rgba(40,200,100,.08);
+}
+
+.about-brand-cta {
+  display: inline-flex;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 780px) {
+  .about-brand-grid { grid-template-columns: 1fr; }
+}
+
+.about-body__viewall { margin-top: 32px; }

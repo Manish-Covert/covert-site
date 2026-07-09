@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { MEGA_ABOUT, MEGA_SERVICES } from './data'
+import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BOOKS, ABOUT_PODCASTS, ABOUT_BRANDS } from './data'
 import './App.css'
 import './ServicePage.css'
+import './AboutPage.css'
 
 export default function AboutPage() {
   const { id } = useParams()
@@ -102,38 +103,14 @@ export default function AboutPage() {
           <div className="svcpage__hero-overlay" />
           <div className="svcpage__hero-content">
             {item.badge && <p className="svcpage__eyebrow">{item.badge}</p>}
-            <h1 className="svcpage__title">{item.label}</h1>
+            <h1 className="svcpage__title">About<br />{item.label}</h1>
+            {item.tagline && <p className="svcpage__lead">{item.tagline}</p>}
+            <Link to="/about" className="btn btn--outline about-body__viewall">&larr; View all</Link>
           </div>
         </section>
 
-        {/* ===================== CONTENT ===================== */}
-        <section className="svcpage__body">
-          <div className="container container--narrow">
-            <h2 className="svcpage__body-title">About {item.label}</h2>
-            <p className="svcpage__lead">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p className="svcpage__copy">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-              veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            </p>
-            <p className="svcpage__copy">
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-              consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-              est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
-              eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-            </p>
-            <div className="svcpage__cta">
-              <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-              <Link to="/" className="btn btn--outline">← Back to Home</Link>
-            </div>
-          </div>
-        </section>
+        {/* ===================== BODY (per-subpage) ===================== */}
+        <AboutBody id={item.id} item={item} />
       </main>
 
       {/* ===================== FOOTER ===================== */}
@@ -161,5 +138,177 @@ export default function AboutPage() {
         </div>
       </footer>
     </>
+  )
+}
+
+function AboutBody({ id, item }) {
+  switch (id) {
+    case 'covertcom': return <CovertCommunicationBody item={item} />
+    case 'anna': return <AnnaCovertBody item={item} />
+    case 'books': return <BooksBody />
+    case 'podcasts': return <PodcastsBody />
+    case 'otherbrands': return <OtherBrandsBody />
+    case 'covertteam': return <CovertTeamBody />
+    default: return <CovertCommunicationBody item={item} />
+  }
+}
+
+function CovertCommunicationBody({ item }) {
+  return (
+    <section className="svcpage__body">
+      <div className="container">
+        <div className="about-split">
+          <div className="about-split__media" style={{ backgroundImage: `url(${item.img})` }} />
+          <div className="about-split__bar" />
+          <div className="about-split__copy">
+            <h2 className="about-split__title">WHO WE ARE</h2>
+            <p className="svcpage__copy">
+              Covert Communication is a full-service marketing agency built around one idea: great
+              marketing should work as hard as the people behind it. From programmatic media and
+              social to traditional advertising and brand building, our team runs every discipline
+              a modern brand needs under one roof.
+            </p>
+          </div>
+        </div>
+        <div className="svcpage__cta">
+          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
+          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function AnnaCovertBody({ item }) {
+  return (
+    <section className="svcpage__body">
+      <div className="container">
+        <div className="about-split">
+          <img className="about-split__portrait" src={item.img} alt="Anna Covert" />
+          <div className="about-split__bar" />
+          <div className="about-split__copy">
+            <h2 className="about-split__title">MEET ANNA</h2>
+            <p className="svcpage__copy">
+              Anna Covert is the founder of Covert Communication, a Forbes Books author, and the
+              driving force behind the agency's approach to marketing. She's also the voice and
+              likeness behind AI Anna, an AI-powered extension of her brand available to answer
+              questions any time.
+            </p>
+            <a href="#" className="btn btn--outline">view AI Anna &rarr;</a>
+          </div>
+        </div>
+        <div className="svcpage__cta">
+          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
+          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function BooksBody() {
+  return (
+    <section className="svcpage__body">
+      <div className="container">
+        <div className="about-cards">
+          {ABOUT_BOOKS.map(b => (
+            <div key={b.id} className="about-book-card">
+              <img className="about-book-card__cover" src={b.cover} alt={b.title} />
+              <div className="about-book-card__badges">
+                {b.badges.map(badge => <span key={badge} className="about-book-card__badge">{badge}</span>)}
+              </div>
+              <h3 className="about-book-card__title">{b.title}</h3>
+              <p className="about-book-card__subtitle">{b.subtitle}</p>
+              <p className="svcpage__copy">{b.copy}</p>
+              <a href={b.buyHref} className="btn btn--outline">buy</a>
+            </div>
+          ))}
+        </div>
+        <div className="svcpage__cta">
+          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
+          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function PodcastsBody() {
+  return (
+    <section className="svcpage__body">
+      <div className="container">
+        <div className="about-cards">
+          {ABOUT_PODCASTS.map(p => (
+            <div key={p.id} className="about-podcast-card">
+              <h3 className="about-podcast-card__title">{p.title}</h3>
+              <p className="about-podcast-card__subscribers">{p.subscribers}</p>
+              <p className="svcpage__copy">{p.copy}</p>
+              <a href={p.listenHref} className="btn btn--outline">Listen</a>
+            </div>
+          ))}
+        </div>
+        <div className="svcpage__cta">
+          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
+          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function OtherBrandsBody() {
+  const featured = ABOUT_BRANDS.find(b => b.featured)
+  const rest = ABOUT_BRANDS.filter(b => !b.featured)
+  return (
+    <section className="svcpage__body">
+      <div className="container">
+        {featured && (
+          <div className="about-split">
+            <div className="about-split__brand">{featured.name}</div>
+            <div className="about-split__bar" />
+            <div className="about-split__copy">
+              <h2 className="about-split__title">{featured.name}</h2>
+              <p className="svcpage__copy">{featured.copy}</p>
+            </div>
+          </div>
+        )}
+        <h3 className="about-brand-grid__title">Other Brands</h3>
+        <div className="about-brand-grid">
+          {rest.map(b => (
+            <a key={b.id} href={b.href} className="about-brand-card">{b.name}</a>
+          ))}
+        </div>
+        {featured && (
+          <a href={featured.href} className="btn btn--green about-brand-cta">{featured.name}</a>
+        )}
+        <div className="svcpage__cta">
+          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
+          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CovertTeamBody() {
+  return (
+    <section className="svcpage__body">
+      <div className="container container--narrow">
+        <h2 className="svcpage__body-title">The Covert Team</h2>
+        <p className="svcpage__lead">
+          Covert Communication is powered by a team of strategists, creatives, and media specialists
+          working across every discipline the agency offers — from programmatic and social to
+          traditional advertising and brand building.
+        </p>
+        <p className="svcpage__copy">
+          Team bios and photos are coming soon. In the meantime, reach out and we'll introduce you
+          to the people who'll be working on your account.
+        </p>
+        <div className="svcpage__cta">
+          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
+          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+        </div>
+      </div>
+    </section>
   )
 }
