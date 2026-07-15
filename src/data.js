@@ -22,7 +22,7 @@ export const MEGA_SERVICES = [
 
 export const MEGA_ABOUT = [
   { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   href: '/about/covertcom',
-    heroImg: '/about/about-covertcom-emblem.webp', tagline: 'The full-service agency behind the brand.' },
+    heroImg: '/about/about-covertcom-emblem.webp', heroBg: '/about/about-covertcom-hero.webp', tagline: 'The full-service agency behind the brand.' },
   { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        href: '/about/anna',
     heroImg: '/about/about-anna-emblem.webp', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '/about/covertteam',

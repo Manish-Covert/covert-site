@@ -1,4 +1,80 @@
 /* ============================================================
+   ABOUT SUBPAGE HERO (image background variant)
+   ============================================================ */
+.about-hero {
+  position: relative;
+  min-height: 92vh;
+  background-color: #0a0a0a;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.about-hero__content {
+  position: absolute;
+  left: 49%;
+  top: 56%;
+  transform: translateY(-50%);
+  max-width: 620px;
+}
+
+.about-hero__title {
+  font-size: clamp(34px, 4.2vw, 52px);
+  font-weight: 800;
+  line-height: 1.12;
+  color: #fff;
+}
+
+.about-hero__title-accent {
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.about-hero__lead {
+  margin-top: 26px;
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.35;
+  color: #fff;
+}
+
+.about-hero__viewall {
+  position: absolute;
+  left: 10%;
+  bottom: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    linear-gradient(90deg, var(--teal), var(--green-bright)) border-box;
+  color: #fff;
+  font-size: 16px;
+  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+}
+.about-hero__viewall:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(139, 212, 25, .3);
+}
+
+@media (max-width: 900px) {
+  .about-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 120px 24px 110px;
+  }
+  .about-hero__content {
+    position: static;
+    transform: none;
+  }
+  .about-hero__title-accent { white-space: normal; }
+  .about-hero__viewall { left: 24px; bottom: 32px; }
+}
+
+/* ============================================================
    ABOUT INDEX PAGE
    ============================================================ */
 .about-index__hero {

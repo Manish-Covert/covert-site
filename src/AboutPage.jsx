@@ -100,15 +100,32 @@ export default function AboutPage() {
 
       <main>
         {/* ===================== HERO ===================== */}
-        <section className="svcpage__hero" style={{ backgroundImage: `url(${item.heroImg || item.img})` }}>
-          <div className="svcpage__hero-overlay" />
-          <div className="svcpage__hero-content">
-            {item.badge && <p className="svcpage__eyebrow">{item.badge}</p>}
-            <h1 className="svcpage__title">About<br />{item.label}</h1>
-            {item.tagline && <p className="svcpage__lead">{item.tagline}</p>}
-            <Link to="/about" className="btn btn--outline about-body__viewall">&larr; View all</Link>
-          </div>
-        </section>
+        {item.heroBg ? (
+          <section className="about-hero" style={{ backgroundImage: `url(${item.heroBg})` }}>
+            <div className="about-hero__content">
+              <h1 className="about-hero__title">
+                About<br />
+                <span className="about-hero__title-accent">{item.label}</span>
+              </h1>
+              <p className="about-hero__lead">
+                Lorem ipsum dolor sit amet, consectetuer<br />
+                Lorem ipsum dolor sit amet, consectetuer<br />
+                adipiscing elit, diam nonummy
+              </p>
+            </div>
+            <Link to="/about" className="about-hero__viewall">&#9666; View all</Link>
+          </section>
+        ) : (
+          <section className="svcpage__hero" style={{ backgroundImage: `url(${item.heroImg || item.img})` }}>
+            <div className="svcpage__hero-overlay" />
+            <div className="svcpage__hero-content">
+              {item.badge && <p className="svcpage__eyebrow">{item.badge}</p>}
+              <h1 className="svcpage__title">About<br />{item.label}</h1>
+              {item.tagline && <p className="svcpage__lead">{item.tagline}</p>}
+              <Link to="/about" className="btn btn--outline about-body__viewall">&larr; View all</Link>
+            </div>
+          </section>
+        )}
 
         {/* ===================== BODY (per-subpage) ===================== */}
         <AboutBody id={item.id} item={item} />
