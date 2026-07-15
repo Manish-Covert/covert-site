@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BOOKS, ABOUT_PODCASTS, ABOUT_BRANDS } from './data'
+import SiteFooter from './SiteFooter'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -113,30 +114,8 @@ export default function AboutPage() {
         <AboutBody id={item.id} item={item} />
       </main>
 
-      {/* ===================== FOOTER ===================== */}
-      <footer className="footer">
-        <div className="footer__inner">
-          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
-          <div className="footer__social" aria-label="Social links">
-            <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />
-            </a>
-            <a href="https://facebook.com/covertcommunication" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <img src="/icons/sm_fb.svg" alt="Facebook" />
-            </a>
-            <a href="mailto:anna@covertcommunication.com" aria-label="Email">
-              <img src="/icons/sm_email.svg" alt="Email" />
-            </a>
-          </div>
-          <p className="footer__legal">
-            Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
-            <a href="#">Privacy Policy</a> |{' '}
-            <a href="#">Cookie Preferences</a> |{' '}
-            <a href="#">Terms of Service</a> |{' '}
-            <a href="#">Site Map</a> | 808-272-9952
-          </p>
-        </div>
-      </footer>
+      {/* ===================== GLOBAL FOOTER (form + footer) ===================== */}
+      <SiteFooter />
     </>
   )
 }
