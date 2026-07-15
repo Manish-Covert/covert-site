@@ -65,11 +65,28 @@
     linear-gradient(90deg, var(--teal), var(--green-bright)) border-box;
   color: #fff;
   font-size: 16px;
-  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+  overflow: hidden;
+  transition: color .3s var(--ease);
+}
+.about-hero__viewall::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--teal), var(--green-bright));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s var(--ease);
+  z-index: 0;
+}
+.about-hero__viewall span {
+  position: relative;
+  z-index: 1;
 }
 .about-hero__viewall:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 24px rgba(139, 212, 25, .3);
+  color: #06210a;
+}
+.about-hero__viewall:hover::before {
+  transform: scaleX(1);
 }
 
 @media (max-width: 900px) {

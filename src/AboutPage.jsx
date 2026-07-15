@@ -31,12 +31,12 @@ export default function AboutPage() {
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null) }}
             >
-              <button type="button" className="nav__link nav__link--trigger" aria-expanded={aboutOpen}>
+              <Link to="/about" className="nav__link nav__link--trigger" aria-expanded={aboutOpen}>
                 About
                 <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </button>
+              </Link>
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
                   {MEGA_ABOUT.map(a => (
@@ -116,7 +116,7 @@ export default function AboutPage() {
                 adipiscing elit, diam nonummy
               </p>
             </div>
-            <Link to="/about" className="about-hero__viewall">&#9666; View all</Link>
+            <Link to="/about" className="about-hero__viewall"><span>&#9666; View all</span></Link>
           </section>
         ) : (
           <section className="svcpage__hero" style={{ backgroundImage: `url(${item.heroImg || item.img})` }}>

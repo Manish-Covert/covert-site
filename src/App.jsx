@@ -69,18 +69,17 @@ function HomePage({
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null); }}
             >
-              <button
-                type="button"
+              <Link
+                to="/about"
                 className="nav__link nav__link--trigger"
                 aria-expanded={aboutOpen}
-                onClick={() => setAboutOpen(v => !v)}
               >
                 About
                 <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
                     strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </button>
+              </Link>
 
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
