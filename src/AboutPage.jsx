@@ -248,25 +248,28 @@ function ScrollGallery({ images, children }) {
 
 function AnnaCovertBody({ item }) {
   return (
-    <section className="svcpage__body">
+    <section className="svcpage__body about-anna">
       <div className="container">
-        <div className="about-split">
-          <img className="about-split__portrait" src={item.photo || item.img} alt="Anna Covert" />
-          <div className="about-split__bar" />
-          <div className="about-split__copy">
-            <h2 className="about-split__title">MEET ANNA</h2>
+        <div className="about-anna__split">
+          <div className="about-anna__media">
+            <img src={item.figure || item.photo || item.img} alt="Anna Covert" />
+          </div>
+          <div className="about-anna__copy">
+            <h2 className="about-anna__title">CAPTION GOES HERE</h2>
             <p className="svcpage__copy">
-              Anna Covert is the founder of Covert Communication, a Forbes Books author, and the
-              driving force behind the agency's approach to marketing. She's also the voice and
-              likeness behind AI Anna, an AI-powered extension of her brand available to answer
-              questions any time.
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+              quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+              consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+              consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
+              odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.
             </p>
-            <a href="#" className="btn btn--outline">view AI Anna &rarr;</a>
+            <a href="#" className="btn-gradient about-anna__cta"><span>view AI Anna</span></a>
           </div>
         </div>
         <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+          <Link to="/#contact" className="btn-gradient"><span>Book a Meeting &rarr;</span></Link>
+          <Link to="/about" className="btn-gradient"><span>&larr; Back to About</span></Link>
         </div>
       </div>
     </section>

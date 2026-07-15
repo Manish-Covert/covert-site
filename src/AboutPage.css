@@ -242,6 +242,49 @@
 }
 
 /* ============================================================
+   ABOUT ANNA — image left / text right section
+   ============================================================ */
+.about-anna { background: #000; }
+.about-anna__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+.about-anna__media {
+  display: flex;
+  justify-content: center;
+}
+.about-anna__media img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  object-fit: contain;
+}
+.about-anna__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.about-anna__copy .svcpage__copy {
+  color: rgba(255, 255, 255, .72);
+  text-align: justify;
+  max-width: 560px;
+  margin-bottom: 28px;
+}
+.about-anna__cta { margin-top: 4px; }
+
+@media (max-width: 780px) {
+  .about-anna__split { grid-template-columns: 1fr; gap: 28px; }
+  .about-anna__media img { max-width: 320px; }
+  .about-anna__copy .svcpage__copy { text-align: left; }
+}
+
+/* ============================================================
    PINNED VERTICAL SCROLL GALLERY (about covertcom "Who we are")
    ============================================================ */
 .scroll-gallery {

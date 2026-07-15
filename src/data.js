@@ -24,7 +24,7 @@ export const MEGA_ABOUT = [
   { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   href: '/about/covertcom',
     heroImg: '/about/about-covertcom-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', tagline: 'The full-service agency behind the brand.' },
   { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        href: '/about/anna',
-    heroImg: '/about/about-anna-emblem.webp', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
+    heroImg: '/about/about-anna-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-hero-emblem.webp', figure: '/about/about-anna-figure.webp', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '/about/covertteam',
     tagline: 'The people who make it happen, every day.' },
   { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '/about/books',
