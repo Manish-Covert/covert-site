@@ -368,7 +368,7 @@ function OtherBrandsBody() {
           </div>
           <div className="about-brands__bar" />
           <div className="about-brands__featured-copy">
-            <h2 className="about-brands__caption">{active.caption}</h2>
+            <h2 className="about-brands__caption">{active.name}</h2>
             <p className="svcpage__copy">{active.copy}</p>
           </div>
         </div>
