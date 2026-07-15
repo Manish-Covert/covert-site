@@ -21,12 +21,67 @@ export const MEGA_SERVICES = [
 ]
 
 export const MEGA_ABOUT = [
-  { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   href: '/about/covertcom' },
-  { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        href: '/about/anna' },
-  { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '/about/covertteam' },
-  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '/about/books' },
-  { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', href: '/about/podcasts' },
-  { id: 'otherbrands',label: 'Other Brands',badge: '3 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '/about/otherbrands' },
+  { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   href: '/about/covertcom',
+    heroImg: '/about/about-covertcom-emblem.webp', tagline: 'The full-service agency behind the brand.' },
+  { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        href: '/about/anna',
+    heroImg: '/about/about-anna-emblem.webp', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
+  { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '/about/covertteam',
+    tagline: 'The people who make it happen, every day.' },
+  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '/about/books',
+    heroImg: '/about/about-books-cover.webp', tagline: 'Bestselling reads on marketing and the solar industry.' },
+  { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', href: '/about/podcasts',
+    tagline: 'Conversations on marketing, media, and solar.' },
+  { id: 'otherbrands',label: 'Other Brands',badge: '4 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '/about/otherbrands',
+    tagline: 'Other ventures built by the Covert Communication team.' },
+]
+
+export const ABOUT_BOOKS = [
+  {
+    id: 'covert-code',
+    title: 'The Covert Code',
+    subtitle: 'Mastering the Art of Digital Marketing',
+    author: 'Anna Covert',
+    cover: '/about/about-books-cover.webp',
+    badges: ['Forbes Books', 'Amazon Best Seller'],
+    copy: 'A practical playbook for building and scaling a modern marketing agency, drawn from Anna Covert’s own experience growing Covert Communication.',
+    buyHref: '#',
+  },
+  {
+    id: 'solar-coaster',
+    title: 'The Solar Coaster',
+    subtitle: 'The Solar Industry’s Ultimate Playbook',
+    author: 'Anna Covert',
+    cover: '/about/about-books-cover.webp',
+    badges: ['New!'],
+    copy: 'A hands-on guide to marketing and growing a solar business, built on lessons from the front lines of a fast-moving industry.',
+    buyHref: '#',
+  },
+]
+
+export const ABOUT_PODCASTS = [
+  {
+    id: 'covert-code-podcast',
+    title: 'The Covert Code Podcast',
+    subscribers: 'Over 150,000+ Subscribers & growing!',
+    copy: 'Anna Covert breaks down marketing strategy, brand building, and the business of agency life.',
+    listenHref: '#',
+  },
+  {
+    id: 'solar-coaster-podcast',
+    title: 'The Solar Coaster Podcast',
+    subscribers: 'Over 50,000+ Subscribers & growing!',
+    copy: 'A look inside the solar industry, its ups and downs, and how to market and grow within it.',
+    listenHref: '#',
+  },
+]
+
+export const ABOUT_BRANDS = [
+  { id: 'trusting-solar-calculator', name: 'Trusting SolarCalculator', featured: true,
+    copy: 'A tool that helps homeowners get a fast, trustworthy estimate on going solar.', href: '#' },
+  { id: 'mana', name: 'Mana', href: '#' },
+  { id: 'switch-it-solar', name: 'Switch It Solar', href: '#' },
+  { id: 'solar-assault', name: 'Solar Assault', href: '#' },
+  { id: 'reactium', name: 'Reactium', href: '#' },
 ]
 
 export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']

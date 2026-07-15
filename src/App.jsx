@@ -4,6 +4,7 @@ import { useReveal } from './useReveal'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HOW_DID_YOU_HEAR, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
 import AboutPage from './AboutPage'
+import AboutIndexPage from './AboutIndexPage'
 import './App.css'
 
 const HeroLogo = lazy(() => import('./HeroLogo'))
@@ -51,6 +52,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/services/:id" element={<ServicePage />} />
+      <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
       <Route path="*" element={<HomePage
         status={status} setStatus={setStatus}
