@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_PODCASTS, ABOUT_BRANDS } from './data'
+import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BRANDS } from './data'
 import SiteFooter from './SiteFooter'
 import './App.css'
 import './ServicePage.css'
@@ -104,7 +104,7 @@ export default function AboutPage() {
           <section className="about-hero" style={{ backgroundImage: `url(${item.heroBg})` }}>
             {item.heroEmblem && (
               <img
-                className={`about-hero__emblem${item.heroEmblemWide ? ' about-hero__emblem--wide' : ''}`}
+                className={`about-hero__emblem${item.heroEmblemWide ? ' about-hero__emblem--wide' : ''}${item.heroEmblemFigure ? ' about-hero__emblem--figure' : ''}`}
                 src={item.heroEmblem} alt="" aria-hidden="true"
               />
             )}
@@ -326,22 +326,28 @@ function NewBadge({ label }) {
 }
 
 function PodcastsBody() {
+  const podcasts = [
+    { id: 'covert-code', logo: '/about/podcast-covert-code.webp', alt: 'The Covert Code Podcast', subs: 'Over 150,000+ Subscribers & growing!' },
+    { id: 'solar-coaster', logo: '/about/podcast-solar-coaster.webp', alt: 'The Solar Coaster Podcast', subs: 'Over 50,000+ Subscribers & growing!' },
+  ]
   return (
-    <section className="svcpage__body">
+    <section className="svcpage__body about-podcasts">
       <div className="container">
-        <div className="about-cards">
-          {ABOUT_PODCASTS.map(p => (
-            <div key={p.id} className="about-podcast-card">
-              <h3 className="about-podcast-card__title">{p.title}</h3>
-              <p className="about-podcast-card__subscribers">{p.subscribers}</p>
-              <p className="svcpage__copy">{p.copy}</p>
-              <a href={p.listenHref} className="btn btn--outline">Listen</a>
+        <div className="about-podcasts__grid">
+          {podcasts.map(p => (
+            <div key={p.id} className="about-podcasts__card">
+              <div className="about-podcasts__logo">
+                <img src={p.logo} alt={p.alt} />
+              </div>
+              <p className="about-podcasts__subs">{p.subs}</p>
+              <p className="svcpage__copy about-podcasts__copy">
+                Lorem ipsum dolor sit amet, consectetuer<br />
+                Lorem ipsum dolor sit amet, consectetuer<br />
+                adipiscing elit, diam nonummy
+              </p>
+              <a href="#" className="btn-gradient about-podcasts__cta"><span>Listen</span></a>
             </div>
           ))}
-        </div>
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
         </div>
       </div>
     </section>

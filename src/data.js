@@ -30,6 +30,7 @@ export const MEGA_ABOUT = [
   { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '/about/books',
     heroImg: '/about/about-books-cover.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-books-hero.webp', heroEmblemWide: true, heroTitle: 'Books', heroAccent: 'by Anna Covert', tagline: 'Bestselling reads on marketing and the solar industry.' },
   { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', href: '/about/podcasts',
+    heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-headshot.webp', heroEmblemFigure: true, heroTitle: 'Podcasts', heroAccent: 'with Anna Covert',
     tagline: 'Conversations on marketing, media, and solar.' },
   { id: 'otherbrands',label: 'Other Brands',badge: '4 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '/about/otherbrands',
     tagline: 'Other ventures built by the Covert Communication team.' },

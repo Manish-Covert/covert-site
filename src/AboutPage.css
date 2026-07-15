@@ -33,6 +33,17 @@
   filter: none;
 }
 
+/* Figure emblem (e.g. Anna headshot on the Podcasts hero): left side,
+   vertically centered, full brightness. */
+.about-hero__emblem--figure {
+  left: 28%;
+  top: 49%;
+  height: 76vh;
+  width: auto;
+  opacity: 1;
+  filter: none;
+}
+
 .about-hero__content {
   position: absolute;
   left: 49%;
@@ -354,6 +365,50 @@
 @media (max-width: 780px) {
   .about-books__grid { grid-template-columns: 1fr; gap: 48px; }
   .about-books__copy { text-align: left; }
+}
+
+/* ============================================================
+   ABOUT PODCASTS — two podcast cards
+   ============================================================ */
+.about-podcasts { background: #000; }
+.about-podcasts__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: start;
+}
+.about-podcasts__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.about-podcasts__logo {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+}
+.about-podcasts__logo img {
+  width: auto;
+  max-width: 100%;
+  max-height: 150px;
+  height: auto;
+}
+.about-podcasts__subs {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 700;
+  color: #fff;
+  margin: 26px 0 22px;
+}
+.about-podcasts__copy {
+  margin-bottom: 26px;
+}
+.about-podcasts__cta { align-self: center; }
+
+@media (max-width: 780px) {
+  .about-podcasts__grid { grid-template-columns: 1fr; gap: 56px; }
 }
 
 /* ============================================================
