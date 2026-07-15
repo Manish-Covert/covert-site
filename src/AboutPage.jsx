@@ -171,9 +171,9 @@ function CovertCommunicationBody({ item }) {
           a modern brand needs under one roof.
         </p>
       </ScrollGallery>
-      <section className="svcpage__body" style={{ borderTop: 'none', paddingTop: 0 }}>
+      <section className="svcpage__body about-covertcom-cta">
         <div className="container">
-          <div className="svcpage__cta" style={{ marginTop: 0 }}>
+          <div className="svcpage__cta">
             <Link to="/#contact" className="btn-gradient"><span>Book a Meeting &rarr;</span></Link>
             <Link to="/about" className="btn-gradient"><span>&larr; Back to About</span></Link>
           </div>
