@@ -102,6 +102,9 @@ export default function AboutPage() {
         {/* ===================== HERO ===================== */}
         {item.heroBg ? (
           <section className="about-hero" style={{ backgroundImage: `url(${item.heroBg})` }}>
+            {item.heroEmblem && (
+              <img className="about-hero__emblem" src={item.heroEmblem} alt="" aria-hidden="true" />
+            )}
             <div className="about-hero__content">
               <h1 className="about-hero__title">
                 About<br />
