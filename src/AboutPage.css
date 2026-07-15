@@ -592,10 +592,9 @@
   margin-bottom: 0;
 }
 
-/* Centered lower block: heading, grid, CTA */
+/* Lower block: heading, grid, CTA — full container width */
 .about-brands__lower {
-  max-width: 640px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .about-brands__grid-title {
