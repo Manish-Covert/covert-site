@@ -38,7 +38,7 @@ export default function SiteFooter() {
             services and innovative agency approach.
           </p>
           {status === 'ok' ? (
-            <div className="form__success reveal">
+            <div className="form__success">
               <strong>Thank you!</strong> Your message has been sent. We&rsquo;ll be in touch shortly.
             </div>
           ) : (
