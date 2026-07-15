@@ -267,10 +267,6 @@ function AnnaCovertBody({ item }) {
             <a href="#" className="btn-gradient about-anna__cta"><span>view AI Anna</span></a>
           </div>
         </div>
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn-gradient"><span>Book a Meeting &rarr;</span></Link>
-          <Link to="/about" className="btn-gradient"><span>&larr; Back to About</span></Link>
-        </div>
       </div>
     </section>
   )
