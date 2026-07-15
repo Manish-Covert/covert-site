@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BOOKS, ABOUT_PODCASTS, ABOUT_BRANDS } from './data'
 import SiteFooter from './SiteFooter'
@@ -116,7 +116,7 @@ export default function AboutPage() {
                 adipiscing elit, diam nonummy
               </p>
             </div>
-            <Link to="/about" className="about-hero__viewall"><span>&#9666; View all</span></Link>
+            <Link to="/about" className="btn-gradient about-hero__viewall"><span>&#9666; View all</span></Link>
           </section>
         ) : (
           <section className="svcpage__hero" style={{ backgroundImage: `url(${item.heroImg || item.img})` }}>
@@ -153,25 +153,93 @@ function AboutBody({ id, item }) {
 }
 
 function CovertCommunicationBody({ item }) {
+  const galleryImages = [
+    item.heroImg || item.img,
+    '/categories/programmatic.webp',
+    '/categories/technology.webp',
+    '/categories/social.webp',
+    '/categories/brand-building.webp',
+  ]
   return (
-    <section className="svcpage__body">
-      <div className="container">
-        <div className="about-split">
-          <div className="about-split__media" style={{ backgroundImage: `url(${item.heroImg || item.img})` }} />
-          <div className="about-split__bar" />
-          <div className="about-split__copy">
-            <h2 className="about-split__title">WHO WE ARE</h2>
-            <p className="svcpage__copy">
-              Covert Communication is a full-service marketing agency built around one idea: great
-              marketing should work as hard as the people behind it. From programmatic media and
-              social to traditional advertising and brand building, our team runs every discipline
-              a modern brand needs under one roof.
-            </p>
+    <>
+      <ScrollGallery images={galleryImages}>
+        <h2 className="about-split__title">WHO WE ARE</h2>
+        <p className="svcpage__copy">
+          Covert Communication is a full-service marketing agency built around one idea: great
+          marketing should work as hard as the people behind it. From programmatic media and
+          social to traditional advertising and brand building, our team runs every discipline
+          a modern brand needs under one roof.
+        </p>
+      </ScrollGallery>
+      <section className="svcpage__body" style={{ borderTop: 'none', paddingTop: 0 }}>
+        <div className="container">
+          <div className="svcpage__cta" style={{ marginTop: 0 }}>
+            <Link to="/#contact" className="btn-gradient"><span>Book a Meeting &rarr;</span></Link>
+            <Link to="/about" className="btn-gradient"><span>&larr; Back to About</span></Link>
           </div>
         </div>
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+      </section>
+    </>
+  )
+}
+
+/* Pins the media frame while a vertical filmstrip of images scrolls through it,
+   then releases to the next section. Progress is driven by the page scroll
+   position over the tall stage, matching the reference portfolio scroll feel. */
+function ScrollGallery({ images, children }) {
+  const stageRef = useRef(null)
+  const frameRef = useRef(null)
+  const stripRef = useRef(null)
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const stage = stageRef.current
+    const frame = frameRef.current
+    const strip = stripRef.current
+    if (!stage || !frame || !strip) return
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const rect = stage.getBoundingClientRect()
+      const scrollable = stage.offsetHeight - window.innerHeight
+      const progress = scrollable > 0 ? Math.min(Math.max(-rect.top / scrollable, 0), 1) : 0
+      const maxShift = strip.scrollHeight - frame.clientHeight
+      strip.style.transform = `translate3d(0, ${-progress * maxShift}px, 0)`
+      setActive(Math.min(images.length - 1, Math.round(progress * (images.length - 1))))
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    update()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [images])
+
+  return (
+    <section ref={stageRef} className="scroll-gallery" style={{ height: `${images.length * 85}vh` }}>
+      <div className="scroll-gallery__sticky">
+        <div className="container">
+          <div className="about-split">
+            <div ref={frameRef} className="scroll-gallery__frame">
+              <div ref={stripRef} className="scroll-gallery__strip">
+                {images.map((src, i) => (
+                  <div key={i} className="scroll-gallery__slide" style={{ backgroundImage: `url(${src})` }} />
+                ))}
+              </div>
+              <div className="scroll-gallery__dots" aria-hidden="true">
+                {images.map((_, i) => (
+                  <span key={i} className={`scroll-gallery__dot${i === active ? ' scroll-gallery__dot--active' : ''}`} />
+                ))}
+              </div>
+            </div>
+            <div className="about-split__bar" />
+            <div className="about-split__copy">
+              {children}
+            </div>
+          </div>
         </div>
       </div>
     </section>

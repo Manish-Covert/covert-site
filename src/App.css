@@ -375,6 +375,40 @@
 }
 .btn--green:hover::after { animation: shimmer 1s var(--ease); }
 
+/* Global gradient-border pill with animated fill on hover ("View all" style) */
+.btn-gradient {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 44px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    linear-gradient(90deg, var(--teal), var(--green-bright)) border-box;
+  color: #fff;
+  font-size: 16px;
+  overflow: hidden;
+  transition: color .3s var(--ease);
+}
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--teal), var(--green-bright));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s var(--ease);
+  z-index: 0;
+}
+.btn-gradient > span {
+  position: relative;
+  z-index: 1;
+}
+.btn-gradient:hover { color: #06210a; }
+.btn-gradient:hover::before { transform: scaleX(1); }
+
 /* ============================================================
    HERO — full-width with scattered pills + 3D logo
    ============================================================ */
