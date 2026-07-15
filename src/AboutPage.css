@@ -618,8 +618,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 104px;
-  padding: 18px 28px;
+  height: 108px;
+  padding: 16px 28px;
   border: 1.5px solid transparent;
   border-radius: 14px;
   background:
@@ -642,32 +642,15 @@
 .about-brands__card img {
   position: relative;
   z-index: 1;
-  max-width: 100%;
-  max-height: 56px;
+  max-width: 74%;
+  max-height: 74px;
   width: auto;
 }
 
-/* Active brand CTA — green gradient box with the logo, centered */
-.about-brands__cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc((100% - 22px) / 2);
-  height: 104px;
-  margin: 0 auto;
-  padding: 18px 28px;
-  border-radius: 14px;
+/* Active brand — green gradient fill marked in its own grid position */
+.about-brands__card--active::before {
+  opacity: 1;
   background: linear-gradient(120deg, var(--green-bright), var(--green-deep));
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
-}
-.about-brands__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 34px rgba(139,212,25,.35);
-}
-.about-brands__cta img {
-  max-height: 56px;
-  max-width: 100%;
-  width: auto;
 }
 
 @media (max-width: 780px) {
@@ -675,7 +658,6 @@
   .about-brands__bar { display: none; }
   .about-brands__featured-copy .svcpage__copy { text-align: left; }
   .about-brands__grid { grid-template-columns: 1fr; }
-  .about-brands__cta { width: 100%; }
 }
 
 .about-body__viewall { margin-top: 32px; }

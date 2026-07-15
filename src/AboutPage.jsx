@@ -357,7 +357,6 @@ function PodcastsBody() {
 function OtherBrandsBody() {
   const [activeId, setActiveId] = useState(ABOUT_BRANDS[0].id)
   const active = ABOUT_BRANDS.find(b => b.id === activeId) || ABOUT_BRANDS[0]
-  const rest = ABOUT_BRANDS.filter(b => b.id !== activeId)
   return (
     <section className="svcpage__body about-brands">
       <div className="container">
@@ -373,27 +372,23 @@ function OtherBrandsBody() {
           </div>
         </div>
 
-        {/* Other brands grid — click to feature */}
+        {/* Brand grid — fixed positions; click to feature (active marked in place) */}
         <div className="about-brands__lower">
           <h3 className="about-brands__grid-title">Other Brands</h3>
           <div className="about-brands__grid">
-            {rest.map(b => (
+            {ABOUT_BRANDS.map(b => (
               <button
                 key={b.id}
                 type="button"
-                className="about-brands__card"
+                className={`about-brands__card${b.id === activeId ? ' about-brands__card--active' : ''}`}
                 onClick={() => setActiveId(b.id)}
+                aria-pressed={b.id === activeId}
                 aria-label={`Show ${b.name}`}
               >
                 <img src={b.logo} alt={b.name} />
               </button>
             ))}
           </div>
-
-          {/* Active brand CTA */}
-          <a href={active.href} className="about-brands__cta">
-            <img src={active.logo} alt={active.name} />
-          </a>
         </div>
       </div>
     </section>
