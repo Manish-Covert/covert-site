@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BOOKS, ABOUT_PODCASTS, ABOUT_BRANDS } from './data'
+import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_PODCASTS, ABOUT_BRANDS } from './data'
 import SiteFooter from './SiteFooter'
 import './App.css'
 import './ServicePage.css'
@@ -103,12 +103,15 @@ export default function AboutPage() {
         {item.heroBg ? (
           <section className="about-hero" style={{ backgroundImage: `url(${item.heroBg})` }}>
             {item.heroEmblem && (
-              <img className="about-hero__emblem" src={item.heroEmblem} alt="" aria-hidden="true" />
+              <img
+                className={`about-hero__emblem${item.heroEmblemWide ? ' about-hero__emblem--wide' : ''}`}
+                src={item.heroEmblem} alt="" aria-hidden="true"
+              />
             )}
             <div className="about-hero__content">
               <h1 className="about-hero__title">
-                About<br />
-                <span className="about-hero__title-accent">{item.label}</span>
+                {item.heroTitle || 'About'}<br />
+                <span className="about-hero__title-accent">{item.heroAccent || item.label}</span>
               </h1>
               <p className="about-hero__lead">
                 Lorem ipsum dolor sit amet, consectetuer<br />
@@ -273,29 +276,52 @@ function AnnaCovertBody({ item }) {
 }
 
 function BooksBody() {
+  const books = [
+    { id: 'covert-code', img: '/about/book-covert-code.webp', alt: 'The Covert Code' },
+    { id: 'solar-coaster', img: '/about/book-solar-coaster.webp', alt: 'The Solar Coaster', badge: 'NEW!' },
+  ]
   return (
-    <section className="svcpage__body">
+    <section className="svcpage__body about-books">
       <div className="container">
-        <div className="about-cards">
-          {ABOUT_BOOKS.map(b => (
-            <div key={b.id} className="about-book-card">
-              <img className="about-book-card__cover" src={b.cover} alt={b.title} />
-              <div className="about-book-card__badges">
-                {b.badges.map(badge => <span key={badge} className="about-book-card__badge">{badge}</span>)}
+        <div className="about-books__grid">
+          {books.map(b => (
+            <div key={b.id} className="about-books__card">
+              <div className="about-books__media">
+                <img src={b.img} alt={b.alt} />
+                {b.badge && <NewBadge label={b.badge} />}
               </div>
-              <h3 className="about-book-card__title">{b.title}</h3>
-              <p className="about-book-card__subtitle">{b.subtitle}</p>
-              <p className="svcpage__copy">{b.copy}</p>
-              <a href={b.buyHref} className="btn btn--outline">buy</a>
+              <p className="svcpage__copy about-books__copy">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+                minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+              </p>
+              <a href="#" className="btn-gradient about-books__cta"><span>buy</span></a>
             </div>
           ))}
         </div>
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
-        </div>
       </div>
     </section>
+  )
+}
+
+function NewBadge({ label }) {
+  return (
+    <span className="about-books__badge" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <polygon
+          points="50.0,1.0 59.1,10.0 71.3,5.9 75.6,17.9 88.3,19.4 86.9,32.2 97.8,39.1 91.0,50.0 97.8,60.9 86.9,67.8 88.3,80.6 75.6,82.1 71.3,94.1 59.1,90.0 50.0,99.0 40.9,90.0 28.7,94.1 24.4,82.1 11.7,80.6 13.1,67.8 2.2,60.9 9.0,50.0 2.2,39.1 13.1,32.2 11.7,19.4 24.4,17.9 28.7,5.9 40.9,10.0"
+          fill="url(#newGold)"
+        />
+        <defs>
+          <linearGradient id="newGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#f4d03f" />
+            <stop offset="0.5" stopColor="#d4a017" />
+            <stop offset="1" stopColor="#b8860b" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <span className="about-books__badge-text">{label}</span>
+    </span>
   )
 }
 

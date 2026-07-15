@@ -28,7 +28,7 @@ export const MEGA_ABOUT = [
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '/about/covertteam',
     tagline: 'The people who make it happen, every day.' },
   { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '/about/books',
-    heroImg: '/about/about-books-cover.webp', tagline: 'Bestselling reads on marketing and the solar industry.' },
+    heroImg: '/about/about-books-cover.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-books-hero.webp', heroEmblemWide: true, heroTitle: 'Books', heroAccent: 'by Anna Covert', tagline: 'Bestselling reads on marketing and the solar industry.' },
   { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', href: '/about/podcasts',
     tagline: 'Conversations on marketing, media, and solar.' },
   { id: 'otherbrands',label: 'Other Brands',badge: '4 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '/about/otherbrands',
