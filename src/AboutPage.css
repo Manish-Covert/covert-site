@@ -551,52 +551,123 @@
 }
 
 /* ============================================================
-   ABOUT SUBPAGE — OTHER BRANDS
+   ABOUT SUBPAGE — OTHER BRANDS (interactive)
    ============================================================ */
-.about-brand-grid__title {
+.about-brands { background: #000; }
+
+/* Featured brand: logo left, gradient bar, caption + copy right */
+.about-brands__featured {
+  display: grid;
+  grid-template-columns: minmax(260px, 460px) 3px 1fr;
+  gap: 44px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+.about-brands__featured-logo {
+  display: flex;
+  justify-content: center;
+}
+.about-brands__featured-logo img {
+  width: auto;
+  max-width: 100%;
+  max-height: 120px;
+}
+.about-brands__bar {
+  width: 3px;
+  align-self: stretch;
+  background: linear-gradient(180deg, #2fd48a, #7fe33c);
+  border-radius: 2px;
+}
+.about-brands__caption {
   font-family: 'Sora', sans-serif;
-  font-size: 18px;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 18px;
+}
+.about-brands__featured-copy .svcpage__copy {
+  text-align: justify;
+  max-width: 560px;
+  margin-bottom: 0;
+}
+
+.about-brands__grid-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.about-brand-grid {
+.about-brands__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 22px;
+  max-width: 640px;
+  margin-bottom: 40px;
 }
 
-.about-brand-card {
+/* Gradient-border card; gradient fill on hover */
+.about-brands__card {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 70px;
-  border: 1.5px solid rgba(40,200,100,.35);
-  border-radius: 12px;
-  color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
-  text-align: center;
-  padding: 10px 20px;
-  transition: border-color .25s var(--ease), background .25s var(--ease);
+  min-height: 96px;
+  padding: 18px 28px;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(90deg, var(--teal), var(--green-bright)) border-box;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform .25s var(--ease);
+}
+.about-brands__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--teal), var(--green-bright));
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+.about-brands__card:hover::before { opacity: 1; }
+.about-brands__card:hover { transform: translateY(-2px); }
+.about-brands__card img {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  max-height: 56px;
+  width: auto;
 }
 
-.about-brand-card:hover {
-  border-color: rgba(40,200,100,.8);
-  background: rgba(40,200,100,.08);
-}
-
-.about-brand-cta {
+/* Active brand CTA — green gradient pill with the logo */
+.about-brands__cta {
   display: inline-flex;
-  margin-bottom: 32px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 44px;
+  border-radius: 14px;
+  background: linear-gradient(120deg, var(--green-bright), var(--green-deep));
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.about-brands__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(139,212,25,.35);
+}
+.about-brands__cta img {
+  max-height: 56px;
+  max-width: 100%;
+  width: auto;
 }
 
 @media (max-width: 780px) {
-  .about-brand-grid { grid-template-columns: 1fr; }
+  .about-brands__featured { grid-template-columns: 1fr; gap: 24px; }
+  .about-brands__bar { display: none; }
+  .about-brands__featured-copy .svcpage__copy { text-align: left; }
+  .about-brands__grid { grid-template-columns: 1fr; }
 }
 
 .about-body__viewall { margin-top: 32px; }

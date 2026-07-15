@@ -33,7 +33,7 @@ export const MEGA_ABOUT = [
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-headshot.webp', heroEmblemFigure: true, heroTitle: 'Podcasts', heroAccent: 'with Anna Covert',
     tagline: 'Conversations on marketing, media, and solar.' },
   { id: 'otherbrands',label: 'Other Brands',badge: '4 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '/about/otherbrands',
-    tagline: 'Other ventures built by the Covert Communication team.' },
+    heroBg: '/about/about-otherbrands-hero.webp', tagline: 'Other ventures built by the Covert Communication team.' },
 ]
 
 export const ABOUT_BOOKS = [
@@ -76,13 +76,19 @@ export const ABOUT_PODCASTS = [
   },
 ]
 
+const BRAND_LOREM = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate'
+
 export const ABOUT_BRANDS = [
-  { id: 'trusting-solar-calculator', name: 'Trusting SolarCalculator', featured: true,
-    copy: 'A tool that helps homeowners get a fast, trustworthy estimate on going solar.', href: '#' },
-  { id: 'mana', name: 'Mana', href: '#' },
-  { id: 'switch-it-solar', name: 'Switch It Solar', href: '#' },
-  { id: 'solar-assault', name: 'Solar Assault', href: '#' },
-  { id: 'reactium', name: 'Reactium', href: '#' },
+  { id: 'trusting-solar-calculator', name: 'Trusting SolarCalculator', logo: '/about/brand-trusting-solar.png',
+    caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
+  { id: 'mana', name: 'Mana', logo: '/about/brand-mana.png',
+    caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
+  { id: 'switch-it-solar', name: 'Switch It Solar', logo: '/about/brand-switch-it.png',
+    caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
+  { id: 'solar-assault', name: 'Solar Assault', logo: '/about/brand-solar-assault.png',
+    caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
+  { id: 'reactium', name: 'Reactium', logo: '/about/brand-reactium.png',
+    caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
 ]
 
 export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']

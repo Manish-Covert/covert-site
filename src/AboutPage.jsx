@@ -355,34 +355,44 @@ function PodcastsBody() {
 }
 
 function OtherBrandsBody() {
-  const featured = ABOUT_BRANDS.find(b => b.featured)
-  const rest = ABOUT_BRANDS.filter(b => !b.featured)
+  const [activeId, setActiveId] = useState(ABOUT_BRANDS[0].id)
+  const active = ABOUT_BRANDS.find(b => b.id === activeId) || ABOUT_BRANDS[0]
+  const rest = ABOUT_BRANDS.filter(b => b.id !== activeId)
   return (
-    <section className="svcpage__body">
+    <section className="svcpage__body about-brands">
       <div className="container">
-        {featured && (
-          <div className="about-split">
-            <div className="about-split__brand">{featured.name}</div>
-            <div className="about-split__bar" />
-            <div className="about-split__copy">
-              <h2 className="about-split__title">{featured.name}</h2>
-              <p className="svcpage__copy">{featured.copy}</p>
-            </div>
+        {/* Featured brand */}
+        <div className="about-brands__featured">
+          <div className="about-brands__featured-logo">
+            <img src={active.logo} alt={active.name} />
           </div>
-        )}
-        <h3 className="about-brand-grid__title">Other Brands</h3>
-        <div className="about-brand-grid">
+          <div className="about-brands__bar" />
+          <div className="about-brands__featured-copy">
+            <h2 className="about-brands__caption">{active.caption}</h2>
+            <p className="svcpage__copy">{active.copy}</p>
+          </div>
+        </div>
+
+        {/* Other brands grid — click to feature */}
+        <h3 className="about-brands__grid-title">Other Brands</h3>
+        <div className="about-brands__grid">
           {rest.map(b => (
-            <a key={b.id} href={b.href} className="about-brand-card">{b.name}</a>
+            <button
+              key={b.id}
+              type="button"
+              className="about-brands__card"
+              onClick={() => setActiveId(b.id)}
+              aria-label={`Show ${b.name}`}
+            >
+              <img src={b.logo} alt={b.name} />
+            </button>
           ))}
         </div>
-        {featured && (
-          <a href={featured.href} className="btn btn--green about-brand-cta">{featured.name}</a>
-        )}
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
-        </div>
+
+        {/* Active brand CTA */}
+        <a href={active.href} className="about-brands__cta">
+          <img src={active.logo} alt={active.name} />
+        </a>
       </div>
     </section>
   )
