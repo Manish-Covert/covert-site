@@ -592,6 +592,12 @@
   margin-bottom: 0;
 }
 
+/* Centered lower block: heading, grid, CTA */
+.about-brands__lower {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 .about-brands__grid-title {
   font-family: 'Sora', sans-serif;
   font-size: 22px;
@@ -604,7 +610,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
-  max-width: 640px;
   margin-bottom: 40px;
 }
 
@@ -614,7 +619,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 96px;
+  height: 104px;
   padding: 18px 28px;
   border: 1.5px solid transparent;
   border-radius: 14px;
@@ -643,12 +648,15 @@
   width: auto;
 }
 
-/* Active brand CTA — green gradient pill with the logo */
+/* Active brand CTA — green gradient box with the logo, centered */
 .about-brands__cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 44px;
+  width: calc((100% - 22px) / 2);
+  height: 104px;
+  margin: 0 auto;
+  padding: 18px 28px;
   border-radius: 14px;
   background: linear-gradient(120deg, var(--green-bright), var(--green-deep));
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
@@ -668,6 +676,7 @@
   .about-brands__bar { display: none; }
   .about-brands__featured-copy .svcpage__copy { text-align: left; }
   .about-brands__grid { grid-template-columns: 1fr; }
+  .about-brands__cta { width: 100%; }
 }
 
 .about-body__viewall { margin-top: 32px; }

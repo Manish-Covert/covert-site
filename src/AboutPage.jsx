@@ -374,25 +374,27 @@ function OtherBrandsBody() {
         </div>
 
         {/* Other brands grid — click to feature */}
-        <h3 className="about-brands__grid-title">Other Brands</h3>
-        <div className="about-brands__grid">
-          {rest.map(b => (
-            <button
-              key={b.id}
-              type="button"
-              className="about-brands__card"
-              onClick={() => setActiveId(b.id)}
-              aria-label={`Show ${b.name}`}
-            >
-              <img src={b.logo} alt={b.name} />
-            </button>
-          ))}
-        </div>
+        <div className="about-brands__lower">
+          <h3 className="about-brands__grid-title">Other Brands</h3>
+          <div className="about-brands__grid">
+            {rest.map(b => (
+              <button
+                key={b.id}
+                type="button"
+                className="about-brands__card"
+                onClick={() => setActiveId(b.id)}
+                aria-label={`Show ${b.name}`}
+              >
+                <img src={b.logo} alt={b.name} />
+              </button>
+            ))}
+          </div>
 
-        {/* Active brand CTA */}
-        <a href={active.href} className="about-brands__cta">
-          <img src={active.logo} alt={active.name} />
-        </a>
+          {/* Active brand CTA */}
+          <a href={active.href} className="about-brands__cta">
+            <img src={active.logo} alt={active.name} />
+          </a>
+        </div>
       </div>
     </section>
   )
