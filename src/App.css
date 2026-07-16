@@ -1109,12 +1109,49 @@
     gap: 12px;
   }
   .svc-card { min-height: 260px; }
-  .hero__pill { font-size: 11px; padding: 7px 14px; }
+
+  /* Hero: the ±400px orbit offsets can't fit a narrow viewport, so drop the
+     orbit layout and stack the logo above a centered, wrapped list of pills
+     so every service label stays visible. */
+  .hero { min-height: auto; }
+  .hero__container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    clip-path: none;
+    gap: 28px;
+    padding: 100px 20px 60px;
+    justify-content: center;
+  }
+  .hero__logo-wrap {
+    width: clamp(260px, 60vw, 420px);
+    height: clamp(260px, 60vw, 420px);
+    order: -1;
+  }
+  .hero__pills-orbit {
+    position: static;
+    inset: auto;
+    animation: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 10px 12px;
+    width: 100%;
+    max-width: 560px;
+  }
+  .hero__pill {
+    position: static;
+    left: auto !important;
+    top: auto !important;
+    animation: none;
+    font-size: 12px;
+    padding: 8px 16px;
+  }
 }
 
 @media (max-width: 680px) {
-  .hero__logo-wrap { width: 280px; height: 280px; }
-  .hero__pill { display: none; }
   .services-hero { padding: 24px 14px; }
   .services-grid {
     grid-template-columns: 1fr;
