@@ -110,17 +110,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   ROUTE ENTRANCE (fresh-page landing effect)
-   ============================================================ */
-.route-enter {
-  animation: routeEnter 0.62s var(--ease) both;
-}
-@keyframes routeEnter {
-  0%   { opacity: 0; transform: translateY(26px) scale(0.988); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-/* ============================================================
    SCROLL REVEAL (Lesse-style)
    ============================================================ */
 .reveal {

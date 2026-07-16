@@ -41,22 +41,20 @@ export default function App() {
   }, [location.pathname, location.hash])
 
   return (
-    <div className="route-enter" key={location.pathname}>
-      <Routes location={location}>
-        <Route path="/services" element={<ServicesIndexPage />} />
-        <Route path="/services/:id" element={<ServicePage />} />
-        <Route path="/about" element={<AboutIndexPage />} />
-        <Route path="/about/:id" element={<AboutPage />} />
-        <Route path="*" element={<HomePage
-          megaOpen={megaOpen} setMegaOpen={setMegaOpen}
-          aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
-          hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
-          hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
-          hoveredService={hoveredService} setHoveredService={setHoveredService}
-          heroRef={heroRef}
-        />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/services" element={<ServicesIndexPage />} />
+      <Route path="/services/:id" element={<ServicePage />} />
+      <Route path="/about" element={<AboutIndexPage />} />
+      <Route path="/about/:id" element={<AboutPage />} />
+      <Route path="*" element={<HomePage
+        megaOpen={megaOpen} setMegaOpen={setMegaOpen}
+        aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
+        hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
+        hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
+        hoveredService={hoveredService} setHoveredService={setHoveredService}
+        heroRef={heroRef}
+      />} />
+    </Routes>
   )
 }
 
