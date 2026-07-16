@@ -96,17 +96,19 @@ export default function AboutIndexPage() {
       </header>
 
       <main>
-        {/* ===================== HERO ===================== */}
-        <section className="about-index__hero">
-          <div className="about-index__hero-inner">
-            <img src="/about/about-us-emblem.webp" alt="" className="about-index__hero-emblem" aria-hidden="true" />
-            <div>
-              <h1 className="svcpage__title">About Us</h1>
-              <p className="svcpage__lead">
-                Covert Communication is a full-service marketing agency — meet the people, the brands,
-                and the ideas behind the work.
-              </p>
-            </div>
+        {/* ===================== HERO (same as /about/covertcom) ===================== */}
+        <section className="about-hero" style={{ backgroundImage: 'url(/about/about-hero-texture.webp)' }}>
+          <img className="about-hero__emblem" src="/about/about-hero-emblem.webp" alt="" aria-hidden="true" />
+          <div className="about-hero__content">
+            <h1 className="about-hero__title">
+              About<br />
+              <span className="about-hero__title-accent">Us</span>
+            </h1>
+            <p className="about-hero__lead">
+              Lorem ipsum dolor sit amet, consectetuer<br />
+              Lorem ipsum dolor sit amet, consectetuer<br />
+              adipiscing elit, diam nonummy
+            </p>
           </div>
         </section>
 
