@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES } from './data'
 
 /* Shared site header navigation.
@@ -17,7 +17,19 @@ export default function SiteNav() {
   const [mAbout, setMAbout] = useState(false)
   const [mServices, setMServices] = useState(false)
 
+  const location = useLocation()
+
   const closeDrawer = () => { setDrawerOpen(false); setMAbout(false); setMServices(false) }
+
+  // Close every menu (desktop mega + mobile drawer) — used on link clicks
+  const closeAll = () => {
+    setMegaOpen(false); setAboutOpen(false)
+    setHoveredAbout(null); setHoveredMegaService(null)
+    closeDrawer()
+  }
+
+  // Any route change closes all menus so they never linger open
+  useEffect(() => { closeAll() }, [location.pathname, location.hash])
 
   // Lock body scroll while the drawer is open
   useEffect(() => {
@@ -40,7 +52,7 @@ export default function SiteNav() {
             onMouseEnter={() => setAboutOpen(true)}
             onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null) }}
           >
-            <Link to="/about" className="nav__link nav__link--trigger" aria-expanded={aboutOpen}>
+            <Link to="/about" className="nav__link nav__link--trigger" aria-expanded={aboutOpen} onClick={closeAll}>
               About
               <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -49,7 +61,7 @@ export default function SiteNav() {
             <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
               <div className="mega-about__grid">
                 {MEGA_ABOUT.map(item => (
-                  <Link key={item.id} to={item.href}
+                  <Link key={item.id} to={item.href} onClick={closeAll}
                     className={`ma-card${hoveredAbout === item.id ? ' ma-card--hovered' : ''}`}
                     onMouseEnter={() => setHoveredAbout(item.id)}
                     onMouseLeave={() => setHoveredAbout(null)}>
@@ -71,17 +83,17 @@ export default function SiteNav() {
             onMouseEnter={() => setMegaOpen(true)}
             onMouseLeave={() => setMegaOpen(false)}
           >
-            <button type="button" className="nav__link nav__link--trigger" aria-expanded={megaOpen}
-              onClick={() => setMegaOpen(v => !v)}>
+            <Link to="/services" className="nav__link nav__link--trigger" aria-expanded={megaOpen}
+              onClick={closeAll}>
               Services
               <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </button>
+            </Link>
             <div className={`mega mega--services ${megaOpen ? 'mega--open' : ''}`}>
               <div className="mega-services__grid">
                 {MEGA_SERVICES.map(item => (
-                  <Link key={item.id} to={`/services/${item.id}`}
+                  <Link key={item.id} to={`/services/${item.id}`} onClick={closeAll}
                     className={`ms-card${hoveredMegaService === item.id ? ' ms-card--hovered' : ''}`}
                     onMouseEnter={() => setHoveredMegaService(item.id)}
                     onMouseLeave={() => setHoveredMegaService(null)}>
@@ -155,6 +167,7 @@ export default function SiteNav() {
               </svg>
             </button>
             <div className={`nav-drawer__sub${mServices ? ' nav-drawer__sub--open' : ''}`}>
+              <Link to="/services" className="nav-drawer__sublink" onClick={closeDrawer}>All Services</Link>
               {MEGA_SERVICES.map(item => (
                 <Link key={item.id} to={`/services/${item.id}`} className="nav-drawer__sublink" onClick={closeDrawer}>
                   {item.title}
