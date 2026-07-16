@@ -1125,8 +1125,10 @@
     justify-content: center;
   }
   .hero__logo-wrap {
-    width: clamp(260px, 60vw, 420px);
-    height: clamp(260px, 60vw, 420px);
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     order: -1;
   }
   .hero__pills-orbit {
@@ -1147,8 +1149,12 @@
     top: auto !important;
     animation: none;
     font-size: 12px;
-    padding: 8px 16px;
+    padding: 9px 18px;
+    border: 1.5px solid rgba(166, 242, 60, 0.6);
   }
+  /* Border is drawn directly on the pill on mobile; drop the gradient
+     mask ring so it doesn't double up. */
+  .hero__pill::before { display: none; }
 }
 
 @media (max-width: 680px) {
