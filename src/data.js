@@ -20,6 +20,62 @@ export const MEGA_SERVICES = [
   { id: 'brand-specialties', title: 'Brand Specialties',   count: 7, img: '/services/svc-brandspecialties-rollover.png', icon: '/icons/brand-specialties.svg' },
 ]
 
+/* Rich, per-service detail content. Only services present here render the
+   expanded alternating-feature layout; others fall back to the generic body. */
+export const SERVICE_DETAILS = {
+  programmatic: {
+    hero: {
+      eyebrow: 'Programmatic Marketing',
+      title: 'Programmatic',
+      lead: 'Data-driven media that finds the right audience, in the right moment, across every screen — bought and optimized in real time by machines that never sleep.',
+    },
+    intro: {
+      title: 'Precision at machine speed',
+      copy: 'We fuse search, answer, and geo intelligence into a single always-on engine. Every impression is measured, every bid is optimized, and every dollar is pointed at outcomes — not vanity metrics.',
+      stats: [
+        { value: '4.7×', label: 'Average ROAS' },
+        { value: '248%', label: 'Organic lift' },
+        { value: '<50ms', label: 'Bid decisioning' },
+        { value: '24/7', label: 'Optimization' },
+      ],
+    },
+    features: [
+      {
+        id: 'seo',
+        kicker: '01',
+        title: 'SEO',
+        image: '/services/programmatic/seo.svg',
+        copy: 'We engineer organic visibility from the ground up — technical health, content architecture, and authority signals working together. The result is durable rankings that compound long after the campaign spend stops.',
+        points: ['Technical & Core Web Vitals', 'Topical authority mapping', 'Link & entity building'],
+      },
+      {
+        id: 'aeo',
+        kicker: '02',
+        title: 'AEO',
+        image: '/services/programmatic/aeo.svg',
+        copy: 'Answer Engine Optimization positions your brand inside the AI-generated responses shaping tomorrow’s search. We structure your data so ChatGPT, Gemini, and Perplexity cite you as the source of truth.',
+        points: ['Structured & schema data', 'Entity & knowledge graph', 'Citation-ready content'],
+      },
+      {
+        id: 'sem',
+        kicker: '03',
+        title: 'SEM',
+        image: '/services/programmatic/sem.svg',
+        copy: 'Paid search that treats every keyword as a P&L line. Automated bidding, tight ad-copy testing, and conversion-first landing experiences turn intent into pipeline at a cost you can scale.',
+        points: ['Automated bid strategy', 'Ad copy & creative testing', 'Conversion rate optimization'],
+      },
+      {
+        id: 'geo',
+        kicker: '04',
+        title: 'GEO',
+        image: '/services/programmatic/geo.svg',
+        copy: 'Geo-targeting connects digital demand to physical places. Radius bidding, footfall attribution, and local intent signals put your message in front of buyers exactly where — and when — they’re ready.',
+        points: ['Radius & polygon bidding', 'Footfall attribution', 'Local intent signals'],
+      },
+    ],
+  },
+}
+
 export const MEGA_ABOUT = [
   { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   cardBg: '/about/about-covertcom-rollover.png', href: '/about/covertcom',
     heroImg: '/about/about-covertcom-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', tagline: 'The full-service agency behind the brand.' },
