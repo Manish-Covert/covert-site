@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, Suspense, lazy } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect, Suspense, lazy } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
@@ -30,8 +30,9 @@ export default function App() {
     setHoveredService(null)
   }, [location.pathname])
 
-  // Scroll to top on navigation (or to the hashed section if present)
-  useEffect(() => {
+  // Reset scroll before paint so the fresh page enters from the top —
+  // unless the URL targets a specific section via hash.
+  useLayoutEffect(() => {
     if (location.hash) {
       const el = document.getElementById(location.hash.slice(1))
       if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
@@ -40,20 +41,22 @@ export default function App() {
   }, [location.pathname, location.hash])
 
   return (
-    <Routes>
-      <Route path="/services" element={<ServicesIndexPage />} />
-      <Route path="/services/:id" element={<ServicePage />} />
-      <Route path="/about" element={<AboutIndexPage />} />
-      <Route path="/about/:id" element={<AboutPage />} />
-      <Route path="*" element={<HomePage
-        megaOpen={megaOpen} setMegaOpen={setMegaOpen}
-        aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
-        hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
-        hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
-        hoveredService={hoveredService} setHoveredService={setHoveredService}
-        heroRef={heroRef}
-      />} />
-    </Routes>
+    <div className="route-enter" key={location.pathname}>
+      <Routes location={location}>
+        <Route path="/services" element={<ServicesIndexPage />} />
+        <Route path="/services/:id" element={<ServicePage />} />
+        <Route path="/about" element={<AboutIndexPage />} />
+        <Route path="/about/:id" element={<AboutPage />} />
+        <Route path="*" element={<HomePage
+          megaOpen={megaOpen} setMegaOpen={setMegaOpen}
+          aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
+          hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
+          hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
+          hoveredService={hoveredService} setHoveredService={setHoveredService}
+          heroRef={heroRef}
+        />} />
+      </Routes>
+    </div>
   )
 }
 
