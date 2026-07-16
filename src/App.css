@@ -1007,7 +1007,7 @@
   transition: opacity .3s var(--ease), visibility .3s var(--ease);
   z-index: 55;
 }
-.nav-drawer__scrim--open { opacity: 1; visibility: visible; }
+.nav-drawer__scrim--open { opacity: 1; visibility: visible; pointer-events: auto; }
 
 .nav-drawer {
   position: fixed;
@@ -1025,6 +1025,7 @@
   z-index: 60;
   overflow-y: auto;
   overscroll-behavior: contain;
+  pointer-events: auto;
 }
 .nav-drawer--open { transform: translateX(0); }
 
