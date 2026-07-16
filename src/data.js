@@ -25,6 +25,7 @@ export const MEGA_SERVICES = [
 export const SERVICE_DETAILS = {
   programmatic: {
     hero: {
+      bg: '/services/programmatic/hero.svg',
       eyebrow: 'Programmatic Marketing',
       title: 'Programmatic',
       lead: 'Data-driven media that finds the right audience, in the right moment, across every screen — bought and optimized in real time by machines that never sleep.',

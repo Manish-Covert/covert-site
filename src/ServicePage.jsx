@@ -87,7 +87,7 @@ function ServiceDetailPage({ svc, detail }) {
 
       <main className="svcd">
         {/* ---------- HERO ---------- */}
-        <section className="svcd__hero" style={{ backgroundImage: `url(${svc.hoverImg})` }}>
+        <section className="svcd__hero" style={{ backgroundImage: `url(${hero.bg || svc.hoverImg})` }}>
           <div className="svcd__hero-overlay" />
           <div className="svcd__hero-glow" />
           <div className="svcd__hero-content">
