@@ -10,6 +10,18 @@
   overflow: hidden;
 }
 
+/* Modern scrim + green glow for legibility and depth */
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 78% 30%, rgba(47,212,138,.16), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.78) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
 .about-hero__emblem {
   position: absolute;
   left: 42%;
@@ -50,7 +62,21 @@
   top: 71%;
   transform: translateY(-50%);
   max-width: 620px;
-  z-index: 1;
+  z-index: 2;
+  animation: aboutHeroRise .9s var(--ease, cubic-bezier(.2,.7,.2,1)) both;
+}
+
+@keyframes aboutHeroRise {
+  from { opacity: 0; transform: translateY(-50%) translateY(26px); }
+  to   { opacity: 1; transform: translateY(-50%); }
+}
+
+.about-hero__viewall {
+  animation: aboutHeroFade 1s .2s var(--ease, ease) both;
+}
+@keyframes aboutHeroFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .about-hero__title {

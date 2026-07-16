@@ -466,11 +466,6 @@ function CovertTeamBody() {
             </article>
           ))}
         </div>
-
-        <div className="svcpage__cta about-team__cta">
-          <Link to="/#contact" className="btn-gradient"><span>Book a Meeting &rarr;</span></Link>
-          <Link to="/about" className="btn-gradient"><span>&larr; Back to About</span></Link>
-        </div>
       </div>
     </section>
   )
