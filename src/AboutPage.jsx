@@ -383,8 +383,8 @@ const TEAM_CATEGORIES = [
   },
   {
     name: 'Branding',
-    caption: 'Shaping identity, voice, and brand systems — roster coming soon.',
-    members: ['Anna Covert'],
+    caption: 'Shaping identity, voice, and brand systems that set clients apart.',
+    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Nitesh Thapa', 'Bailey Monick'],
   },
 ]
 
