@@ -345,49 +345,99 @@ const ANNA_LINKS = [
   { label: 'The Covert Code Podcast', href: '#' },
 ]
 
-function initials(name) {
-  return name.split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase()
-}
+/* Full roster (Anna first, then the wider team) used by the rotating
+   category spotlight below the hero. */
+const TEAM_ROSTER = [
+  { name: 'Anna Covert', role: 'Principal', links: ANNA_LINKS },
+  ...COVERT_TEAM,
+]
+
+/* Each category spotlights the members that belong to it (highlighted green)
+   and shows its own caption under the C emblem. Cycles every 5s.
+   Branding roster is a placeholder until the final list is provided. */
+const TEAM_CATEGORIES = [
+  {
+    name: 'Technology',
+    caption: 'Engineering the tools, sites, and platforms behind every campaign.',
+    members: ['Anna Covert', 'Matthew Etline', 'Cam Tullos', 'Manish Prajapati', 'Sam Kuo', 'Mohammed Irshadh', 'Cheryl Wui', 'Gayatri Prajapati'],
+  },
+  {
+    name: 'Marketing',
+    caption: 'Strategy, media, and accounts that move brands forward.',
+    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Amber Hadfield', 'Nitesh Thapa', 'Bailey Monick'],
+  },
+  {
+    name: 'Creative',
+    caption: 'Design, art direction, and the ideas that stand out.',
+    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Noah Jesser', 'Nitesh Thapa'],
+  },
+  {
+    name: 'Social Media',
+    caption: 'Building community and conversation across every channel.',
+    members: ['Anna Covert', 'Christopher Gaspar', 'Noah Jesser', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Bailey Monick'],
+  },
+  {
+    name: 'Podcast Dev',
+    caption: 'Producing and publishing our shows from record to release.',
+    members: ['Anna Covert', 'Christopher Gaspar', 'Tharam Singh'],
+  },
+  {
+    name: 'Branding',
+    caption: 'Shaping identity, voice, and brand systems — roster coming soon.',
+    members: ['Anna Covert'],
+  },
+]
 
 function CovertTeamBody() {
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setActive(a => (a + 1) % TEAM_CATEGORIES.length), 5000)
+    return () => clearInterval(t)
+  }, [])
+
+  const category = TEAM_CATEGORIES[active]
+  const highlighted = new Set(category.members)
+
   return (
-    <section className="svcpage__body about-team">
+    <section className="svcpage__body team-cats">
       <div className="container">
-        <header className="about-team__intro">
-          <h2 className="about-team__title">Meet The Team</h2>
-          <div className="about-team__rule" />
-          <p className="about-team__lead">
-            Covert Communication is powered by a team of strategists, creatives, and media
-            specialists working across every discipline the agency offers — from programmatic and
-            social to traditional advertising and brand building.
-          </p>
-        </header>
-
-        {/* Featured — Principal */}
-        <article className="about-team__featured">
-          <div className="about-team__avatar about-team__avatar--lg" aria-hidden="true">AC</div>
-          <div className="about-team__featured-body">
-            <h3 className="about-team__name">Anna Covert</h3>
-            <p className="about-team__role about-team__role--lead">Principal</p>
-            <div className="about-team__links">
-              {ANNA_LINKS.map(l => (
-                <a key={l.label} href={l.href} className="about-team__link">{l.label}</a>
-              ))}
+        <div className="team-cats__split">
+          {/* Left — emblem with rotating category label + caption */}
+          <div className="team-cats__aside">
+            <div className="team-cats__emblem">
+              <img src="/about/about-hero-emblem.webp" alt="" aria-hidden="true" />
+              <span key={category.name} className="team-cats__pill">{category.name}</span>
             </div>
+            <p key={category.caption} className="team-cats__caption">{category.caption}</p>
           </div>
-        </article>
 
-        {/* Team grid */}
-        <div className="about-team__grid">
-          {COVERT_TEAM.map(m => (
-            <article key={m.name} className="about-team__card">
-              <div className="about-team__avatar" aria-hidden="true">{initials(m.name)}</div>
-              <div className="about-team__card-body">
-                <h3 className="about-team__name">{m.name}</h3>
-                <p className="about-team__role">{m.role}</p>
-              </div>
-            </article>
-          ))}
+          {/* Right — full roster, active category highlighted */}
+          <ul className="team-cats__list">
+            {TEAM_ROSTER.map(m => {
+              const on = highlighted.has(m.name)
+              return (
+                <li key={m.name} className={`team-cats__row${on ? ' team-cats__row--on' : ''}`}>
+                  <span className="team-cats__marker" aria-hidden="true">&#9666;</span>
+                  <div className="team-cats__person">
+                    <span className="team-cats__name">{m.name}</span>
+                    <span className="team-cats__sep"> | </span>
+                    <span className="team-cats__role">{m.role}</span>
+                    {m.links && (
+                      <span className="team-cats__links">
+                        {m.links.map((l, i) => (
+                          <span key={l.label}>
+                            <a href={l.href} className="team-cats__link">{l.label}</a>
+                            {i < m.links.length - 1 && <span className="team-cats__link-sep"> / </span>}
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     </section>
