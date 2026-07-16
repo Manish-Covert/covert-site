@@ -37,7 +37,9 @@ export default function App() {
       const el = document.getElementById(location.hash.slice(1))
       if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
     }
-    window.scrollTo(0, 0)
+    // 'instant' overrides the global `scroll-behavior: smooth` so a new page
+    // simply appears at the top instead of visibly scrolling up.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [location.pathname, location.hash])
 
   return (
