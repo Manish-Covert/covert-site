@@ -21,18 +21,18 @@ export const MEGA_SERVICES = [
 ]
 
 export const MEGA_ABOUT = [
-  { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   href: '/about/covertcom',
+  { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/programmatic.svg',    img: '/about/about-covertcom-rollover.png',   cardBg: '/about/about-covertcom-rollover.png', href: '/about/covertcom',
     heroImg: '/about/about-covertcom-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', tagline: 'The full-service agency behind the brand.' },
-  { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        href: '/about/anna',
+  { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        cardBg: '/about/card-anna.png', href: '/about/anna',
     heroImg: '/about/about-anna-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-hero-emblem.webp', figure: '/about/about-anna-figure.png', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
-  { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  href: '/about/covertteam',
+  { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  cardBg: '/about/card-covertteam.png', href: '/about/covertteam',
     tagline: 'The people who make it happen, every day.' },
-  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   href: '/about/books',
+  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   cardBg: '/about/card-books.png', href: '/about/books',
     heroImg: '/about/about-books-cover.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-books-hero.webp', heroEmblemWide: true, heroTitle: 'Books', heroAccent: 'by Anna Covert', tagline: 'Bestselling reads on marketing and the solar industry.' },
-  { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', href: '/about/podcasts',
+  { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/trad-full-service.svg', img: '/about/about-podcasts-rollover.png', cardBg: '/about/card-podcasts.png', href: '/about/podcasts',
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-headshot.webp', heroEmblemFigure: true, heroTitle: 'Podcasts', heroAccent: 'with Anna Covert',
     tagline: 'Conversations on marketing, media, and solar.' },
-  { id: 'otherbrands',label: 'Other Brands',badge: '4 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', href: '/about/otherbrands',
+  { id: 'otherbrands',label: 'Other Brands',badge: '4 Brands', icon: '/icons/tech.svg',             img: '/about/about-otherbrands-rollover.png', cardBg: '/about/card-otherbrands.png', href: '/about/otherbrands',
     heroBg: '/about/about-otherbrands-hero.webp', tagline: 'Other ventures built by the Covert Communication team.' },
 ]
 

@@ -118,7 +118,7 @@ export default function AboutIndexPage() {
             <div className="about-index__grid">
               {MEGA_ABOUT.map(a => (
                 <Link key={a.id} to={a.href} className="ai-card">
-                  <div className="ai-card__bg" style={{ backgroundImage: `url(${a.img})` }} />
+                  <div className="ai-card__bg" style={{ backgroundImage: `url(${a.cardBg || a.img})` }} />
                   <div className="ai-card__inner">
                     <img className="ai-card__icon" src={a.icon} alt="" aria-hidden="true" />
                     <span className="ai-card__label">{a.label}</span>

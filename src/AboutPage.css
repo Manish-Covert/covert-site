@@ -151,27 +151,14 @@
   isolation: isolate;
 }
 
-/* background image (right side), blurs on hover */
+/* background image (the rollover art, no overlay), blurs on hover */
 .ai-card__bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center right;
+  background-position: center;
   z-index: 0;
   transition: filter .4s var(--ease), transform .4s var(--ease);
-}
-
-/* green gradient tint over the image */
-.ai-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(100deg,
-    rgba(24, 92, 56, 0.96) 0%,
-    rgba(34, 132, 86, 0.78) 42%,
-    rgba(52, 199, 160, 0.42) 100%);
-  transition: opacity .4s var(--ease);
 }
 
 .ai-card:hover .ai-card__bg {
@@ -196,6 +183,7 @@
   filter: brightness(0) invert(1);
   opacity: .95;
   flex-shrink: 0;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,.5));
 }
 
 .ai-card__label {
@@ -204,14 +192,16 @@
   font-weight: 600;
   color: #fff;
   font-family: 'Space Grotesk', sans-serif;
+  text-shadow: 0 1px 3px rgba(0,0,0,.45);
 }
 
 .ai-card__badge {
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255,255,255,.9);
+  color: rgba(255,255,255,.95);
   white-space: nowrap;
   margin-top: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.45);
 }
 
 @media (max-width: 720px) {
