@@ -143,10 +143,10 @@
 .ai-card {
   position: relative;
   display: block;
-  border-radius: 18px;
+  border-radius: 25px;
   overflow: hidden;
   min-height: 150px;
-  border: 1px solid rgba(60,200,120,.3);
+  border: none;
   text-decoration: none;
   isolation: isolate;
 }
@@ -163,7 +163,6 @@
 
 .ai-card:hover .ai-card__bg {
   filter: blur(7px);
-  transform: scale(1.06);
 }
 
 .ai-card__inner {
