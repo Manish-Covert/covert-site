@@ -6,6 +6,7 @@ import ServicePage from './ServicePage'
 import ServicesIndexPage from './ServicesIndexPage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
+import HomeV2 from './HomeV2'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import './App.css'
@@ -44,6 +45,7 @@ export default function App() {
 
   return (
     <Routes>
+      <Route path="/home-v2" element={<HomeV2 />} />
       <Route path="/services" element={<ServicesIndexPage />} />
       <Route path="/services/:id" element={<ServicePage />} />
       <Route path="/about" element={<AboutIndexPage />} />
