@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
+import ServicesIndexPage from './ServicesIndexPage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
 import SiteFooter from './SiteFooter'
@@ -29,8 +30,18 @@ export default function App() {
     setHoveredService(null)
   }, [location.pathname])
 
+  // Scroll to top on navigation (or to the hashed section if present)
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.getElementById(location.hash.slice(1))
+      if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
+    }
+    window.scrollTo(0, 0)
+  }, [location.pathname, location.hash])
+
   return (
     <Routes>
+      <Route path="/services" element={<ServicesIndexPage />} />
       <Route path="/services/:id" element={<ServicePage />} />
       <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
@@ -135,6 +146,9 @@ function HomePage({
                 <img className="svc-card__icon" src={svc.icon} alt="" aria-hidden="true" />
               </Link>
             ))}
+          </div>
+          <div className="services-hero__cta">
+            <Link to="/services" className="btn btn--outline-pill"><span>View all services →</span></Link>
           </div>
         </section>
 

@@ -25,7 +25,6 @@ export const MEGA_SERVICES = [
 export const SERVICE_DETAILS = {
   programmatic: {
     hero: {
-      bg: '/services/programmatic/hero.svg',
       eyebrow: 'Programmatic Marketing',
       title: 'Programmatic',
       lead: 'Data-driven media that finds the right audience, in the right moment, across every screen — bought and optimized in real time by machines that never sleep.',
@@ -78,7 +77,6 @@ export const SERVICE_DETAILS = {
 
   technology: {
     hero: {
-      bg: '/services/technology/hero.svg',
       eyebrow: 'Technology Consulting',
       title: 'Technology',
       lead: 'The engineering muscle behind great marketing — websites, apps, and technical strategy built to load fast, scale cleanly, and convert.',
@@ -108,7 +106,6 @@ export const SERVICE_DETAILS = {
 
   social: {
     hero: {
-      bg: '/services/social/hero.svg',
       eyebrow: 'Social Media',
       title: 'Social Media',
       lead: 'Scroll-stopping content and paid strategy that turn followers into a community — and a community into customers.',
@@ -141,7 +138,6 @@ export const SERVICE_DETAILS = {
 
   fraud: {
     hero: {
-      bg: '/services/fraud/hero.svg',
       eyebrow: 'Fraud Protection Gurus',
       title: 'Fraud Protection',
       lead: 'Every dollar of ad spend defended. We hunt bots, block invalid traffic, and keep your brand out of the wrong places — before the damage is done.',
@@ -171,7 +167,6 @@ export const SERVICE_DETAILS = {
 
   'brand-creation': {
     hero: {
-      bg: '/services/brand-creation/hero.svg',
       eyebrow: 'Brand Creation',
       title: 'Brand Creation',
       lead: 'The identity, the mark, and the rules that make a brand unmistakable — designed from a blank page to feel inevitable.',
@@ -201,7 +196,6 @@ export const SERVICE_DETAILS = {
 
   trad: {
     hero: {
-      bg: '/services/trad/hero.svg',
       eyebrow: 'Traditional Full Service',
       title: 'Traditional',
       lead: 'The channels that built brands still build them best — print, broadcast, out-of-home, and live experiences, executed end to end.',
@@ -240,7 +234,6 @@ export const SERVICE_DETAILS = {
 
   'brand-building': {
     hero: {
-      bg: '/services/brand-building/hero.svg',
       eyebrow: 'Brand Building',
       title: 'Brand Building',
       lead: 'Strategy, positioning, and campaigns that grow a brand’s meaning over time — and the analytics to prove it’s working.',
@@ -273,7 +266,6 @@ export const SERVICE_DETAILS = {
 
   'brand-specialties': {
     hero: {
-      bg: '/services/brand-specialties/hero.svg',
       eyebrow: 'Brand Specialties',
       title: 'Brand Specialties',
       lead: 'The craft disciplines that bring a brand to life — packaging, copy, photography, video, and experiences made with obsessive attention to detail.',

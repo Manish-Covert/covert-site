@@ -97,7 +97,7 @@ function ServiceDetailPage({ svc, detail }) {
             <div className="svcd__hero-chips">
               {svc.subs?.map(s => <span key={s} className="svcd__chip">{s}</span>)}
             </div>
-            <Link to="/#services" className="btn btn--outline-pill svcd__hero-back">
+            <Link to="/services" className="btn btn--outline-pill svcd__hero-back">
               <span>◂ View all services</span>
             </Link>
           </div>
