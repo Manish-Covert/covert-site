@@ -26,6 +26,7 @@ export const MEGA_ABOUT = [
   { id: 'anna',       label: 'Anna Covert',           icon: '/icons/brand-creation.svg',  img: '/about/about-anna-rollover.png',        cardBg: '/about/card-anna.png', href: '/about/anna',
     heroImg: '/about/about-anna-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-hero-emblem.webp', figure: '/about/about-anna-figure.png', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/social.svg',           img: '/about/about-covertteam-rollover.png',  cardBg: '/about/card-covertteam.png', href: '/about/covertteam',
+    heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', heroTitle: 'About', heroAccent: 'The Covert Team',
     tagline: 'The people who make it happen, every day.' },
   { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/brand-building.svg',  img: '/about/about-books-rollover.png',   cardBg: '/about/card-books.png', href: '/about/books',
     heroImg: '/about/about-books-cover.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-books-hero.webp', heroEmblemWide: true, heroTitle: 'Books', heroAccent: 'by Anna Covert', tagline: 'Bestselling reads on marketing and the solar industry.' },

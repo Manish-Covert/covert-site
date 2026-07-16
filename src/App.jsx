@@ -6,6 +6,7 @@ import ServicePage from './ServicePage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
 import SiteFooter from './SiteFooter'
+import SiteNav from './SiteNav'
 import './App.css'
 
 const HeroLogo = lazy(() => import('./HeroLogo'))
@@ -56,105 +57,7 @@ function HomePage({
   return (
     <>
       {/* ===================== NAV ===================== */}
-      <header className="nav-wrap">
-        <nav className="nav">
-          <a className="brand" href="#top" aria-label="Covert Communication home">
-            <img src="/logo-horiz.png" alt="Covert Communication" className="brand__logo" />
-          </a>
-
-          <div className="nav__links">
-            {/* ---- ABOUT MEGA ---- */}
-            <div
-              className="nav__item nav__item--mega"
-              onMouseEnter={() => setAboutOpen(true)}
-              onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null); }}
-            >
-              <Link
-                to="/about"
-                className="nav__link nav__link--trigger"
-                aria-expanded={aboutOpen}
-              >
-                About
-                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
-                    strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-
-              <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
-                <div className="mega-about__grid">
-                  {MEGA_ABOUT.map(item => (
-                    <Link
-                      key={item.id}
-                      to={item.href}
-                      className={`ma-card${hoveredAbout === item.id ? ' ma-card--hovered' : ''}`}
-                      onMouseEnter={() => setHoveredAbout(item.id)}
-                      onMouseLeave={() => setHoveredAbout(null)}
-                    >
-                      <div className="ma-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
-                      <div className="ma-card__inner">
-                        <img className="ma-card__icon" src={item.icon} alt="" aria-hidden="true" />
-                        <span className="ma-card__label">{item.label}</span>
-                        {item.badge && <span className="ma-card__badge">{item.badge}</span>}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* ---- SERVICES MEGA ---- */}
-            <div
-              className="nav__item nav__item--mega"
-              onMouseEnter={() => setMegaOpen(true)}
-              onMouseLeave={() => setMegaOpen(false)}
-            >
-              <button
-                type="button"
-                className="nav__link nav__link--trigger"
-                aria-expanded={megaOpen}
-                onClick={() => setMegaOpen(v => !v)}
-              >
-                Services
-                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
-                    strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-
-              <div className={`mega mega--services ${megaOpen ? 'mega--open' : ''}`}>
-                <div className="mega-services__grid">
-                  {MEGA_SERVICES.map(item => (
-                    <Link
-                      key={item.id}
-                      to={`/services/${item.id}`}
-                      className={`ms-card${hoveredMegaService === item.id ? ' ms-card--hovered' : ''}`}
-                      onMouseEnter={() => setHoveredMegaService(item.id)}
-                      onMouseLeave={() => setHoveredMegaService(null)}
-                    >
-                      <div className="ms-card__bg" style={{ backgroundImage: `url(${item.img})` }} />
-                      <div className="ms-card__inner">
-                        <img className="ms-card__icon" src={item.icon} alt="" aria-hidden="true" />
-                        <span className="ms-card__title">{item.title}</span>
-                        <span className="ms-card__count">{item.count}</span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <a href="#" className="nav__link">Case Studies</a>
-            <a href="#" className="nav__link">The Latest</a>
-            <a href="#contact" className="nav__link">Contact</a>
-          </div>
-          <div className="nav__cta">
-            <a href="#contact" className="btn btn--pill-outline">
-              Book a Meeting &rarr;
-            </a>
-          </div>
-        </nav>
-      </header>
+      <SiteNav />
 
       <main id="top">
         {/* ===================== HERO ===================== */}

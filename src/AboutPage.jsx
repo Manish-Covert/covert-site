@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BRANDS } from './data'
 import SiteFooter from './SiteFooter'
+import SiteNav from './SiteNav'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -18,85 +19,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ===================== NAV ===================== */}
-      <header className="nav-wrap">
-        <nav className="nav">
-          <Link className="brand" to="/" aria-label="Covert Communication home">
-            <img src="/logo-horiz.png" alt="Covert Communication" className="brand__logo" />
-          </Link>
-
-          <div className="nav__links">
-            {/* ABOUT MEGA */}
-            <div
-              className="nav__item nav__item--mega"
-              onMouseEnter={() => setAboutOpen(true)}
-              onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null) }}
-            >
-              <Link to="/about" className="nav__link nav__link--trigger" aria-expanded={aboutOpen}>
-                About
-                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-              <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
-                <div className="mega-about__grid">
-                  {MEGA_ABOUT.map(a => (
-                    <Link key={a.id} to={a.href}
-                      className={`ma-card${hoveredAbout === a.id ? ' ma-card--hovered' : ''}`}
-                      onMouseEnter={() => setHoveredAbout(a.id)}
-                      onMouseLeave={() => setHoveredAbout(null)}>
-                      <div className="ma-card__bg" style={{ backgroundImage: `url(${a.img})` }} />
-                      <div className="ma-card__inner">
-                        <img className="ma-card__icon" src={a.icon} alt="" aria-hidden="true" />
-                        <span className="ma-card__label">{a.label}</span>
-                        {a.badge && <span className="ma-card__badge">{a.badge}</span>}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* SERVICES MEGA */}
-            <div
-              className="nav__item nav__item--mega"
-              onMouseEnter={() => setMegaOpen(true)}
-              onMouseLeave={() => setMegaOpen(false)}
-            >
-              <button type="button" className="nav__link nav__link--trigger" aria-expanded={megaOpen}>
-                Services
-                <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <div className={`mega mega--services ${megaOpen ? 'mega--open' : ''}`}>
-                <div className="mega-services__grid">
-                  {MEGA_SERVICES.map(svc => (
-                    <Link key={svc.id} to={`/services/${svc.id}`}
-                      className={`ms-card${hoveredMegaService === svc.id ? ' ms-card--hovered' : ''}`}
-                      onMouseEnter={() => setHoveredMegaService(svc.id)}
-                      onMouseLeave={() => setHoveredMegaService(null)}>
-                      <div className="ms-card__bg" style={{ backgroundImage: `url(${svc.img})` }} />
-                      <div className="ms-card__inner">
-                        <img className="ms-card__icon" src={svc.icon} alt="" aria-hidden="true" />
-                        <span className="ms-card__title">{svc.title}</span>
-                        <span className="ms-card__count">{svc.count}</span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <a href="#" className="nav__link">Case Studies</a>
-            <a href="#" className="nav__link">The Latest</a>
-            <Link to="/#contact" className="nav__link">Contact</Link>
-          </div>
-
-          <div className="nav__cta">
-            <Link to="/#contact" className="btn btn--pill-outline">Book a Meeting &rarr;</Link>
-          </div>
-        </nav>
-      </header>
+      <SiteNav />
 
       <main>
         {/* ===================== HERO ===================== */}
@@ -395,23 +318,126 @@ function OtherBrandsBody() {
   )
 }
 
+const COVERT_TEAM = [
+  { name: 'Pat Monick', role: 'Vice President' },
+  { name: 'Christine Sullivan', role: 'Creative Director' },
+  { name: 'Christopher Gaspar', role: 'Account Service Director' },
+  { name: 'Noah Jesser', role: 'Social Media Director' },
+  { name: 'Matthew Etline', role: 'Technology Director' },
+  { name: 'Cam Tullos', role: 'Senior Software Engineer' },
+  { name: 'Manish Prajapati', role: 'Senior Developer' },
+  { name: 'Sam Kuo', role: 'Software Engineer' },
+  { name: 'Mohammed Irshadh', role: 'QA Specialist' },
+  { name: 'Jocelyn Palafox', role: 'Marketing Director' },
+  { name: 'Kapili Moniz', role: 'Account Executive' },
+  { name: 'Tharam Singh', role: 'Sr. Accounts Coordinator & Podcast Producer' },
+  { name: 'Cheryl Wui', role: 'Technology Specialist' },
+  { name: 'Gayatri Prajapati', role: 'Technology Specialist' },
+  { name: 'Amber Hadfield', role: 'Account Coordinator' },
+  { name: 'Nitesh Thapa', role: 'Art Director' },
+  { name: 'Bailey Monick', role: 'Content Manager' },
+]
+
+const ANNA_LINKS = [
+  { label: 'Watch ThinkTech Hawaii Interview', href: '#' },
+  { label: 'Watch GTR Webinar', href: '#' },
+  { label: 'Watch Best Company Podcast', href: '#' },
+  { label: 'The Covert Code Podcast', href: '#' },
+]
+
+/* Full roster (Anna first, then the wider team) used by the rotating
+   category spotlight below the hero. */
+const TEAM_ROSTER = [
+  { name: 'Anna Covert', role: 'Principal', links: ANNA_LINKS },
+  ...COVERT_TEAM,
+]
+
+/* Each category spotlights the members that belong to it (highlighted green)
+   and shows its own caption under the C emblem. Cycles every 5s.
+   Branding roster is a placeholder until the final list is provided. */
+const TEAM_CATEGORIES = [
+  {
+    name: 'Technology',
+    caption: 'Engineering the tools, sites, and platforms behind every campaign.',
+    members: ['Anna Covert', 'Matthew Etline', 'Cam Tullos', 'Manish Prajapati', 'Sam Kuo', 'Mohammed Irshadh', 'Cheryl Wui', 'Gayatri Prajapati'],
+  },
+  {
+    name: 'Marketing',
+    caption: 'Strategy, media, and accounts that move brands forward.',
+    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Amber Hadfield', 'Nitesh Thapa', 'Bailey Monick'],
+  },
+  {
+    name: 'Creative',
+    caption: 'Design, art direction, and the ideas that stand out.',
+    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Noah Jesser', 'Nitesh Thapa'],
+  },
+  {
+    name: 'Social Media',
+    caption: 'Building community and conversation across every channel.',
+    members: ['Anna Covert', 'Christopher Gaspar', 'Noah Jesser', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Bailey Monick'],
+  },
+  {
+    name: 'Podcast Dev',
+    caption: 'Producing and publishing our shows from record to release.',
+    members: ['Anna Covert', 'Christopher Gaspar', 'Tharam Singh'],
+  },
+  {
+    name: 'Branding',
+    caption: 'Shaping identity, voice, and brand systems that set clients apart.',
+    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Nitesh Thapa', 'Bailey Monick'],
+  },
+]
+
 function CovertTeamBody() {
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setActive(a => (a + 1) % TEAM_CATEGORIES.length), 5000)
+    return () => clearInterval(t)
+  }, [])
+
+  const category = TEAM_CATEGORIES[active]
+  const highlighted = new Set(category.members)
+
   return (
-    <section className="svcpage__body">
-      <div className="container container--narrow">
-        <h2 className="svcpage__body-title">The Covert Team</h2>
-        <p className="svcpage__lead">
-          Covert Communication is powered by a team of strategists, creatives, and media specialists
-          working across every discipline the agency offers — from programmatic and social to
-          traditional advertising and brand building.
-        </p>
-        <p className="svcpage__copy">
-          Team bios and photos are coming soon. In the meantime, reach out and we'll introduce you
-          to the people who'll be working on your account.
-        </p>
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+    <section className="svcpage__body team-cats">
+      <div className="container">
+        <div className="team-cats__split">
+          {/* Left — emblem with rotating category label + caption */}
+          <div className="team-cats__aside">
+            <div className="team-cats__emblem">
+              <img src="/about/about-hero-emblem.webp" alt="" aria-hidden="true" />
+              <span key={category.name} className="team-cats__pill">{category.name}</span>
+            </div>
+            <p key={category.caption} className="team-cats__caption">{category.caption}</p>
+          </div>
+
+          {/* Right — full roster, active category highlighted */}
+          <ul className="team-cats__list">
+            {TEAM_ROSTER.map(m => {
+              const on = highlighted.has(m.name)
+              return (
+                <li key={m.name} className={`team-cats__row${on ? ' team-cats__row--on' : ''}`}>
+                  <span className="team-cats__marker" aria-hidden="true">&#9666;</span>
+                  <div className="team-cats__person">
+                    <span className="team-cats__name">{m.name}</span>
+                    <span className="team-cats__sep"> | </span>
+                    <span className="team-cats__role">{m.role}</span>
+                    {m.links && (
+                      <span className="team-cats__links">
+                        {m.links.map((l, i) => (
+                          <span key={l.label}>
+                            <a href={l.href} className="team-cats__link">{l.label}</a>
+                            {i < m.links.length - 1 && <span className="team-cats__link-sep"> / </span>}
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     </section>
