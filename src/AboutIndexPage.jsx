@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES } from './data'
+import SiteFooter from './SiteFooter'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -27,12 +28,12 @@ export default function AboutIndexPage() {
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null) }}
             >
-              <button type="button" className="nav__link nav__link--trigger nav__link--active" aria-expanded={aboutOpen}>
+              <Link to="/about" className="nav__link nav__link--trigger nav__link--active" aria-expanded={aboutOpen}>
                 About
                 <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </button>
+              </Link>
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
                   {MEGA_ABOUT.map(a => (
@@ -95,17 +96,19 @@ export default function AboutIndexPage() {
       </header>
 
       <main>
-        {/* ===================== HERO ===================== */}
-        <section className="about-index__hero">
-          <div className="about-index__hero-inner">
-            <img src="/about/about-us-emblem.webp" alt="" className="about-index__hero-emblem" aria-hidden="true" />
-            <div>
-              <h1 className="svcpage__title">About Us</h1>
-              <p className="svcpage__lead">
-                Covert Communication is a full-service marketing agency — meet the people, the brands,
-                and the ideas behind the work.
-              </p>
-            </div>
+        {/* ===================== HERO (same as /about/covertcom) ===================== */}
+        <section className="about-hero" style={{ backgroundImage: 'url(/about/about-hero-texture.webp)' }}>
+          <img className="about-hero__emblem" src="/about/about-hero-emblem.webp" alt="" aria-hidden="true" />
+          <div className="about-hero__content">
+            <h1 className="about-hero__title">
+              About<br />
+              <span className="about-hero__title-accent">Us</span>
+            </h1>
+            <p className="about-hero__lead">
+              Lorem ipsum dolor sit amet, consectetuer<br />
+              Lorem ipsum dolor sit amet, consectetuer<br />
+              adipiscing elit, diam nonummy
+            </p>
           </div>
         </section>
 
@@ -115,7 +118,7 @@ export default function AboutIndexPage() {
             <div className="about-index__grid">
               {MEGA_ABOUT.map(a => (
                 <Link key={a.id} to={a.href} className="ai-card">
-                  <div className="ai-card__bg" style={{ backgroundImage: `url(${a.img})` }} />
+                  <div className="ai-card__bg" style={{ backgroundImage: `url(${a.cardBg || a.img})` }} />
                   <div className="ai-card__inner">
                     <img className="ai-card__icon" src={a.icon} alt="" aria-hidden="true" />
                     <span className="ai-card__label">{a.label}</span>
@@ -128,30 +131,8 @@ export default function AboutIndexPage() {
         </section>
       </main>
 
-      {/* ===================== FOOTER ===================== */}
-      <footer className="footer">
-        <div className="footer__inner">
-          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
-          <div className="footer__social" aria-label="Social links">
-            <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />
-            </a>
-            <a href="https://facebook.com/covertcommunication" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <img src="/icons/sm_fb.svg" alt="Facebook" />
-            </a>
-            <a href="mailto:anna@covertcommunication.com" aria-label="Email">
-              <img src="/icons/sm_email.svg" alt="Email" />
-            </a>
-          </div>
-          <p className="footer__legal">
-            Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
-            <a href="#">Privacy Policy</a> |{' '}
-            <a href="#">Cookie Preferences</a> |{' '}
-            <a href="#">Terms of Service</a> |{' '}
-            <a href="#">Site Map</a> | 808-272-9952
-          </p>
-        </div>
-      </footer>
+      {/* ===================== GLOBAL FOOTER (form + footer) ===================== */}
+      <SiteFooter />
     </>
   )
 }

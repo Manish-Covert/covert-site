@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { SERVICES, MEGA_ABOUT, MEGA_SERVICES } from './data'
+import SiteFooter from './SiteFooter'
 import './App.css'
 import './ServicePage.css'
 
@@ -29,12 +30,12 @@ export default function ServicePage() {
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null) }}
             >
-              <button type="button" className="nav__link nav__link--trigger" aria-expanded={aboutOpen}>
+              <Link to="/about" className="nav__link nav__link--trigger" aria-expanded={aboutOpen}>
                 About
                 <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </button>
+              </Link>
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
                   {MEGA_ABOUT.map(item => (
@@ -141,30 +142,8 @@ export default function ServicePage() {
         </section>
       </main>
 
-      {/* ===================== FOOTER ===================== */}
-      <footer className="footer">
-        <div className="footer__inner">
-          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
-          <div className="footer__social" aria-label="Social links">
-            <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />
-            </a>
-            <a href="https://facebook.com/covertcommunication" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <img src="/icons/sm_fb.svg" alt="Facebook" />
-            </a>
-            <a href="mailto:anna@covertcommunication.com" aria-label="Email">
-              <img src="/icons/sm_email.svg" alt="Email" />
-            </a>
-          </div>
-          <p className="footer__legal">
-            Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
-            <a href="#">Privacy Policy</a> |{' '}
-            <a href="#">Cookie Preferences</a> |{' '}
-            <a href="#">Terms of Service</a> |{' '}
-            <a href="#">Site Map</a> | 808-272-9952
-          </p>
-        </div>
-      </footer>
+      {/* ===================== GLOBAL FOOTER (form + footer) ===================== */}
+      <SiteFooter />
     </>
   )
 }

@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect, Suspense, lazy } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
-import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HOW_DID_YOU_HEAR, HERO_PILLS } from './data'
+import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
+import SiteFooter from './SiteFooter'
 import './App.css'
 
 const HeroLogo = lazy(() => import('./HeroLogo'))
@@ -12,7 +13,6 @@ const HeroLogo = lazy(() => import('./HeroLogo'))
 export default function App() {
   useReveal()
   const location = useLocation()
-  const [status, setStatus] = useState('idle')
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [hoveredAbout, setHoveredAbout] = useState(null)
@@ -28,53 +28,30 @@ export default function App() {
     setHoveredService(null)
   }, [location.pathname])
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-    setStatus('sending')
-    const data = Object.fromEntries(new FormData(e.target))
-    if (!window.WEB3FORMS_KEY || window.WEB3FORMS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-      setTimeout(() => setStatus('ok'), 700)
-      e.target.reset()
-      return
-    }
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ access_key: window.WEB3FORMS_KEY, ...data }),
-      })
-      const json = await res.json()
-      if (json.success) { setStatus('ok'); e.target.reset() }
-      else setStatus('error')
-    } catch { setStatus('error') }
-  }
-
   return (
     <Routes>
       <Route path="/services/:id" element={<ServicePage />} />
       <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
       <Route path="*" element={<HomePage
-        status={status} setStatus={setStatus}
         megaOpen={megaOpen} setMegaOpen={setMegaOpen}
         aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
         hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
         hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
         hoveredService={hoveredService} setHoveredService={setHoveredService}
-        heroRef={heroRef} handleSubmit={handleSubmit}
+        heroRef={heroRef}
       />} />
     </Routes>
   )
 }
 
 function HomePage({
-  status, setStatus,
   megaOpen, setMegaOpen,
   aboutOpen, setAboutOpen,
   hoveredAbout, setHoveredAbout,
   hoveredMegaService, setHoveredMegaService,
   hoveredService, setHoveredService,
-  heroRef, handleSubmit,
+  heroRef,
 }) {
   return (
     <>
@@ -92,18 +69,17 @@ function HomePage({
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => { setAboutOpen(false); setHoveredAbout(null); }}
             >
-              <button
-                type="button"
+              <Link
+                to="/about"
                 className="nav__link nav__link--trigger"
                 aria-expanded={aboutOpen}
-                onClick={() => setAboutOpen(v => !v)}
               >
                 About
                 <svg className="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
                     strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </button>
+              </Link>
 
               <div className={`mega mega--about ${aboutOpen ? 'mega--open' : ''}`}>
                 <div className="mega-about__grid">
@@ -259,81 +235,10 @@ function HomePage({
           </div>
         </section>
 
-        {/* ===================== CONTACT ===================== */}
-        <section id="contact" className="contact">
-          <div className="contact__bg" aria-hidden="true" />
-          <div className="container container--narrow">
-            <p className="section__eyebrow reveal">Book a Meeting</p>
-            <h2 className="section__title reveal">Let&rsquo;s Get Started</h2>
-            <p className="contact__sub reveal">
-              Call 808-518-4298 or fill out the form below to learn more about our services
-              and innovative agency approach.
-            </p>
-            {status === 'ok' ? (
-              <div className="form__success reveal">
-                <strong>Thank you!</strong> Your message has been sent. We&rsquo;ll be in touch shortly.
-              </div>
-            ) : (
-              <form className="form reveal" onSubmit={handleSubmit}>
-                <div className="form__row">
-                  <label><span>First Name *</span><input name="first_name" type="text" required placeholder="Jane" /></label>
-                  <label><span>Last Name *</span><input name="last_name" type="text" required placeholder="Doe" /></label>
-                </div>
-                <div className="form__row">
-                  <label><span>Email *</span><input name="email" type="email" required placeholder="jane@email.com" /></label>
-                  <label><span>Phone No *</span><input name="phone" type="tel" required placeholder="808-555-0100" /></label>
-                </div>
-                <label>
-                  <span>How did you hear about us?</span>
-                  <select name="referral">
-                    {HOW_DID_YOU_HEAR.map(o => (
-                      <option key={o} value={o === 'Please choose one' ? '' : o}>{o}</option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  <span>Message</span>
-                  <textarea name="message" rows="4" placeholder="Tell us about your project…" />
-                </label>
-                <p className="form__consent">
-                  I authorize Covert Communication to contact me about products and services.
-                  Message and data rates may apply.{' '}
-                  <a href="#contact">See our Privacy Policy for more information.</a>
-                </p>
-                <button className="btn btn--green" type="submit" disabled={status === 'sending'}>
-                  {status === 'sending' ? 'Sending…' : 'Submit'}
-                </button>
-                {status === 'error' && <p className="form__error">Something went wrong. Please try again.</p>}
-              </form>
-            )}
-          </div>
-        </section>
       </main>
 
-      {/* ===================== FOOTER ===================== */}
-      <footer className="footer">
-        <div className="footer__inner">
-          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
-          <div className="footer__social" aria-label="Social links">
-            <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />
-            </a>
-            <a href="https://facebook.com/covertcommunication" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <img src="/icons/sm_fb.svg" alt="Facebook" />
-            </a>
-            <a href="mailto:anna@covertcommunication.com" aria-label="Email">
-              <img src="/icons/sm_email.svg" alt="Email" />
-            </a>
-          </div>
-          <p className="footer__legal">
-            Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
-            <a href="#">Privacy Policy</a> |{' '}
-            <a href="#">Cookie Preferences</a> |{' '}
-            <a href="#">Terms of Service</a> |{' '}
-            <a href="#">Site Map</a> | 808-272-9952
-          </p>
-        </div>
-      </footer>
+      {/* ===================== GLOBAL FOOTER (form + footer) ===================== */}
+      <SiteFooter />
     </>
   )
 }
