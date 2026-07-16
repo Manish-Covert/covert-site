@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<radialGradient id="hBg" cx="0.68" cy="0.42" r="0.9"><stop offset="0" stop-color="#0d2a14"/><stop offset="0.5" stop-color="#061a0d"/><stop offset="1" stop-color="#020806"/></radialGradient>
+<linearGradient id="hLine" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/></linearGradient>
+<radialGradient id="hNode" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#c9ff6b"/><stop offset="1" stop-color="#3f9d3a"/></radialGradient>
+<radialGradient id="hHalo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#a6f23c" stop-opacity="0.9"/><stop offset="1" stop-color="#a6f23c" stop-opacity="0"/></radialGradient>
+<filter id="hGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="hVig" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity="0.65"/><stop offset="0.5" stop-color="#000" stop-opacity="0.1"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1600" height="1000" fill="url(#hBg)"/>
+<g stroke="#a6f23c" stroke-opacity="0.05"><path d="M0 200H1600M0 400H1600M0 600H1600M0 800H1600"/><path d="M200 0V1000M400 0V1000M600 0V1000M800 0V1000M1000 0V1000M1200 0V1000M1400 0V1000"/></g>
+<g fill="none" stroke="#a6f23c" stroke-opacity="0.12"><circle cx="1080" cy="440" r="150"/><circle cx="1080" cy="440" r="260"/><circle cx="1080" cy="440" r="380"/><circle cx="1080" cy="440" r="510"/></g>
+<g stroke="url(#hLine)" stroke-opacity="0.5" stroke-width="2" fill="none"><path d="M1080 440 L1367 468"/><path d="M1080 440 L1198 658"/><path d="M1080 440 L891 603"/><path d="M1080 440 L754 478"/><path d="M1080 440 L957 245"/><path d="M1080 440 L1242 251"/></g>
+<g stroke="#c9ff6b" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="2 12" fill="none"><path d="M1080 440 L1367 468"/><path d="M1080 440 L891 603"/><path d="M1080 440 L957 245"/></g>
+<circle cx="1367" cy="468" r="12" fill="url(#hNode)"/><circle cx="1198" cy="658" r="9" fill="url(#hNode)"/><circle cx="891" cy="603" r="12" fill="url(#hNode)"/><circle cx="754" cy="478" r="15" fill="url(#hNode)"/><circle cx="957" cy="245" r="12" fill="url(#hNode)"/><circle cx="1242" cy="251" r="14" fill="url(#hNode)"/>
+<circle cx="1080" cy="440" r="120" fill="url(#hHalo)" opacity="0.5"/>
+<circle cx="1080" cy="440" r="46" fill="#061a0d" stroke="#a6f23c" stroke-width="3" filter="url(#hGlow)"/>
+<g stroke="#a6f23c" stroke-width="3" fill="none" stroke-linecap="round"><path d="M1062 440h36M1080 422v36"/></g>
+<g transform="translate(150,0)"><rect x="150" y="571" width="34" height="169" rx="6" fill="url(#hLine)" opacity="0.85"/><rect x="202" y="498" width="34" height="242" rx="6" fill="url(#hLine)" opacity="0.85"/><rect x="254" y="514" width="34" height="226" rx="6" fill="url(#hLine)" opacity="0.85"/><rect x="306" y="584" width="34" height="156" rx="6" fill="url(#hLine)" opacity="0.85"/><rect x="358" y="467" width="34" height="273" rx="6" fill="url(#hLine)" opacity="0.85"/><path d="M167 561 L219 488 L271 504 L323 574 L375 457 " fill="none" stroke="#c9ff6b" stroke-width="3" stroke-linejoin="round" filter="url(#hGlow)"/></g>
+<rect width="1600" height="1000" fill="url(#hVig)"/>
+</svg>

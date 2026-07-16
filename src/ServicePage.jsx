@@ -154,8 +154,8 @@ function ServiceDetailPage({ svc, detail }) {
         {/* ---------- CTA ---------- */}
         <section className="svcd__cta">
           <div className="container svcd__cta-inner reveal">
-            <h2 className="svcd__cta-title">Ready to put your media on autopilot?</h2>
-            <p className="svcd__cta-copy">Let’s map a programmatic strategy built around your outcomes.</p>
+            <h2 className="svcd__cta-title">Ready to make {svc.title.toLowerCase()} work harder?</h2>
+            <p className="svcd__cta-copy">Let’s map a strategy built around your outcomes.</p>
             <div className="svcd__cta-btns">
               <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
               <Link to="/" className="btn btn--outline">← Back to Home</Link>
