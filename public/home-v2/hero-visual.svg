@@ -1,0 +1,36 @@
+<svg viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract glowing rings">
+  <defs>
+    <radialGradient id="hvGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a6f23c" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#34c7a0" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hvRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a6f23c"/>
+      <stop offset="55%" stop-color="#34c7a0"/>
+      <stop offset="100%" stop-color="#38c6e8"/>
+    </linearGradient>
+    <linearGradient id="hvRing2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38c6e8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#8bd419" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <circle cx="310" cy="310" r="300" fill="url(#hvGlow)"/>
+  <circle cx="310" cy="310" r="250" fill="none" stroke="url(#hvRing)" stroke-width="1.5" stroke-opacity="0.55"/>
+  <circle cx="310" cy="310" r="205" fill="none" stroke="url(#hvRing2)" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="3 9"/>
+  <g stroke="url(#hvRing)" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M310 90 A220 220 0 0 1 530 310" stroke-opacity="0.9"/>
+    <path d="M530 310 A220 220 0 0 1 310 530" stroke-opacity="0.5"/>
+  </g>
+  <g stroke="url(#hvRing2)" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M150 150 A160 160 0 0 1 310 470" stroke-opacity="0.35" transform="rotate(30 310 310)"/>
+    <path d="M470 150 A160 160 0 0 0 310 470" stroke-opacity="0.55" transform="rotate(-20 310 310)"/>
+  </g>
+  <circle cx="310" cy="310" r="120" fill="none" stroke="url(#hvRing)" stroke-width="26" stroke-opacity="0.14"/>
+  <text x="310" y="360" text-anchor="middle" font-family="Sora, sans-serif" font-size="180" font-weight="800" fill="url(#hvRing)" opacity="0.9">C</text>
+  <g fill="#a6f23c">
+    <circle cx="530" cy="310" r="6"/>
+    <circle cx="310" cy="90" r="5" fill="#38c6e8"/>
+    <circle cx="150" cy="450" r="4" fill="#34c7a0"/>
+  </g>
+</svg>

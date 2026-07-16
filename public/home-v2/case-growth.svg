@@ -1,0 +1,21 @@
+<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Revenue growth dashboard">
+  <defs>
+    <linearGradient id="cg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1a10"/><stop offset="100%" stop-color="#05100a"/>
+    </linearGradient>
+    <linearGradient id="cg2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34c7a0"/><stop offset="100%" stop-color="#a6f23c"/>
+    </linearGradient>
+    <linearGradient id="cgFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a6f23c" stop-opacity="0.35"/><stop offset="100%" stop-color="#a6f23c" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="20" fill="url(#cg1)"/>
+  <rect x="1" y="1" width="638" height="418" rx="19" fill="none" stroke="#2b6b4d" stroke-opacity="0.4"/>
+  <text x="36" y="60" font-family="Sora, sans-serif" font-size="18" fill="#8fa79a">Revenue</text>
+  <text x="36" y="104" font-family="Sora, sans-serif" font-size="42" font-weight="800" fill="#fff">+312%</text>
+  <path d="M36 300 L120 270 L200 285 L280 220 L360 235 L440 160 L520 175 L604 90 L604 360 L36 360 Z" fill="url(#cgFill)"/>
+  <path d="M36 300 L120 270 L200 285 L280 220 L360 235 L440 160 L520 175 L604 90" fill="none" stroke="url(#cg2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#a6f23c"><circle cx="604" cy="90" r="6"/><circle cx="440" cy="160" r="4"/><circle cx="280" cy="220" r="4"/></g>
+  <g opacity="0.5" stroke="#2b6b4d" stroke-width="1"><line x1="36" y1="360" x2="604" y2="360"/></g>
+</svg>

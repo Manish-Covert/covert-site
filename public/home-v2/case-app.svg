@@ -1,0 +1,28 @@
+<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile app product">
+  <defs>
+    <linearGradient id="ca1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141a0c"/><stop offset="100%" stop-color="#080a05"/>
+    </linearGradient>
+    <linearGradient id="ca2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a6f23c"/><stop offset="100%" stop-color="#3f9d3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="20" fill="url(#ca1)"/>
+  <rect x="1" y="1" width="638" height="418" rx="19" fill="none" stroke="#4a6b1f" stroke-opacity="0.45"/>
+  <g transform="translate(70 60)">
+    <rect x="0" y="0" width="180" height="320" rx="28" fill="#0c1207" stroke="url(#ca2)" stroke-width="2"/>
+    <rect x="16" y="24" width="148" height="70" rx="14" fill="url(#ca2)" fill-opacity="0.85"/>
+    <text x="30" y="66" font-family="Sora, sans-serif" font-size="22" font-weight="700" fill="#0a1a05">Live</text>
+    <rect x="16" y="108" width="148" height="16" rx="8" fill="#2c421a"/>
+    <rect x="16" y="134" width="110" height="16" rx="8" fill="#2c421a"/>
+    <rect x="16" y="176" width="70" height="70" rx="14" fill="#a6f23c" fill-opacity="0.28"/>
+    <rect x="94" y="176" width="70" height="70" rx="14" fill="#38c6e8" fill-opacity="0.28"/>
+    <rect x="16" y="262" width="148" height="42" rx="12" fill="#34c7a0" fill-opacity="0.35"/>
+  </g>
+  <g font-family="Sora, sans-serif" transform="translate(300 96)">
+    <text x="0" y="0" font-size="18" fill="#9fb488">App Rating</text>
+    <text x="0" y="52" font-size="46" font-weight="800" fill="#fff">4.9★</text>
+    <text x="0" y="120" font-size="18" fill="#9fb488">Downloads</text>
+    <text x="0" y="172" font-size="46" font-weight="800" fill="#fff">250K+</text>
+  </g>
+</svg>
