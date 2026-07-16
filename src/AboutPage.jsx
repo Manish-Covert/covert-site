@@ -395,23 +395,81 @@ function OtherBrandsBody() {
   )
 }
 
+const COVERT_TEAM = [
+  { name: 'Pat Monick', role: 'Vice President' },
+  { name: 'Christine Sullivan', role: 'Creative Director' },
+  { name: 'Christopher Gaspar', role: 'Account Service Director' },
+  { name: 'Noah Jesser', role: 'Social Media Director' },
+  { name: 'Matthew Etline', role: 'Technology Director' },
+  { name: 'Cam Tullos', role: 'Senior Software Engineer' },
+  { name: 'Manish Prajapati', role: 'Senior Developer' },
+  { name: 'Sam Kuo', role: 'Software Engineer' },
+  { name: 'Mohammed Irshadh', role: 'QA Specialist' },
+  { name: 'Jocelyn Palafox', role: 'Marketing Director' },
+  { name: 'Kapili Moniz', role: 'Account Executive' },
+  { name: 'Tharam Singh', role: 'Sr. Accounts Coordinator & Podcast Producer' },
+  { name: 'Cheryl Wui', role: 'Technology Specialist' },
+  { name: 'Gayatri Prajapati', role: 'Technology Specialist' },
+  { name: 'Amber Hadfield', role: 'Account Coordinator' },
+  { name: 'Nitesh Thapa', role: 'Art Director' },
+  { name: 'Bailey Monick', role: 'Content Manager' },
+]
+
+const ANNA_LINKS = [
+  { label: 'Watch ThinkTech Hawaii Interview', href: '#' },
+  { label: 'Watch GTR Webinar', href: '#' },
+  { label: 'Watch Best Company Podcast', href: '#' },
+  { label: 'The Covert Code Podcast', href: '#' },
+]
+
+function initials(name) {
+  return name.split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase()
+}
+
 function CovertTeamBody() {
   return (
-    <section className="svcpage__body">
-      <div className="container container--narrow">
-        <h2 className="svcpage__body-title">The Covert Team</h2>
-        <p className="svcpage__lead">
-          Covert Communication is powered by a team of strategists, creatives, and media specialists
-          working across every discipline the agency offers — from programmatic and social to
-          traditional advertising and brand building.
-        </p>
-        <p className="svcpage__copy">
-          Team bios and photos are coming soon. In the meantime, reach out and we'll introduce you
-          to the people who'll be working on your account.
-        </p>
-        <div className="svcpage__cta">
-          <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-          <Link to="/about" className="btn btn--outline">&larr; Back to About</Link>
+    <section className="svcpage__body about-team">
+      <div className="container">
+        <header className="about-team__intro">
+          <h2 className="about-team__title">Meet The Team</h2>
+          <div className="about-team__rule" />
+          <p className="about-team__lead">
+            Covert Communication is powered by a team of strategists, creatives, and media
+            specialists working across every discipline the agency offers — from programmatic and
+            social to traditional advertising and brand building.
+          </p>
+        </header>
+
+        {/* Featured — Principal */}
+        <article className="about-team__featured">
+          <div className="about-team__avatar about-team__avatar--lg" aria-hidden="true">AC</div>
+          <div className="about-team__featured-body">
+            <h3 className="about-team__name">Anna Covert</h3>
+            <p className="about-team__role about-team__role--lead">Principal</p>
+            <div className="about-team__links">
+              {ANNA_LINKS.map(l => (
+                <a key={l.label} href={l.href} className="about-team__link">{l.label}</a>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        {/* Team grid */}
+        <div className="about-team__grid">
+          {COVERT_TEAM.map(m => (
+            <article key={m.name} className="about-team__card">
+              <div className="about-team__avatar" aria-hidden="true">{initials(m.name)}</div>
+              <div className="about-team__card-body">
+                <h3 className="about-team__name">{m.name}</h3>
+                <p className="about-team__role">{m.role}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="svcpage__cta about-team__cta">
+          <Link to="/#contact" className="btn-gradient"><span>Book a Meeting &rarr;</span></Link>
+          <Link to="/about" className="btn-gradient"><span>&larr; Back to About</span></Link>
         </div>
       </div>
     </section>
