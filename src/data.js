@@ -28,6 +28,9 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Programmatic Marketing',
       title: 'Programmatic',
       lead: 'Data-driven media that finds the right audience, in the right moment, across every screen — bought and optimized in real time by machines that never sleep.',
+      bg: '/services/programmatic/hero.webp',
+      bottom: true,
+      heroAccent: 'Programmatic',
     },
     intro: {
       title: 'Precision at machine speed',
@@ -80,6 +83,9 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Technology Consulting',
       title: 'Technology',
       lead: 'The engineering muscle behind great marketing — websites, apps, and technical strategy built to load fast, scale cleanly, and convert.',
+      bg: '/services/technology/hero.webp',
+      bottom: true,
+      heroAccent: 'Technology',
     },
     intro: {
       title: 'Marketing needs a backbone',
@@ -109,6 +115,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Social Media',
       title: 'Social Media',
       lead: 'Scroll-stopping content and paid strategy that turn followers into a community — and a community into customers.',
+      bg: '/services/social/hero.webp',
+      bottom: true,
+      heroTitle: 'Social',
+      heroAccent: 'Media',
     },
     intro: {
       title: 'Culture moves fast. So do we.',
@@ -141,6 +151,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Fraud Protection Gurus',
       title: 'Fraud Protection',
       lead: 'Every dollar of ad spend defended. We hunt bots, block invalid traffic, and keep your brand out of the wrong places — before the damage is done.',
+      bg: '/services/fraud/hero.webp',
+      bottom: true,
+      heroTitle: 'Fraud',
+      heroAccent: 'Protection',
     },
     intro: {
       title: 'Real people. Real placements.',
@@ -170,6 +184,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Brand Creation',
       title: 'Brand Creation',
       lead: 'The identity, the mark, and the rules that make a brand unmistakable — designed from a blank page to feel inevitable.',
+      bg: '/services/brand-creation/hero.webp',
+      bottom: true,
+      heroTitle: 'Brand',
+      heroAccent: 'Creation',
     },
     intro: {
       title: 'Brands people remember',
@@ -199,6 +217,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Traditional Full Service',
       title: 'Traditional',
       lead: 'The channels that built brands still build them best — print, broadcast, out-of-home, and live experiences, executed end to end.',
+      bg: '/services/trad/hero.webp',
+      bottom: true,
+      heroTitle: 'Traditional',
+      heroAccent: 'Full Service',
     },
     intro: {
       title: 'Offline still wins hearts',
@@ -235,6 +257,10 @@ export const SERVICE_DETAILS = {
   'brand-building': {
     hero: {
       eyebrow: 'Brand Building',
+      bg: '/services/brand-building/hero.webp',
+      bottom: true,
+      heroTitle: 'Brand',
+      heroAccent: 'Building',
       title: 'Brand Building',
       lead: 'Strategy, positioning, and campaigns that grow a brand’s meaning over time — and the analytics to prove it’s working.',
     },

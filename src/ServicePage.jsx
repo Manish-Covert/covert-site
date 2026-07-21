@@ -94,7 +94,7 @@ function ServiceDetailPage({ svc, detail }) {
           <section className="about-hero" style={{ backgroundImage: `url(${hero.bg || svc.hoverImg})` }}>
             <div className="about-hero__content">
               <h1 className="about-hero__title">
-                {hero.heroTitle}<br />
+                {hero.heroTitle && <>{hero.heroTitle}<br /></>}
                 <span className="about-hero__title-accent">{hero.heroAccent || hero.title}</span>
               </h1>
               <p className="about-hero__lead">{hero.lead}</p>
