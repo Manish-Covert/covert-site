@@ -671,7 +671,7 @@
 }
 
 .svc-card--hovered .svc-card__header {
-  opacity: 0;
+  opacity: 1;
 }
 
 .svc-card__title {
