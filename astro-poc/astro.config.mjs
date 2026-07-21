@@ -6,6 +6,7 @@ import react from '@astrojs/react'
 // real Vercel deployment (needed once API routes / SSR pages are ported).
 export default defineConfig({
   integrations: [react()],
-  // Reuse the same /public asset folder as the Vite app (symlinked).
-  publicDir: './public',
+  // Reuse the Vite app's asset folder directly (works both in local dev and in
+  // a Vercel repo-root build — no symlink required).
+  publicDir: '../public',
 })
