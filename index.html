@@ -13,7 +13,9 @@
 
     <!-- Preload the homepage LCP image so the browser fetches it during HTML
          parse instead of waiting for React to render. -->
-    <link rel="preload" as="image" href="/hero-logo.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-logo.webp"
+          imagesrcset="/hero-logo-760.webp 760w, /hero-logo.webp 1240w"
+          imagesizes="(max-width: 900px) 88vw, 620px" fetchpriority="high" />
 
     <!-- Fonts: preconnect + non-render-blocking stylesheet. display=swap keeps
          text visible in a fallback face until the web font arrives. -->
