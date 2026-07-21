@@ -14,8 +14,8 @@ export const MEGA_SERVICES = [
   { id: 'social',        title: 'Social Media',            count: 4, img: '/services/svc-social-rollover.png',          icon: '/icons/social.svg' },
   { id: 'fraud',         title: 'Fraud Protection',        count: 3, img: '/services/svc-fraud-rollover.png',           icon: '/icons/fraud.svg' },
   { id: 'technology',    title: 'Technology Consulting',   count: 3, img: '/services/svc-tech-rollover.png',            icon: '/icons/tech.svg' },
-  { id: 'brand-creation',title: 'Brand Creation',          count: 3, img: '/categories/brand-creation.webp',           icon: '/icons/brand-creation.svg' },
-  { id: 'brand-building',title: 'Brand Building',          count: 4, img: '/categories/brand-building.webp',           icon: '/icons/brand-building.svg' },
+  { id: 'brand-creation',title: 'Brand Creation',          count: 3, img: '/services/svc-brand-creation-rollover.png',   icon: '/icons/brand-creation.svg' },
+  { id: 'brand-building',title: 'Brand Building',          count: 4, img: '/services/svc-brand-building-rollover.png',   icon: '/icons/brand-building.svg' },
   { id: 'trad',          title: 'Traditional Full Service',count: 6, img: '/services/svc-trad-rollover.png',           icon: '/icons/trad-full-service.svg' },
   { id: 'brand-specialties', title: 'Brand Specialties',   count: 7, img: '/services/svc-brandspecialties-rollover.png', icon: '/icons/brand-specialties.svg' },
 ]
