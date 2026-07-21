@@ -5,11 +5,11 @@ time** a new route/page is added (a service, About subpage, case study, or a new
 "The Latest" blog post), work through this list before considering the page done.
 
 > Context: the site is a client-side React SPA (Vite + react-router). The base
-> `index.html` only carries **global** meta (site-wide title, description, OG).
-> There is currently **no per-route meta management**, so most of the work below
-> is about giving each new page its own title, description, canonical, and
-> structured data. See "One-time setup" at the bottom if the per-page meta
-> helper doesn't exist yet.
+> `index.html` carries **global** fallback meta. Per-page meta is handled by the
+> **`useSEO(...)` hook in `src/useSEO.js`** — call it once near the top of each
+> page component and it sets the title, description, canonical, OG/Twitter tags,
+> and JSON-LD for that route. See the home page in `src/App.jsx` (`HomePage`) for
+> a worked example.
 
 ---
 
@@ -106,14 +106,25 @@ metadata in `src/data.js` (`LATEST` / `LATEST_CATEGORIES`). While you're there:
 
 ---
 
-## One-time setup (do this once if it isn't already in place)
+## Infrastructure (already in place — just use it)
 
-The per-page steps above assume a way to set `<title>`/meta per route. If that
-doesn't exist yet, set it up first, then this checklist becomes routine:
+- **`src/useSEO.js`** — the per-page head hook. Signature:
+  ```js
+  useSEO({ title, description, path, ogType, image, jsonLd })
+  ```
+  It sets `document.title`, description, canonical, OG + Twitter tags, and (if
+  `jsonLd` is passed) a single `<script type="application/ld+json">`.
+- **`public/sitemap.xml`** — add each new route here (and bump `<lastmod>`).
+- **`public/robots.txt`** — points at the sitemap; disallows `/admin` and
+  `/thank-you`.
+- **`index.html`** — global fallback title/description/OG for any route that
+  hasn't called `useSEO`.
 
-1. Add a lightweight head manager (`react-helmet-async`, or a small
-   `useEffect`-based `useSEO(...)` hook that sets `document.title` and injects/
-   updates the meta, canonical, OG, and JSON-LD tags on mount).
-2. Create `public/sitemap.xml` and `public/robots.txt` (robots should point at
-   the sitemap and disallow `/admin`).
-3. Wire a default/fallback SEO block so pages that forget still get sane meta.
+### How to apply this to a new page
+
+1. Import and call `useSEO({...})` at the top of the page component with the
+   page's title, description, `path`, `ogType`, `image`, and `jsonLd`.
+2. Ensure the page renders a single `<h1>` (use `className="sr-only"` if the
+   design has no visible heading — see the home page hero).
+3. Add the route to `public/sitemap.xml`.
+4. Work through the per-page checklist above, then deploy and verify.

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useLayoutEffect, Suspense, lazy } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
+import { useSEO } from './useSEO'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
 import ServicesIndexPage from './ServicesIndexPage'
@@ -91,6 +92,22 @@ function HomePage({
   hoveredService, setHoveredService,
   heroRef,
 }) {
+  useSEO({
+    title: 'Covert Communication — Full-Service Marketing & Brand Agency',
+    description:
+      'Covert Communication is a full-service agency: brand building, programmatic, SEM/SEO/GEO/AEO, social media, fraud protection, and technology consulting. We do it all.',
+    path: '/',
+    ogType: 'website',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Covert Communication LLC',
+      url: 'https://covertcommunication.com',
+      logo: 'https://covertcommunication.com/logo-horiz.png',
+      description:
+        'Full-service marketing agency: brand building, programmatic, SEM/SEO/GEO/AEO, social media, fraud protection, and technology consulting.',
+    },
+  })
   return (
     <>
       {/* ===================== NAV ===================== */}
@@ -99,6 +116,9 @@ function HomePage({
       <main id="top">
         {/* ===================== HERO ===================== */}
         <section className="hero" ref={heroRef}>
+          <h1 className="sr-only">
+            Covert Communication — full-service brand building, marketing, and technology agency
+          </h1>
           <div className="hero__container">
             {/* Pills orbit CW then CCW around the logo */}
             <div className="hero__pills-orbit">
