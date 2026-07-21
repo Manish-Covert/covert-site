@@ -4,7 +4,9 @@
    Lesse-Studio-style smooth reveals & micro-interactions.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Fonts are loaded via <link> tags in index.html (with preconnect) so they
+   are discovered during initial HTML parse instead of being chained behind
+   this stylesheet via @import. */
 
 :root {
   --bg: #000000;
