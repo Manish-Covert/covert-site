@@ -422,3 +422,42 @@ export const HERO_PILLS = [
   { label: 'Fraud Protection Gurus' },
   { label: 'Social Media' },
 ]
+
+/* ---------- THE LATEST ---------- */
+/* Category order drives the filter-pill row on /the-latest.
+   'All' is prepended in-page; each LATEST item's `category`
+   must match one of these labels. */
+export const LATEST_CATEGORIES = ['All', 'Books', 'Podcasts', 'Solar', 'Technology']
+
+export const LATEST = [
+  { id: "3547-thecovertcode", slug: "episode-122-embrace-the-pilgrim-spirit", category: "Podcasts", title: "Episode 122 – Gideon Enok", img: "https://thecovertcode.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-6.23.54-PM-1024x575.png" },
+  { id: "3527-thecovertcode", slug: "gina-riley-why-being-qualified-isnt-enough-anymore-ep-121", category: "Podcasts", title: "Episode 121 – Gina Riley", img: "" },
+  { id: "3508-thecovertcode", slug: "marty-fahncke-build-a-business-worth-selling", category: "Podcasts", title: "Episode 120 – Marty Fahncke", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES.png" },
+  { id: "3491-thecovertcode", slug: "episode-119-dr-annu-navani", category: "Podcasts", title: "Episode 119 – Dr. Annu Navani", img: "https://thecovertcode.com/wp-content/uploads/2026/06/COVERT-CODE-TITLES-1.png" },
+  { id: "3495-thecovertcode", slug: "why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust", category: "Technology", title: "Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust", img: "https://thecovertcode.com/wp-content/uploads/2026/06/pexels-yankrukov-7793149-1024x683.jpg" },
+  { id: "3477-thecovertcode", slug: "episode-118-charlene-rose", category: "Podcasts", title: "Episode 118 – Charlene Rose", img: "https://thecovertcode.com/wp-content/uploads/2026/06/COVERT-CODE-TITLES.png" },
+  { id: "3455-thecovertcode", slug: "episode-117-dave-gulas", category: "Podcasts", title: "Episode 117 – Dave Gulas", img: "https://thecovertcode.com/wp-content/uploads/2026/06/dave-gulas-founder-led-selling-headshot-1024x819.jpg" },
+  { id: "3443-thecovertcode", slug: "episode-116-rob-aquino", category: "Podcasts", title: "Episode 116 – Rob Aquino", img: "https://thecovertcode.com/wp-content/uploads/2026/06/8.png" },
+  { id: "3439-thecovertcode", slug: "chatgpt-advertising-future-marketing", category: "Technology", title: "What ChatGPT Advertising Means for the Future of Digital Marketing", img: "https://thecovertcode.com/wp-content/uploads/2026/06/2.png" },
+  { id: "3430-thecovertcode", slug: "episode-115-lou-chatta", category: "Podcasts", title: "Episode 115 – Lou Chatta", img: "https://thecovertcode.com/wp-content/uploads/2026/05/8.png" },
+  { id: "1830-annacovert", slug: "why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust-annacovert", category: "Technology", title: "Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust", img: "https://annacovert.com/wp-content/uploads/2026/06/pexels-yankrukov-7793149-1024x683.jpg" },
+  { id: "1744-annacovert", slug: "the-next-solar-marketing-shift-why-zero-click-search-changes-everything", category: "Solar", title: "The Next Solar Marketing Shift: Why Zero-Click Search Changes Everything", img: "https://annacovert.com/wp-content/uploads/2026/06/4eb6782d-f5be-423b-8dea-61e5337602ac.png" },
+  { id: "1737-annacovert", slug: "chatgpt-ads-are-coming-why-business-leaders-need-an-ai-visibility-strategy-now", category: "Technology", title: "ChatGPT Ads Are Coming: Why Business Leaders Need an AI Visibility Strategy Now", img: "https://annacovert.com/wp-content/uploads/2026/06/1.png" },
+  { id: "1694-annacovert", slug: "authority-as-a-growth-strategy-forbes-books-podcast", category: "Books", title: "The Covert Code Launches “Authority as a Growth Strategy” A Forbes Books special podcast series presented by The Covert Code", img: "https://annacovert.com/wp-content/uploads/2026/04/Screenshot-2026-04-20-at-2.57.06-PM.png" },
+  { id: "1579-annacovert", slug: "the-covert-code-podcast-celebrates-100000-followers-and-100-episodes", category: "Podcasts", title: "The Covert Code Podcast Celebrates 100,000 Followers and 100 Episodes", img: "https://annacovert.com/wp-content/uploads/2026/01/Untitled-design-4.png" },
+  { id: "1517-annacovert", slug: "the-covert-code-podcast-surpasses-45000-followers", category: "Podcasts", title: "The Covert Code Podcast Surpasses 45,000 Followers on YouTube", img: "https://annacovert.com/wp-content/uploads/2025/10/Untitled-design-1.png" },
+  { id: "1492-annacovert", slug: "anna-covert-keynote-speaker-at-adwest-conference", category: "Technology", title: "Anna Covert, Keynote Speaker at 2025 AAF AdWest Conference", img: "https://annacovert.com/wp-content/uploads/2025/09/Untitled-design-29.png" },
+  { id: "1373-annacovert", slug: "the-solar-coaster-is-the-newly-published-book-by-anna-covert", category: "Books", title: "The Solar Coaster is the Newly Published Book by Anna Covert", img: "https://annacovert.com/wp-content/uploads/2025/09/AC-PR-for-Websites.jpg" },
+  { id: "1304-annacovert", slug: "anna-covert-to-lead-mission-driven-marketing-a-digital-marketing-101-workshop", category: "Technology", title: "Anna Covert to Lead “Mission-Driven Marketing: A Digital Marketing 101 Workshop”", img: "https://annacovert.com/wp-content/uploads/2025/08/Screenshot-2025-08-19-at-9.11.45-AM.png" },
+  { id: "1252-annacovert", slug: "digimarcon-hawaii-2025-anna-covert", category: "Technology", title: "Anna Covert to Speak at DigiMarCon Hawaii", img: "https://annacovert.com/wp-content/uploads/2025/07/1753352053130.jpg" },
+  { id: "3510-solarcoasterbook", slug: "the-patent-battle-behind-the-smart-grid-ep-46", category: "Solar", title: "The Patent Battle Behind the Smart Grid – EP 46", img: "https://solarcoasterbook.com/wp-content/uploads/2026/07/Solar-Coaster-Intro-1.png" },
+  { id: "3506-solarcoasterbook", slug: "the-talent-bottleneck-ep-45", category: "Solar", title: "The Talent Bottleneck – EP 45", img: "https://solarcoasterbook.com/wp-content/uploads/2026/07/Solar-Coaster-Intro.png" },
+  { id: "3496-solarcoasterbook", slug: "why-safe-harbor-and-domestic-content-are-reshaping-solar-finance", category: "Solar", title: "Why Safe Harbor and Domestic Content Are Reshaping Solar Finance – EP 44", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-4.png" },
+  { id: "3485-solarcoasterbook", slug: "the-solar-afterlife-what-happens-when-solar-farms-retire-ep-43", category: "Solar", title: "The Solar Afterlife: What Happens When Solar Farms Retire? – EP 43", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-3.png" },
+  { id: "3480-solarcoasterbook", slug: "made-in-america-the-solar-supply-chain-revolution-ep-42", category: "Solar", title: "Made in America: The Solar Supply Chain Revolution – EP 42", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-2.png" },
+  { id: "3475-solarcoasterbook", slug: "renewable-energys-new-reality-share-the-risk-or-miss-the-opportunity-ep-41", category: "Solar", title: "Renewable Energy’s New Reality: Share the Risk or Miss the Opportunity – EP 41", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-1.png" },
+  { id: "3470-solarcoasterbook", slug: "the-great-energy-divide-why-oil-volatility-is-accelerating-the-solar-revolution-ep-40", category: "Solar", title: "The Great Energy Divide: Why Oil Volatility Is Accelerating the Solar Revolution – EP 40", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro.png" },
+  { id: "3457-solarcoasterbook", slug: "the-silent-saboteur-why-solar-is-really-a-30-year-bet-ep-39", category: "Solar", title: "The Silent Saboteur: Why Solar Is Really a 30-Year Bet – EP 39", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-3.png" },
+  { id: "3456-solarcoasterbook", slug: "the-solar-paradox-why-infrastructure-will-define-the-next-decade-ep-38", category: "Solar", title: "The Solar Paradox: Why Infrastructure Will Define the Next Decade – Ep 38", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-2.png" },
+  { id: "3455-solarcoasterbook", slug: "the-invisible-architects-behind-the-solar-revolution-ep-37", category: "Solar", title: "The Invisible Architects Behind the Solar Revolution – EP 37", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-1.png" },
+]

@@ -6,6 +6,7 @@ import ServicePage from './ServicePage'
 import ServicesIndexPage from './ServicesIndexPage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
+import TheLatestPage from './TheLatestPage'
 import HomeV2 from './HomeV2'
 import HomeV3 from './HomeV3'
 import SiteFooter from './SiteFooter'
@@ -13,6 +14,8 @@ import SiteNav from './SiteNav'
 import './App.css'
 
 const HeroLogo = lazy(() => import('./HeroLogo'))
+// Lazy so the large article-body module (latestContent.js) is its own chunk.
+const TheLatestDetailPage = lazy(() => import('./TheLatestDetailPage'))
 
 export default function App() {
   useReveal()
@@ -52,6 +55,10 @@ export default function App() {
       <Route path="/services/:id" element={<ServicePage />} />
       <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
+      <Route path="/the-latest" element={<TheLatestPage />} />
+      <Route path="/the-latest/:slug" element={
+        <Suspense fallback={null}><TheLatestDetailPage /></Suspense>
+      } />
       <Route path="*" element={<HomePage
         megaOpen={megaOpen} setMegaOpen={setMegaOpen}
         aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}

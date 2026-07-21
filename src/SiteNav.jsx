@@ -110,7 +110,7 @@ export default function SiteNav() {
           </div>
 
           <a href="#" className="nav__link">Case Studies</a>
-          <a href="#" className="nav__link">The Latest</a>
+          <Link to="/the-latest" className="nav__link" onClick={closeAll}>The Latest</Link>
           <Link to="/#contact" className="nav__link">Contact</Link>
         </div>
 
@@ -177,7 +177,7 @@ export default function SiteNav() {
           </div>
 
           <a href="#" className="nav-drawer__link" onClick={closeDrawer}>Case Studies</a>
-          <a href="#" className="nav-drawer__link" onClick={closeDrawer}>The Latest</a>
+          <Link to="/the-latest" className="nav-drawer__link" onClick={closeDrawer}>The Latest</Link>
           <Link to="/#contact" className="nav-drawer__link" onClick={closeDrawer}>Contact</Link>
 
           <Link to="/#contact" className="btn btn--pill-outline nav-drawer__cta" onClick={closeDrawer}>
