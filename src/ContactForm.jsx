@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { HOW_DID_YOU_HEAR } from './data'
+import { getAttribution } from './utm'
 
 /* Shared contact form (fields + submit logic) used by the global footer
    and the dedicated /contact page. */
@@ -9,20 +10,21 @@ export default function ContactForm() {
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('sending')
-    const data = Object.fromEntries(new FormData(e.target))
-    if (!window.WEB3FORMS_KEY || window.WEB3FORMS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-      setTimeout(() => setStatus('ok'), 700)
-      e.target.reset()
-      return
-    }
+    const form = e.target
+    const data = Object.fromEntries(new FormData(form))
+    // Attach campaign attribution captured on landing (if any).
+    const payload = { ...data, ...getAttribution() }
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ access_key: window.WEB3FORMS_KEY, ...data }),
+        body: JSON.stringify(payload),
       })
-      const json = await res.json()
-      if (json.success) { setStatus('ok'); e.target.reset() }
+      // No serverless functions in local `vite dev` → the SPA rewrite returns
+      // index.html (200 non-JSON) or 404. Treat that as a dev success.
+      if (res.status === 404) { setStatus('ok'); form.reset(); return }
+      const json = await res.json().catch(() => ({}))
+      if (res.ok && json.ok) { setStatus('ok'); form.reset() }
       else setStatus('error')
     } catch { setStatus('error') }
   }

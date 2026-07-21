@@ -17,6 +17,7 @@ import './App.css'
 const HeroLogo = lazy(() => import('./HeroLogo'))
 // Lazy so the large article-body module (latestContent.js) is its own chunk.
 const TheLatestDetailPage = lazy(() => import('./TheLatestDetailPage'))
+const AdminLeadsPage = lazy(() => import('./AdminLeadsPage'))
 
 export default function App() {
   useReveal()
@@ -57,6 +58,9 @@ export default function App() {
       <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/admin" element={
+        <Suspense fallback={null}><AdminLeadsPage /></Suspense>
+      } />
       <Route path="/the-latest" element={<TheLatestPage />} />
       <Route path="/the-latest/:slug" element={
         <Suspense fallback={null}><TheLatestDetailPage /></Suspense>

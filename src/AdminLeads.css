@@ -1,0 +1,80 @@
+/* ============================================================
+   ADMIN LEADS — password gate + leads table (utility page)
+   ============================================================ */
+.admin {
+  min-height: 100vh;
+  padding: 90px 24px 60px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  color: #fff;
+}
+.admin--wide { max-width: 100%; padding-left: 32px; padding-right: 32px; }
+
+.admin__gate {
+  max-width: 380px;
+  margin: 8vh auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 34px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.admin__title { font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 700; }
+.admin__count {
+  font-size: 15px;
+  color: var(--green-bright);
+  vertical-align: middle;
+  margin-left: 8px;
+}
+.admin__hint { color: rgba(255, 255, 255, 0.6); font-size: 14px; }
+.admin__gate input {
+  padding: 13px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 15px;
+}
+.admin__gate input:focus { outline: none; border-color: var(--green-bright); }
+.admin__error { color: #ff8a8a; font-size: 13px; }
+
+.admin__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.admin__table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+.admin__table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.admin__table th,
+.admin__table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  white-space: nowrap;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.admin__table th {
+  position: sticky;
+  top: 0;
+  background: #0f150f;
+  color: var(--green-bright);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.admin__table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
