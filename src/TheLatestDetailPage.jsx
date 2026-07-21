@@ -3,6 +3,7 @@ import { LATEST_CONTENT } from './latestContent'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './TheLatest.css'
@@ -41,6 +42,29 @@ export default function TheLatestDetailPage() {
   const { slug } = useParams()
   const post = LATEST_CONTENT[slug]
   useReveal()
+
+  // Meta description: use the excerpt, else the first paragraph of the body.
+  const firstPara = post?.blocks?.find(b => b.t === 'p')?.text || ''
+  const metaDesc = (post?.excerpt || firstPara).replace(/\s+/g, ' ').slice(0, 160)
+
+  useSEO({
+    title: post ? `${post.title} | Covert Communication` : 'The Latest | Covert Communication',
+    description: post ? metaDesc : 'The latest from Covert Communication.',
+    path: post ? `/the-latest/${slug}` : '/the-latest',
+    ogType: 'article',
+    image: post?.img,
+    jsonLd: post && {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      image: post.img,
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { '@type': 'Organization', name: post.source || 'Covert Communication LLC' },
+      publisher: { '@type': 'Organization', name: 'Covert Communication LLC' },
+      url: `https://covertcommunication.com/the-latest/${slug}`,
+    },
+  })
 
   // Unknown slug → back to the index.
   if (!post) return <Navigate to="/the-latest" replace />

@@ -41,7 +41,10 @@ function setLink(rel, href) {
 export function useSEO({ title, description, path = '/', ogType = 'website', image, jsonLd } = {}) {
   useEffect(() => {
     const url = `${SITE}${path}`
-    const ogImage = image || DEFAULT_OG_IMAGE
+    // OG/Twitter images must be absolute; absolutize local paths.
+    const ogImage = image
+      ? (image.startsWith('http') ? image : `${SITE}${image.startsWith('/') ? '' : '/'}${image}`)
+      : DEFAULT_OG_IMAGE
 
     if (title) document.title = title
     setMeta('name', 'description', description)

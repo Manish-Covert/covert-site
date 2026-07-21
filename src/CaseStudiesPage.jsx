@@ -4,6 +4,7 @@ import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
 import { useSmoothScroll } from './useSmoothScroll'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './CaseStudies.css'
@@ -11,6 +12,14 @@ import './CaseStudies.css'
 export default function CaseStudiesPage() {
   useReveal()
   useSmoothScroll()
+
+  useSEO({
+    title: 'Case Studies — Brands We’ve Built & Grown | Covert Communication',
+    description:
+      'A selection of brands we’ve built, launched, and grown — from identity and packaging to product and platform. Each project a partnership, measured by results.',
+    path: '/case-studies',
+    ogType: 'website',
+  })
 
   return (
     <>

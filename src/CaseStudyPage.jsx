@@ -5,6 +5,7 @@ import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
 import { useSmoothScroll } from './useSmoothScroll'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './CaseStudies.css'
@@ -15,6 +16,26 @@ export default function CaseStudyPage() {
   useSmoothScroll()
 
   const study = CASE_STUDIES.find(s => s.slug === slug)
+
+  useSEO({
+    title: study ? `${study.title} — Case Study | Covert Communication` : 'Case Study | Covert Communication',
+    description: study
+      ? (study.excerpt || (study.description || '').replace(/\n+/g, ' ')).slice(0, 160)
+      : 'Case studies from Covert Communication.',
+    path: study ? `/case-studies/${study.slug}` : '/case-studies',
+    ogType: 'article',
+    image: study?.cover,
+    jsonLd: study && {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: study.title,
+      image: study.cover ? `https://covertcommunication.com${study.cover}` : undefined,
+      author: { '@type': 'Organization', name: 'Covert Communication LLC' },
+      publisher: { '@type': 'Organization', name: 'Covert Communication LLC' },
+      url: `https://covertcommunication.com/case-studies/${study.slug}`,
+    },
+  })
+
   if (!study) return <Navigate to="/case-studies" replace />
 
   // Two other studies for the "Next Case Studies" section.

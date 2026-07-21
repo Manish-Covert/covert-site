@@ -4,6 +4,7 @@ import { LATEST, LATEST_CATEGORIES } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './TheLatest.css'
@@ -16,6 +17,14 @@ export default function TheLatestPage() {
   const [active, setActive] = useState('All')
   const [visible, setVisible] = useState(PAGE_SIZE)
   useReveal()
+
+  useSEO({
+    title: 'The Latest — Insights, Podcasts & Updates | Covert Communication',
+    description:
+      'The latest from Covert Communication — marketing insights, podcast episodes, and updates on brand building, media, and technology.',
+    path: '/the-latest',
+    ogType: 'website',
+  })
 
   const items = useMemo(
     () => (active === 'All' ? LATEST : LATEST.filter(p => p.category === active)),
