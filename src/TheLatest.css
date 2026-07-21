@@ -59,9 +59,11 @@
 /* Card = feature image box + title below (no excerpt/meta) */
 .latest-card { flex-direction: column; }
 .latest-card__media {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2 / 1;
   background: #0c120c;
 }
+/* Show the full image width inside the 2:1 box (no horizontal cropping). */
+.latest-card__media .svci-card__img { object-fit: cover; }
 .latest-card__title {
   padding: 18px 6px 4px;
   font-family: 'Space Grotesk', sans-serif;
@@ -129,6 +131,22 @@
   height: auto;
   border-radius: 16px;
   margin: 30px 0 10px;
+}
+/* Responsive 16:9 Vimeo embed */
+.latest-detail__video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 30px 0 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+}
+.latest-detail__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Article prose (source HTML) */

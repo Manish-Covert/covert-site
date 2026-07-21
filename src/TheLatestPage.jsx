@@ -58,12 +58,11 @@ export default function TheLatestPage() {
         <section className="latest__body">
           <div className="container">
             <div className="svci__grid latest__grid">
-              {shown.map((p, i) => (
+              {shown.map(p => (
                 <Link
                   key={p.id}
                   to={`/the-latest/${p.slug}`}
-                  className="svci-card latest-card reveal"
-                  style={{ transitionDelay: `${(i % 3) * 60}ms` }}
+                  className="svci-card latest-card"
                 >
                   <div className="svci-card__media latest-card__media">
                     <img

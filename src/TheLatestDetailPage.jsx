@@ -39,7 +39,19 @@ export default function TheLatestDetailPage() {
           </div>
         </header>
 
-        {post.img && (
+        {post.vimeoId ? (
+          <div className="container container--narrow">
+            <div className="latest-detail__video">
+              <iframe
+                src={`https://player.vimeo.com/video/${post.vimeoId}?badge=0&autopause=0`}
+                title={post.title}
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        ) : post.img && (
           <div className="container container--narrow">
             <img className="latest-detail__hero-img" src={post.img} alt={post.title} />
           </div>

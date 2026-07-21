@@ -431,7 +431,7 @@ export const LATEST_CATEGORIES = ['All', 'Books', 'Podcasts', 'Solar', 'Technolo
 
 export const LATEST = [
   { id: "3547-thecovertcode", slug: "episode-122-embrace-the-pilgrim-spirit", category: "Podcasts", title: "Episode 122 – Gideon Enok", img: "https://thecovertcode.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-6.23.54-PM-1024x575.png" },
-  { id: "3527-thecovertcode", slug: "gina-riley-why-being-qualified-isnt-enough-anymore-ep-121", category: "Podcasts", title: "Episode 121 – Gina Riley", img: "" },
+  { id: "3527-thecovertcode", slug: "gina-riley-why-being-qualified-isnt-enough-anymore-ep-121", category: "Podcasts", title: "Episode 121 – Gina Riley", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES-1.png" },
   { id: "3508-thecovertcode", slug: "marty-fahncke-build-a-business-worth-selling", category: "Podcasts", title: "Episode 120 – Marty Fahncke", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES.png" },
   { id: "3491-thecovertcode", slug: "episode-119-dr-annu-navani", category: "Podcasts", title: "Episode 119 – Dr. Annu Navani", img: "https://thecovertcode.com/wp-content/uploads/2026/06/COVERT-CODE-TITLES-1.png" },
   { id: "3495-thecovertcode", slug: "why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust", category: "Technology", title: "Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust", img: "https://thecovertcode.com/wp-content/uploads/2026/06/pexels-yankrukov-7793149-1024x683.jpg" },
