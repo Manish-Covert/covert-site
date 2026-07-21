@@ -150,7 +150,6 @@
 }
 
 /* Article body — our own design, rendered from plain-text blocks */
-.latest-article { padding: 26px 0 20px; }
 .latest-article__p {
   font-size: 17px;
   line-height: 1.8;

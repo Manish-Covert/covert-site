@@ -81,7 +81,7 @@ export default function TheLatestDetailPage() {
         )}
 
         {/* ---------- BODY: plain-text blocks, our own styling ---------- */}
-        <article className="container container--narrow latest-article">
+        <article className="container container--narrow">
           {renderBlocks(post.blocks)}
         </article>
 
