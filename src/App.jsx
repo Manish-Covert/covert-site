@@ -108,6 +108,15 @@ function HomePage({
         'Full-service marketing agency: brand building, programmatic, SEM/SEO/GEO/AEO, social media, fraud protection, and technology consulting.',
     },
   })
+
+  // Defer the heavy three.js hero canvas until the browser is idle so it
+  // doesn't block first paint / inflate TBT. The static webp shows meanwhile.
+  const [show3D, setShow3D] = useState(false)
+  useEffect(() => {
+    const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 200))
+    const id = ric(() => setShow3D(true))
+    return () => (window.cancelIdleCallback || clearTimeout)(id)
+  }, [])
   return (
     <>
       {/* ===================== NAV ===================== */}
@@ -141,13 +150,19 @@ function HomePage({
               })}
             </div>
 
-            {/* Center 3D logo */}
+            {/* Center 3D logo — the static webp paints immediately (LCP);
+                the heavy three.js canvas is mounted only after the browser
+                is idle so it never competes with first paint. */}
             <div className="hero__logo-wrap">
-              <Suspense fallback={
-                <img src="/hero-logo.png" alt="Covert Communication" className="hero__logo-fallback" />
-              }>
-                <HeroLogo containerRef={heroRef} />
-              </Suspense>
+              {show3D ? (
+                <Suspense fallback={
+                  <img src="/hero-logo.webp" alt="Covert Communication" className="hero__logo-fallback" width="620" height="620" fetchpriority="high" />
+                }>
+                  <HeroLogo containerRef={heroRef} />
+                </Suspense>
+              ) : (
+                <img src="/hero-logo.webp" alt="Covert Communication" className="hero__logo-fallback" width="620" height="620" fetchpriority="high" />
+              )}
             </div>
           </div>
         </section>
