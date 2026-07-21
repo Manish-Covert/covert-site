@@ -67,7 +67,12 @@ time** a new route/page is added (a service, About subpage, case study, or a new
       appropriate).
 
 ### 9. Sitemap & robots
-- [ ] Add the new route's URL to `public/sitemap.xml` with `<lastmod>`.
+- [ ] Sitemap is **auto-generated** from `src/data.js` by
+      `scripts/generate-sitemap.js` on every `npm run build` (via `prebuild`),
+      so a new service / about subpage / case study / blog post added to
+      `data.js` is included automatically — no manual edit needed. (Run
+      `npm run sitemap` to regenerate on demand.) Only hand-edit if you add a
+      route that isn't derived from `data.js`.
 - [ ] Confirm the page is **not** blocked in `public/robots.txt`
       (admin/internal routes like `/admin` should stay disallowed).
 
@@ -114,7 +119,9 @@ metadata in `src/data.js` (`LATEST` / `LATEST_CATEGORIES`). While you're there:
   ```
   It sets `document.title`, description, canonical, OG + Twitter tags, and (if
   `jsonLd` is passed) a single `<script type="application/ld+json">`.
-- **`public/sitemap.xml`** — add each new route here (and bump `<lastmod>`).
+- **`public/sitemap.xml`** — auto-generated from `src/data.js` by
+  `scripts/generate-sitemap.js`, which runs on every build (`prebuild` script).
+  Regenerate on demand with `npm run sitemap`.
 - **`public/robots.txt`** — points at the sitemap; disallows `/admin` and
   `/thank-you`.
 - **`index.html`** — global fallback title/description/OG for any route that
@@ -126,5 +133,6 @@ metadata in `src/data.js` (`LATEST` / `LATEST_CATEGORIES`). While you're there:
    page's title, description, `path`, `ogType`, `image`, and `jsonLd`.
 2. Ensure the page renders a single `<h1>` (use `className="sr-only"` if the
    design has no visible heading — see the home page hero).
-3. Add the route to `public/sitemap.xml`.
+3. If the page's data lives in `src/data.js` (it should), the sitemap picks it
+   up automatically on build. Otherwise run/adjust `npm run sitemap`.
 4. Work through the per-page checklist above, then deploy and verify.
