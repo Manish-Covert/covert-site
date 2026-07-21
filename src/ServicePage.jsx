@@ -87,6 +87,20 @@ function ServiceDetailPage({ svc, detail }) {
 
       <main className="svcd">
         {/* ---------- HERO ---------- */}
+        {/* About-style hero: title/description bottom-right, back button
+            bottom-left, no green scrim. */}
+        {hero.bottom ? (
+          <section className="svcd__hero svcd__hero--bottom" style={{ backgroundImage: `url(${hero.bg || svc.hoverImg})` }}>
+            <div className="svcd__hero-overlay" />
+            <div className="svcd__hero-content">
+              <h1 className="svcd__title">{hero.title}</h1>
+              <p className="svcd__lead">{hero.lead}</p>
+            </div>
+            <Link to="/services" className="btn btn--outline-pill svcd__hero-back">
+              <span>◂ View all services</span>
+            </Link>
+          </section>
+        ) : (
         <section className="svcd__hero" style={{ backgroundImage: `url(${hero.bg || svc.hoverImg})` }}>
           <div className="svcd__hero-overlay" />
           <div className="svcd__hero-glow" />
@@ -102,6 +116,7 @@ function ServiceDetailPage({ svc, detail }) {
             </Link>
           </div>
         </section>
+        )}
 
         {/* ---------- INTRO + STATS ---------- */}
         <section className="svcd__intro">

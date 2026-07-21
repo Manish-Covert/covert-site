@@ -270,6 +270,7 @@ export const SERVICE_DETAILS = {
       title: 'Brand Specialties',
       lead: 'The craft disciplines that bring a brand to life — packaging, copy, photography, video, and experiences made with obsessive attention to detail.',
       bg: '/services/brand-specialties/hero.webp',
+      bottom: true,
     },
     intro: {
       title: 'Where craft meets brand',
