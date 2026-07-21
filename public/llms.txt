@@ -1,0 +1,73 @@
+# Covert Communication
+
+> Covert Communication LLC is a full-service marketing and brand agency: brand building, programmatic advertising, SEM/SEO/GEO/AEO, social media, fraud protection, and technology consulting. We do it all.
+
+## Main pages
+
+- [Home](https://covertcommunication.com/): Overview of the agency and everything we do
+- [Services](https://covertcommunication.com/services): Full list of marketing and technology services
+- [About](https://covertcommunication.com/about): The people, brands, and story behind Covert Communication
+- [Case Studies](https://covertcommunication.com/case-studies): Selected client work and results
+- [The Latest](https://covertcommunication.com/the-latest): Articles, podcast episodes, and updates
+- [Contact](https://covertcommunication.com/contact): Get in touch to start a project
+
+## Services
+
+- [Technology Consulting](https://covertcommunication.com/services/technology): Web Development, App Development, Tech Strategy
+- [Programmatic](https://covertcommunication.com/services/programmatic): SEM, AEO, GEO, SEO
+- [Social Media](https://covertcommunication.com/services/social): Content Creation, Paid Social, Community Mgmt, Influencer Mktg
+- [Fraud Protection Gurus](https://covertcommunication.com/services/fraud): Ad Fraud Detection, Click Fraud, Brand Safety
+- [Brand Creation](https://covertcommunication.com/services/brand-creation): Brand Identity, Logo Design, Brand Guidelines
+- [Traditional Full Service](https://covertcommunication.com/services/trad): Print, TV & Radio, Out of Home, Direct Mail, Events, PR
+- [Brand Building](https://covertcommunication.com/services/brand-building): Strategy, Positioning, Campaigns, Analytics
+- [Brand Specialties](https://covertcommunication.com/services/brand-specialties): Packaging, Copywriting, Photography, Video Prod., Experiential, Activation, Sponsorship
+
+## About
+
+- [Covert Communication](https://covertcommunication.com/about/covertcom): The full-service agency behind the brand.
+- [Anna Covert](https://covertcommunication.com/about/anna): Founder, author, and the voice behind Covert Communication.
+- [The Covert Team](https://covertcommunication.com/about/covertteam): The people who make it happen, every day.
+- [Books](https://covertcommunication.com/about/books): Bestselling reads on marketing and the solar industry.
+- [Podcasts](https://covertcommunication.com/about/podcasts): Conversations on marketing, media, and solar.
+- [Other Brands](https://covertcommunication.com/about/otherbrands): Other ventures built by the Covert Communication team.
+
+## Case studies
+
+- [Northwind SaaS](https://covertcommunication.com/case-studies/northwind-saas): A B2B SaaS marketing site rebuilt for speed and search — paired with an always-on programmatic engine.
+- [Lumen Solar](https://covertcommunication.com/case-studies/lumen-solar): A solar installer relaunched with a clean identity, a lead-gen site, and a paid social program that fills the pipeline.
+- [Meridian Health](https://covertcommunication.com/case-studies/meridian-health): A healthcare platform redesigned around patient clarity, accessibility, and organic discoverability.
+- [Cobalt Fintech](https://covertcommunication.com/case-studies/cobalt-fintech): A fintech challenger positioned for its Series B — full rebrand, performance search, and a measurement stack that proves ROI.
+- [Harbor Retail](https://covertcommunication.com/case-studies/harbor-retail): An omnichannel retail brand unified across print, broadcast, social, and a conversion-focused storefront.
+
+## The Latest
+
+- [Episode 122 – Gideon Enok](https://covertcommunication.com/the-latest/episode-122-embrace-the-pilgrim-spirit): Podcasts
+- [Episode 121 – Gina Riley](https://covertcommunication.com/the-latest/gina-riley-why-being-qualified-isnt-enough-anymore-ep-121): Podcasts
+- [Episode 120 – Marty Fahncke](https://covertcommunication.com/the-latest/marty-fahncke-build-a-business-worth-selling): Podcasts
+- [Episode 119 – Dr. Annu Navani](https://covertcommunication.com/the-latest/episode-119-dr-annu-navani): Podcasts
+- [Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust](https://covertcommunication.com/the-latest/why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust): Technology
+- [Episode 118 – Charlene Rose](https://covertcommunication.com/the-latest/episode-118-charlene-rose): Podcasts
+- [Episode 117 – Dave Gulas](https://covertcommunication.com/the-latest/episode-117-dave-gulas): Podcasts
+- [Episode 116 – Rob Aquino](https://covertcommunication.com/the-latest/episode-116-rob-aquino): Podcasts
+- [What ChatGPT Advertising Means for the Future of Digital Marketing](https://covertcommunication.com/the-latest/chatgpt-advertising-future-marketing): Technology
+- [Episode 115 – Lou Chatta](https://covertcommunication.com/the-latest/episode-115-lou-chatta): Podcasts
+- [Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust](https://covertcommunication.com/the-latest/why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust-annacovert): Technology
+- [The Next Solar Marketing Shift: Why Zero-Click Search Changes Everything](https://covertcommunication.com/the-latest/the-next-solar-marketing-shift-why-zero-click-search-changes-everything): Solar
+- [ChatGPT Ads Are Coming: Why Business Leaders Need an AI Visibility Strategy Now](https://covertcommunication.com/the-latest/chatgpt-ads-are-coming-why-business-leaders-need-an-ai-visibility-strategy-now): Technology
+- [The Covert Code Launches “Authority as a Growth Strategy” A Forbes Books special podcast series presented by The Covert Code](https://covertcommunication.com/the-latest/authority-as-a-growth-strategy-forbes-books-podcast): Books
+- [The Covert Code Podcast Celebrates 100,000 Followers and 100 Episodes](https://covertcommunication.com/the-latest/the-covert-code-podcast-celebrates-100000-followers-and-100-episodes): Podcasts
+- [The Covert Code Podcast Surpasses 45,000 Followers on YouTube](https://covertcommunication.com/the-latest/the-covert-code-podcast-surpasses-45000-followers): Podcasts
+- [Anna Covert, Keynote Speaker at 2025 AAF AdWest Conference](https://covertcommunication.com/the-latest/anna-covert-keynote-speaker-at-adwest-conference): Technology
+- [The Solar Coaster is the Newly Published Book by Anna Covert](https://covertcommunication.com/the-latest/the-solar-coaster-is-the-newly-published-book-by-anna-covert): Books
+- [Anna Covert to Lead “Mission-Driven Marketing: A Digital Marketing 101 Workshop”](https://covertcommunication.com/the-latest/anna-covert-to-lead-mission-driven-marketing-a-digital-marketing-101-workshop): Technology
+- [Anna Covert to Speak at DigiMarCon Hawaii](https://covertcommunication.com/the-latest/digimarcon-hawaii-2025-anna-covert): Technology
+- [The Patent Battle Behind the Smart Grid – EP 46](https://covertcommunication.com/the-latest/the-patent-battle-behind-the-smart-grid-ep-46): Solar
+- [The Talent Bottleneck – EP 45](https://covertcommunication.com/the-latest/the-talent-bottleneck-ep-45): Solar
+- [Why Safe Harbor and Domestic Content Are Reshaping Solar Finance – EP 44](https://covertcommunication.com/the-latest/why-safe-harbor-and-domestic-content-are-reshaping-solar-finance): Solar
+- [The Solar Afterlife: What Happens When Solar Farms Retire? – EP 43](https://covertcommunication.com/the-latest/the-solar-afterlife-what-happens-when-solar-farms-retire-ep-43): Solar
+- [Made in America: The Solar Supply Chain Revolution – EP 42](https://covertcommunication.com/the-latest/made-in-america-the-solar-supply-chain-revolution-ep-42): Solar
+- [Renewable Energy’s New Reality: Share the Risk or Miss the Opportunity – EP 41](https://covertcommunication.com/the-latest/renewable-energys-new-reality-share-the-risk-or-miss-the-opportunity-ep-41): Solar
+- [The Great Energy Divide: Why Oil Volatility Is Accelerating the Solar Revolution – EP 40](https://covertcommunication.com/the-latest/the-great-energy-divide-why-oil-volatility-is-accelerating-the-solar-revolution-ep-40): Solar
+- [The Silent Saboteur: Why Solar Is Really a 30-Year Bet – EP 39](https://covertcommunication.com/the-latest/the-silent-saboteur-why-solar-is-really-a-30-year-bet-ep-39): Solar
+- [The Solar Paradox: Why Infrastructure Will Define the Next Decade – Ep 38](https://covertcommunication.com/the-latest/the-solar-paradox-why-infrastructure-will-define-the-next-decade-ep-38): Solar
+- [The Invisible Architects Behind the Solar Revolution – EP 37](https://covertcommunication.com/the-latest/the-invisible-architects-behind-the-solar-revolution-ep-37): Solar
