@@ -453,6 +453,9 @@
 .hero__pills-orbit {
   position: absolute;
   inset: 0;
+  /* Radii of the ring the pills sit on; shrunk on smaller screens. */
+  --orbit-rx: 460px;
+  --orbit-ry: 320px;
   animation: orbit-spin 60s linear infinite;
   z-index: 2;
 }
@@ -462,9 +465,19 @@
   to   { transform: rotate(360deg); }
 }
 
-/* Pills — absolutely positioned within the orbit ring */
-.hero__pill {
+/* Slot: places each pill at its equal-angle point on the ring (centered on
+   that point) while the ring rotates. Keeps positioning off the pill itself
+   so the pill's transform is free for the upright counter-rotation. */
+.hero__pill-slot {
   position: absolute;
+  left: calc(50% + var(--x) * var(--orbit-rx));
+  top: calc(50% + var(--y) * var(--orbit-ry));
+  transform: translate(-50%, -50%);
+}
+
+/* Pills — positioned by their slot within the orbit ring */
+.hero__pill {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1095,6 +1108,25 @@
   .nav-drawer__scrim { display: none; }
 }
 
+/* Small-laptop widths: pull the ring in so the outermost pills don't collide
+   with the nav or run off the edges. */
+@media (max-width: 1280px) and (min-width: 901px) {
+  .hero__pills-orbit {
+    --orbit-rx: 370px;
+    --orbit-ry: 290px;
+  }
+  .hero__pill { font-size: 12px; padding: 9px 18px; }
+}
+
+/* Tablet widths (still the circular orbit, above the 900px stack breakpoint). */
+@media (max-width: 1080px) and (min-width: 901px) {
+  .hero__pills-orbit {
+    --orbit-rx: 300px;
+    --orbit-ry: 260px;
+  }
+  .hero__pill { font-size: 11px; padding: 8px 15px; }
+}
+
 @media (max-width: 900px) {
   .services-hero { padding: 40px 20px; }
   .services-grid {
@@ -1136,6 +1168,12 @@
     gap: 10px 12px;
     width: 100%;
     max-width: 560px;
+  }
+  .hero__pill-slot {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
   }
   .hero__pill {
     position: static;

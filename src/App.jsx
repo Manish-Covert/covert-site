@@ -83,18 +83,23 @@ function HomePage({
           <div className="hero__container">
             {/* Pills orbit CW then CCW around the logo */}
             <div className="hero__pills-orbit">
-              {HERO_PILLS.map((pill, i) => (
-                <a
-                  key={i}
-                  href="#services"
-                  className="hero__pill"
-                  style={{ left: pill.left, top: pill.top }}
-                >
-                  {pill.label.split('\n').map((line, j) => (
-                    <span key={j}>{line}</span>
-                  ))}
-                </a>
-              ))}
+              {HERO_PILLS.map((pill, i) => {
+                // Equal angular spacing around the logo; start at the top (-90°).
+                const angle = ((-90 + i * (360 / HERO_PILLS.length)) * Math.PI) / 180
+                const slotStyle = {
+                  '--x': Math.cos(angle).toFixed(4),
+                  '--y': Math.sin(angle).toFixed(4),
+                }
+                return (
+                  <div key={i} className="hero__pill-slot" style={slotStyle}>
+                    <a href="#services" className="hero__pill">
+                      {pill.label.split('\n').map((line, j) => (
+                        <span key={j}>{line}</span>
+                      ))}
+                    </a>
+                  </div>
+                )
+              })}
             </div>
 
             {/* Center 3D logo */}

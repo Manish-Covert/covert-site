@@ -380,13 +380,15 @@ export const ABOUT_BRANDS = [
 
 export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
 
+/* Labels are laid out at equal angles around the logo in App.jsx, so the
+   order here is the order they appear going clockwise around the ring. */
 export const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 410px)', top: '14%' },
-  { label: 'Social Media',                          left: 'calc(50% - 480px)', top: '42%' },
-  { label: 'Fraud Protection Gurus',                left: 'calc(50% - 460px)', top: '64%' },
-  { label: 'Technology Consulting',                 left: 'calc(50% - 370px)', top: '78%' },
-  { label: 'Brand Creation',                        left: 'calc(50% + 250px)', top: '10%' },
-  { label: 'Traditional Full Service',              left: 'calc(50% + 300px)', top: '40%' },
-  { label: 'Brand Building',                        left: 'calc(50% + 320px)', top: '63%' },
-  { label: 'Brand Specialties',                     left: 'calc(50% + 210px)', top: '78%' },
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO' },
+  { label: 'Brand Creation' },
+  { label: 'Traditional Full Service' },
+  { label: 'Brand Building' },
+  { label: 'Brand Specialties' },
+  { label: 'Technology Consulting' },
+  { label: 'Fraud Protection Gurus' },
+  { label: 'Social Media' },
 ]
