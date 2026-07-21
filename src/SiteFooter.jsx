@@ -22,7 +22,7 @@ export default function SiteFooter({ showContact = true }) {
       {/* ===================== FOOTER ===================== */}
       <footer className="footer">
         <div className="footer__inner">
-          <img src="/CC_Icon.png" alt="Covert Communication" className="footer__logo" />
+          <img src="/CC_Icon.webp" alt="Covert Communication" className="footer__logo" width="150" height="150" loading="lazy" />
           <div className="footer__social" aria-label="Social links">
             <a href="https://www.linkedin.com/company/covert-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <img src="/icons/sm_linkdin.svg" alt="LinkedIn" />

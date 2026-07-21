@@ -41,7 +41,7 @@ export default function SiteNav() {
     <header className="nav-wrap">
       <nav className="nav">
         <Link className="brand" to="/" aria-label="Covert Communication home" onClick={closeDrawer}>
-          <img src="/logo-horiz.png" alt="Covert Communication" className="brand__logo" />
+          <img src="/logo-horiz.webp" alt="Covert Communication" className="brand__logo" width="212" height="85" fetchpriority="high" />
         </Link>
 
         {/* ---------- DESKTOP LINKS ---------- */}

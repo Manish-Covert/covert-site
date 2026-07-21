@@ -979,15 +979,18 @@
 }
 .footer__legal {
   font-size: 11.5px;
-  color: rgba(255,255,255,.4);
+  /* Raised from .4 to meet WCAG AA contrast on the #000 footer. */
+  color: rgba(255,255,255,.72);
   line-height: 1.8;
 }
 .footer__legal a {
-  color: rgba(255,255,255,.55);
-  text-decoration: none;
+  color: #fff;
+  /* Underline so links aren't distinguished by colour alone. */
+  text-decoration: underline;
+  text-underline-offset: 2px;
   transition: color .2s var(--ease);
 }
-.footer__legal a:hover { color: #fff; }
+.footer__legal a:hover { color: var(--green-bright); }
 
 /* ============================================================
    RESPONSIVE

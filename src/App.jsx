@@ -3,22 +3,25 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
 import { useSEO } from './useSEO'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
-import ServicePage from './ServicePage'
-import ServicesIndexPage from './ServicesIndexPage'
-import ContactPage from './ContactPage'
-import ThankYouPage from './ThankYouPage'
-import CaseStudiesPage from './CaseStudiesPage'
-import CaseStudyPage from './CaseStudyPage'
-import AboutPage from './AboutPage'
-import AboutIndexPage from './AboutIndexPage'
-import TheLatestPage from './TheLatestPage'
-import HomeV2 from './HomeV2'
-import HomeV3 from './HomeV3'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import './App.css'
 
+// Only the homepage (defined below) and its nav/footer ship in the main
+// bundle. Every other route is code-split so it doesn't inflate the initial
+// JS the homepage must download, parse, and execute before it can paint.
 const HeroLogo = lazy(() => import('./HeroLogo'))
+const ServicePage = lazy(() => import('./ServicePage'))
+const ServicesIndexPage = lazy(() => import('./ServicesIndexPage'))
+const ContactPage = lazy(() => import('./ContactPage'))
+const ThankYouPage = lazy(() => import('./ThankYouPage'))
+const CaseStudiesPage = lazy(() => import('./CaseStudiesPage'))
+const CaseStudyPage = lazy(() => import('./CaseStudyPage'))
+const AboutPage = lazy(() => import('./AboutPage'))
+const AboutIndexPage = lazy(() => import('./AboutIndexPage'))
+const TheLatestPage = lazy(() => import('./TheLatestPage'))
+const HomeV2 = lazy(() => import('./HomeV2'))
+const HomeV3 = lazy(() => import('./HomeV3'))
 // Lazy so the large article-body module (latestContent.js) is its own chunk.
 const TheLatestDetailPage = lazy(() => import('./TheLatestDetailPage'))
 const AdminLeadsPage = lazy(() => import('./AdminLeadsPage'))
@@ -54,33 +57,31 @@ export default function App() {
   }, [location.pathname, location.hash])
 
   return (
-    <Routes>
-      <Route path="/home-v2" element={<HomeV2 />} />
-      <Route path="/home-v3" element={<HomeV3 />} />
-      <Route path="/services" element={<ServicesIndexPage />} />
-      <Route path="/services/:id" element={<ServicePage />} />
-      <Route path="/about" element={<AboutIndexPage />} />
-      <Route path="/about/:id" element={<AboutPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/thank-you" element={<ThankYouPage />} />
-      <Route path="/case-studies" element={<CaseStudiesPage />} />
-      <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
-      <Route path="/admin" element={
-        <Suspense fallback={null}><AdminLeadsPage /></Suspense>
-      } />
-      <Route path="/the-latest" element={<TheLatestPage />} />
-      <Route path="/the-latest/:slug" element={
-        <Suspense fallback={null}><TheLatestDetailPage /></Suspense>
-      } />
-      <Route path="*" element={<HomePage
-        megaOpen={megaOpen} setMegaOpen={setMegaOpen}
-        aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
-        hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
-        hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
-        hoveredService={hoveredService} setHoveredService={setHoveredService}
-        heroRef={heroRef}
-      />} />
-    </Routes>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/home-v2" element={<HomeV2 />} />
+        <Route path="/home-v3" element={<HomeV3 />} />
+        <Route path="/services" element={<ServicesIndexPage />} />
+        <Route path="/services/:id" element={<ServicePage />} />
+        <Route path="/about" element={<AboutIndexPage />} />
+        <Route path="/about/:id" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+        <Route path="/admin" element={<AdminLeadsPage />} />
+        <Route path="/the-latest" element={<TheLatestPage />} />
+        <Route path="/the-latest/:slug" element={<TheLatestDetailPage />} />
+        <Route path="*" element={<HomePage
+          megaOpen={megaOpen} setMegaOpen={setMegaOpen}
+          aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}
+          hoveredAbout={hoveredAbout} setHoveredAbout={setHoveredAbout}
+          hoveredMegaService={hoveredMegaService} setHoveredMegaService={setHoveredMegaService}
+          hoveredService={hoveredService} setHoveredService={setHoveredService}
+          heroRef={heroRef}
+        />} />
+      </Routes>
+    </Suspense>
   )
 }
 
