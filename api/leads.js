@@ -1,3 +1,12 @@
+// Resolve the Postgres connection string across the common env-var names
+// that Vercel Postgres / Neon integrations may set.
+if (!process.env.POSTGRES_URL) {
+  process.env.POSTGRES_URL =
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.POSTGRES_URL_NON_POOLING ||
+    process.env.DATABASE_URL_UNPOOLED || ''
+}
 import { sql } from '@vercel/postgres'
 
 /* Password-protected leads listing for the /admin page.
@@ -27,6 +36,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ leads: rows })
   } catch (e) {
     console.error('leads query failed:', e)
-    return res.status(500).json({ error: 'Failed to load leads.' })
+    // Password-gated endpoint — include the reason so setup issues are visible.
+    return res.status(500).json({
+      error: 'Failed to load leads.',
+      detail: String(e && e.message ? e.message : e),
+      hasConnString: Boolean(process.env.POSTGRES_URL),
+    })
   }
 }

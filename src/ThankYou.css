@@ -1,0 +1,39 @@
+/* ============================================================
+   THANK YOU PAGE — centered confirmation, on-brand
+   ============================================================ */
+.thankyou { text-align: center; padding-top: 170px; padding-bottom: 40px; }
+
+.thankyou__badge {
+  display: inline-grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 26px;
+  border-radius: 999px;
+  font-size: 34px;
+  font-weight: 700;
+  color: #06210a;
+  background: var(--green-bright);
+  box-shadow: 0 12px 40px rgba(166, 242, 60, 0.28);
+}
+
+.thankyou__msg {
+  max-width: 560px;
+  margin: 24px auto 0;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+}
+.thankyou__msg strong { color: #fff; }
+
+.thankyou__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 38px;
+}
+
+@media (max-width: 900px) {
+  .thankyou { padding-top: 130px; }
+}

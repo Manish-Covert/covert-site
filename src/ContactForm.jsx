@@ -1,11 +1,24 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { HOW_DID_YOU_HEAR } from './data'
 import { getAttribution } from './utm'
+
+/* Format keystrokes into US phone format: (123) 456-7890 */
+function formatUSPhone(value) {
+  const d = value.replace(/\D/g, '').slice(0, 10)
+  const a = d.slice(0, 3), b = d.slice(3, 6), c = d.slice(6, 10)
+  if (d.length > 6) return `(${a}) ${b}-${c}`
+  if (d.length > 3) return `(${a}) ${b}`
+  if (d.length > 0) return `(${a}`
+  return ''
+}
 
 /* Shared contact form (fields + submit logic) used by the global footer
    and the dedicated /contact page. */
 export default function ContactForm() {
   const [status, setStatus] = useState('idle')
+  const [phone, setPhone] = useState('')
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -14,6 +27,7 @@ export default function ContactForm() {
     const data = Object.fromEntries(new FormData(form))
     // Attach campaign attribution captured on landing (if any).
     const payload = { ...data, ...getAttribution() }
+    const succeed = () => { form.reset(); setPhone(''); navigate('/thank-you') }
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -22,9 +36,9 @@ export default function ContactForm() {
       })
       // No serverless functions in local `vite dev` → the SPA rewrite returns
       // index.html (200 non-JSON) or 404. Treat that as a dev success.
-      if (res.status === 404) { setStatus('ok'); form.reset(); return }
+      if (res.status === 404) { succeed(); return }
       const json = await res.json().catch(() => ({}))
-      if (res.ok && json.ok) { setStatus('ok'); form.reset() }
+      if (res.ok && json.ok) succeed()
       else setStatus('error')
     } catch { setStatus('error') }
   }
@@ -45,7 +59,17 @@ export default function ContactForm() {
       </div>
       <div className="form__row">
         <input name="email" type="email" required placeholder="Email*" aria-label="Email" />
-        <input name="phone" type="tel" required placeholder="Phone No*" aria-label="Phone No" />
+        <input
+          name="phone"
+          type="tel"
+          required
+          placeholder="(555) 123-4567"
+          aria-label="Phone No"
+          inputMode="numeric"
+          autoComplete="tel"
+          value={phone}
+          onChange={e => setPhone(formatUSPhone(e.target.value))}
+        />
       </div>
       <p className="form__question">How did you hear about us?</p>
       <div className="form__row">

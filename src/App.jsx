@@ -5,6 +5,7 @@ import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
 import ServicesIndexPage from './ServicesIndexPage'
 import ContactPage from './ContactPage'
+import ThankYouPage from './ThankYouPage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
 import TheLatestPage from './TheLatestPage'
@@ -58,6 +59,7 @@ export default function App() {
       <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/thank-you" element={<ThankYouPage />} />
       <Route path="/admin" element={
         <Suspense fallback={null}><AdminLeadsPage /></Suspense>
       } />

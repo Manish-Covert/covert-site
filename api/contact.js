@@ -1,3 +1,12 @@
+// Resolve the Postgres connection string across the common env-var names
+// that Vercel Postgres / Neon integrations may set.
+if (!process.env.POSTGRES_URL) {
+  process.env.POSTGRES_URL =
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.POSTGRES_URL_NON_POOLING ||
+    process.env.DATABASE_URL_UNPOOLED || ''
+}
 import { sql } from '@vercel/postgres'
 
 /* Marketing attribution params captured on the landing URL. */
@@ -14,11 +23,12 @@ function esc(s = '') {
 }
 
 /* Shared email shell — dark header w/ brand accent, light body. */
-function shell(title, bodyHtml) {
+function shell(title, bodyHtml, origin) {
+  const logo = `${origin || 'https://covertcommunication.com'}/logo-horiz.png`
   return `<!doctype html><html><body style="margin:0;background:#0a0f0a;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
   <div style="max-width:600px;margin:0 auto;background:#ffffff;">
-    <div style="background:#0a0f0a;padding:26px 32px;border-bottom:3px solid ${BRAND_GREEN};">
-      <span style="color:#ffffff;font-size:20px;font-weight:700;letter-spacing:.5px;">COVERT<span style="color:${BRAND_GREEN};">.</span>COMMUNICATION</span>
+    <div style="background:#0a0f0a;padding:24px 32px;border-bottom:3px solid ${BRAND_GREEN};">
+      <img src="${logo}" alt="Covert Communication" height="40" style="height:40px;width:auto;display:block;" />
     </div>
     <div style="padding:32px;">
       <h1 style="margin:0 0 18px;font-size:22px;color:#0a0f0a;">${title}</h1>
@@ -98,6 +108,11 @@ export default async function handler(req, res) {
   const referrer = (body.referrer || '').toString().trim()
   const fullName = `${first_name} ${last_name}`.trim()
 
+  // Absolute origin of this deployment, so the email logo resolves anywhere.
+  const proto = (req.headers['x-forwarded-proto'] || 'https').split(',')[0]
+  const host = req.headers['x-forwarded-host'] || req.headers.host || 'covertcommunication.com'
+  const origin = `${proto}://${host}`
+
   // Admin notification
   const attribRows = ATTRIB.filter(k => attribution[k]).map(k => row(k, attribution[k])).join('')
   const adminHtml = shell('New contact form submission', `
@@ -111,7 +126,7 @@ export default async function handler(req, res) {
     ${attribRows ? `<h2 style="font-size:15px;margin:24px 0 8px;color:#0a0f0a;">Attribution</h2>
       <table style="width:100%;border-collapse:collapse;">${attribRows}
       ${row('Landing page', landing_page)}${row('Referrer', referrer)}</table>` : ''}
-  `)
+  `, origin)
 
   // Auto-reply to the submitter
   const userHtml = shell(`Thanks, ${esc(first_name)} — we've received your message`, `
@@ -119,7 +134,7 @@ export default async function handler(req, res) {
     <p style="font-size:15px;line-height:1.7;color:#333;">In the meantime, feel free to explore what we do at
       <a href="https://covertcommunication.com" style="color:#2a8a4a;">covertcommunication.com</a>.</p>
     <p style="font-size:15px;line-height:1.7;color:#333;margin-top:24px;">— The Covert Communication Team</p>
-  `)
+  `, origin)
 
   const adminTo = (process.env.ADMIN_EMAIL || '').split(',').map(e => ({ email: e.trim() })).filter(e => e.email)
 

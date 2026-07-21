@@ -50,7 +50,10 @@ export default function AdminLeadsPage() {
       if (res.status === 401) { setError('Incorrect password.'); setStatus('idle'); return }
       const json = await res.json()
       if (res.ok) { setLeads(json.leads || []); setStatus('done') }
-      else { setError(json.error || 'Failed to load.'); setStatus('idle') }
+      else {
+        setError([json.error, json.detail].filter(Boolean).join(' — ') || 'Failed to load.')
+        setStatus('idle')
+      }
     } catch {
       setError('Network error.'); setStatus('idle')
     }
