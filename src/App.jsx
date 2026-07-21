@@ -6,6 +6,8 @@ import ServicePage from './ServicePage'
 import ServicesIndexPage from './ServicesIndexPage'
 import ContactPage from './ContactPage'
 import ThankYouPage from './ThankYouPage'
+import CaseStudiesPage from './CaseStudiesPage'
+import CaseStudyPage from './CaseStudyPage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
 import TheLatestPage from './TheLatestPage'
@@ -60,6 +62,8 @@ export default function App() {
       <Route path="/about/:id" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/thank-you" element={<ThankYouPage />} />
+      <Route path="/case-studies" element={<CaseStudiesPage />} />
+      <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
       <Route path="/admin" element={
         <Suspense fallback={null}><AdminLeadsPage /></Suspense>
       } />

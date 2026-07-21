@@ -461,3 +461,54 @@ export const LATEST = [
   { id: "3456-solarcoasterbook", slug: "the-solar-paradox-why-infrastructure-will-define-the-next-decade-ep-38", category: "Solar", title: "The Solar Paradox: Why Infrastructure Will Define the Next Decade – Ep 38", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-2.png" },
   { id: "3455-solarcoasterbook", slug: "the-invisible-architects-behind-the-solar-revolution-ep-37", category: "Solar", title: "The Invisible Architects Behind the Solar Revolution – EP 37", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-1.png" },
 ]
+
+/* ---------- CASE STUDIES ---------- */
+const CS_LOREM = 'Our challenge was to translate philosophy into a system that captures the essence of the brand. The solution lies in a simple yet powerful idea: two distinct halves, balanced and complementary, coming together to form a unified whole. Every touchpoint — from identity to packaging to digital — was built to feel deliberate, warm, and unmistakably ownable.'
+
+export const CASE_STUDIES = [
+  {
+    slug: 'duo-nutrition',
+    title: 'Duo Nutrition',
+    tags: ['Brand Identity', 'Packaging'],
+    excerpt: 'A brand that redefines pet food as a celebration of the equal, unspoken partnership between humans and their dogs.',
+    cover: '/case-studies/duo-nutrition/cover.svg',
+    description: 'DUO NUTRITION is a brand that redefines pet food as a celebration of the equal, unspoken partnership between humans and their dogs.\n\n' + CS_LOREM,
+    images: ['/case-studies/duo-nutrition/1.svg', '/case-studies/duo-nutrition/2.svg', '/case-studies/duo-nutrition/3.svg', '/case-studies/duo-nutrition/4.svg'],
+  },
+  {
+    slug: 'aster-finance',
+    title: 'Aster Finance',
+    tags: ['Web App', 'UI/UX', 'Product'],
+    excerpt: 'A modern finance platform reimagined around clarity, trust, and effortless everyday money management.',
+    cover: '/case-studies/aster-finance/cover.svg',
+    description: 'ASTER FINANCE set out to make personal finance feel calm instead of overwhelming.\n\n' + CS_LOREM,
+    images: ['/case-studies/aster-finance/1.svg', '/case-studies/aster-finance/2.svg', '/case-studies/aster-finance/3.svg', '/case-studies/aster-finance/4.svg'],
+  },
+  {
+    slug: 'nomad-coffee',
+    title: 'Nomad Coffee',
+    tags: ['Branding', 'Packaging', 'Web'],
+    excerpt: 'A roaster for the restless — a brand built for people who take their coffee, and their curiosity, everywhere.',
+    cover: '/case-studies/nomad-coffee/cover.svg',
+    description: 'NOMAD COFFEE is a roaster for the restless — built for people who take their coffee, and their curiosity, everywhere.\n\n' + CS_LOREM,
+    images: ['/case-studies/nomad-coffee/1.svg', '/case-studies/nomad-coffee/2.svg', '/case-studies/nomad-coffee/3.svg', '/case-studies/nomad-coffee/4.svg'],
+  },
+  {
+    slug: 'pulse-fitness',
+    title: 'Pulse Fitness',
+    tags: ['App Development', 'Social'],
+    excerpt: 'A training app that turns everyday movement into momentum with a bold, energetic identity.',
+    cover: '/case-studies/pulse-fitness/cover.svg',
+    description: 'PULSE FITNESS turns everyday movement into momentum with a bold, energetic identity.\n\n' + CS_LOREM,
+    images: ['/case-studies/pulse-fitness/1.svg', '/case-studies/pulse-fitness/2.svg', '/case-studies/pulse-fitness/3.svg', '/case-studies/pulse-fitness/4.svg'],
+  },
+  {
+    slug: 'verdant-homes',
+    title: 'Verdant Homes',
+    tags: ['Web Design', 'SEO'],
+    excerpt: 'A sustainable homebuilder brought online with a serene, nature-forward digital presence.',
+    cover: '/case-studies/verdant-homes/cover.svg',
+    description: 'VERDANT HOMES is a sustainable homebuilder brought online with a serene, nature-forward digital presence.\n\n' + CS_LOREM,
+    images: ['/case-studies/verdant-homes/1.svg', '/case-studies/verdant-homes/2.svg', '/case-studies/verdant-homes/3.svg', '/case-studies/verdant-homes/4.svg'],
+  },
+]
