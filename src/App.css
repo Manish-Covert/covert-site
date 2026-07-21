@@ -1153,6 +1153,11 @@
   }
   .svc-card { min-height: 260px; }
 
+  /* No hover state on touch devices, so skip the rollover background images
+     entirely. display:none stops the browser from downloading them
+     (~300 KiB of PNGs that would otherwise load unused on mobile). */
+  .svc-card__hover-bg { display: none; }
+
   /* Hero: the ±400px orbit offsets can't fit a narrow viewport, so drop the
      orbit layout and stack the logo above a centered, wrapped list of pills
      so every service label stays visible. */

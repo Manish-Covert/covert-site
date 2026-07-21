@@ -162,12 +162,12 @@ function HomePage({
             <div className="hero__logo-wrap">
               {show3D ? (
                 <Suspense fallback={
-                  <img src="/hero-logo.webp" alt="Covert Communication" className="hero__logo-fallback" width="620" height="620" fetchpriority="high" />
+                  <img src="/hero-logo.webp" srcSet="/hero-logo-760.webp 760w, /hero-logo.webp 1240w" sizes="(max-width: 900px) 88vw, 620px" alt="Covert Communication" className="hero__logo-fallback" width="620" height="620" fetchpriority="high" />
                 }>
                   <HeroLogo containerRef={heroRef} />
                 </Suspense>
               ) : (
-                <img src="/hero-logo.webp" alt="Covert Communication" className="hero__logo-fallback" width="620" height="620" fetchpriority="high" />
+                <img src="/hero-logo.webp" srcSet="/hero-logo-760.webp 760w, /hero-logo.webp 1240w" sizes="(max-width: 900px) 88vw, 620px" alt="Covert Communication" className="hero__logo-fallback" width="620" height="620" fetchpriority="high" />
               )}
             </div>
           </div>
