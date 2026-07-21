@@ -109,10 +109,16 @@ function HomePage({
     },
   })
 
-  // Defer the heavy three.js hero canvas until the browser is idle so it
-  // doesn't block first paint / inflate TBT. The static webp shows meanwhile.
+  // The static webp is the LCP element and always shows. We only upgrade to
+  // the heavy three.js WebGL canvas when it's worth it: skip it on small
+  // screens (mobile CPU/battery, big TBT hit) and when the user prefers
+  // reduced motion, and otherwise defer it to idle so it never blocks paint.
   const [show3D, setShow3D] = useState(false)
   useEffect(() => {
+    const smallOrReduced =
+      window.matchMedia('(max-width: 900px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (smallOrReduced) return
     const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 200))
     const id = ric(() => setShow3D(true))
     return () => (window.cancelIdleCallback || clearTimeout)(id)
