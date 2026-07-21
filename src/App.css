@@ -106,7 +106,7 @@
   overflow: hidden;
   min-height: 58px;
   border: 1.5px solid rgba(40,200,100,.25);
-  background: #0a0f0a;
+  background: #000;
   text-decoration: none;
   transition: border-color .3s var(--ease), min-height .35s var(--ease);
   cursor: pointer;
@@ -125,9 +125,11 @@
   background-position: center;
   opacity: 0;
   transition: opacity .35s var(--ease), transform .35s var(--ease);
-  transform: scale(1.04);
+  /* Zoomed in so the transparent whitespace padding around the source
+     artwork is cropped out of the card. */
+  transform: scale(1.45);
 }
-.ms-card--hovered .ms-card__bg { opacity: 1; transform: scale(1); }
+.ms-card--hovered .ms-card__bg { opacity: 1; transform: scale(1.3); }
 
 .ms-card::before {
   content: '';
@@ -202,7 +204,7 @@
   overflow: hidden;
   min-height: 58px;
   border: 1.5px solid rgba(40,200,100,.25);
-  background: #0a0f0a;
+  background: #000;
   text-decoration: none;
   transition: border-color .3s var(--ease), min-height .35s var(--ease);
   cursor: pointer;
