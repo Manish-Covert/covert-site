@@ -11,7 +11,7 @@ import './TheLatest.css'
 
 const PAGE_SIZE = 27      // cards shown initially
 const LOAD_STEP = 12      // revealed per "Load More" click
-const FALLBACK_IMG = '/about/about-podcasts-rollover.png'
+const FALLBACK_IMG = '/about/about-podcasts-rollover.webp'
 
 export default function TheLatestPage() {
   const [active, setActive] = useState('All')

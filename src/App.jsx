@@ -110,19 +110,23 @@ function HomePage({
     },
   })
 
-  // The static webp is the LCP element and always shows. We only upgrade to
-  // the heavy three.js WebGL canvas when it's worth it: skip it on small
-  // screens (mobile CPU/battery, big TBT hit) and when the user prefers
-  // reduced motion, and otherwise defer it to idle so it never blocks paint.
+  // The static webp is the LCP element and always shows. The heavy three.js
+  // WebGL canvas (≈950 KB + a continuous render loop) is only mounted on the
+  // first real user interaction — its mouse-parallax effect is meaningless
+  // until the pointer moves anyway. This keeps it entirely out of page load,
+  // so it never inflates Total Blocking Time / main-thread work. It's also
+  // skipped on small screens and when the user prefers reduced motion.
   const [show3D, setShow3D] = useState(false)
   useEffect(() => {
     const smallOrReduced =
       window.matchMedia('(max-width: 900px)').matches ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (smallOrReduced) return
-    const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 200))
-    const id = ric(() => setShow3D(true))
-    return () => (window.cancelIdleCallback || clearTimeout)(id)
+    const activate = () => setShow3D(true)
+    const events = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart']
+    const opts = { once: true, passive: true }
+    events.forEach((e) => window.addEventListener(e, activate, opts))
+    return () => events.forEach((e) => window.removeEventListener(e, activate, opts))
   }, [])
   return (
     <>
