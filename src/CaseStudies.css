@@ -31,7 +31,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
-.cs-card {
+.cs-card { position: relative; }
+/* Image link: hides the native cursor so only the following pill shows. */
+.cs-card__media-link {
   position: relative;
   display: block;
   text-decoration: none;
@@ -50,7 +52,7 @@
   object-fit: cover;
   transition: transform .6s var(--ease);
 }
-.cs-card:hover .cs-card__media img { transform: scale(1.04); }
+.cs-card__media-link:hover .cs-card__media img { transform: scale(1.04); }
 
 /* Pill that eases toward the cursor while hovering */
 .cs-card__cursor {
@@ -73,12 +75,15 @@
 .cs-card__cursor.is-on { opacity: 1; }
 
 .cs-card__caption { padding: 18px 4px 0; }
+.cs-card__title-link { text-decoration: none; display: inline-block; }
 .cs-card__title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #fff;
+  transition: color .25s var(--ease);
 }
+.cs-card__title-link:hover .cs-card__title { color: var(--green-bright); }
 .cs-card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .cs-card__tags span {
   font-size: 12px;
@@ -153,7 +158,7 @@
   .csindex__head { padding: 130px 0 30px; }
   .csindex__head-inner { grid-template-columns: 1fr; gap: 20px; align-items: start; }
   .cs-grid { grid-template-columns: 1fr; gap: 22px; }
-  .cs-card { cursor: pointer; }
+  .cs-card__media-link { cursor: pointer; }
   .cs-card__cursor { display: none; }
   .csd__hero-grid { grid-template-columns: 1fr; gap: 30px; }
   .csd__info-sticky { position: static; }
