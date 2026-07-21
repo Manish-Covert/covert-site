@@ -151,6 +151,27 @@
 
 /* Article prose (source HTML) */
 .latest-prose { padding: 26px 0 20px; }
+
+/* The source WP content is built with Avada/Fusion Builder, whose wrapper
+   divs carry their own max-width (1248px), negative margins, paddings, and
+   background patterns — which push the body wider and left of the title/video.
+   Flatten every Fusion wrapper to the column width so the article aligns with
+   the header and media edge-to-edge. */
+.latest-prose .fusion-fullwidth,
+.latest-prose .fusion-builder-row,
+.latest-prose .fusion-row,
+.latest-prose .fusion-flex-container,
+.latest-prose .fusion-layout-column,
+.latest-prose .fusion-column-wrapper,
+.latest-prose [class*="fusion-builder-column"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
 .latest-prose p {
   font-size: 17px;
   line-height: 1.75;
