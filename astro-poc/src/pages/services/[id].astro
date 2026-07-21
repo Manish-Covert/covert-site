@@ -1,0 +1,110 @@
+---
+// Astro port of the rich ServiceDetailPage branch of src/ServicePage.jsx.
+// One static HTML page is pre-rendered per service via getStaticPaths — no
+// client-side router, and no React on the page except the footer form island.
+import Layout from '../../components/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import { SERVICES, SERVICE_DETAILS } from '../../../../src/data.js'
+
+export function getStaticPaths() {
+  return SERVICES
+    .filter((s) => SERVICE_DETAILS[s.id])
+    .map((s) => ({ params: { id: s.id }, props: { svc: s, detail: SERVICE_DETAILS[s.id] } }))
+}
+
+const { svc, detail } = Astro.props
+const { hero, intro, features } = detail
+---
+<Layout title={`${svc.title} — Covert Communication`} description={hero.lead}>
+  <Nav />
+
+  <main class="svcd">
+    {hero.bottom ? (
+      <section class="about-hero" style={`background-image:url(${hero.bg || svc.hoverImg})`}>
+        <div class="about-hero__content">
+          <h1 class="about-hero__title">
+            {hero.heroTitle && <>{hero.heroTitle}<br /></>}
+            <span class="about-hero__title-accent">{hero.heroAccent || hero.title}</span>
+          </h1>
+          <p class="about-hero__lead">{hero.lead}</p>
+        </div>
+        <a href="/services" class="btn-gradient about-hero__viewall">
+          <span>&#9666; View all services</span>
+        </a>
+      </section>
+    ) : (
+      <section class="svcd__hero" style={`background-image:url(${hero.bg || svc.hoverImg})`}>
+        <div class="svcd__hero-overlay"></div>
+        <div class="svcd__hero-glow"></div>
+        <div class="svcd__hero-content">
+          <p class="svcd__eyebrow">{hero.eyebrow}</p>
+          <h1 class="svcd__title">{hero.title}</h1>
+          <p class="svcd__lead">{hero.lead}</p>
+          <div class="svcd__hero-chips">
+            {svc.subs?.map((s) => <span class="svcd__chip">{s}</span>)}
+          </div>
+          <a href="/services" class="btn btn--outline-pill svcd__hero-back">
+            <span>◂ View all services</span>
+          </a>
+        </div>
+      </section>
+    )}
+
+    <section class="svcd__intro">
+      <div class="container">
+        <div class="svcd__intro-grid">
+          <div class="reveal">
+            <span class="svcd__accent-bar"></span>
+            <h2 class="svcd__intro-title">{intro.title}</h2>
+          </div>
+          <p class="svcd__intro-copy reveal">{intro.copy}</p>
+        </div>
+        <div class="svcd__stats">
+          {intro.stats.map((s, i) => (
+            <div class="svcd__stat reveal" style={`transition-delay:${i * 70}ms`}>
+              <span class="svcd__stat-value">{s.value}</span>
+              <span class="svcd__stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="svcd__features">
+      <div class="container">
+        {features.map((f, i) => (
+          <article class={`svcd__feature ${i % 2 === 1 ? 'svcd__feature--rev' : ''} reveal`}>
+            <div class="svcd__feature-media">
+              <img src={f.image} alt={`${f.title} illustration`} loading="lazy" />
+            </div>
+            <div class="svcd__feature-body">
+              <span class="svcd__feature-kicker">{f.kicker}</span>
+              <div class="svcd__feature-head">
+                <span class="svcd__accent-bar"></span>
+                <h3 class="svcd__feature-title">{f.title}</h3>
+              </div>
+              <p class="svcd__feature-copy">{f.copy}</p>
+              <ul class="svcd__feature-points">
+                {f.points.map((p) => <li>{p}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="svcd__cta">
+      <div class="container svcd__cta-inner reveal">
+        <h2 class="svcd__cta-title">Ready to make {svc.title.toLowerCase()} work harder?</h2>
+        <p class="svcd__cta-copy">Let’s map a strategy built around your outcomes.</p>
+        <div class="svcd__cta-btns">
+          <a href="/#contact" class="btn btn--green">Book a Meeting &rarr;</a>
+          <a href="/" class="btn btn--outline">← Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
