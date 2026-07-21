@@ -1,0 +1,191 @@
+/* ============================================================
+   THE LATEST — mockup hero (title + filter pills), image cards,
+   load-more, and article detail prose.
+   Builds on shared .svcd__chip and .svci__grid / .svci-card
+   (ServicePage.css).
+   ============================================================ */
+
+/* ---------- HERO BAND ---------- */
+.latest__hero {
+  padding: 160px 0 8px;
+  text-align: center;
+}
+.latest__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(44px, 7vw, 86px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: #fff;
+  margin-bottom: 34px;
+}
+
+/* ---------- FILTER PILL ROW ---------- */
+.latest__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+/* Interactive variant of the shared .svcd__chip pill */
+.latest__filter {
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  background: rgba(166, 242, 60, 0.06);
+  transition:
+    background .22s var(--ease),
+    color .22s var(--ease),
+    border-color .22s var(--ease),
+    transform .18s var(--ease),
+    box-shadow .22s var(--ease);
+}
+.latest__filter:hover {
+  transform: translateY(-2px);
+  border-color: rgba(166, 242, 60, 0.6);
+  box-shadow: 0 4px 16px rgba(40, 160, 90, 0.22);
+}
+.latest__filter--active {
+  color: #06210a;
+  background: var(--green-bright);
+  border-color: var(--green-bright);
+}
+.latest__filter--active:hover {
+  transform: translateY(0);
+  box-shadow: 0 6px 20px rgba(166, 242, 60, 0.3);
+}
+
+/* ---------- CARD GRID ---------- */
+.latest__body { padding: 44px 0 90px; }
+
+/* Card = feature image box + title below (no excerpt/meta) */
+.latest-card { flex-direction: column; }
+.latest-card__media {
+  aspect-ratio: 2 / 1;
+  background: #0c120c;
+}
+/* Show the full image width inside the 2:1 box (no horizontal cropping). */
+.latest-card__media .svci-card__img { object-fit: cover; }
+.latest-card__title {
+  padding: 18px 6px 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+  transition: color .25s var(--ease);
+}
+.latest-card:hover .latest-card__title { color: var(--green-bright); }
+
+.latest__empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  padding: 40px 0 20px;
+}
+
+/* ---------- LOAD MORE ---------- */
+.latest__loadmore {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+/* ---------- DETAIL PAGE ---------- */
+.latest-detail { padding-top: 120px; }
+.latest-detail__head { padding: 20px 0 24px; }
+.latest-detail__back {
+  display: inline-block;
+  color: var(--green-bright);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 22px;
+}
+.latest-detail__back:hover { text-decoration: underline; }
+.latest-detail__meta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.latest-detail__source {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-bright);
+}
+.latest-detail__date {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.latest-detail__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(30px, 4.6vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: #fff;
+}
+.latest-detail__hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 30px 0 10px;
+}
+/* Responsive 16:9 Vimeo embed */
+.latest-detail__video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 30px 0 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+}
+.latest-detail__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Article body — our own design, rendered from plain-text blocks */
+.latest-article__p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 22px;
+}
+.latest-article__h {
+  font-family: 'Sora', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  margin: 44px 0 16px;
+}
+.latest-article__list {
+  margin: 0 0 22px;
+  padding-left: 22px;
+  color: rgba(255, 255, 255, 0.82);
+}
+.latest-article__list li { margin-bottom: 10px; line-height: 1.7; }
+.latest-article__quote {
+  border-left: 3px solid var(--green-bright);
+  margin: 28px 0;
+  padding: 6px 0 6px 22px;
+  font-size: 19px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.72);
+}
+.latest-detail__footer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 30px 0 20px;
+}
+
+@media (max-width: 900px) {
+  .latest__hero { padding: 130px 0 8px; }
+}

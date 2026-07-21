@@ -109,13 +109,13 @@ export default function SiteNav() {
             </div>
           </div>
 
-          <a href="#" className="nav__link">Case Studies</a>
-          <a href="#" className="nav__link">The Latest</a>
-          <Link to="/#contact" className="nav__link">Contact</Link>
+          <Link to="/case-studies" className="nav__link" onClick={closeAll}>Case Studies</Link>
+          <Link to="/the-latest" className="nav__link" onClick={closeAll}>The Latest</Link>
+          <Link to="/contact" className="nav__link" onClick={closeAll}>Contact</Link>
         </div>
 
         <div className="nav__cta">
-          <Link to="/#contact" className="btn btn--pill-outline">Book a Meeting &rarr;</Link>
+          <Link to="/contact" className="btn btn--pill-outline" onClick={closeAll}>Book a Meeting &rarr;</Link>
         </div>
 
         {/* ---------- MOBILE HAMBURGER ---------- */}
@@ -176,11 +176,11 @@ export default function SiteNav() {
             </div>
           </div>
 
-          <a href="#" className="nav-drawer__link" onClick={closeDrawer}>Case Studies</a>
-          <a href="#" className="nav-drawer__link" onClick={closeDrawer}>The Latest</a>
-          <Link to="/#contact" className="nav-drawer__link" onClick={closeDrawer}>Contact</Link>
+          <Link to="/case-studies" className="nav-drawer__link" onClick={closeDrawer}>Case Studies</Link>
+          <Link to="/the-latest" className="nav-drawer__link" onClick={closeDrawer}>The Latest</Link>
+          <Link to="/contact" className="nav-drawer__link" onClick={closeDrawer}>Contact</Link>
 
-          <Link to="/#contact" className="btn btn--pill-outline nav-drawer__cta" onClick={closeDrawer}>
+          <Link to="/contact" className="btn btn--pill-outline nav-drawer__cta" onClick={closeDrawer}>
             Book a Meeting &rarr;
           </Link>
         </div>

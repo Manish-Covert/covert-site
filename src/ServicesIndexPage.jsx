@@ -5,6 +5,7 @@ import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
 import './App.css'
 import './ServicePage.css'
+import './AboutPage.css'
 
 export default function ServicesIndexPage() {
   useReveal()
@@ -15,13 +16,14 @@ export default function ServicesIndexPage() {
       <SiteNav />
 
       <main className="svcd">
-        {/* ---------- HERO ---------- */}
-        <section className="svci__hero">
-          <div className="svci__hero-glow" />
-          <div className="container svci__hero-inner">
-            <p className="svcd__eyebrow reveal">What We Do</p>
-            <h1 className="svci__title reveal">Services</h1>
-            <p className="svci__lead reveal">
+        {/* ---------- HERO (same as /about) ---------- */}
+        <section className="about-hero" style={{ backgroundImage: 'url(/about/about-hero-texture.webp)' }}>
+          <img className="about-hero__emblem" src="/about/about-hero-emblem.webp" alt="" aria-hidden="true" />
+          <div className="about-hero__content">
+            <h1 className="about-hero__title">
+              <span className="about-hero__title-accent">Services</span>
+            </h1>
+            <p className="about-hero__lead">
               A full-service agency under one roof — {SERVICES.length} disciplines and {total}
               &nbsp;specialties working together to build, grow, and protect your brand across
               every channel that matters.

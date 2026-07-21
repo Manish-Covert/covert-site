@@ -6,6 +6,7 @@ import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
 import './App.css'
 import './ServicePage.css'
+import './AboutPage.css'
 
 export default function ServicePage() {
   const { id } = useParams()
@@ -87,6 +88,22 @@ function ServiceDetailPage({ svc, detail }) {
 
       <main className="svcd">
         {/* ---------- HERO ---------- */}
+        {/* About-style hero: two-tone title + lead bottom-right, gradient
+            "View all services" button bottom-left (mirrors /about subpages). */}
+        {hero.bottom ? (
+          <section className="about-hero" style={{ backgroundImage: `url(${hero.bg || svc.hoverImg})` }}>
+            <div className="about-hero__content">
+              <h1 className="about-hero__title">
+                {hero.heroTitle && <>{hero.heroTitle}<br /></>}
+                <span className="about-hero__title-accent">{hero.heroAccent || hero.title}</span>
+              </h1>
+              <p className="about-hero__lead">{hero.lead}</p>
+            </div>
+            <Link to="/services" className="btn-gradient about-hero__viewall">
+              <span>&#9666; View all services</span>
+            </Link>
+          </section>
+        ) : (
         <section className="svcd__hero" style={{ backgroundImage: `url(${hero.bg || svc.hoverImg})` }}>
           <div className="svcd__hero-overlay" />
           <div className="svcd__hero-glow" />
@@ -102,6 +119,7 @@ function ServiceDetailPage({ svc, detail }) {
             </Link>
           </div>
         </section>
+        )}
 
         {/* ---------- INTRO + STATS ---------- */}
         <section className="svcd__intro">

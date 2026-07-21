@@ -14,8 +14,8 @@ export const MEGA_SERVICES = [
   { id: 'social',        title: 'Social Media',            count: 4, img: '/services/svc-social-rollover.png',          icon: '/icons/social.svg' },
   { id: 'fraud',         title: 'Fraud Protection',        count: 3, img: '/services/svc-fraud-rollover.png',           icon: '/icons/fraud.svg' },
   { id: 'technology',    title: 'Technology Consulting',   count: 3, img: '/services/svc-tech-rollover.png',            icon: '/icons/tech.svg' },
-  { id: 'brand-creation',title: 'Brand Creation',          count: 3, img: '/categories/brand-creation.webp',           icon: '/icons/brand-creation.svg' },
-  { id: 'brand-building',title: 'Brand Building',          count: 4, img: '/categories/brand-building.webp',           icon: '/icons/brand-building.svg' },
+  { id: 'brand-creation',title: 'Brand Creation',          count: 3, img: '/services/svc-brand-creation-rollover.png',   icon: '/icons/brand-creation.svg' },
+  { id: 'brand-building',title: 'Brand Building',          count: 4, img: '/services/svc-brand-building-rollover.png',   icon: '/icons/brand-building.svg' },
   { id: 'trad',          title: 'Traditional Full Service',count: 6, img: '/services/svc-trad-rollover.png',           icon: '/icons/trad-full-service.svg' },
   { id: 'brand-specialties', title: 'Brand Specialties',   count: 7, img: '/services/svc-brandspecialties-rollover.png', icon: '/icons/brand-specialties.svg' },
 ]
@@ -28,6 +28,9 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Programmatic Marketing',
       title: 'Programmatic',
       lead: 'Data-driven media that finds the right audience, in the right moment, across every screen — bought and optimized in real time by machines that never sleep.',
+      bg: '/services/programmatic/hero.webp',
+      bottom: true,
+      heroAccent: 'Programmatic',
     },
     intro: {
       title: 'Precision at machine speed',
@@ -80,6 +83,9 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Technology Consulting',
       title: 'Technology',
       lead: 'The engineering muscle behind great marketing — websites, apps, and technical strategy built to load fast, scale cleanly, and convert.',
+      bg: '/services/technology/hero.webp',
+      bottom: true,
+      heroAccent: 'Technology',
     },
     intro: {
       title: 'Marketing needs a backbone',
@@ -109,6 +115,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Social Media',
       title: 'Social Media',
       lead: 'Scroll-stopping content and paid strategy that turn followers into a community — and a community into customers.',
+      bg: '/services/social/hero.webp',
+      bottom: true,
+      heroTitle: 'Social',
+      heroAccent: 'Media',
     },
     intro: {
       title: 'Culture moves fast. So do we.',
@@ -141,6 +151,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Fraud Protection Gurus',
       title: 'Fraud Protection',
       lead: 'Every dollar of ad spend defended. We hunt bots, block invalid traffic, and keep your brand out of the wrong places — before the damage is done.',
+      bg: '/services/fraud/hero.webp',
+      bottom: true,
+      heroTitle: 'Fraud',
+      heroAccent: 'Protection',
     },
     intro: {
       title: 'Real people. Real placements.',
@@ -170,6 +184,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Brand Creation',
       title: 'Brand Creation',
       lead: 'The identity, the mark, and the rules that make a brand unmistakable — designed from a blank page to feel inevitable.',
+      bg: '/services/brand-creation/hero.webp',
+      bottom: true,
+      heroTitle: 'Brand',
+      heroAccent: 'Creation',
     },
     intro: {
       title: 'Brands people remember',
@@ -199,6 +217,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Traditional Full Service',
       title: 'Traditional',
       lead: 'The channels that built brands still build them best — print, broadcast, out-of-home, and live experiences, executed end to end.',
+      bg: '/services/trad/hero.webp',
+      bottom: true,
+      heroTitle: 'Traditional',
+      heroAccent: 'Full Service',
     },
     intro: {
       title: 'Offline still wins hearts',
@@ -235,6 +257,10 @@ export const SERVICE_DETAILS = {
   'brand-building': {
     hero: {
       eyebrow: 'Brand Building',
+      bg: '/services/brand-building/hero.webp',
+      bottom: true,
+      heroTitle: 'Brand',
+      heroAccent: 'Building',
       title: 'Brand Building',
       lead: 'Strategy, positioning, and campaigns that grow a brand’s meaning over time — and the analytics to prove it’s working.',
     },
@@ -269,6 +295,10 @@ export const SERVICE_DETAILS = {
       eyebrow: 'Brand Specialties',
       title: 'Brand Specialties',
       lead: 'The craft disciplines that bring a brand to life — packaging, copy, photography, video, and experiences made with obsessive attention to detail.',
+      bg: '/services/brand-specialties/hero.webp',
+      bottom: true,
+      heroTitle: 'Brand',
+      heroAccent: 'Specialties',
     },
     intro: {
       title: 'Where craft meets brand',
@@ -380,13 +410,105 @@ export const ABOUT_BRANDS = [
 
 export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
 
+/* Labels are laid out at equal angles around the logo in App.jsx, so the
+   order here is the order they appear going clockwise around the ring. */
 export const HERO_PILLS = [
-  { label: 'Programmatic\nSEM / AEO / GEO / SEO', left: 'calc(50% - 410px)', top: '14%' },
-  { label: 'Social Media',                          left: 'calc(50% - 480px)', top: '42%' },
-  { label: 'Fraud Protection Gurus',                left: 'calc(50% - 460px)', top: '64%' },
-  { label: 'Technology Consulting',                 left: 'calc(50% - 370px)', top: '78%' },
-  { label: 'Brand Creation',                        left: 'calc(50% + 250px)', top: '10%' },
-  { label: 'Traditional Full Service',              left: 'calc(50% + 300px)', top: '40%' },
-  { label: 'Brand Building',                        left: 'calc(50% + 320px)', top: '63%' },
-  { label: 'Brand Specialties',                     left: 'calc(50% + 210px)', top: '78%' },
+  { label: 'Programmatic\nSEM / AEO / GEO / SEO' },
+  { label: 'Brand Creation' },
+  { label: 'Traditional Full Service' },
+  { label: 'Brand Building' },
+  { label: 'Brand Specialties' },
+  { label: 'Technology Consulting' },
+  { label: 'Fraud Protection Gurus' },
+  { label: 'Social Media' },
+]
+
+/* ---------- THE LATEST ---------- */
+/* Category order drives the filter-pill row on /the-latest.
+   'All' is prepended in-page; each LATEST item's `category`
+   must match one of these labels. */
+export const LATEST_CATEGORIES = ['All', 'Books', 'Podcasts', 'Solar', 'Technology']
+
+export const LATEST = [
+  { id: "3547-thecovertcode", slug: "episode-122-embrace-the-pilgrim-spirit", category: "Podcasts", title: "Episode 122 – Gideon Enok", img: "https://thecovertcode.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-6.23.54-PM-1024x575.png" },
+  { id: "3527-thecovertcode", slug: "gina-riley-why-being-qualified-isnt-enough-anymore-ep-121", category: "Podcasts", title: "Episode 121 – Gina Riley", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES-1.png" },
+  { id: "3508-thecovertcode", slug: "marty-fahncke-build-a-business-worth-selling", category: "Podcasts", title: "Episode 120 – Marty Fahncke", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES.png" },
+  { id: "3491-thecovertcode", slug: "episode-119-dr-annu-navani", category: "Podcasts", title: "Episode 119 – Dr. Annu Navani", img: "https://thecovertcode.com/wp-content/uploads/2026/06/COVERT-CODE-TITLES-1.png" },
+  { id: "3495-thecovertcode", slug: "why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust", category: "Technology", title: "Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust", img: "https://thecovertcode.com/wp-content/uploads/2026/06/pexels-yankrukov-7793149-1024x683.jpg" },
+  { id: "3477-thecovertcode", slug: "episode-118-charlene-rose", category: "Podcasts", title: "Episode 118 – Charlene Rose", img: "https://thecovertcode.com/wp-content/uploads/2026/06/COVERT-CODE-TITLES.png" },
+  { id: "3455-thecovertcode", slug: "episode-117-dave-gulas", category: "Podcasts", title: "Episode 117 – Dave Gulas", img: "https://thecovertcode.com/wp-content/uploads/2026/06/dave-gulas-founder-led-selling-headshot-1024x819.jpg" },
+  { id: "3443-thecovertcode", slug: "episode-116-rob-aquino", category: "Podcasts", title: "Episode 116 – Rob Aquino", img: "https://thecovertcode.com/wp-content/uploads/2026/06/8.png" },
+  { id: "3439-thecovertcode", slug: "chatgpt-advertising-future-marketing", category: "Technology", title: "What ChatGPT Advertising Means for the Future of Digital Marketing", img: "https://thecovertcode.com/wp-content/uploads/2026/06/2.png" },
+  { id: "3430-thecovertcode", slug: "episode-115-lou-chatta", category: "Podcasts", title: "Episode 115 – Lou Chatta", img: "https://thecovertcode.com/wp-content/uploads/2026/05/8.png" },
+  { id: "1830-annacovert", slug: "why-leaders-must-be-more-visible-vocal-and-vulnerable-to-win-consumer-trust-annacovert", category: "Technology", title: "Why Leaders Must Be More Visible, Vocal, and Vulnerable to Win Consumer Trust", img: "https://annacovert.com/wp-content/uploads/2026/06/pexels-yankrukov-7793149-1024x683.jpg" },
+  { id: "1744-annacovert", slug: "the-next-solar-marketing-shift-why-zero-click-search-changes-everything", category: "Solar", title: "The Next Solar Marketing Shift: Why Zero-Click Search Changes Everything", img: "https://annacovert.com/wp-content/uploads/2026/06/4eb6782d-f5be-423b-8dea-61e5337602ac.png" },
+  { id: "1737-annacovert", slug: "chatgpt-ads-are-coming-why-business-leaders-need-an-ai-visibility-strategy-now", category: "Technology", title: "ChatGPT Ads Are Coming: Why Business Leaders Need an AI Visibility Strategy Now", img: "https://annacovert.com/wp-content/uploads/2026/06/1.png" },
+  { id: "1694-annacovert", slug: "authority-as-a-growth-strategy-forbes-books-podcast", category: "Books", title: "The Covert Code Launches “Authority as a Growth Strategy” A Forbes Books special podcast series presented by The Covert Code", img: "https://annacovert.com/wp-content/uploads/2026/04/Screenshot-2026-04-20-at-2.57.06-PM.png" },
+  { id: "1579-annacovert", slug: "the-covert-code-podcast-celebrates-100000-followers-and-100-episodes", category: "Podcasts", title: "The Covert Code Podcast Celebrates 100,000 Followers and 100 Episodes", img: "https://annacovert.com/wp-content/uploads/2026/01/Untitled-design-4.png" },
+  { id: "1517-annacovert", slug: "the-covert-code-podcast-surpasses-45000-followers", category: "Podcasts", title: "The Covert Code Podcast Surpasses 45,000 Followers on YouTube", img: "https://annacovert.com/wp-content/uploads/2025/10/Untitled-design-1.png" },
+  { id: "1492-annacovert", slug: "anna-covert-keynote-speaker-at-adwest-conference", category: "Technology", title: "Anna Covert, Keynote Speaker at 2025 AAF AdWest Conference", img: "https://annacovert.com/wp-content/uploads/2025/09/Untitled-design-29.png" },
+  { id: "1373-annacovert", slug: "the-solar-coaster-is-the-newly-published-book-by-anna-covert", category: "Books", title: "The Solar Coaster is the Newly Published Book by Anna Covert", img: "https://annacovert.com/wp-content/uploads/2025/09/AC-PR-for-Websites.jpg" },
+  { id: "1304-annacovert", slug: "anna-covert-to-lead-mission-driven-marketing-a-digital-marketing-101-workshop", category: "Technology", title: "Anna Covert to Lead “Mission-Driven Marketing: A Digital Marketing 101 Workshop”", img: "https://annacovert.com/wp-content/uploads/2025/08/Screenshot-2025-08-19-at-9.11.45-AM.png" },
+  { id: "1252-annacovert", slug: "digimarcon-hawaii-2025-anna-covert", category: "Technology", title: "Anna Covert to Speak at DigiMarCon Hawaii", img: "https://annacovert.com/wp-content/uploads/2025/07/1753352053130.jpg" },
+  { id: "3510-solarcoasterbook", slug: "the-patent-battle-behind-the-smart-grid-ep-46", category: "Solar", title: "The Patent Battle Behind the Smart Grid – EP 46", img: "https://solarcoasterbook.com/wp-content/uploads/2026/07/Solar-Coaster-Intro-1.png" },
+  { id: "3506-solarcoasterbook", slug: "the-talent-bottleneck-ep-45", category: "Solar", title: "The Talent Bottleneck – EP 45", img: "https://solarcoasterbook.com/wp-content/uploads/2026/07/Solar-Coaster-Intro.png" },
+  { id: "3496-solarcoasterbook", slug: "why-safe-harbor-and-domestic-content-are-reshaping-solar-finance", category: "Solar", title: "Why Safe Harbor and Domestic Content Are Reshaping Solar Finance – EP 44", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-4.png" },
+  { id: "3485-solarcoasterbook", slug: "the-solar-afterlife-what-happens-when-solar-farms-retire-ep-43", category: "Solar", title: "The Solar Afterlife: What Happens When Solar Farms Retire? – EP 43", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-3.png" },
+  { id: "3480-solarcoasterbook", slug: "made-in-america-the-solar-supply-chain-revolution-ep-42", category: "Solar", title: "Made in America: The Solar Supply Chain Revolution – EP 42", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-2.png" },
+  { id: "3475-solarcoasterbook", slug: "renewable-energys-new-reality-share-the-risk-or-miss-the-opportunity-ep-41", category: "Solar", title: "Renewable Energy’s New Reality: Share the Risk or Miss the Opportunity – EP 41", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro-1.png" },
+  { id: "3470-solarcoasterbook", slug: "the-great-energy-divide-why-oil-volatility-is-accelerating-the-solar-revolution-ep-40", category: "Solar", title: "The Great Energy Divide: Why Oil Volatility Is Accelerating the Solar Revolution – EP 40", img: "https://solarcoasterbook.com/wp-content/uploads/2026/06/Solar-Coaster-Intro.png" },
+  { id: "3457-solarcoasterbook", slug: "the-silent-saboteur-why-solar-is-really-a-30-year-bet-ep-39", category: "Solar", title: "The Silent Saboteur: Why Solar Is Really a 30-Year Bet – EP 39", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-3.png" },
+  { id: "3456-solarcoasterbook", slug: "the-solar-paradox-why-infrastructure-will-define-the-next-decade-ep-38", category: "Solar", title: "The Solar Paradox: Why Infrastructure Will Define the Next Decade – Ep 38", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-2.png" },
+  { id: "3455-solarcoasterbook", slug: "the-invisible-architects-behind-the-solar-revolution-ep-37", category: "Solar", title: "The Invisible Architects Behind the Solar Revolution – EP 37", img: "https://solarcoasterbook.com/wp-content/uploads/2026/05/Solar-Coaster-Intro-1.png" },
+]
+
+/* ---------- CASE STUDIES ---------- */
+const CS_LOREM = 'We partnered end to end — strategy, brand, build, and growth — aligning every touchpoint around a single, measurable goal. From positioning and design system to a fast, SEO-ready site and an always-on acquisition engine, the work was built to convert and to scale.'
+
+export const CASE_STUDIES = [
+  {
+    slug: 'northwind-saas',
+    title: 'Northwind SaaS',
+    tags: ['Web Design', 'SEO', 'Programmatic'],
+    excerpt: 'A B2B SaaS marketing site rebuilt for speed and search — paired with an always-on programmatic engine.',
+    cover: '/case-studies/northwind-saas/cover.svg',
+    description: 'NORTHWIND is a B2B SaaS platform that needed a marketing site to match its ambition.\n\n' + CS_LOREM,
+    images: ['/case-studies/northwind-saas/1.svg', '/case-studies/northwind-saas/2.svg', '/case-studies/northwind-saas/3.svg', '/case-studies/northwind-saas/4.svg'],
+  },
+  {
+    slug: 'lumen-solar',
+    title: 'Lumen Solar',
+    tags: ['Brand Creation', 'Web Development', 'Paid Social'],
+    excerpt: 'A solar installer relaunched with a clean identity, a lead-gen site, and a paid social program that fills the pipeline.',
+    cover: '/case-studies/lumen-solar/cover.svg',
+    description: 'LUMEN SOLAR came to us to stand out in a crowded, fast-moving market.\n\n' + CS_LOREM,
+    images: ['/case-studies/lumen-solar/1.svg', '/case-studies/lumen-solar/2.svg', '/case-studies/lumen-solar/3.svg', '/case-studies/lumen-solar/4.svg'],
+  },
+  {
+    slug: 'meridian-health',
+    title: 'Meridian Health',
+    tags: ['UX/UI', 'Technology Consulting', 'SEO'],
+    excerpt: 'A healthcare platform redesigned around patient clarity, accessibility, and organic discoverability.',
+    cover: '/case-studies/meridian-health/cover.svg',
+    description: 'MERIDIAN HEALTH needed a digital experience patients could trust at a glance.\n\n' + CS_LOREM,
+    images: ['/case-studies/meridian-health/1.svg', '/case-studies/meridian-health/2.svg', '/case-studies/meridian-health/3.svg', '/case-studies/meridian-health/4.svg'],
+  },
+  {
+    slug: 'cobalt-fintech',
+    title: 'Cobalt Fintech',
+    tags: ['Brand Building', 'SEM', 'Analytics'],
+    excerpt: 'A fintech challenger positioned for its Series B — full rebrand, performance search, and a measurement stack that proves ROI.',
+    cover: '/case-studies/cobalt-fintech/cover.svg',
+    description: 'COBALT is a fintech challenger that needed to look and perform like a category leader.\n\n' + CS_LOREM,
+    images: ['/case-studies/cobalt-fintech/1.svg', '/case-studies/cobalt-fintech/2.svg', '/case-studies/cobalt-fintech/3.svg', '/case-studies/cobalt-fintech/4.svg'],
+  },
+  {
+    slug: 'harbor-retail',
+    title: 'Harbor Retail',
+    tags: ['Traditional Full Service', 'Social Media', 'Web'],
+    excerpt: 'An omnichannel retail brand unified across print, broadcast, social, and a conversion-focused storefront.',
+    cover: '/case-studies/harbor-retail/cover.svg',
+    description: 'HARBOR RETAIL wanted one coherent brand across every channel its customers touch.\n\n' + CS_LOREM,
+    images: ['/case-studies/harbor-retail/1.svg', '/case-studies/harbor-retail/2.svg', '/case-studies/harbor-retail/3.svg', '/case-studies/harbor-retail/4.svg'],
+  },
 ]

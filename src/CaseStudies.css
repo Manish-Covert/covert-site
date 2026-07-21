@@ -1,0 +1,165 @@
+/* ============================================================
+   CASE STUDIES — index (portfolio grid) + single (sticky scroll)
+   ============================================================ */
+
+/* ---------- INDEX HEADER ---------- */
+.csindex__head { padding: 170px 0 40px; }
+.csindex__head-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+.csindex__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: #fff;
+  line-height: 1;
+}
+.csindex__lead {
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+.csindex__grid-wrap { padding: 40px 0 100px; }
+
+/* ---------- PORTFOLIO GRID + CARD ---------- */
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.cs-card { position: relative; }
+/* Image link: hides the native cursor so only the following pill shows. */
+.cs-card__media-link {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: none;
+}
+.cs-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #121812;
+}
+.cs-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s var(--ease);
+}
+.cs-card__media-link:hover .cs-card__media img { transform: scale(1.04); }
+
+/* Pill that eases toward the cursor while hovering */
+.cs-card__cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--green-bright);
+  color: #06210a;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform .18s ease-out, opacity .25s var(--ease);
+  will-change: transform;
+}
+.cs-card__cursor.is-on { opacity: 1; }
+
+.cs-card__caption { padding: 18px 4px 0; }
+.cs-card__title-link { text-decoration: none; display: inline-block; }
+.cs-card__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  transition: color .25s var(--ease);
+}
+.cs-card__title-link:hover .cs-card__title { color: var(--green-bright); }
+.cs-card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.cs-card__tags span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+/* ============================================================
+   SINGLE CASE STUDY
+   ============================================================ */
+.csd__hero { padding: 150px 0 60px; }
+.csd__hero-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: start;
+}
+/* Left column info stays pinned while the right images scroll past. */
+.csd__info { height: 100%; }
+.csd__info-sticky {
+  position: sticky;
+  top: 120px;
+}
+.csd__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.csd__tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.csd__tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-bright);
+  border: 1px solid rgba(166, 242, 60, 0.35);
+  background: rgba(166, 242, 60, 0.06);
+  border-radius: 999px;
+  padding: 8px 16px;
+}
+.csd__copy {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 18px;
+  max-width: 460px;
+}
+.csd__back { margin-top: 18px; }
+
+.csd__media { display: flex; flex-direction: column; gap: 22px; }
+.csd__img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+}
+
+/* ---------- NEXT CASE STUDIES ---------- */
+.csd__next { padding: 60px 0 100px; }
+.csd__next-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+  .csindex__head { padding: 130px 0 30px; }
+  .csindex__head-inner { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+  .cs-grid { grid-template-columns: 1fr; gap: 22px; }
+  .cs-card__media-link { cursor: pointer; }
+  .cs-card__cursor { display: none; }
+  .csd__hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .csd__info-sticky { position: static; }
+}
