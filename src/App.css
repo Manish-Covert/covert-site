@@ -453,16 +453,13 @@
 .hero__pills-orbit {
   position: absolute;
   inset: 0;
-  animation: orbit-swing 9s ease-in-out infinite;
+  animation: orbit-spin 60s linear infinite;
   z-index: 2;
 }
 
-@keyframes orbit-swing {
-  0%   { transform: rotate(0deg); }
-  28%  { transform: rotate(12deg); }
-  50%  { transform: rotate(0deg); }
-  78%  { transform: rotate(-12deg); }
-  100% { transform: rotate(0deg); }
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* Pills — absolutely positioned within the orbit ring */
@@ -482,16 +479,13 @@
   white-space: nowrap;
   background: rgba(4, 8, 4, 0.82);
   /* counter-rotate to keep text upright while orbit ring spins */
-  animation: pill-upright 9s ease-in-out infinite;
+  animation: pill-upright 60s linear infinite;
   transition: color .3s var(--ease), box-shadow .3s var(--ease);
 }
 
 @keyframes pill-upright {
-  0%   { transform: rotate(0deg); }
-  28%  { transform: rotate(-12deg); }
-  50%  { transform: rotate(0deg); }
-  78%  { transform: rotate(12deg); }
-  100% { transform: rotate(0deg); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 
 /* Gradient border via mask — only the 1.5px ring shows the gradient */
