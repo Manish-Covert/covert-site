@@ -2,17 +2,19 @@ import { useState, useMemo } from 'react'
 import './App.css'
 import './AdminLeads.css'
 
-// Preferred column order; any other keys found in the data are appended after.
-const PINNED = [
-  'created_at', 'form', 'first_name', 'last_name', 'email', 'phone', 'referral', 'message',
+const ATTRIB = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
   'gclid', 'fbclid', 'msclkid', 'ad_campaign', 'ad_set_id', 'ad_id',
   'landing_page', 'referrer',
 ]
-const HIDDEN = new Set(['id', 'name', 'data'])
+const CONTACT_FIELDS = ['first_name', 'last_name', 'email', 'phone', 'referral', 'message']
+const HIDDEN = new Set(['id', 'name', 'data', 'form', 'created_at'])
 
 function humanize(key) {
   return key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+}
+function fullName(r) {
+  return `${r.first_name || ''} ${r.last_name || ''}`.trim() || r.email || '—'
 }
 
 /* Flatten a DB row (first-class cols + JSONB data) into one display object. */
@@ -22,9 +24,18 @@ function flatten(row) {
     id: row.id,
     created_at: row.created_at,
     form: row.form || data.form || '',
-    email: row.email || data.email || '',
     ...data,
+    email: row.email || data.email || '',
   }
+}
+
+function allColumns(rows) {
+  const set = new Set()
+  rows.forEach(r => Object.keys(r).forEach(k => { if (k !== 'data') set.add(k) }))
+  const order = ['created_at', 'form', ...CONTACT_FIELDS, ...ATTRIB]
+  const pinned = order.filter(k => set.has(k))
+  const extra = [...set].filter(k => !order.includes(k) && k !== 'id').sort()
+  return ['id', ...pinned, ...extra]
 }
 
 function toCsv(rows, columns) {
@@ -33,12 +44,58 @@ function toCsv(rows, columns) {
   return [header.join(','), ...body.map(r => r.join(','))].join('\n')
 }
 
+/* ---- Detail modal ---- */
+function LeadDetail({ lead, onClose }) {
+  const section = (title, keys) => {
+    const present = keys.filter(k => lead[k])
+    if (!present.length) return null
+    return (
+      <div className="lead__section" key={title}>
+        <h3 className="lead__section-title">{title}</h3>
+        <dl className="lead__grid">
+          {present.map(k => (
+            <div className="lead__pair" key={k}>
+              <dt>{humanize(k)}</dt>
+              <dd>{String(lead[k])}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    )
+  }
+  const known = new Set([...CONTACT_FIELDS, ...ATTRIB, ...HIDDEN])
+  const other = Object.keys(lead).filter(k => !known.has(k))
+
+  return (
+    <div className="lead__scrim" onClick={onClose}>
+      <div className="lead__modal" onClick={e => e.stopPropagation()}>
+        <div className="lead__head">
+          <div>
+            <h2 className="lead__name">{fullName(lead)}</h2>
+            <p className="lead__meta">
+              {lead.form && <span className="lead__badge">{lead.form}</span>}
+              {lead.created_at && new Date(lead.created_at).toLocaleString()}
+            </p>
+          </div>
+          <button type="button" className="lead__close" onClick={onClose} aria-label="Close">×</button>
+        </div>
+        <div className="lead__body">
+          {section('Contact', CONTACT_FIELDS)}
+          {section('Attribution', ATTRIB)}
+          {section('Other', other)}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function AdminLeadsPage() {
   const [password, setPassword] = useState('')
   const [rows, setRows] = useState(null)
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
   const [formFilter, setFormFilter] = useState('All')
+  const [selected, setSelected] = useState(null)
 
   async function load(e) {
     e?.preventDefault()
@@ -66,17 +123,10 @@ export default function AdminLeadsPage() {
     () => (formFilter === 'All' ? (rows || []) : (rows || []).filter(r => r.form === formFilter)),
     [rows, formFilter]
   )
-  // Columns = pinned keys present in the data, then any extra keys discovered.
-  const columns = useMemo(() => {
-    const present = new Set()
-    filtered.forEach(r => Object.keys(r).forEach(k => { if (!HIDDEN.has(k)) present.add(k) }))
-    const pinned = PINNED.filter(k => present.has(k))
-    const extra = [...present].filter(k => !PINNED.includes(k)).sort()
-    return [...pinned, ...extra]
-  }, [filtered])
 
   function downloadCsv() {
-    const blob = new Blob([toCsv(filtered, columns)], { type: 'text/csv' })
+    const cols = allColumns(filtered)
+    const blob = new Blob([toCsv(filtered, cols)], { type: 'text/csv' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
@@ -130,27 +180,24 @@ export default function AdminLeadsPage() {
       {filtered.length === 0 ? (
         <p className="admin__hint">No leads yet.</p>
       ) : (
-        <div className="admin__table-wrap">
-          <table className="admin__table">
-            <thead>
-              <tr>{columns.map(c => <th key={c}>{humanize(c)}</th>)}</tr>
-            </thead>
-            <tbody>
-              {filtered.map(r => (
-                <tr key={r.id}>
-                  {columns.map(c => (
-                    <td key={c} title={r[c] == null ? '' : String(r[c])}>
-                      {c === 'created_at' && r[c]
-                        ? new Date(r[c]).toLocaleString()
-                        : (r[c] == null ? '' : String(r[c]))}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ul className="lead-list">
+          {filtered.map(r => (
+            <li key={r.id}>
+              <button type="button" className="lead-row" onClick={() => setSelected(r)}>
+                <span className="lead-row__name">{fullName(r)}</span>
+                <span className="lead-row__email">{r.email}</span>
+                {r.utm_source && <span className="lead-row__src">{r.utm_source}</span>}
+                {r.form && <span className="lead-row__form">{r.form}</span>}
+                <span className="lead-row__date">
+                  {r.created_at ? new Date(r.created_at).toLocaleDateString() : ''}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
+
+      {selected && <LeadDetail lead={selected} onClose={() => setSelected(null)} />}
     </main>
   )
 }
