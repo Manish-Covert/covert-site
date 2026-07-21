@@ -3,6 +3,7 @@ import { SERVICES } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -10,6 +11,13 @@ import './AboutPage.css'
 export default function ServicesIndexPage() {
   useReveal()
   const total = SERVICES.reduce((n, s) => n + (s.count || 0), 0)
+
+  useSEO({
+    title: 'Services — Full-Service Marketing Agency | Covert Communication',
+    description: `A full-service agency under one roof — ${SERVICES.length} disciplines and ${total} specialties spanning brand building, programmatic, SEO, social, fraud protection, and technology.`,
+    path: '/services',
+    ogType: 'website',
+  })
 
   return (
     <>

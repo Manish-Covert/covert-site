@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BRANDS } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -10,6 +11,14 @@ import './AboutPage.css'
 export default function AboutPage() {
   const { id } = useParams()
   const item = MEGA_ABOUT.find(a => a.id === id) || MEGA_ABOUT[0]
+
+  useSEO({
+    title: `${item.label} — About | Covert Communication`,
+    description: (item.tagline || `Learn more about ${item.label} at Covert Communication.`).slice(0, 160),
+    path: `/about/${item.id}`,
+    ogType: 'website',
+    image: item.heroImg || item.img,
+  })
 
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)

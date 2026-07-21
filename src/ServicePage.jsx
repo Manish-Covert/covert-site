@@ -4,6 +4,7 @@ import { SERVICES, MEGA_ABOUT, MEGA_SERVICES, SERVICE_DETAILS } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -13,6 +14,23 @@ export default function ServicePage() {
   const svc = SERVICES.find(s => s.id === id) || SERVICES[0]
   const detail = SERVICE_DETAILS[svc.id]
   useReveal()
+
+  useSEO({
+    title: `${svc.title} — Services | Covert Communication`,
+    description:
+      (detail?.intro?.copy || `Covert Communication's ${svc.title.toLowerCase()} services: ${svc.subs.join(', ')}.`).slice(0, 160),
+    path: `/services/${svc.id}`,
+    ogType: 'website',
+    image: svc.hoverImg || svc.img,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: svc.title,
+      serviceType: svc.subs,
+      provider: { '@type': 'Organization', name: 'Covert Communication LLC' },
+      url: `https://covertcommunication.com/services/${svc.id}`,
+    },
+  })
 
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)

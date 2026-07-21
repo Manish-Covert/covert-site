@@ -2,6 +2,7 @@ import ContactForm from './ContactForm'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useReveal } from './useReveal'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './TheLatest.css'
@@ -12,6 +13,14 @@ const EMAIL = 'anna@covertcommunication.com'
 
 export default function ContactPage() {
   useReveal()
+
+  useSEO({
+    title: 'Contact — Let’s Build Your Brand | Covert Communication',
+    description:
+      'Get in touch with Covert Communication. Tell us about your brand and goals and we’ll build the right mix of services around them. Call, email, or message us.',
+    path: '/contact',
+    ogType: 'website',
+  })
 
   return (
     <>

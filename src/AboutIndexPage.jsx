@@ -3,11 +3,20 @@ import { Link } from 'react-router-dom'
 import { MEGA_ABOUT, MEGA_SERVICES } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
+import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
 
 export default function AboutIndexPage() {
+  useSEO({
+    title: 'About Us — The Team Behind the Brand | Covert Communication',
+    description:
+      'Meet Covert Communication — the full-service agency behind the brand: our founder, our team, our books and podcasts, and the ventures we build.',
+    path: '/about',
+    ogType: 'website',
+  })
+
   const [megaOpen, setMegaOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [hoveredAbout, setHoveredAbout] = useState(null)
