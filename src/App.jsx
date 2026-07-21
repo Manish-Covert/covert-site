@@ -4,6 +4,7 @@ import { useReveal } from './useReveal'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
 import ServicePage from './ServicePage'
 import ServicesIndexPage from './ServicesIndexPage'
+import ContactPage from './ContactPage'
 import AboutPage from './AboutPage'
 import AboutIndexPage from './AboutIndexPage'
 import TheLatestPage from './TheLatestPage'
@@ -55,6 +56,7 @@ export default function App() {
       <Route path="/services/:id" element={<ServicePage />} />
       <Route path="/about" element={<AboutIndexPage />} />
       <Route path="/about/:id" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
       <Route path="/the-latest" element={<TheLatestPage />} />
       <Route path="/the-latest/:slug" element={
         <Suspense fallback={null}><TheLatestDetailPage /></Suspense>

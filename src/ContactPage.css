@@ -1,0 +1,101 @@
+/* ============================================================
+   CONTACT PAGE — hero + (contact options | form) two-column
+   Reuses global .form styles and the shared .latest__hero band.
+   ============================================================ */
+
+.contactpage__hero { padding-bottom: 8px; }
+.contactpage__sub {
+  max-width: 640px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contactpage__body { padding: 48px 0 96px; }
+.contactpage__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------- Contact options ---------- */
+.contactpage__info {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 34px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.contactpage__info-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.contactpage__item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-decoration: none;
+}
+.contactpage__item-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-bright);
+}
+.contactpage__item-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  transition: color .25s var(--ease);
+}
+a.contactpage__item:hover .contactpage__item-value { color: var(--green-bright); }
+
+.contactpage__social { display: flex; gap: 14px; margin-top: 2px; }
+.contactpage__social a {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease);
+}
+.contactpage__social a:hover {
+  border-color: var(--green-bright);
+  transform: translateY(-2px);
+  background: rgba(166, 242, 60, 0.08);
+}
+.contactpage__social img { width: 18px; height: 18px; }
+
+.contactpage__book { align-self: flex-start; margin-top: 6px; }
+
+/* ---------- Form card (same light branding as the global contact form) ---------- */
+.contactpage__form {
+  padding: 36px 34px 40px;
+  border-radius: 18px;
+  background-image: url('/ContactFormBackground.webp');
+  background-size: cover;
+  background-position: center;
+  color: #0a0a0a;
+}
+.contactpage__form-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0a0a0a;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .contactpage__grid { grid-template-columns: 1fr; gap: 26px; }
+  .contactpage__body { padding: 32px 0 72px; }
+}
