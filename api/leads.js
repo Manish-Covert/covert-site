@@ -1,13 +1,8 @@
-// Resolve the Postgres connection string across the common env-var names
-// that Vercel Postgres / Neon integrations may set.
-if (!process.env.POSTGRES_URL) {
-  process.env.POSTGRES_URL =
-    process.env.DATABASE_URL ||
-    process.env.POSTGRES_PRISMA_URL ||
-    process.env.POSTGRES_URL_NON_POOLING ||
-    process.env.DATABASE_URL_UNPOOLED || ''
-}
+import { resolvePgUrl } from '../lib/pgUrl.js'
 import { sql } from '@vercel/postgres'
+
+const PG_URL = resolvePgUrl()
+if (PG_URL && !process.env.POSTGRES_URL) process.env.POSTGRES_URL = PG_URL
 
 /* Password-protected leads listing for the /admin page.
    Password is compared server-side against ADMIN_PASSWORD. */

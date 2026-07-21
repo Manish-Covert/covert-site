@@ -27,7 +27,7 @@ export default function ContactForm() {
     const data = Object.fromEntries(new FormData(form))
     // Attach campaign attribution captured on landing (if any).
     const payload = { ...data, ...getAttribution() }
-    const succeed = () => { form.reset(); setPhone(''); navigate('/thank-you') }
+    const succeed = () => { form.reset(); setPhone(''); navigate('/thank-you?form=contact') }
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
