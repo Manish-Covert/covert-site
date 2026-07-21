@@ -48,6 +48,17 @@
   margin-bottom: 22px;
   flex-wrap: wrap;
 }
+.admin__controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.admin__filter { font-size: 13px; color: rgba(255, 255, 255, 0.7); }
+.admin__filter select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #0f150f;
+  color: #fff;
+  font-size: 13px;
+}
+.admin__filter select:focus { outline: none; border-color: var(--green-bright); }
 
 .admin__table-wrap {
   overflow-x: auto;

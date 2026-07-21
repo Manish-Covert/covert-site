@@ -14,7 +14,7 @@ export default function SiteFooter({ showContact = true }) {
             Call <strong>808-518-4298</strong> or fill out the form below to learn more about our
             services and innovative agency approach.
           </p>
-          <ContactForm />
+          <ContactForm formName="footer" />
         </div>
       </section>
       )}

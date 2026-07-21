@@ -15,7 +15,7 @@ function formatUSPhone(value) {
 
 /* Shared contact form (fields + submit logic) used by the global footer
    and the dedicated /contact page. */
-export default function ContactForm() {
+export default function ContactForm({ formName = 'contact' }) {
   const [status, setStatus] = useState('idle')
   const [phone, setPhone] = useState('')
   const navigate = useNavigate()
@@ -25,8 +25,8 @@ export default function ContactForm() {
     setStatus('sending')
     const form = e.target
     const data = Object.fromEntries(new FormData(form))
-    // Attach campaign attribution captured on landing (if any).
-    const payload = { ...data, ...getAttribution() }
+    // Attach the form name + campaign attribution captured on landing (if any).
+    const payload = { ...data, ...getAttribution(), form: formName }
     const succeed = () => { form.reset(); setPhone(''); navigate('/thank-you?form=contact') }
     try {
       const res = await fetch('/api/contact', {
