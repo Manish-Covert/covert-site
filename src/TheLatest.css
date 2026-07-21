@@ -149,62 +149,36 @@
   height: 100%;
 }
 
-/* Article prose (source HTML) */
-.latest-prose { padding: 26px 0 20px; }
-
-/* The source WP content is built with Avada/Fusion Builder, whose wrapper
-   divs carry their own max-width (1248px), negative margins, paddings, and
-   background patterns — which push the body wider and left of the title/video.
-   Flatten every Fusion wrapper to the column width so the article aligns with
-   the header and media edge-to-edge. */
-.latest-prose .fusion-fullwidth,
-.latest-prose .fusion-builder-row,
-.latest-prose .fusion-row,
-.latest-prose .fusion-flex-container,
-.latest-prose .fusion-layout-column,
-.latest-prose .fusion-column-wrapper,
-.latest-prose [class*="fusion-builder-column"] {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-.latest-prose p {
+/* Article body — our own design, rendered from plain-text blocks */
+.latest-article { padding: 26px 0 20px; }
+.latest-article__p {
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.8;
   color: rgba(255, 255, 255, 0.82);
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 }
-.latest-prose h2,
-.latest-prose h3,
-.latest-prose h4 {
+.latest-article__h {
   font-family: 'Sora', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
   color: #fff;
   line-height: 1.25;
-  margin: 36px 0 14px;
+  letter-spacing: -0.4px;
+  margin: 44px 0 16px;
 }
-.latest-prose h2 { font-size: 28px; }
-.latest-prose h3 { font-size: 22px; }
-.latest-prose a { color: var(--green-bright); text-decoration: underline; }
-.latest-prose img,
-.latest-prose iframe {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin: 20px 0;
+.latest-article__list {
+  margin: 0 0 22px;
+  padding-left: 22px;
+  color: rgba(255, 255, 255, 0.82);
 }
-.latest-prose ul,
-.latest-prose ol { margin: 0 0 20px; padding-left: 22px; color: rgba(255,255,255,0.82); }
-.latest-prose li { margin-bottom: 8px; line-height: 1.7; }
-.latest-prose blockquote {
+.latest-article__list li { margin-bottom: 10px; line-height: 1.7; }
+.latest-article__quote {
   border-left: 3px solid var(--green-bright);
-  margin: 24px 0;
-  padding: 6px 0 6px 20px;
-  color: rgba(255, 255, 255, 0.7);
+  margin: 28px 0;
+  padding: 6px 0 6px 22px;
+  font-size: 19px;
   font-style: italic;
+  color: rgba(255, 255, 255, 0.72);
 }
 .latest-detail__footer {
   display: flex;

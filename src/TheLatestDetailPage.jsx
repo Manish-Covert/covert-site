@@ -7,6 +7,29 @@ import './App.css'
 import './ServicePage.css'
 import './TheLatest.css'
 
+// Render the plain-text blocks with our own elements; consecutive list items
+// are grouped into a single <ul>.
+function renderBlocks(blocks = []) {
+  const out = []
+  let list = null
+  const flush = () => {
+    if (list) { out.push(<ul key={`ul-${out.length}`} className="latest-article__list">{list}</ul>); list = null }
+  }
+  blocks.forEach((b, i) => {
+    if (b.t === 'li') {
+      list = list || []
+      list.push(<li key={i}>{b.text}</li>)
+      return
+    }
+    flush()
+    if (b.t === 'h') out.push(<h2 key={i} className="latest-article__h">{b.text}</h2>)
+    else if (b.t === 'q') out.push(<blockquote key={i} className="latest-article__quote">{b.text}</blockquote>)
+    else out.push(<p key={i} className="latest-article__p">{b.text}</p>)
+  })
+  flush()
+  return out
+}
+
 function formatDate(iso) {
   if (!iso) return ''
   const d = new Date(iso)
@@ -57,9 +80,9 @@ export default function TheLatestDetailPage() {
           </div>
         )}
 
-        {/* ---------- BODY (source HTML) ---------- */}
-        <article className="container container--narrow latest-prose">
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        {/* ---------- BODY: plain-text blocks, our own styling ---------- */}
+        <article className="container container--narrow latest-article">
+          {renderBlocks(post.blocks)}
         </article>
 
         <div className="container container--narrow latest-detail__footer">
