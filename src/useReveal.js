@@ -24,7 +24,21 @@ export function useReveal() {
       },
       { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
     )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    // Defer a frame so the browser's scroll restoration (on refresh) has
+    // settled before we measure. Elements already in or above the viewport
+    // are revealed immediately — otherwise a refresh scrolled past them
+    // (e.g. the footer form) would leave them stuck at opacity 0, since the
+    // observer only fires when an element *enters* view.
+    const raf = requestAnimationFrame(() => {
+      els.forEach((el) => {
+        if (el.classList.contains('is-visible')) return
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('is-visible')
+        } else {
+          io.observe(el)
+        }
+      })
+    })
+    return () => { cancelAnimationFrame(raf); io.disconnect() }
   }, [pathname])
 }
