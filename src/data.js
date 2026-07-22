@@ -467,6 +467,15 @@ const CS_LOREM = 'We partnered end to end — strategy, brand, build, and growth
 
 export const CASE_STUDIES = [
   {
+    slug: 'wolf-river-construction',
+    title: 'Wolf River Construction',
+    tags: ['Branding', 'Web Development', 'WordPress', 'GoHighLevel', 'PostGrid'],
+    excerpt: 'A Midwest roofing and exterior-renovation contractor rebranded and rebuilt on WordPress — with an interactive roofing calculator feeding an automated GoHighLevel and PostGrid follow-up engine.',
+    cover: '/case-studies/wolf-river-construction/cover.png',
+    description: 'Wolf River Construction is a Midwest roofing and exterior-renovation company that needed a digital presence as dependable as its craftsmanship. We built a bold, high-contrast brand and a conversion-focused WordPress site — anchored by an interactive roofing calculator and clear paths to a free quote — that positions Wolf River as a premium, GAF Master Elite contractor across residential, commercial, and solar work.\n\nBehind the scenes, we wired the site into GoHighLevel so every lead flows straight into an automated follow-up pipeline, and integrated PostGrid to trigger direct-mail outreach without manual effort. The result is a marketing engine that captures homeowners at the moment of intent and keeps Wolf River in front of them across both digital and print.',
+    images: ['/case-studies/wolf-river-construction/1.png', '/case-studies/wolf-river-construction/2.png', '/case-studies/wolf-river-construction/3.png', '/case-studies/wolf-river-construction/4.png', '/case-studies/wolf-river-construction/5.png'],
+  },
+  {
     slug: 'northwind-saas',
     title: 'Northwind SaaS',
     tags: ['Web Design', 'SEO', 'Programmatic'],

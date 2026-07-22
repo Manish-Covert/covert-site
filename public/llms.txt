@@ -33,6 +33,7 @@
 
 ## Case studies
 
+- [Wolf River Construction](https://covertcommunication.com/case-studies/wolf-river-construction): A Midwest roofing and exterior-renovation contractor rebranded and rebuilt on WordPress — with an interactive roofing calculator feeding an automated GoHighLevel and PostGrid follow-up engine.
 - [Northwind SaaS](https://covertcommunication.com/case-studies/northwind-saas): A B2B SaaS marketing site rebuilt for speed and search — paired with an always-on programmatic engine.
 - [Lumen Solar](https://covertcommunication.com/case-studies/lumen-solar): A solar installer relaunched with a clean identity, a lead-gen site, and a paid social program that fills the pipeline.
 - [Meridian Health](https://covertcommunication.com/case-studies/meridian-health): A healthcare platform redesigned around patient clarity, accessibility, and organic discoverability.
