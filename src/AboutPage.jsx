@@ -4,6 +4,7 @@ import { MEGA_ABOUT, MEGA_SERVICES, ABOUT_BRANDS } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useSEO } from './useSEO'
+import { useReveal } from './useReveal'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
@@ -11,6 +12,7 @@ import './AboutPage.css'
 export default function AboutPage() {
   const { id } = useParams()
   const item = MEGA_ABOUT.find(a => a.id === id) || MEGA_ABOUT[0]
+  useReveal()
 
   useSEO({
     title: `${item.label} — About | Covert Communication`,

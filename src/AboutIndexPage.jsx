@@ -4,11 +4,13 @@ import { MEGA_ABOUT, MEGA_SERVICES } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
 import { useSEO } from './useSEO'
+import { useReveal } from './useReveal'
 import './App.css'
 import './ServicePage.css'
 import './AboutPage.css'
 
 export default function AboutIndexPage() {
+  useReveal()
   useSEO({
     title: 'About Us — The Team Behind the Brand | Covert Communication',
     description:

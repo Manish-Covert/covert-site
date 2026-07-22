@@ -4,49 +4,60 @@ import { useLocation } from 'react-router-dom'
 /* Adds .is-visible to any .reveal element once it reaches the viewport.
    Mirrors the smooth scroll-reveal feel of the reference site.
 
-   Scroll-based (not IntersectionObserver) on purpose: an element that gets
-   scrolled *past* — e.g. the footer form after a refresh restores scroll to
-   the bottom — is above the viewport, a state IntersectionObserver reports as
-   "not intersecting" and never fires for. Here we reveal anything whose top
-   has passed 92% of the viewport height, which covers both in-view and
-   scrolled-past elements. Re-runs on route changes so elements rendered by a
-   new page (e.g. the global footer form) get picked up. */
+   Uses IntersectionObserver for the normal "scroll into view" reveal (which
+   works with the Lenis smooth-scroll in use). IO only fires when an element
+   *enters* view, so it has a blind spot: an element that is already scrolled
+   *past* — above the viewport — is reported as non-intersecting and never
+   revealed. That happens on a refresh when the browser restores scroll to the
+   bottom of the page (e.g. the footer form). The sweep below covers it by
+   revealing anything already in or above the viewport, re-checked across the
+   frames where scroll restoration may land. Re-runs on route changes so a new
+   page's elements (like the global footer form) get picked up. */
 export function useReveal() {
   const { pathname } = useLocation()
   useEffect(() => {
-    let pending = Array.from(document.querySelectorAll('.reveal:not(.is-visible)'))
-    if (!pending.length) return
+    const els = Array.from(document.querySelectorAll('.reveal:not(.is-visible)'))
+    if (!els.length) return
 
-    const check = () => {
-      const line = window.innerHeight * 0.92
-      pending = pending.filter((el) => {
-        if (el.getBoundingClientRect().top < line) {
-          el.classList.add('is-visible')
-          return false
+    const reveal = (el) => el.classList.add('is-visible')
+
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(reveal)
+      return
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            reveal(entry.target)
+            io.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    )
+    els.forEach((el) => io.observe(el))
+
+    // Reveal anything already in or above the viewport (IO's blind spot).
+    const sweep = () => {
+      els.forEach((el) => {
+        if (el.classList.contains('is-visible')) return
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          reveal(el)
+          io.unobserve(el)
         }
-        return true
       })
-      if (!pending.length) teardown()
     }
+    const raf = requestAnimationFrame(sweep)
+    const timer = setTimeout(sweep, 300)
+    window.addEventListener('load', sweep)
 
-    let ticking = false
-    const onScroll = () => {
-      if (ticking) return
-      ticking = true
-      requestAnimationFrame(() => { ticking = false; check() })
+    return () => {
+      cancelAnimationFrame(raf)
+      clearTimeout(timer)
+      window.removeEventListener('load', sweep)
+      io.disconnect()
     }
-
-    function teardown() {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', check)
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', check)
-    // Defer a frame so the browser's scroll restoration (on refresh) has
-    // applied before the first measurement.
-    const raf = requestAnimationFrame(check)
-
-    return () => { cancelAnimationFrame(raf); teardown() }
   }, [pathname])
 }
