@@ -74,6 +74,11 @@
   animation: aboutHeroRise .9s var(--ease, cubic-bezier(.2,.7,.2,1)) both;
 }
 
+/* Shift content right so it clears the sharp (full-size) emblem. */
+.about-hero__content--shift {
+  left: 60%;
+}
+
 @keyframes aboutHeroRise {
   from { opacity: 0; transform: translateY(-50%) translateY(26px); }
   to   { opacity: 1; transform: translateY(-50%); }

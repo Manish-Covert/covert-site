@@ -40,7 +40,7 @@ export default function AboutPage() {
                 src={item.heroEmblem} alt="" aria-hidden="true"
               />
             )}
-            <div className="about-hero__content">
+            <div className={`about-hero__content${item.heroEmblemSharp ? ' about-hero__content--shift' : ''}`}>
               <h1 className="about-hero__title">
                 {item.heroTitle || 'About'}<br />
                 <span className="about-hero__title-accent">{item.heroAccent || item.label}</span>
