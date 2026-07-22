@@ -1,44 +1,52 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-/* Adds .is-visible to any .reveal element as it scrolls into view.
+/* Adds .is-visible to any .reveal element once it reaches the viewport.
    Mirrors the smooth scroll-reveal feel of the reference site.
-   Re-runs on route changes so elements rendered by the new page
-   (e.g. the global footer form) get observed too. */
+
+   Scroll-based (not IntersectionObserver) on purpose: an element that gets
+   scrolled *past* — e.g. the footer form after a refresh restores scroll to
+   the bottom — is above the viewport, a state IntersectionObserver reports as
+   "not intersecting" and never fires for. Here we reveal anything whose top
+   has passed 92% of the viewport height, which covers both in-view and
+   scrolled-past elements. Re-runs on route changes so elements rendered by a
+   new page (e.g. the global footer form) get picked up. */
 export function useReveal() {
   const { pathname } = useLocation()
   useEffect(() => {
-    const els = document.querySelectorAll('.reveal')
-    if (!('IntersectionObserver' in window)) {
-      els.forEach((el) => el.classList.add('is-visible'))
-      return
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            io.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    )
-    // Defer a frame so the browser's scroll restoration (on refresh) has
-    // settled before we measure. Elements already in or above the viewport
-    // are revealed immediately — otherwise a refresh scrolled past them
-    // (e.g. the footer form) would leave them stuck at opacity 0, since the
-    // observer only fires when an element *enters* view.
-    const raf = requestAnimationFrame(() => {
-      els.forEach((el) => {
-        if (el.classList.contains('is-visible')) return
-        if (el.getBoundingClientRect().top < window.innerHeight) {
+    let pending = Array.from(document.querySelectorAll('.reveal:not(.is-visible)'))
+    if (!pending.length) return
+
+    const check = () => {
+      const line = window.innerHeight * 0.92
+      pending = pending.filter((el) => {
+        if (el.getBoundingClientRect().top < line) {
           el.classList.add('is-visible')
-        } else {
-          io.observe(el)
+          return false
         }
+        return true
       })
-    })
-    return () => { cancelAnimationFrame(raf); io.disconnect() }
+      if (!pending.length) teardown()
+    }
+
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => { ticking = false; check() })
+    }
+
+    function teardown() {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', check)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', check)
+    // Defer a frame so the browser's scroll restoration (on refresh) has
+    // applied before the first measurement.
+    const raf = requestAnimationFrame(check)
+
+    return () => { cancelAnimationFrame(raf); teardown() }
   }, [pathname])
 }
