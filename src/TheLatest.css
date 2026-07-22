@@ -84,7 +84,9 @@
   box-shadow: 0 30px 64px rgba(0, 0, 0, 0.5), var(--ring-glow);
 }
 .latest-card__media {
-  aspect-ratio: 16 / 10;
+  /* Wider 2:1 crop trims the empty padding at the top of the podcast
+     graphics (a taller box would reveal it). */
+  aspect-ratio: 2 / 1;
   background: #0c120c;
 }
 /* Clean thumbnail — no vignette overlay, subtle zoom on hover. */
