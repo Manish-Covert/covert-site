@@ -77,7 +77,9 @@
   overflow: visible;
   transition: transform .4s var(--ease);
 }
-.latest-card:hover { transform: translateY(-6px); }
+/* Cancel the shared .svci-card:hover green ring-glow (the card is also a
+   .svci-card); the hover shadow lives on the image only now. */
+.latest-card:hover { transform: translateY(-6px); box-shadow: none; }
 
 .latest-card__media {
   /* Wider 2:1 crop trims the empty padding at the top of the podcast
@@ -90,8 +92,8 @@
   transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
 }
 .latest-card:hover .latest-card__media {
-  border-color: rgba(166, 242, 60, 0.4);
-  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.45), var(--ring-glow);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 /* Clean thumbnail — no vignette overlay, subtle zoom on hover. */
 .latest-card__media::after { display: none; }
@@ -101,7 +103,7 @@
 }
 .latest-card:hover .latest-card__media .svci-card__img { transform: scale(1.05); }
 .latest-card__title {
-  padding: 16px 4px 0;
+  padding: 18px 4px 8px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
   font-weight: 600;
