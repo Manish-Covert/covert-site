@@ -1,0 +1,152 @@
+---
+// Native Astro port of src/SiteNav.jsx. Renders as static HTML; the desktop
+// mega-menu hover and the mobile drawer are driven by a small inline script
+// instead of React state — the whole header ships ~1KB of JS instead of the
+// full React runtime.
+import { MEGA_ABOUT, MEGA_SERVICES } from '../../../src/data.js'
+---
+<header class="nav-wrap">
+  <nav class="nav">
+    <a class="brand" href="/" aria-label="Covert Communication home">
+      <img src="/logo-horiz.png" alt="Covert Communication" class="brand__logo" />
+    </a>
+
+    <div class="nav__links">
+      <!-- ABOUT MEGA -->
+      <div class="nav__item nav__item--mega" data-mega>
+        <a href="/about" class="nav__link nav__link--trigger">
+          About
+          <svg class="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <div class="mega mega--about">
+          <div class="mega-about__grid">
+            {MEGA_ABOUT.map((item) => (
+              <a href={item.href} class="ma-card">
+                <div class="ma-card__bg" style={`background-image:url(${item.img})`} />
+                <div class="ma-card__inner">
+                  <img class="ma-card__icon" src={item.icon} alt="" aria-hidden="true" />
+                  <span class="ma-card__label">{item.label}</span>
+                  {item.badge && <span class="ma-card__badge">{item.badge}</span>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICES MEGA -->
+      <div class="nav__item nav__item--mega" data-mega>
+        <a href="/services" class="nav__link nav__link--trigger">
+          Services
+          <svg class="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <div class="mega mega--services">
+          <div class="mega-services__grid">
+            {MEGA_SERVICES.map((item) => (
+              <a href={`/services/${item.id}`} class="ms-card">
+                <div class="ms-card__bg" style={`background-image:url(${item.img})`} />
+                <div class="ms-card__inner">
+                  <img class="ms-card__icon" src={item.icon} alt="" aria-hidden="true" />
+                  <span class="ms-card__title">{item.title}</span>
+                  <span class="ms-card__count">{item.count}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <a href="/case-studies" class="nav__link">Case Studies</a>
+      <a href="/the-latest" class="nav__link">The Latest</a>
+      <a href="/contact" class="nav__link">Contact</a>
+    </div>
+
+    <div class="nav__cta">
+      <a href="/contact" class="btn btn--pill-outline">Book a Meeting &rarr;</a>
+    </div>
+
+    <button type="button" class="nav__burger" aria-label="Open menu" aria-expanded="false" data-burger>
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-drawer__scrim" data-scrim aria-hidden="true"></div>
+  <aside class="nav-drawer" data-drawer>
+    <div class="nav-drawer__inner">
+      <div class="nav-drawer__group">
+        <button type="button" class="nav-drawer__toggle" aria-expanded="false" data-dtoggle>
+          About
+          <svg class="nav-drawer__chev" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="nav-drawer__sub">
+          <a href="/about" class="nav-drawer__sublink">All About</a>
+          {MEGA_ABOUT.map((item) => (
+            <a href={item.href} class="nav-drawer__sublink">{item.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="nav-drawer__group">
+        <button type="button" class="nav-drawer__toggle" aria-expanded="false" data-dtoggle>
+          Services
+          <svg class="nav-drawer__chev" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="nav-drawer__sub">
+          <a href="/services" class="nav-drawer__sublink">All Services</a>
+          {MEGA_SERVICES.map((item) => (
+            <a href={`/services/${item.id}`} class="nav-drawer__sublink">{item.title}</a>
+          ))}
+        </div>
+      </div>
+
+      <a href="/case-studies" class="nav-drawer__link">Case Studies</a>
+      <a href="/the-latest" class="nav-drawer__link">The Latest</a>
+      <a href="/contact" class="nav-drawer__link">Contact</a>
+      <a href="/contact" class="btn btn--pill-outline nav-drawer__cta">Book a Meeting &rarr;</a>
+    </div>
+  </aside>
+</header>
+
+<script>
+  // Desktop mega-menu hover (adds/removes the .mega--open class the CSS expects).
+  document.querySelectorAll('[data-mega]').forEach((item) => {
+    const mega = item.querySelector('.mega')
+    if (!mega) return
+    item.addEventListener('mouseenter', () => mega.classList.add('mega--open'))
+    item.addEventListener('mouseleave', () => mega.classList.remove('mega--open'))
+  })
+
+  // Mobile drawer open/close + body scroll lock.
+  const burger = document.querySelector('[data-burger]')
+  const drawer = document.querySelector('[data-drawer]')
+  const scrim = document.querySelector('[data-scrim]')
+  const setDrawer = (open) => {
+    drawer?.classList.toggle('nav-drawer--open', open)
+    scrim?.classList.toggle('nav-drawer__scrim--open', open)
+    burger?.classList.toggle('nav__burger--open', open)
+    burger?.setAttribute('aria-expanded', String(open))
+    document.body.style.overflow = open ? 'hidden' : ''
+  }
+  burger?.addEventListener('click', () => setDrawer(!drawer?.classList.contains('nav-drawer--open')))
+  scrim?.addEventListener('click', () => setDrawer(false))
+
+  // Collapsible drawer sections.
+  document.querySelectorAll('[data-dtoggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const sub = btn.nextElementSibling
+      const chev = btn.querySelector('.nav-drawer__chev')
+      const open = sub?.classList.toggle('nav-drawer__sub--open')
+      chev?.classList.toggle('nav-drawer__chev--open', open)
+      btn.setAttribute('aria-expanded', String(open))
+    })
+  })
+</script>
