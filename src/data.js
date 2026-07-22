@@ -340,7 +340,7 @@ export const MEGA_ABOUT = [
   { id: 'covertcom',  label: 'Covert Communication', icon: '/icons/about/about-covertcom.png',    img: '/about/about-covertcom-rollover.webp',   cardBg: '/about/about-covertcom-rollover.webp', href: '/about/covertcom',
     heroImg: '/about/about-covertcom-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', tagline: 'The full-service agency behind the brand.' },
   { id: 'anna',       label: 'Anna Covert',           icon: '/icons/about/about-anna.png',  img: '/about/about-anna-rollover.webp',        cardBg: '/about/card-anna.webp', href: '/about/anna',
-    heroImg: '/about/about-anna-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-hero-emblem.webp', figure: '/about/about-anna-figure.webp', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
+    heroImg: '/about/about-anna-emblem.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-hero-emblem.webp', heroEmblemSharp: true, figure: '/about/about-anna-figure.webp', photo: '/about/about-anna-photo.webp', tagline: 'Founder, author, and the voice behind Covert Communication.' },
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/about/about-covertteam.png',           img: '/about/about-covertteam-rollover.webp',  cardBg: '/about/card-covertteam.webp', href: '/about/covertteam',
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', heroTitle: 'About', heroAccent: 'The Covert Team',
     tagline: 'The people who make it happen, every day.' },

@@ -45,6 +45,14 @@
   filter: none;
 }
 
+/* Sharp emblem (e.g. Anna hero logo): full brightness, no dimming, and
+   lifted above the hero scrim so nothing overlays it. */
+.about-hero__emblem--sharp {
+  opacity: 1;
+  filter: none;
+  z-index: 1;
+}
+
 /* Figure emblem (e.g. Anna headshot on the Podcasts hero): left side,
    vertically centered, full brightness. */
 .about-hero__emblem--figure {

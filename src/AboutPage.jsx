@@ -36,7 +36,7 @@ export default function AboutPage() {
           <section className="about-hero" style={{ backgroundImage: `url(${item.heroBg})` }}>
             {item.heroEmblem && (
               <img
-                className={`about-hero__emblem${item.heroEmblemWide ? ' about-hero__emblem--wide' : ''}${item.heroEmblemFigure ? ' about-hero__emblem--figure' : ''}`}
+                className={`about-hero__emblem${item.heroEmblemWide ? ' about-hero__emblem--wide' : ''}${item.heroEmblemFigure ? ' about-hero__emblem--figure' : ''}${item.heroEmblemSharp ? ' about-hero__emblem--sharp' : ''}`}
                 src={item.heroEmblem} alt="" aria-hidden="true"
               />
             )}
