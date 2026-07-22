@@ -16,7 +16,7 @@
   font-weight: 700;
   letter-spacing: -1.5px;
   color: #fff;
-  margin-bottom: 34px;
+  margin-bottom: 48px;
 }
 
 /* ---------- FILTER PILL ROW ---------- */
@@ -53,27 +53,66 @@
   box-shadow: 0 6px 20px rgba(166, 242, 60, 0.3);
 }
 
-/* ---------- CARD GRID ---------- */
-.latest__body { padding: 44px 0 90px; }
+/* ---------- CARD GRID (modern, spacious) ---------- */
+.latest__body { padding: 76px 0 120px; }
+
+/* Roomier gutters and generous vertical rhythm between rows so the grid
+   breathes instead of feeling packed. Auto-fit keeps a comfortable card
+   width as the viewport changes. */
+.latest__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 38px;
+  row-gap: 66px;
+  align-items: start;
+}
 
 /* Card = feature image box + title below (no excerpt/meta) */
-.latest-card { flex-direction: column; }
+.latest-card {
+  flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.008));
+  overflow: hidden;
+  transition:
+    transform .4s var(--ease),
+    border-color .4s var(--ease),
+    box-shadow .4s var(--ease);
+}
+.latest-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(166, 242, 60, 0.4);
+  box-shadow: 0 30px 64px rgba(0, 0, 0, 0.5), var(--ring-glow);
+}
 .latest-card__media {
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 16 / 10;
   background: #0c120c;
 }
-/* Show the full image width inside the 2:1 box (no horizontal cropping). */
-.latest-card__media .svci-card__img { object-fit: cover; }
+/* Clean thumbnail — no vignette overlay, subtle zoom on hover. */
+.latest-card__media::after { display: none; }
+.latest-card__media .svci-card__img {
+  object-fit: cover;
+  transition: transform .6s var(--ease);
+}
+.latest-card:hover .latest-card__media .svci-card__img { transform: scale(1.05); }
 .latest-card__title {
-  padding: 18px 6px 4px;
+  padding: 22px 22px 26px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.4;
   color: #fff;
   transition: color .25s var(--ease);
 }
 .latest-card:hover .latest-card__title { color: var(--green-bright); }
+
+/* Own responsive columns (override the shared .svci__grid breakpoints,
+   which would otherwise be beaten by .latest__grid at all widths). */
+@media (max-width: 1040px) {
+  .latest__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 30px; row-gap: 52px; }
+}
+@media (max-width: 640px) {
+  .latest__grid { grid-template-columns: 1fr; row-gap: 42px; }
+}
 
 .latest__empty {
   text-align: center;
