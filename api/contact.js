@@ -126,6 +126,7 @@ export default async function handler(req, res) {
       email,
       phone: data.phone,
       referral: data.referral,
+      message: data.message,
     }))
   }
   if (adminTo.length) {
