@@ -31,6 +31,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://covertcommunication.com/privacy-policy</loc>
+    <lastmod>2026-07-23</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://covertcommunication.com/terms-of-service</loc>
+    <lastmod>2026-07-23</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://covertcommunication.com/services/technology</loc>
     <lastmod>2026-07-23</lastmod>
     <priority>0.6</priority>

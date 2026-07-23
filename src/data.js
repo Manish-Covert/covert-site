@@ -344,7 +344,7 @@ export const MEGA_ABOUT = [
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/about/about-covertteam.png',           img: '/about/about-covertteam-rollover.webp',  cardBg: '/about/card-covertteam.webp', href: '/about/covertteam',
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', heroTitle: 'About', heroAccent: 'The Covert Team',
     tagline: 'The people who make it happen, every day.' },
-  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/about/about-books.png',  img: '/about/about-books-rollover.webp',   cardBg: '/about/card-books.webp', href: '/about/books',
+  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/about/about-books.svg',  img: '/about/about-books-rollover.webp',   cardBg: '/about/card-books.webp', href: '/about/books',
     heroImg: '/about/about-books-cover.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-books-hero.webp', heroEmblemWide: true, heroTitle: 'Books', heroAccent: 'by Anna Covert', tagline: 'Bestselling reads on marketing and the solar industry.' },
   { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/about/about-podcasts.png', img: '/about/about-podcasts-rollover.webp', cardBg: '/about/card-podcasts.webp', href: '/about/podcasts',
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-headshot.webp', heroEmblemFigure: true, heroTitle: 'Podcasts', heroAccent: 'with Anna Covert',
