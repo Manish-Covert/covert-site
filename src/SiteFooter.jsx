@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ContactForm from './ContactForm'
 
 /* Global footer: "Let's Get Started" contact form section + site footer,
@@ -36,9 +37,9 @@ export default function SiteFooter({ showContact = true }) {
           </div>
           <p className="footer__legal">
             Copyright 2026 Covert Communication LLC | All Rights Reserved |{' '}
-            <a href="#">Privacy Policy</a> |{' '}
+            <Link to="/privacy-policy">Privacy Policy</Link> |{' '}
             <a href="#">Cookie Preferences</a> |{' '}
-            <a href="#">Terms of Service</a> |{' '}
+            <Link to="/terms-of-service">Terms of Service</Link> |{' '}
             <a href="#">Site Map</a> | 808-272-9952
           </p>
         </div>

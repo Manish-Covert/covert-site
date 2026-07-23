@@ -25,6 +25,8 @@ const HomeV3 = lazy(() => import('./HomeV3'))
 // Lazy so the large article-body module (latestContent.js) is its own chunk.
 const TheLatestDetailPage = lazy(() => import('./TheLatestDetailPage'))
 const AdminLeadsPage = lazy(() => import('./AdminLeadsPage'))
+const PrivacyPolicyPage = lazy(() => import('./PrivacyPolicyPage'))
+const TermsOfServicePage = lazy(() => import('./TermsOfServicePage'))
 
 export default function App() {
   useReveal()
@@ -72,6 +74,8 @@ export default function App() {
         <Route path="/admin" element={<AdminLeadsPage />} />
         <Route path="/the-latest" element={<TheLatestPage />} />
         <Route path="/the-latest/:slug" element={<TheLatestDetailPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         <Route path="*" element={<HomePage
           megaOpen={megaOpen} setMegaOpen={setMegaOpen}
           aboutOpen={aboutOpen} setAboutOpen={setAboutOpen}

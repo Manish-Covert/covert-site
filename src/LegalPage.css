@@ -1,0 +1,71 @@
+/* ============================================================
+   LEGAL PAGES — Privacy Policy & Terms of Service.
+   Reuses the shared .latest__hero band + .container--narrow for a
+   readable single-column prose layout on the dark theme.
+   ============================================================ */
+
+.legal__body {
+  padding: 24px 0 120px;
+}
+
+.legal__updated {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: var(--green-bright);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.legal__prose {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.legal__prose h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.4px;
+  margin: 48px 0 16px;
+}
+
+.legal__prose h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 28px 0 10px;
+}
+
+.legal__prose p {
+  margin: 0 0 16px;
+}
+
+.legal__prose ul {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+
+.legal__prose li {
+  margin: 0 0 8px;
+}
+
+.legal__prose a {
+  color: var(--green-bright);
+  text-decoration: none;
+}
+.legal__prose a:hover {
+  text-decoration: underline;
+}
+
+.legal__prose strong {
+  color: #fff;
+}
+
+.legal__prose hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 40px 0;
+}
