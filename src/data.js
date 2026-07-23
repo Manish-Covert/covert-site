@@ -344,7 +344,7 @@ export const MEGA_ABOUT = [
   { id: 'covertteam',label: 'The Covert Team',        icon: '/icons/about/about-covertteam.png',           img: '/about/about-covertteam-rollover.webp',  cardBg: '/about/card-covertteam.webp', href: '/about/covertteam',
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-hero-emblem.webp', heroTitle: 'About', heroAccent: 'The Covert Team',
     tagline: 'The people who make it happen, every day.' },
-  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/about/about-books.png',  img: '/about/about-books-rollover.webp',   cardBg: '/about/card-books.webp', href: '/about/books',
+  { id: 'books',      label: 'Books',       badge: '2 Titles', icon: '/icons/about/about-books.svg',  img: '/about/about-books-rollover.webp',   cardBg: '/about/card-books.webp', href: '/about/books',
     heroImg: '/about/about-books-cover.webp', heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-books-hero.webp', heroEmblemWide: true, heroTitle: 'Books', heroAccent: 'by Anna Covert', tagline: 'Bestselling reads on marketing and the solar industry.' },
   { id: 'podcasts',   label: 'Podcasts',    badge: '2 Series', icon: '/icons/about/about-podcasts.png', img: '/about/about-podcasts-rollover.webp', cardBg: '/about/card-podcasts.webp', href: '/about/podcasts',
     heroBg: '/about/about-hero-texture.webp', heroEmblem: '/about/about-anna-headshot.webp', heroEmblemFigure: true, heroTitle: 'Podcasts', heroAccent: 'with Anna Covert',
@@ -408,7 +408,13 @@ export const ABOUT_BRANDS = [
     caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
 ]
 
-export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
+export const HOW_DID_YOU_HEAR = [
+  { label: 'Please choose one', value: '' },
+  { label: 'Online', value: 'online' },
+  { label: 'Mail', value: 'mail' },
+  { label: 'Family/Friend', value: 'familyfriend' },
+  { label: 'Other', value: 'other' },
+]
 
 /* Labels are laid out at equal angles around the logo in App.jsx, so the
    order here is the order they appear going clockwise around the ring. */

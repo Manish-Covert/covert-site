@@ -19,6 +19,8 @@ const routes = [
   ['/case-studies', '0.7'],
   ['/the-latest', '0.7'],
   ['/contact', '0.6'],
+  ['/privacy-policy', '0.3'],
+  ['/terms-of-service', '0.3'],
   ...SERVICES.map(s => [`/services/${s.id}`, '0.6']),
   ...MEGA_ABOUT.map(a => [`/about/${a.id}`, '0.5']),
   ...CASE_STUDIES.map(c => [`/case-studies/${c.slug}`, '0.5']),
