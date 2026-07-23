@@ -408,7 +408,13 @@ export const ABOUT_BRANDS = [
     caption: 'CAPTION GOES HERE', copy: BRAND_LOREM, href: '#' },
 ]
 
-export const HOW_DID_YOU_HEAR = ['Please choose one', 'Google', 'Social Media', 'Referral', 'Event', 'Other']
+export const HOW_DID_YOU_HEAR = [
+  { label: 'Please choose one', value: '' },
+  { label: 'Online', value: 'online' },
+  { label: 'Mail', value: 'mail' },
+  { label: 'Family/Friend', value: 'familyfriend' },
+  { label: 'Other', value: 'other' },
+]
 
 /* Labels are laid out at equal angles around the logo in App.jsx, so the
    order here is the order they appear going clockwise around the ring. */

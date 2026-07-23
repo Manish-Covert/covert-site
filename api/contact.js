@@ -1,4 +1,5 @@
 import { insertLead } from '../lib/leadsDb.js'
+import { upsertContact } from '../lib/ghl.js'
 
 /* Marketing attribution params captured on the landing URL. */
 const ATTRIB = [
@@ -116,6 +117,17 @@ export default async function handler(req, res) {
   const adminTo = (process.env.ADMIN_EMAIL || '').split(',').map(e => ({ email: e.trim() })).filter(e => e.email)
 
   const tasks = [insertLead({ form, name: fullName, email, data })]
+  // Push the lead into GoHighLevel (contact upsert + `website-lead` tag that
+  // triggers the opportunity workflow). No-op when env vars aren't configured.
+  if (process.env.GHL_TOKEN && process.env.GHL_LOCATION_ID) {
+    tasks.push(upsertContact({
+      firstName: data.first_name,
+      lastName: data.last_name,
+      email,
+      phone: data.phone,
+      referral: data.referral,
+    }))
+  }
   if (adminTo.length) {
     tasks.push(brevoSend({ to: adminTo, subject: `New lead (${form}): ${fullName || email}`, html: adminHtml, replyTo: { email, name: fullName } }))
   }

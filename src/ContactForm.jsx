@@ -75,7 +75,7 @@ export default function ContactForm({ formName = 'contact' }) {
       <div className="form__row">
         <select name="referral" aria-label="How did you hear about us?" defaultValue="">
           {HOW_DID_YOU_HEAR.map(o => (
-            <option key={o} value={o === 'Please choose one' ? '' : o}>{o}</option>
+            <option key={o.value || 'placeholder'} value={o.value}>{o.label}</option>
           ))}
         </select>
       </div>
