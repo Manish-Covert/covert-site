@@ -2,9 +2,9 @@
    Seeded from the source WordPress sites' REST API. */
 export const LATEST_CONTENT = {
   "hello-world": {
-    "title": "Hello World!",
+    "title": "AI Enhancing Technology",
     "date": "2026-07-27",
-    "img": "https://picsum.photos/seed/covert-hello-world/1024/575",
+    "img": "https://loremflickr.com/1024/575/artificial-intelligence,technology",
     "source": "Covert Communication",
     "sourceUrl": "",
     "excerpt": "A test blog post to kick things off — placeholder content while we get The Latest up and running.",
