@@ -1,61 +1,85 @@
 /* Full article bodies for /the-latest/:slug detail pages.
    Seeded from the source WordPress sites' REST API. */
 export const LATEST_CONTENT = {
-  "hello-world": {
-    "title": "AI Enhancing Technology",
+  "tipping-the-scale-navigating-privacy-and-innovation-in-advertising": {
+    "title": "Tipping the Scale: Navigating Privacy and Innovation in Advertising",
     "date": "2026-07-27",
-    "img": "https://loremflickr.com/1024/575/artificial-intelligence,technology",
-    "source": "Covert Communication",
-    "sourceUrl": "",
-    "excerpt": "A test blog post to kick things off — placeholder content while we get The Latest up and running.",
+    "img": "https://thecovertcode.com/wp-content/uploads/2025/01/Ads.png",
+    "source": "The Covert Code",
+    "sourceUrl": "https://thecovertcode.com/tipping-the-scale-navigating-privacy-and-innovation-in-advertising/",
+    "excerpt": "As a creative person and an advertising agency owner, I have mixed feelings about privacy — and about what we gain, and lose, as AI reshapes how brands reach us.",
     "blocks": [
       {
-        "t": "h",
-        "text": "Welcome to The Latest"
+        "t": "p",
+        "text": "As a creative person and an advertising agency owner, I have mixed feelings about privacy."
       },
       {
         "t": "p",
-        "text": "Hello World! This is a test blog post created to preview how new articles look and feel on The Latest. The words here are placeholders, but the layout, typography, and imagery are the real thing."
-      },
-      {
-        "t": "p",
-        "text": "Every great story starts somewhere, and this one starts with a simple greeting. Consider this the friendly wave from our editorial team as we get the publishing engine warmed up."
+        "text": "Early in my career, it was common for clients to express their privacy concerns and, more specifically, to use targeting as part of an online advertising campaign. I understood their discomfort with potentially invasive communication that was very different from the traditional advertising we were accustomed to. The idea that someone could cookie or pixel you and then know everything about you from your online behavior was too much for many."
       },
       {
         "t": "h",
-        "text": "What This Space Is For"
+        "text": "Think of It as Waste Management"
       },
       {
         "t": "p",
-        "text": "The Latest is where we'll share updates, ideas, and behind-the-scenes stories. From marketing insights to company news, expect a steady stream of content designed to inform and inspire."
+        "text": "I encouraged clients to think of it as waste management. Online offers a new opportunity for businesses to reduce the number of ads and messages to consumers who have no interest in receiving them. When someone decided to go onto a browser, participating was a commitment."
+      },
+      {
+        "t": "p",
+        "text": "It's important to recognize that a browser is a marketing engine that connects users with the products and services they seek. Relevant search data makes push advertising more effective — we already know the customers' interests and can insert ourselves into their journey, delivering the information they want."
+      },
+      {
+        "t": "p",
+        "text": "What I told my clients many years ago is still true today, but the ability to track and target users cross-channel has never been greater. As a marketer, this is very good news."
+      },
+      {
+        "t": "h",
+        "text": "The AI Paradox"
+      },
+      {
+        "t": "p",
+        "text": "The bad news? I wonder if the increasing influence of AI and consumer behavior on advertising is causing us to lose our ability to surprise and delight consumers. How can a brand stand out if everything starts to look and sound the same, consistently meeting expectations and nothing more?"
       },
       {
         "t": "q",
-        "text": "The best way to predict the future is to create it — and that starts with a single, deliberate step."
-      },
-      {
-        "t": "p",
-        "text": "In the meantime, here are a few of the things you can look forward to seeing in this space:"
-      },
-      {
-        "t": "li",
-        "text": "Practical marketing tips you can put to work right away."
-      },
-      {
-        "t": "li",
-        "text": "Interviews and conversations with people we admire."
-      },
-      {
-        "t": "li",
-        "text": "Company milestones, launches, and announcements."
+        "text": "How can a brand stand out if everything starts to look and sound the same, consistently meeting expectations and nothing more?"
       },
       {
         "t": "h",
-        "text": "Thanks for Reading"
+        "text": "The Super Bowl Effect"
       },
       {
         "t": "p",
-        "text": "That's all for this test post. Real content is on the way, so check back soon. Until then — hello, and welcome aboard!"
+        "text": "As the Super Bowl approaches, this question has left me feeling conflicted. I watch the game more for TV commercials than for football. Why? Because it's an opportunity to be surprised and inspired, to learn about a new brand, or to reimagine an old one."
+      },
+      {
+        "t": "p",
+        "text": "The Super Bowl ads always have a high impact because of the number of people watching. Is it the commercials themselves, or is it more about the experience? I think both, but hype plays a part. The ad itself is less important than the anticipation established on game day. From kickoff to the final play, viewers anticipate continuous entertainment."
+      },
+      {
+        "t": "p",
+        "text": "Is it possible to create the same buzz for a new or established brand in micro spaces eclipsed by the Super Bowl? For example, if we identify that a person travels internationally and might be interested in our new translation app gear, do we — should we — create an ad that is shocking and gets that buzz? Or is it enough to expose potential customers to brands and products based on their life experiences and their searches in real time?"
+      },
+      {
+        "t": "h",
+        "text": "It's Not Too Much Information — It's Too Little"
+      },
+      {
+        "t": "p",
+        "text": "In addition, it's not too much information that worries me. It's too little. It's the consumer who doesn't share their interests, whose searches don't reflect that they're in love with an avid golfer or have a child interested in environmentalism."
+      },
+      {
+        "t": "p",
+        "text": "Those are the missed opportunities, the obstacles that prevent our Super Bowl moments — showing a consumer something new, something that surprises them at the perfect moment. As digital advertising progresses and consumers begin to resist cookies and social sharing, will we revert to guesswork or intensify our efforts to reach a wider audience?"
+      },
+      {
+        "t": "h",
+        "text": "Privacy vs. Data"
+      },
+      {
+        "t": "p",
+        "text": "Privacy vs. data. Like all great games, the outcome is unpredictable, but I still believe we can find a way for both to win."
       }
     ]
   },

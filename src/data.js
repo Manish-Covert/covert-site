@@ -436,7 +436,7 @@ export const HERO_PILLS = [
 export const LATEST_CATEGORIES = ['All', 'Books', 'Podcasts', 'Solar', 'Technology']
 
 export const LATEST = [
-  { id: "hello-world-test", slug: "hello-world", category: "Technology", title: "AI Enhancing Technology", img: "https://loremflickr.com/1024/575/artificial-intelligence,technology" },
+  { id: "tipping-the-scale", slug: "tipping-the-scale-navigating-privacy-and-innovation-in-advertising", category: "Technology", title: "Tipping the Scale: Navigating Privacy and Innovation in Advertising", img: "https://thecovertcode.com/wp-content/uploads/2025/01/Ads.png" },
   { id: "3547-thecovertcode", slug: "episode-122-embrace-the-pilgrim-spirit", category: "Podcasts", title: "Episode 122 – Gideon Enok", img: "https://thecovertcode.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-6.23.54-PM-1024x575.png" },
   { id: "3527-thecovertcode", slug: "gina-riley-why-being-qualified-isnt-enough-anymore-ep-121", category: "Podcasts", title: "Episode 121 – Gina Riley", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES-1.png" },
   { id: "3508-thecovertcode", slug: "marty-fahncke-build-a-business-worth-selling", category: "Podcasts", title: "Episode 120 – Marty Fahncke", img: "https://thecovertcode.com/wp-content/uploads/2026/07/COVERT-CODE-TITLES.png" },
