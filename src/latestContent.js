@@ -1,6 +1,64 @@
 /* Full article bodies for /the-latest/:slug detail pages.
    Seeded from the source WordPress sites' REST API. */
 export const LATEST_CONTENT = {
+  "hello-world": {
+    "title": "AI Enhancing Technology",
+    "date": "2026-07-27",
+    "img": "https://loremflickr.com/1024/575/artificial-intelligence,technology",
+    "source": "Covert Communication",
+    "sourceUrl": "",
+    "excerpt": "A test blog post to kick things off — placeholder content while we get The Latest up and running.",
+    "blocks": [
+      {
+        "t": "h",
+        "text": "Welcome to The Latest"
+      },
+      {
+        "t": "p",
+        "text": "Hello World! This is a test blog post created to preview how new articles look and feel on The Latest. The words here are placeholders, but the layout, typography, and imagery are the real thing."
+      },
+      {
+        "t": "p",
+        "text": "Every great story starts somewhere, and this one starts with a simple greeting. Consider this the friendly wave from our editorial team as we get the publishing engine warmed up."
+      },
+      {
+        "t": "h",
+        "text": "What This Space Is For"
+      },
+      {
+        "t": "p",
+        "text": "The Latest is where we'll share updates, ideas, and behind-the-scenes stories. From marketing insights to company news, expect a steady stream of content designed to inform and inspire."
+      },
+      {
+        "t": "q",
+        "text": "The best way to predict the future is to create it — and that starts with a single, deliberate step."
+      },
+      {
+        "t": "p",
+        "text": "In the meantime, here are a few of the things you can look forward to seeing in this space:"
+      },
+      {
+        "t": "li",
+        "text": "Practical marketing tips you can put to work right away."
+      },
+      {
+        "t": "li",
+        "text": "Interviews and conversations with people we admire."
+      },
+      {
+        "t": "li",
+        "text": "Company milestones, launches, and announcements."
+      },
+      {
+        "t": "h",
+        "text": "Thanks for Reading"
+      },
+      {
+        "t": "p",
+        "text": "That's all for this test post. Real content is on the way, so check back soon. Until then — hello, and welcome aboard!"
+      }
+    ]
+  },
   "episode-122-embrace-the-pilgrim-spirit": {
     "title": "Episode 122 – Gideon Enok",
     "date": "2026-07-16",
