@@ -42,6 +42,7 @@ export const MEGA_SERVICES = [
    expanded alternating-feature layout; others fall back to the generic body. */
 export const SERVICE_DETAILS = {
   'digital-growth': {
+    cta: { title: 'Ready to turn attention into growth?' },
     hero: {
       eyebrow: 'Digital Growth',
       title: 'Digital Growth',
@@ -88,6 +89,7 @@ export const SERVICE_DETAILS = {
   },
 
   programmatic: {
+    cta: { title: 'Reach the right audience, wherever they are.' },
     hero: {
       eyebrow: 'Programmatic Media',
       title: 'Programmatic',
@@ -123,6 +125,7 @@ export const SERVICE_DETAILS = {
   },
 
   technology: {
+    cta: { title: 'Your technology should be an advantage.' },
     hero: {
       eyebrow: 'Technology Strategy & Engineering',
       title: 'Technology',
@@ -165,6 +168,7 @@ export const SERVICE_DETAILS = {
   },
 
   social: {
+    cta: { title: 'Make your brand worth following.' },
     hero: {
       eyebrow: 'Social Media',
       title: 'Social Media',
@@ -207,6 +211,7 @@ export const SERVICE_DETAILS = {
   },
 
   fraud: {
+    cta: { title: 'Protect every dollar behind your marketing.' },
     hero: {
       eyebrow: 'Fraud Prevention',
       title: 'Fraud Prevention',
@@ -249,6 +254,7 @@ export const SERVICE_DETAILS = {
   },
 
   'privacy-compliance': {
+    cta: { title: 'Build privacy into the way your business works.' },
     hero: {
       eyebrow: 'Privacy & Compliance',
       title: 'Privacy & Compliance',
@@ -295,6 +301,7 @@ export const SERVICE_DETAILS = {
   },
 
   branding: {
+    cta: { title: 'Build a brand people remember.' },
     hero: {
       eyebrow: 'Branding',
       title: 'Branding',
@@ -337,6 +344,7 @@ export const SERVICE_DETAILS = {
   },
 
   'authority-influence': {
+    cta: { title: 'Turn expertise into authority.' },
     hero: {
       eyebrow: 'Authority & Influence',
       title: 'Authority & Influence',
