@@ -41,7 +41,7 @@ const WHY = [
 
 const CASES = [
   { img: '/home-v2/case-growth.svg', tag: 'Programmatic · SEO', title: 'DTC brand scales to 8 figures', metric: '+312% revenue in 9 months', copy: 'An always-on programmatic engine paired with technical SEO turned a stalled DTC label into a category leader.' },
-  { img: '/home-v2/case-brand.svg', tag: 'Brand Creation', title: 'A fintech rebrand that stuck', metric: '3.2× brand recall', copy: 'A complete identity system and messaging framework repositioned a fintech for its Series B raise.' },
+  { img: '/home-v2/case-brand.svg', tag: 'Branding', title: 'A fintech rebrand that stuck', metric: '3.2× brand recall', copy: 'A complete identity system and messaging framework repositioned a fintech for its Series B raise.' },
   { img: '/home-v2/case-app.svg', tag: 'Technology · Social', title: 'From idea to 250K downloads', metric: '4.9★ average rating', copy: 'We designed, built, and launched a cross-platform app — then fueled it with paid social that actually converts.' },
 ]
 
