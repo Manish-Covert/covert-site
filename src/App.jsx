@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect, Suspense, lazy } from 'react'
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom'
 import { useReveal } from './useReveal'
 import { useSEO } from './useSEO'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
@@ -64,6 +64,11 @@ export default function App() {
         <Route path="/home-v2" element={<HomeV2 />} />
         <Route path="/home-v3" element={<HomeV3 />} />
         <Route path="/services" element={<ServicesIndexPage />} />
+        {/* Retired category URLs → their replacements */}
+        <Route path="/services/brand-creation" element={<Navigate to="/services/branding" replace />} />
+        <Route path="/services/brand-building" element={<Navigate to="/services/digital-growth" replace />} />
+        <Route path="/services/brand-specialties" element={<Navigate to="/services/authority-influence" replace />} />
+        <Route path="/services/trad" element={<Navigate to="/services/privacy-compliance" replace />} />
         <Route path="/services/:id" element={<ServicePage />} />
         <Route path="/about" element={<AboutIndexPage />} />
         <Route path="/about/:id" element={<AboutPage />} />

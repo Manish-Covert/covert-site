@@ -13,14 +13,14 @@
 
 ## Services
 
-- [Technology Consulting](https://covertcommunication.com/services/technology): Web Development, App Development, Tech Strategy
-- [Programmatic](https://covertcommunication.com/services/programmatic): SEM, AEO, GEO, SEO
-- [Social Media](https://covertcommunication.com/services/social): Content Creation, Paid Social, Community Mgmt, Influencer Mktg
-- [Fraud Protection Gurus](https://covertcommunication.com/services/fraud): Ad Fraud Detection, Click Fraud, Brand Safety
-- [Brand Creation](https://covertcommunication.com/services/brand-creation): Brand Identity, Logo Design, Brand Guidelines
-- [Traditional Full Service](https://covertcommunication.com/services/trad): Print, TV & Radio, Out of Home, Direct Mail, Events, PR
-- [Brand Building](https://covertcommunication.com/services/brand-building): Strategy, Positioning, Campaigns, Analytics
-- [Brand Specialties](https://covertcommunication.com/services/brand-specialties): Packaging, Copywriting, Photography, Video Prod., Experiential, Activation, Sponsorship
+- [Digital Growth](https://covertcommunication.com/services/digital-growth): Growth Strategy, Conversion Rate Optimization, Email & Lifecycle, Marketing Automation, Analytics & Attribution, Landing Page Experimentation, Retention & Loyalty
+- [Technology Strategy & Engineering](https://covertcommunication.com/services/technology): Web Development, App Development, Tech Strategy & Roadmap, Platform Architecture, Data Engineering, Integrations & APIs, DevOps & Reliability
+- [Fraud Prevention](https://covertcommunication.com/services/fraud): Ad Fraud Detection, Click Fraud Protection, Brand Safety, Bot & Traffic Filtering, Affiliate Fraud, Media Verification, Incident Response
+- [Branding](https://covertcommunication.com/services/branding): Brand Identity, Logo & Visual System, Brand Guidelines, Positioning & Messaging, Naming, Packaging Design, Rebrands & Brand Architecture
+- [Programmatic](https://covertcommunication.com/services/programmatic): SEO, AEO, SEM, GEO, Display & CTV, Audience & Data Strategy, Creative Optimization
+- [Social Media](https://covertcommunication.com/services/social): Content Creation, Paid Social, Community Management, Influencer Marketing, Social Listening, Short-Form Video, Social Commerce
+- [Privacy & Compliance](https://covertcommunication.com/services/privacy-compliance): Privacy Program Strategy, Consent Management, Data Governance, Cookieless & First-Party Data, Ad Compliance Review, Accessibility (WCAG), Audits & Reporting
+- [Authority & Influence](https://covertcommunication.com/services/authority-influence): Thought Leadership, Public Relations, Executive Branding, Earned Media & Placements, Speaking & Events, Awards & Recognition, Podcast & Long-Form
 
 ## About
 
