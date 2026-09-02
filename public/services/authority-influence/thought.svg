@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Thought leadership">
+  <defs>
+    <linearGradient id="tldBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="tldAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#tldBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <path d="M400 130 a110 110 0 0 1 66 198 v34 h-132 v-34 a110 110 0 0 1 66 -198 z" fill="#0b2c15" stroke="url(#tldAc)" stroke-width="5"/>
+    <g stroke="url(#tldAc)" stroke-width="7" stroke-linecap="round">
+      <path d="M340 392h120"/><path d="M354 420h92"/>
+    </g>
+    <g stroke="#a6f23c" stroke-opacity="0.7" stroke-width="6" stroke-linecap="round">
+      <path d="M400 210v70"/><path d="M370 246h60"/>
+    </g>
+    <g stroke="#a6f23c" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round">
+      <path d="M240 180 L196 148"/><path d="M560 180 L604 148"/>
+      <path d="M212 300 H150"/><path d="M588 300 H650"/>
+      <path d="M244 414 L200 448"/><path d="M556 414 L600 448"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.10">
+      <rect x="280" y="486" width="240" height="16" rx="8"/><rect x="330" y="516" width="140" height="16" rx="8"/>
+    </g>
+  </g>
+</svg>
