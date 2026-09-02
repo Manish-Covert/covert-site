@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Ad verification">
+  <defs>
+    <linearGradient id="vrfBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="vrfAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#vrfBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="140" y="140" width="330" height="230" rx="18" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M140 194h330" stroke="#a6f23c" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="172" y="222" width="180" height="16" rx="8" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="172" y="254" width="130" height="16" rx="8" fill="#ffffff" fill-opacity="0.09"/>
+    <rect x="172" y="296" width="160" height="46" rx="12" fill="url(#vrfAc)" fill-opacity="0.85"/>
+    <circle cx="520" cy="330" r="118" fill="#0b2c15" fill-opacity="0.9" stroke="url(#vrfAc)" stroke-width="8"/>
+    <path d="M604 414 L672 482" stroke="url(#vrfAc)" stroke-width="20" stroke-linecap="round"/>
+    <path d="M470 330 L508 368 L578 292" fill="none" stroke="url(#vrfAc)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#ffffff" fill-opacity="0.10">
+      <rect x="140" y="424" width="180" height="16" rx="8"/><rect x="140" y="456" width="120" height="16" rx="8"/>
+    </g>
+  </g>
+</svg>

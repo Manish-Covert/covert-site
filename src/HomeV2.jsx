@@ -33,7 +33,7 @@ const PROCESS = [
 const WHY = [
   { icon: '⚡', title: 'Full-service under one roof', copy: 'Strategy, brand, media, and engineering in a single team — no hand-offs, no finger-pointing, one accountable partner.' },
   { icon: '🎯', title: 'Outcomes over vanity metrics', copy: 'Every engagement is tied to pipeline, revenue, and ROAS. If it doesn’t move the number, we don’t ship it.' },
-  { icon: '🛡️', title: 'Fraud-safe media', copy: 'Our fraud-protection gurus keep your spend clean, so every dollar reaches a real human, not a bot farm.' },
+  { icon: '🛡️', title: 'Fraud-safe media', copy: 'Our fraud-prevention team keeps your spend clean, so every dollar reaches a real human, not a bot farm.' },
   { icon: '🤖', title: 'AI-native marketing', copy: 'We optimize for tomorrow’s answer engines today — structured so ChatGPT, Gemini, and Perplexity cite you first.' },
   { icon: '🚀', title: 'Production-grade engineering', copy: 'Sub-second load times, 99.9% uptime, and zero vendor lock-in. Marketing with a real technical backbone.' },
   { icon: '🤝', title: 'Partners, not vendors', copy: 'Senior people who answer their phones, share our dashboards, and treat your P&L like our own.' },
