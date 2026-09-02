@@ -330,7 +330,6 @@ function OtherBrandsBody() {
 }
 
 const COVERT_TEAM = [
-  { name: 'Pat Monick', role: 'Vice President' },
   { name: 'Christine Sullivan', role: 'Creative Director' },
   { name: 'Christopher Gaspar', role: 'Account Service Director' },
   { name: 'Noah Jesser', role: 'Social Media Director' },
@@ -340,13 +339,11 @@ const COVERT_TEAM = [
   { name: 'Sam Kuo', role: 'Software Engineer' },
   { name: 'Mohammed Irshadh', role: 'QA Specialist' },
   { name: 'Jocelyn Palafox', role: 'Marketing Director' },
-  { name: 'Kapili Moniz', role: 'Account Executive' },
   { name: 'Tharam Singh', role: 'Sr. Accounts Coordinator & Podcast Producer' },
   { name: 'Cheryl Wui', role: 'Technology Specialist' },
   { name: 'Gayatri Prajapati', role: 'Technology Specialist' },
   { name: 'Amber Hadfield', role: 'Account Coordinator' },
   { name: 'Nitesh Thapa', role: 'Art Director' },
-  { name: 'Bailey Monick', role: 'Content Manager' },
 ]
 
 const ANNA_LINKS = [
@@ -375,17 +372,17 @@ const TEAM_CATEGORIES = [
   {
     name: 'Marketing',
     caption: 'Strategy, media, and accounts that move brands forward.',
-    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Amber Hadfield', 'Nitesh Thapa', 'Bailey Monick'],
+    members: ['Anna Covert', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Tharam Singh', 'Amber Hadfield', 'Nitesh Thapa'],
   },
   {
     name: 'Creative',
     caption: 'Design, art direction, and the ideas that stand out.',
-    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Noah Jesser', 'Nitesh Thapa'],
+    members: ['Anna Covert', 'Christine Sullivan', 'Christopher Gaspar', 'Noah Jesser', 'Nitesh Thapa'],
   },
   {
     name: 'Social Media',
     caption: 'Building community and conversation across every channel.',
-    members: ['Anna Covert', 'Christopher Gaspar', 'Noah Jesser', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Bailey Monick'],
+    members: ['Anna Covert', 'Christopher Gaspar', 'Noah Jesser', 'Jocelyn Palafox', 'Tharam Singh'],
   },
   {
     name: 'Podcast Dev',
@@ -395,7 +392,7 @@ const TEAM_CATEGORIES = [
   {
     name: 'Branding',
     caption: 'Shaping identity, voice, and brand systems that set clients apart.',
-    members: ['Anna Covert', 'Pat Monick', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Kapili Moniz', 'Tharam Singh', 'Nitesh Thapa', 'Bailey Monick'],
+    members: ['Anna Covert', 'Christine Sullivan', 'Christopher Gaspar', 'Jocelyn Palafox', 'Tharam Singh', 'Nitesh Thapa'],
   },
 ]
 
