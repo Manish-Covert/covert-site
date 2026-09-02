@@ -77,7 +77,6 @@ export default function ServicesIndexPage() {
             <p className="svcd__cta-copy">Tell us your goals and we’ll build the right mix of services around them.</p>
             <div className="svcd__cta-btns">
               <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-              <Link to="/" className="btn btn--outline">← Back to Home</Link>
             </div>
           </div>
         </section>

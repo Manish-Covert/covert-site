@@ -83,7 +83,6 @@ export default function ServicePage() {
             </p>
             <div className="svcpage__cta">
               <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-              <Link to="/" className="btn btn--outline">← Back to Home</Link>
             </div>
           </div>
         </section>
@@ -211,7 +210,6 @@ function ServiceDetailPage({ svc, detail }) {
             <p className="svcd__cta-copy">Let’s map a strategy built around your outcomes.</p>
             <div className="svcd__cta-btns">
               <Link to="/#contact" className="btn btn--green">Book a Meeting &rarr;</Link>
-              <Link to="/" className="btn btn--outline">← Back to Home</Link>
             </div>
           </div>
         </section>
