@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Social management">
+  <defs>
+    <linearGradient id="smgBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="smgAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#smgBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="120" y="120" width="560" height="380" rx="20" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.25" stroke-width="2"/>
+    <path d="M120 190h560" stroke="#a6f23c" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="152" y="146" width="150" height="16" rx="8" fill="#ffffff" fill-opacity="0.14"/>
+    <g stroke="#ffffff" stroke-opacity="0.06">
+      <line x1="120" y1="268" x2="680" y2="268"/><line x1="120" y1="346" x2="680" y2="346"/><line x1="120" y1="424" x2="680" y2="424"/>
+      <line x1="260" y1="190" x2="260" y2="500"/><line x1="400" y1="190" x2="400" y2="500"/><line x1="540" y1="190" x2="540" y2="500"/>
+    </g>
+    <g rx="8">
+      <rect x="140" y="212" width="100" height="40" rx="10" fill="url(#smgAc)"/>
+      <rect x="420" y="212" width="100" height="40" rx="10" fill="#a6f23c" fill-opacity="0.35"/>
+      <rect x="280" y="290" width="100" height="40" rx="10" fill="#a6f23c" fill-opacity="0.5"/>
+      <rect x="560" y="290" width="100" height="40" rx="10" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="140" y="368" width="100" height="40" rx="10" fill="#a6f23c" fill-opacity="0.3"/>
+      <rect x="420" y="368" width="100" height="40" rx="10" fill="url(#smgAc)"/>
+      <rect x="280" y="446" width="100" height="40" rx="10" fill="#ffffff" fill-opacity="0.10"/>
+    </g>
+  </g>
+</svg>

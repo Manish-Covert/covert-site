@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Social analytics">
+  <defs>
+    <linearGradient id="sanBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="sanAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#sanBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="110" y="130" width="580" height="360" rx="20" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.25" stroke-width="2"/>
+    <g stroke="#ffffff" stroke-opacity="0.06">
+      <line x1="150" y1="440" x2="650" y2="440"/><line x1="150" y1="360" x2="650" y2="360"/><line x1="150" y1="280" x2="650" y2="280"/><line x1="150" y1="200" x2="650" y2="200"/>
+    </g>
+    <path d="M150 420 L246 372 L342 392 L438 300 L534 318 L650 216" fill="none" stroke="url(#sanAc)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M150 420 L246 372 L342 392 L438 300 L534 318 L650 216 L650 440 L150 440 Z" fill="#a6f23c" fill-opacity="0.10"/>
+    <g fill="#a6f23c">
+      <circle cx="246" cy="372" r="8"/><circle cx="438" cy="300" r="8"/><circle cx="650" cy="216" r="10"/>
+    </g>
+    <g fill="none" stroke="#a6f23c" stroke-opacity="0.55" stroke-width="8" stroke-linecap="round">
+      <path d="M196 176 a26 26 0 1 1 0.1 0"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.10">
+      <rect x="150" y="510" width="150" height="14" rx="7"/><rect x="330" y="510" width="110" height="14" rx="7"/><rect x="470" y="510" width="180" height="14" rx="7"/>
+    </g>
+  </g>
+</svg>
