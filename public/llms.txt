@@ -14,7 +14,7 @@
 ## Services
 
 - [Digital Growth](https://covertcommunication.com/services/digital-growth): SEO / AEO / GEO, Paid Search & AI Ads, Website Design, Email Marketing, Data-Driven Direct Mail, Digital PR, Conversion Strategy
-- [Programmatic](https://covertcommunication.com/services/programmatic): Remarketing, Full-Funnel, Display, CTV / OTT, Audience & Data Strategy, Creative Optimization, Native & Audio
+- [Programmatic](https://covertcommunication.com/services/programmatic): Remarketing, Full-Funnel, Display, Audio, CTV / OTT, In-Game, Pre-Roll Video
 - [Technology Strategy & Engineering](https://covertcommunication.com/services/technology): Technology Audits, CRM & Automation, Custom Software, Reporting & Analytics, Web Development, App Development, Integrations & APIs
 - [Social Media](https://covertcommunication.com/services/social): Social Strategy, Content Creation, Paid Social, Influencer Marketing, Community Management, Short-Form Video, Social Listening
 - [Fraud Prevention](https://covertcommunication.com/services/fraud): Ad Fraud, Click Fraud, Lead Fraud, Brand Safety, Bot & Traffic Filtering, Media Verification, Incident Response

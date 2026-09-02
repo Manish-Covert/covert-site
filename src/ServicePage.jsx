@@ -151,9 +151,9 @@ function ServiceDetailPage({ svc, detail }) {
             </div>
             <div className="svcd__stats">
               {intro.stats.map((s, i) => (
-                <div className="svcd__stat reveal" key={s.label} style={{ transitionDelay: `${i * 70}ms` }}>
+                <div className="svcd__stat reveal" key={s.label || s.value} style={{ transitionDelay: `${i * 70}ms` }}>
                   <span className="svcd__stat-value">{s.value}</span>
-                  <span className="svcd__stat-label">{s.label}</span>
+                  {s.label && <span className="svcd__stat-label">{s.label}</span>}
                 </div>
               ))}
             </div>
@@ -178,9 +178,11 @@ function ServiceDetailPage({ svc, detail }) {
                     <h3 className="svcd__feature-title">{f.title}</h3>
                   </div>
                   <p className="svcd__feature-copy">{f.copy}</p>
-                  <ul className="svcd__feature-points">
-                    {f.points.map(p => <li key={p}>{p}</li>)}
-                  </ul>
+                  {f.points?.length > 0 && (
+                    <ul className="svcd__feature-points">
+                      {f.points.map(p => <li key={p}>{p}</li>)}
+                    </ul>
+                  )}
                 </div>
               </article>
             ))}

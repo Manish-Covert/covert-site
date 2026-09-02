@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Display advertising">
+  <defs>
+    <linearGradient id="dspBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="dspAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#dspBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="110" y="120" width="340" height="240" rx="18" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.28" stroke-width="2"/>
+    <path d="M110 172h340" stroke="#a6f23c" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="140" y="200" width="180" height="14" rx="7" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="140" y="228" width="140" height="14" rx="7" fill="#ffffff" fill-opacity="0.09"/>
+    <rect x="140" y="266" width="200" height="66" rx="12" fill="url(#dspAc)" fill-opacity="0.85"/>
+    <rect x="486" y="120" width="204" height="150" rx="16" fill="#0b2c15" stroke="#a6f23c" stroke-opacity="0.35" stroke-width="3"/>
+    <rect x="512" y="152" width="152" height="14" rx="7" fill="#ffffff" fill-opacity="0.14"/>
+    <rect x="512" y="182" width="110" height="14" rx="7" fill="#ffffff" fill-opacity="0.10"/>
+    <rect x="512" y="216" width="96" height="30" rx="15" fill="url(#dspAc)"/>
+    <rect x="486" y="300" width="204" height="60" rx="14" fill="#ffffff" fill-opacity="0.05"/>
+    <rect x="110" y="398" width="580" height="112" rx="16" fill="#0b2c15" stroke="#a6f23c" stroke-opacity="0.22" stroke-width="2"/>
+    <rect x="142" y="432" width="240" height="16" rx="8" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="142" y="464" width="170" height="16" rx="8" fill="#ffffff" fill-opacity="0.09"/>
+    <rect x="524" y="436" width="134" height="40" rx="20" fill="url(#dspAc)"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Pre-roll video">
+  <defs>
+    <linearGradient id="prvBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="prvAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#prvBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="130" y="130" width="540" height="300" rx="20" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.3" stroke-width="3"/>
+    <path d="M368 232 L462 281 L368 330 Z" fill="url(#prvAc)"/>
+    <rect x="130" y="392" width="540" height="38" rx="0" fill="#0b2c15"/>
+    <rect x="130" y="404" width="210" height="14" rx="7" fill="url(#prvAc)"/>
+    <rect x="340" y="404" width="330" height="14" rx="7" fill="#ffffff" fill-opacity="0.10"/>
+    <rect x="150" y="150" width="120" height="34" rx="17" fill="url(#prvAc)" fill-opacity="0.9"/>
+    <text x="210" y="173" text-anchor="middle" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#04240f">AD</text>
+    <g fill="#ffffff" fill-opacity="0.10">
+      <rect x="150" y="468" width="240" height="16" rx="8"/><rect x="150" y="498" width="160" height="16" rx="8"/>
+    </g>
+  </g>
+</svg>

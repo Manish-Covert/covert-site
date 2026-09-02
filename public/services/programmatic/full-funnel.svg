@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Full funnel media">
+  <defs>
+    <linearGradient id="fnlBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="fnlAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#fnlBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <path d="M170 130 H630 L520 260 H280 Z" fill="#a6f23c" fill-opacity="0.14" stroke="#a6f23c" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M286 282 H514 L452 392 H348 Z" fill="#a6f23c" fill-opacity="0.24" stroke="#a6f23c" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M354 414 H446 L424 500 H376 Z" fill="url(#fnlAc)"/>
+    <g fill="#ffffff" fill-opacity="0.30">
+      <circle cx="250" cy="180" r="9"/><circle cx="320" cy="180" r="9"/><circle cx="390" cy="180" r="9"/>
+      <circle cx="460" cy="180" r="9"/><circle cx="530" cy="180" r="9"/>
+    </g>
+    <g fill="#a6f23c" fill-opacity="0.75">
+      <circle cx="356" cy="330" r="9"/><circle cx="400" cy="330" r="9"/><circle cx="444" cy="330" r="9"/>
+    </g>
+    <path d="M470 470 C 560 470 600 400 600 330 C 600 250 540 200 470 190" fill="none" stroke="#a6f23c" stroke-opacity="0.45" stroke-width="5" stroke-dasharray="18 14" stroke-linecap="round"/>
+  </g>
+</svg>
