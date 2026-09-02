@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="CRM and automation">
+  <defs>
+    <linearGradient id="crmBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="crmAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#crmBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="120" y="130" width="560" height="86" rx="16" fill="#0b2c15" stroke="#a6f23c" stroke-opacity="0.3" stroke-width="2"/>
+    <circle cx="168" cy="173" r="20" fill="url(#crmAc)"/>
+    <rect x="208" y="158" width="200" height="14" rx="7" fill="#ffffff" fill-opacity="0.16"/>
+    <rect x="208" y="182" width="130" height="12" rx="6" fill="#ffffff" fill-opacity="0.10"/>
+    <rect x="566" y="158" width="82" height="30" rx="15" fill="#a6f23c" fill-opacity="0.25"/>
+    <rect x="120" y="240" width="560" height="86" rx="16" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.18" stroke-width="2"/>
+    <circle cx="168" cy="283" r="20" fill="#a6f23c" fill-opacity="0.5"/>
+    <rect x="208" y="268" width="170" height="14" rx="7" fill="#ffffff" fill-opacity="0.14"/>
+    <rect x="208" y="292" width="110" height="12" rx="6" fill="#ffffff" fill-opacity="0.09"/>
+    <rect x="566" y="268" width="82" height="30" rx="15" fill="#ffffff" fill-opacity="0.08"/>
+    <rect x="120" y="350" width="560" height="86" rx="16" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.18" stroke-width="2"/>
+    <circle cx="168" cy="393" r="20" fill="#a6f23c" fill-opacity="0.3"/>
+    <rect x="208" y="378" width="210" height="14" rx="7" fill="#ffffff" fill-opacity="0.14"/>
+    <rect x="208" y="402" width="140" height="12" rx="6" fill="#ffffff" fill-opacity="0.09"/>
+    <rect x="566" y="378" width="82" height="30" rx="15" fill="#ffffff" fill-opacity="0.08"/>
+    <g fill="none" stroke="url(#crmAc)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M300 470 h90 a24 24 0 0 1 24 24 v20"/>
+      <path d="M414 546 l-18 -20 h36 z" fill="url(#crmAc)" stroke="none"/>
+      <path d="M480 470 h-90 a24 24 0 0 0 -24 24"/>
+    </g>
+  </g>
+</svg>
