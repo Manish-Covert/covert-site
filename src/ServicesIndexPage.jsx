@@ -10,11 +10,10 @@ import './AboutPage.css'
 
 export default function ServicesIndexPage() {
   useReveal()
-  const total = SERVICES.reduce((n, s) => n + (s.count || 0), 0)
 
   useSEO({
     title: 'Services — Full-Service Marketing Agency | Covert Communication',
-    description: `A full-service agency under one roof — ${SERVICES.length} disciplines and ${total} specialties spanning brand building, programmatic, SEO, social, fraud protection, and technology.`,
+    description: 'Eight connected disciplines built to grow, modernize and protect your business — from search and media to technology, privacy, brand and authority.',
     path: '/services',
     ogType: 'website',
   })
@@ -32,9 +31,8 @@ export default function ServicesIndexPage() {
               <span className="about-hero__title-accent">Services</span>
             </h1>
             <p className="about-hero__lead">
-              A full-service agency under one roof — {SERVICES.length} disciplines and {total}
-              &nbsp;specialties working together to build, grow, and protect your brand across
-              every channel that matters.
+              Eight connected disciplines built to grow, modernize and protect your
+              business — from search and media to technology, privacy, brand and authority.
             </p>
           </div>
         </section>
