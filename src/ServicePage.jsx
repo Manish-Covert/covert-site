@@ -187,6 +187,21 @@ function ServiceDetailPage({ svc, detail }) {
           </div>
         </section>
 
+        {/* ---------- OPTIONAL CLOSING NOTE ---------- */}
+        {detail.note && (
+          <section className="svcd__intro">
+            <div className="container">
+              <div className="svcd__intro-grid">
+                <div className="reveal">
+                  <span className="svcd__accent-bar" />
+                  <h2 className="svcd__intro-title">{detail.note.title}</h2>
+                </div>
+                <p className="svcd__intro-copy reveal">{detail.note.copy}</p>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ---------- CTA ---------- */}
         <section className="svcd__cta">
           <div className="container svcd__cta-inner reveal">

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Website design and performance">
+  <defs>
+    <linearGradient id="webBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="webAccent" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#webBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="150" x2="710" y2="150"/><line x1="90" y1="270" x2="710" y2="270"/>
+    <line x1="90" y1="390" x2="710" y2="390"/><line x1="90" y1="510" x2="710" y2="510"/>
+  </g>
+  <g>
+    <rect x="110" y="110" width="580" height="400" rx="20" fill="#08210f" stroke="#a6f23c" stroke-opacity="0.25" stroke-width="2"/>
+    <path d="M110 168h580" stroke="#a6f23c" stroke-opacity="0.2" stroke-width="2"/>
+    <circle cx="142" cy="139" r="7" fill="#a6f23c" fill-opacity="0.7"/>
+    <circle cx="166" cy="139" r="7" fill="#3f9d3a" fill-opacity="0.7"/>
+    <circle cx="190" cy="139" r="7" fill="#ffffff" fill-opacity="0.18"/>
+    <rect x="222" y="130" width="240" height="18" rx="9" fill="#ffffff" fill-opacity="0.08"/>
+    <rect x="146" y="204" width="250" height="24" rx="12" fill="url(#webAccent)"/>
+    <rect x="146" y="246" width="330" height="14" rx="7" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="146" y="274" width="280" height="14" rx="7" fill="#ffffff" fill-opacity="0.10"/>
+    <rect x="146" y="318" width="150" height="40" rx="20" fill="url(#webAccent)"/>
+    <rect x="146" y="392" width="160" height="86" rx="14" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="322" y="392" width="160" height="86" rx="14" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="498" y="392" width="160" height="86" rx="14" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="504" y="204" width="154" height="154" rx="16" fill="#0b2c15" stroke="#a6f23c" stroke-opacity="0.18" stroke-width="2"/>
+    <path d="M581 340a59 59 0 1 1 0-118" fill="none" stroke="url(#webAccent)" stroke-width="12" stroke-linecap="round"/>
+    <text x="581" y="295" text-anchor="middle" font-family="Sora, sans-serif" font-size="42" font-weight="700" fill="#a6f23c">98</text>
+  </g>
+</svg>
