@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 286" width="800" height="286" role="img" aria-label="">
+  <defs>
+    <linearGradient id="aim-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060b08"/><stop offset="0.6" stop-color="#0a1a12"/><stop offset="1" stop-color="#0d2418"/>
+    </linearGradient>
+    <linearGradient id="aim-scrim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.78"/>
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="286" fill="url(#aim-bg)"/>
+  <rect width="800" height="286" fill="#34c7a0" opacity="0.10"/>
+  <g stroke="#a6f23c" stroke-opacity="0.05">
+    <path d="M0 72H800M0 144H800M0 216H800"/>
+    <path d="M120 0V286M240 0V286M360 0V286M480 0V286M600 0V286M720 0V286"/>
+  </g>
+  <g opacity="0.16" fill="none" stroke="#a6f23c" stroke-linecap="round">
+    <g transform="translate(560,143)">
+      <rect x="-26" y="-104" width="52" height="116" rx="26" stroke-width="6"/>
+      <path d="M-50 -12a50 50 0 0 0 100 0" stroke-width="7"/>
+      <path d="M0 38v34M-34 74h68" stroke-width="7"/>
+      <path d="M62 -66 A110 110 0 0 1 62 66" stroke-width="6" stroke-opacity="0.7"/>
+      <path d="M104 -96 A160 160 0 0 1 104 96" stroke-width="5" stroke-opacity="0.45" stroke-dasharray="20 16"/>
+    </g>
+    <g stroke-width="7">
+      <path d="M348 176v-40"/><path d="M384 176v-76"/><path d="M420 176v-28"/><path d="M456 176v-58"/>
+    </g>
+  </g>
+  <rect width="800" height="286" fill="url(#aim-scrim)"/>
+</svg>

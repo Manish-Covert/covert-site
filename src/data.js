@@ -28,14 +28,14 @@ export const SERVICES = [
 /* Mega-menu order. The panel is a 2-column grid that fills row-wise, so this
    array interleaves the two dropdown columns (left, right, left, right...). */
 export const MEGA_SERVICES = [
-  { id: 'digital-growth',      title: 'Digital Growth',                    count: 7, img: '/categories/digital-growth.svg',      icon: '/icons/brand-building.svg' },
+  { id: 'digital-growth',      title: 'Digital Growth',                    count: 7, img: '/categories/digital-growth-menu.svg',      icon: '/icons/brand-building.svg' },
   { id: 'programmatic',        title: 'Programmatic',                      count: 7, img: '/services/svc-programmatic-rollover.webp',     icon: '/icons/programmatic.svg' },
   { id: 'technology',          title: 'Technology Strategy & Engineering', count: 7, img: '/services/svc-tech-rollover.webp',             icon: '/icons/tech.svg' },
   { id: 'social',              title: 'Social Media',                      count: 7, img: '/services/svc-social-rollover.webp',           icon: '/icons/social.svg' },
   { id: 'fraud',               title: 'Fraud Prevention',                  count: 7, img: '/services/svc-fraud-rollover.webp',            icon: '/icons/fraud.svg' },
-  { id: 'privacy-compliance',  title: 'Privacy & Compliance',              count: 7, img: '/categories/privacy-compliance.svg',  icon: '/icons/trad-full-service.svg' },
+  { id: 'privacy-compliance',  title: 'Privacy & Compliance',              count: 7, img: '/categories/privacy-compliance-menu.svg',  icon: '/icons/trad-full-service.svg' },
   { id: 'branding',            title: 'Branding',                          count: 7, img: '/services/svc-brand-creation-rollover.webp',   icon: '/icons/brand-creation.svg' },
-  { id: 'authority-influence', title: 'Authority & Influence',             count: 7, img: '/categories/authority-influence.svg', icon: '/icons/brand-specialties.svg' },
+  { id: 'authority-influence', title: 'Authority & Influence',             count: 7, img: '/categories/authority-influence-menu.svg', icon: '/icons/brand-specialties.svg' },
 ]
 
 /* Rich, per-service detail content. Only services present here render the

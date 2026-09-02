@@ -43,4 +43,6 @@
   <g transform="translate(640,110)" fill="url(#ai-accent)" fill-opacity="0.9">
     <path d="M0 -30 L9 -9 L32 -6 L15 9 L20 32 L0 20 L-20 32 L-15 9 L-32 -6 L-9 -9 Z"/>
   </g>
+  <rect width="800" height="500" fill="#060b08" opacity="0.28"/>
+  <rect width="800" height="500" fill="#34c7a0" opacity="0.06"/>
 </svg>

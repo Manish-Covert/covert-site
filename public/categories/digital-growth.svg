@@ -46,4 +46,6 @@
     </g>
     <path d="M46 128h96" stroke="#a6f23c" stroke-opacity="0.35" stroke-width="4"/>
   </g>
+  <rect width="800" height="500" fill="#060b08" opacity="0.28"/>
+  <rect width="800" height="500" fill="#34c7a0" opacity="0.06"/>
 </svg>
