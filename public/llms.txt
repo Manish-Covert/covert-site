@@ -18,7 +18,7 @@
 - [Technology Strategy & Engineering](https://covertcommunication.com/services/technology): Technology Audits, CRM & Automation, Systems Integration, Custom Software, WordPress Engineering, Reporting & Analytics, AI Applications
 - [Social Media](https://covertcommunication.com/services/social): Social Strategy, Content Creation, Social Management, Paid Social, Influencer & Creator Marketing, Community Management, Social Analytics
 - [Fraud Prevention](https://covertcommunication.com/services/fraud): Ad Fraud Detection, Click Fraud, Bot & Invalid Traffic, Lead & Form Fraud, Brand Safety, Ad Verification, Traffic Auditing
-- [Privacy & Compliance](https://covertcommunication.com/services/privacy-compliance): Data Mapping, Consent Management, Consumer Requests, Privacy Audits, Cookieless & First-Party Data, Accessibility (WCAG), Policy & Governance
+- [Privacy & Compliance](https://covertcommunication.com/services/privacy-compliance): Data Mapping, Consent Management, Cookie Compliance, Consumer Privacy Requests, Tracking Governance, Privacy Audits, Vendor Compliance
 - [Branding](https://covertcommunication.com/services/branding): Logo Design, Corporate Identity, Brand Guidelines, Business Collateral, Naming, Positioning & Messaging, Packaging Design
 - [Authority & Influence](https://covertcommunication.com/services/authority-influence): Personal Branding, Public Relations, Podcast Management, Author Services, Thought Leadership, Speaking & Events, Awards & Recognition
 

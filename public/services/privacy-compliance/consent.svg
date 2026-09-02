@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Consent management">
+  <defs>
+    <linearGradient id="cnsBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="cnsAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#cnsBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g>
+    <rect x="150" y="150" width="500" height="320" rx="22" fill="#08210f" stroke="url(#cnsAc)" stroke-width="4"/>
+    <rect x="186" y="188" width="240" height="18" rx="9" fill="#ffffff" fill-opacity="0.16"/>
+    <rect x="186" y="220" width="330" height="12" rx="6" fill="#ffffff" fill-opacity="0.09"/>
+    <g>
+      <rect x="186" y="264" width="76" height="38" rx="19" fill="url(#cnsAc)"/>
+      <circle cx="243" cy="283" r="14" fill="#04240f"/>
+      <rect x="282" y="274" width="150" height="16" rx="8" fill="#ffffff" fill-opacity="0.12"/>
+      <rect x="186" y="322" width="76" height="38" rx="19" fill="url(#cnsAc)"/>
+      <circle cx="243" cy="341" r="14" fill="#04240f"/>
+      <rect x="282" y="332" width="190" height="16" rx="8" fill="#ffffff" fill-opacity="0.12"/>
+      <rect x="186" y="380" width="76" height="38" rx="19" fill="#ffffff" fill-opacity="0.10"/>
+      <circle cx="205" cy="399" r="14" fill="#ffffff" fill-opacity="0.35"/>
+      <rect x="282" y="390" width="130" height="16" rx="8" fill="#ffffff" fill-opacity="0.10"/>
+    </g>
+    <rect x="470" y="380" width="150" height="44" rx="22" fill="url(#cnsAc)"/>
+  </g>
+</svg>

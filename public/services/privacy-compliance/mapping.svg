@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Data mapping">
+  <defs>
+    <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a140b"/><stop offset="1" stop-color="#04240f"/>
+    </linearGradient>
+    <linearGradient id="mapAc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f9d3a"/><stop offset="1" stop-color="#a6f23c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="620" rx="28" fill="url(#mapBg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="90" y1="170" x2="710" y2="170"/><line x1="90" y1="290" x2="710" y2="290"/><line x1="90" y1="410" x2="710" y2="410"/>
+  </g>
+  <g fill="none" stroke="url(#mapAc)" stroke-width="5" stroke-opacity="0.75" stroke-linecap="round">
+    <path d="M250 200 H400 V150 H550"/>
+    <path d="M250 310 H550"/>
+    <path d="M250 420 H400 V470 H550"/>
+    <path d="M400 200 V420"/>
+  </g>
+  <g fill="#08210f" stroke="#a6f23c" stroke-opacity="0.6" stroke-width="4">
+    <rect x="120" y="170" width="130" height="60" rx="14"/>
+    <rect x="120" y="280" width="130" height="60" rx="14"/>
+    <rect x="120" y="390" width="130" height="60" rx="14"/>
+    <rect x="550" y="120" width="130" height="60" rx="14"/>
+    <rect x="550" y="280" width="130" height="60" rx="14"/>
+    <rect x="550" y="440" width="130" height="60" rx="14"/>
+  </g>
+  <g fill="#a6f23c" fill-opacity="0.6">
+    <rect x="142" y="194" width="86" height="12" rx="6"/><rect x="142" y="304" width="86" height="12" rx="6"/><rect x="142" y="414" width="86" height="12" rx="6"/>
+    <rect x="572" y="144" width="86" height="12" rx="6"/><rect x="572" y="304" width="86" height="12" rx="6"/><rect x="572" y="464" width="86" height="12" rx="6"/>
+  </g>
+  <g fill="url(#mapAc)"><circle cx="400" cy="200" r="11"/><circle cx="400" cy="310" r="11"/><circle cx="400" cy="420" r="11"/></g>
+</svg>
