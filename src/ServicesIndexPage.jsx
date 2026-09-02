@@ -46,6 +46,7 @@ export default function ServicesIndexPage() {
                   key={s.id}
                   to={`/services/${s.id}`}
                   className="svci-card reveal"
+                  aria-label={`View more about ${s.title}`}
                   style={{ transitionDelay: `${(i % 3) * 70}ms` }}
                 >
                   <div className="svci-card__media">
@@ -59,9 +60,9 @@ export default function ServicesIndexPage() {
                       <h2 className="svci-card__title">{s.title}</h2>
                     </div>
                     <ul className="svci-card__subs">
-                      {s.subs.map(sub => <li key={sub}>{sub}</li>)}
+                      {(s.cardSubs || s.subs).map(sub => <li key={sub}>{sub}</li>)}
                     </ul>
-                    <span className="svci-card__link">Explore {s.title} <span aria-hidden="true">→</span></span>
+                    <span className="svci-card__link">View more <span aria-hidden="true">→</span></span>
                   </div>
                 </Link>
               ))}
