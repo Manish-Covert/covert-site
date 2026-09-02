@@ -151,7 +151,7 @@ function ServiceDetailPage({ svc, detail }) {
             </div>
             <div className="svcd__stats">
               {intro.stats.map((s, i) => (
-                <div className="svcd__stat reveal" key={s.label || s.value} style={{ transitionDelay: `${i * 70}ms` }}>
+                <div className={`svcd__stat reveal ${!s.label ? 'svcd__stat--solo' : ''}`} key={s.label || s.value} style={{ transitionDelay: `${i * 70}ms` }}>
                   <span className="svcd__stat-value">{s.value}</span>
                   {s.label && <span className="svcd__stat-label">{s.label}</span>}
                 </div>

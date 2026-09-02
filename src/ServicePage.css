@@ -305,6 +305,8 @@
 .svcd__stat:hover {
   border-color: rgba(166,242,60,0.4); transform: translateY(-4px);
 }
+/* Value boxes that carry only a word (no descriptor line) center it. */
+.svcd__stat--solo { align-items: center; text-align: center; }
 .svcd__stat-value {
   font-family: 'Sora', sans-serif; font-size: clamp(30px, 3.5vw, 44px);
   font-weight: 700; color: var(--green-bright); letter-spacing: -1px;
