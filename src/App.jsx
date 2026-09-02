@@ -66,9 +66,9 @@ export default function App() {
         <Route path="/services" element={<ServicesIndexPage />} />
         {/* Retired category URLs → their replacements */}
         <Route path="/services/brand-creation" element={<Navigate to="/services/branding" replace />} />
-        <Route path="/services/brand-building" element={<Navigate to="/services/digital-growth" replace />} />
-        <Route path="/services/brand-specialties" element={<Navigate to="/services/authority-influence" replace />} />
-        <Route path="/services/trad" element={<Navigate to="/services/privacy-compliance" replace />} />
+        <Route path="/services/brand-building" element={<Navigate to="/services/authority-influence" replace />} />
+        <Route path="/services/brand-specialties" element={<Navigate to="/services/branding" replace />} />
+        <Route path="/services/trad" element={<Navigate to="/services/digital-growth" replace />} />
         <Route path="/services/:id" element={<ServicePage />} />
         <Route path="/about" element={<AboutIndexPage />} />
         <Route path="/about/:id" element={<AboutPage />} />
