@@ -129,7 +129,12 @@ function ServiceDetailPage({ svc, detail }) {
             <h1 className="svcd__title">{hero.title}</h1>
             <p className="svcd__lead">{hero.lead}</p>
             <div className="svcd__hero-chips">
-              {svc.subs?.map(s => <span key={s} className="svcd__chip">{s}</span>)}
+              {svc.subs?.map((s, i) => {
+                const target = features?.[i]?.id
+                return target
+                  ? <a key={s} href={`#${target}`} className="svcd__chip">{s}</a>
+                  : <span key={s} className="svcd__chip">{s}</span>
+              })}
             </div>
             <Link to="/services" className="btn btn--outline-pill svcd__hero-back">
               <span>◂ View all services</span>
@@ -165,6 +170,7 @@ function ServiceDetailPage({ svc, detail }) {
             {features.map((f, i) => (
               <article
                 key={f.id}
+                id={f.id}
                 className={`svcd__feature ${i % 2 === 1 ? 'svcd__feature--rev' : ''} reveal`}
               >
                 <div className="svcd__feature-media">

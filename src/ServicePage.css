@@ -272,6 +272,14 @@
   color: var(--green-bright);
   border: 1px solid rgba(166, 242, 60, 0.35);
   background: rgba(166, 242, 60, 0.06);
+  text-decoration: none; display: inline-block;
+  transition: border-color .25s var(--ease), background .25s var(--ease), transform .25s var(--ease);
+}
+/* Chips that link to their section on the page. */
+a.svcd__chip:hover, a.svcd__chip:focus-visible {
+  border-color: rgba(166, 242, 60, 0.8);
+  background: rgba(166, 242, 60, 0.14);
+  transform: translateY(-2px);
 }
 .svcd__hero-back { align-self: flex-start; }
 
@@ -322,6 +330,8 @@
   display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
   align-items: center; padding: 60px 0;
 }
+/* Clears the fixed nav when a hero chip jumps to a section. */
+.svcd__feature { scroll-margin-top: 120px; }
 .svcd__feature--rev .svcd__feature-media { order: 2; }
 .svcd__feature-media {
   position: relative; border-radius: 22px; overflow: hidden;
