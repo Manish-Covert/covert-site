@@ -985,9 +985,7 @@
 }
 .footer__legal a {
   color: #fff;
-  /* Underline so links aren't distinguished by colour alone. */
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
   transition: color .2s var(--ease);
 }
 .footer__legal a:hover { color: var(--green-bright); }
