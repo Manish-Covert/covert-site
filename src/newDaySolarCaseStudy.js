@@ -1,4 +1,6 @@
-import { NEW_DAY_SOLAR_HOMEPAGE, NEW_DAY_SOLAR_LOCAL_SEO, NEW_DAY_SOLAR_CRM } from './case-study-assets/new-day-solar'
+const NEW_DAY_SOLAR_HOMEPAGE = '/case-studies/new-day-solar/Homepage.png'
+const NEW_DAY_SOLAR_LOCAL_SEO = '/case-studies/new-day-solar/Near-Me-SEO-Page.png'
+const NEW_DAY_SOLAR_CRM = '/case-studies/new-day-solar/Solar-CRM-Pipeline-Dashboard-with-Watermark.png'
 
 export const NEW_DAY_SOLAR_CASE_STUDY = {
   slug: 'new-day-solar',
