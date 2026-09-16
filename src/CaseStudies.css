@@ -108,6 +108,7 @@
 .csd__info-sticky {
   position: sticky;
   top: 120px;
+  align-self: start;
 }
 .csd__title {
   font-family: 'Sora', sans-serif;
@@ -144,6 +145,18 @@
   display: block;
 }
 
+/* Preserve the Northwind-style behavior for New Day Solar: the copy stays
+   pinned until every project image has scrolled past. */
+.csd--new-day-solar .csd__hero-grid { align-items: stretch; }
+.csd--new-day-solar .csd__info { min-height: 100%; }
+.csd--new-day-solar .csd__media { min-width: 0; }
+.csd--new-day-solar .csd__img {
+  width: 100%;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
 /* ---------- NEXT CASE STUDIES ---------- */
 .csd__next { padding: 60px 0 100px; }
 .csd__next-title {
@@ -161,5 +174,11 @@
   .cs-card__media-link { cursor: pointer; }
   .cs-card__cursor { display: none; }
   .csd__hero-grid { grid-template-columns: 1fr; gap: 30px; }
-  .csd__info-sticky { position: static; }
+  .csd__info-sticky,
+  .csd--new-day-solar .csd__info-sticky {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
 }
