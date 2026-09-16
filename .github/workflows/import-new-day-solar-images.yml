@@ -1,0 +1,58 @@
+name: Import New Day Solar images
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - .github/workflows/import-new-day-solar-images.yml
+
+permissions:
+  contents: write
+
+jobs:
+  import-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out dev
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - name: Copy Google Drive images into public folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/case-studies/new-day-solar
+          curl -L --fail --retry 3 'https://sdmntprwestus3.oaiusercontent.com/files/00000000-7988-81fd-9105-ad61b9d7b71e/raw?se=2026-09-16T13%3A11%3A59Z&sp=r&sv=2026-02-06&sr=b&scid=1b35a764-4f3a-5c92-b531-cb2e5b2244f8&skoid=5e5afa93-cb2e-42ad-a58a-830b5b446f03&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-16T05%3A29%3A30Z&ske=2026-09-17T05%3A29%3A30Z&sks=b&skv=2026-02-06&sig=e%2BbrBgooyYIXbqL%2BFRp22TYsHP6PK5EL5YYCKtwI8T8%3D' -o public/case-studies/new-day-solar/Homepage.png
+          curl -L --fail --retry 3 'https://sdmntpreastus2.oaiusercontent.com/files/00000000-5e48-81f6-8258-4bb66f47a31f/raw?se=2026-09-16T13%3A12%3A11Z&sp=r&sv=2026-02-06&sr=b&scid=c8a1591f-564f-5fe5-8a31-72036256fca7&skoid=5e5afa93-cb2e-42ad-a58a-830b5b446f03&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-16T05%3A10%3A36Z&ske=2026-09-17T05%3A10%3A36Z&sks=b&skv=2026-02-06&sig=xgdxrxj1iJOdiCZpXzAqXuPbr1RNN7iAelAmL12q/R4%3D' -o public/case-studies/new-day-solar/Near-Me-SEO-Page.png
+          curl -L --fail --retry 3 'https://sdmntprseasia.oaiusercontent.com/files/00000000-bb1c-8207-a707-e8421d91c787/raw?se=2026-09-16T13%3A12%3A16Z&sp=r&sv=2026-02-06&sr=b&scid=d94ba4ae-471b-5c1c-a602-dfea6bfc6cd4&skoid=5e5afa93-cb2e-42ad-a58a-830b5b446f03&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-16T00%3A42%3A15Z&ske=2026-09-17T00%3A42%3A15Z&sks=b&skv=2026-02-06&sig=7mEMnpj3RrOoAaZMHZNjJ9kxF0%2BiqFLnDeQNNDXjSG4%3D' -o public/case-studies/new-day-solar/Solar-CRM-Pipeline-Dashboard-with-Watermark.png
+
+          test "$(stat -c%s public/case-studies/new-day-solar/Homepage.png)" -eq 2880142
+          test "$(stat -c%s public/case-studies/new-day-solar/Near-Me-SEO-Page.png)" -eq 1720409
+          test "$(stat -c%s public/case-studies/new-day-solar/Solar-CRM-Pipeline-Dashboard-with-Watermark.png)" -eq 1716429
+
+      - name: Use local image paths in case study
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/newDaySolarCaseStudy.js')
+          text = p.read_text()
+          old = "import { NEW_DAY_SOLAR_HOMEPAGE, NEW_DAY_SOLAR_LOCAL_SEO, NEW_DAY_SOLAR_CRM } from './case-study-assets/new-day-solar'"
+          new = "const NEW_DAY_SOLAR_HOMEPAGE = '/case-studies/new-day-solar/Homepage.png'\nconst NEW_DAY_SOLAR_LOCAL_SEO = '/case-studies/new-day-solar/Near-Me-SEO-Page.png'\nconst NEW_DAY_SOLAR_CRM = '/case-studies/new-day-solar/Solar-CRM-Pipeline-Dashboard-with-Watermark.png'"
+          if old not in text:
+              raise SystemExit('Expected New Day Solar data-asset import was not found')
+          p.write_text(text.replace(old, new, 1))
+          PY
+
+      - name: Commit imported images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Manish-Covert'
+          git config user.email '80510124+Manish-Covert@users.noreply.github.com'
+          git add public/case-studies/new-day-solar src/newDaySolarCaseStudy.js
+          git commit -m 'Use local New Day Solar image files'
+          git push origin HEAD:dev
