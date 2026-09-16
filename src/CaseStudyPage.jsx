@@ -19,6 +19,7 @@ export default function CaseStudyPage() {
   useSmoothScroll()
 
   const study = CASE_STUDIES_WITH_NEW_DAY_SOLAR.find(s => s.slug === slug)
+  const isNewDaySolar = study?.slug === 'new-day-solar'
 
   useSEO({
     title: study ? `${study.title} — Case Study | Covert Communication` : 'Case Study | Covert Communication',
@@ -51,7 +52,7 @@ export default function CaseStudyPage() {
     <>
       <SiteNav />
 
-      <main className="csd">
+      <main className={`csd${isNewDaySolar ? ' csd--new-day-solar' : ''}`}>
         <section className="csd__hero">
           <div className="container csd__hero-grid">
             <div className="csd__info">
@@ -71,7 +72,15 @@ export default function CaseStudyPage() {
 
             <div className="csd__media">
               {study.images.map((src, i) => (
-                <img key={i} className="csd__img" src={src} alt={`${study.title} ${i + 1}`} loading="lazy" />
+                <img
+                  key={i}
+                  className="csd__img"
+                  src={src}
+                  alt={`${study.title} ${i + 1}`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
+                />
               ))}
             </div>
           </div>
