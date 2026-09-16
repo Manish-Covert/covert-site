@@ -1,4 +1,5 @@
 import { CASE_STUDIES } from './data'
+import { replaceWolfRiver } from './newDaySolarCaseStudy'
 import CaseCard from './CaseCard'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
@@ -8,6 +9,8 @@ import { useSEO } from './useSEO'
 import './App.css'
 import './ServicePage.css'
 import './CaseStudies.css'
+
+const CASE_STUDIES_WITH_NEW_DAY_SOLAR = replaceWolfRiver(CASE_STUDIES)
 
 export default function CaseStudiesPage() {
   useReveal()
@@ -26,7 +29,6 @@ export default function CaseStudiesPage() {
       <SiteNav />
 
       <main className="csindex">
-        {/* ---------- HEADER: title left, description right ---------- */}
         <section className="csindex__head">
           <div className="container csindex__head-inner">
             <h1 className="csindex__title reveal">Case Studies</h1>
@@ -38,11 +40,10 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
-        {/* ---------- TWO-COLUMN PORTFOLIO GRID ---------- */}
         <section className="csindex__grid-wrap">
           <div className="container">
             <div className="cs-grid">
-              {CASE_STUDIES.map(s => <CaseCard key={s.slug} study={s} />)}
+              {CASE_STUDIES_WITH_NEW_DAY_SOLAR.map(s => <CaseCard key={s.slug} study={s} />)}
             </div>
           </div>
         </section>
