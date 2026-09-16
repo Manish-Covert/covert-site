@@ -149,14 +149,6 @@
    pinned until every project image has scrolled past. */
 .csd--new-day-solar .csd__hero-grid { align-items: stretch; }
 .csd--new-day-solar .csd__info { min-height: 100%; }
-.csd--new-day-solar .csd__info-sticky {
-  position: sticky;
-  top: 108px;
-  max-height: calc(100vh - 128px);
-  overflow: auto;
-  padding-right: 8px;
-  scrollbar-width: thin;
-}
 .csd--new-day-solar .csd__media { min-width: 0; }
 .csd--new-day-solar .csd__img {
   width: 100%;
