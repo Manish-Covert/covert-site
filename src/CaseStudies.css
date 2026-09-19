@@ -25,6 +25,49 @@
 }
 .csindex__grid-wrap { padding: 40px 0 100px; }
 
+
+/* ---------- CASE STUDY SEARCH ---------- */
+.csindex__search-wrap { padding: 18px 0 0; }
+.csindex__search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 760px;
+  padding: 10px 12px 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.csindex__search:focus-within { border-color: rgba(166, 242, 60, 0.65); }
+.csindex__search-icon { color: var(--green-bright); font-size: 22px; line-height: 1; }
+.csindex__search input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+}
+.csindex__search input::placeholder { color: rgba(255, 255, 255, 0.5); }
+.csindex__search button,
+.csindex__empty button {
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 15px;
+  background: var(--green-bright);
+  color: #06210a;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.csindex__empty { padding: 56px 0 20px; text-align: center; color: rgba(255, 255, 255, 0.68); }
+.csindex__empty h2 { margin-bottom: 8px; color: #fff; font-family: 'Sora', sans-serif; }
+.csindex__empty p { margin-bottom: 20px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
 /* ---------- PORTFOLIO GRID + CARD ---------- */
 .cs-grid {
   display: grid;
