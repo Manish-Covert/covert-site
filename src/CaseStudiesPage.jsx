@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { CASE_STUDIES } from './data'
 import { replaceWolfRiver } from './newDaySolarCaseStudy'
 import CaseCard from './CaseCard'
@@ -15,6 +16,18 @@ const CASE_STUDIES_WITH_NEW_DAY_SOLAR = replaceWolfRiver(CASE_STUDIES)
 export default function CaseStudiesPage() {
   useReveal()
   useSmoothScroll()
+  const [query, setQuery] = useState('')
+
+  const filteredStudies = useMemo(() => {
+    const term = query.trim().toLowerCase()
+    if (!term) return CASE_STUDIES_WITH_NEW_DAY_SOLAR
+
+    return CASE_STUDIES_WITH_NEW_DAY_SOLAR.filter((study) =>
+      [study.title, study.excerpt, ...(study.tags || [])]
+        .filter(Boolean)
+        .some((value) => value.toLowerCase().includes(term)),
+    )
+  }, [query])
 
   useSEO({
     title: 'Case Studies — Brands We’ve Built & Grown | Covert Communication',
@@ -40,11 +53,41 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
+        <section className="csindex__search-wrap">
+          <div className="container">
+            <div className="csindex__search reveal">
+              <span className="csindex__search-icon" aria-hidden="true">⌕</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search case studies by name, service, or summary…"
+                aria-label="Search case studies"
+              />
+              {query && (
+                <button type="button" onClick={() => setQuery('')} aria-label="Clear case study search">
+                  Clear
+                </button>
+              )}
+            </div>
+            <p className="sr-only" aria-live="polite">
+              {filteredStudies.length} case {filteredStudies.length === 1 ? 'study' : 'studies'} found.
+            </p>
+          </div>
+        </section>
+
         <section className="csindex__grid-wrap">
           <div className="container">
             <div className="cs-grid">
-              {CASE_STUDIES_WITH_NEW_DAY_SOLAR.map(s => <CaseCard key={s.slug} study={s} />)}
+              {filteredStudies.map(s => <CaseCard key={s.slug} study={s} />)}
             </div>
+            {filteredStudies.length === 0 && (
+              <div className="csindex__empty" role="status">
+                <h2>No case studies found</h2>
+                <p>Try another company name, service, or keyword.</p>
+                <button type="button" onClick={() => setQuery('')}>Clear search</button>
+              </div>
+            )}
           </div>
         </section>
       </main>
