@@ -17,6 +17,7 @@ const routes = [
   ['/services', '0.8'],
   ['/about', '0.7'],
   ['/case-studies', '0.7'],
+  ['/break-out-pr', '0.7'],
   ['/the-latest', '0.7'],
   ['/contact', '0.6'],
   ['/privacy-policy', '0.3'],

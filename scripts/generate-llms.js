@@ -24,6 +24,7 @@ const sections = [
   link('Services', '/services', 'Full list of marketing and technology services'),
   link('About', '/about', 'The people, brands, and story behind Covert Communication'),
   link('Case Studies', '/case-studies', 'Selected client work and results'),
+  link('Break Out PR', '/break-out-pr', 'Public relations campaigns and client earned-media coverage'),
   link('The Latest', '/the-latest', 'Articles, podcast episodes, and updates'),
   link('Contact', '/contact', 'Get in touch to start a project'),
   ``,

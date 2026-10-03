@@ -14,7 +14,9 @@ Vercel project: covert-site
 - Never merge, promote, or deploy to `main` / production unless Manish explicitly says: **Approve for production.**
 - Before a production update, record and confirm the exact approved development commit SHA, then promote only that approved change to `main`.
 - Every push to a non-main branch creates a Vercel preview deployment.
-- After a website change, return the exact Vercel preview URL, preferably including the edited route.
+- Every requested website change includes implementation on `dev`, relevant verification, committing, and pushing to GitHub without requiring a separate request to commit or deploy the preview.
+- After pushing, wait for a Vercel preview deployment with `githubCommitSha` matching the exact pushed commit to reach `READY`. Return that deployment URL, preferably including the edited route, together with the short commit SHA and a brief change summary.
+- If the preview fails, inspect the build logs and fix failures within the requested scope; report any unresolved blocker instead of presenting an older preview as the new result.
 - Build verification is `npm run build`. Visual review is done by Manish through the Vercel preview; do not rely on Playwright screenshots as the normal visual-approval step.
 
 See also:
@@ -51,6 +53,7 @@ Shared server-side modules live in `lib/`:
 
 ### Data / content
 - `src/data.js` — central service/about/navigation/case-study data used across multiple pages.
+- `src/publicRelationsData.js` — nine PR clients and Vimeo coverage sourced from the legacy homepage’s Break Out Public Relations section. `PublicRelationsSection.jsx` adds the homepage CTA below services; `PublicRelationsPage.jsx` owns the burst animation, rotation, client selection and playback pause. Animation is CSS, with reduced-motion support.
 - `src/latestContent.js` — large article-detail content module; intentionally separated for lazy loading.
 - `src/newDaySolarCaseStudy.js` — detailed New Day Solar case-study content/data.
 - Static media and SEO files live in `public/`.
@@ -71,6 +74,7 @@ Routes are declared in `src/App.jsx`.
 | `/contact` | `ContactPage.jsx` | Contact page |
 | `/thank-you` | `ThankYouPage.jsx` | Form-completion page |
 | `/case-studies` | `CaseStudiesPage.jsx` | Case studies index |
+| `/break-out-pr` | `PublicRelationsPage.jsx` | Break Out PR client showcase and videos |
 | `/case-studies/:slug` | `CaseStudyPage.jsx` | Case-study detail |
 | `/the-latest` | `TheLatestPage.jsx` | Latest content index |
 | `/the-latest/:slug` | `TheLatestDetailPage.jsx` | Article/content detail |
