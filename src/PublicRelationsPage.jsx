@@ -5,6 +5,8 @@ import { useSEO } from './useSEO'
 import { PR_CLIENTS } from './publicRelationsData'
 import './PublicRelations.css'
 
+const CLIENT_DURATION_MS = 7000
+
 const PARTICLES = Array.from({ length: 160 }, (_, i) => ({
   '--angle': `${i * 137.508}deg`,
   '--distance': `${70 + (i * 73 % 160)}px`,
@@ -34,7 +36,7 @@ export default function PublicRelationsPage() {
       if (document.hidden) return
       setActive(index => (index + 1) % PR_CLIENTS.length)
       setBurst(value => value + 1)
-    }, 8000)
+    }, CLIENT_DURATION_MS)
     return () => window.clearInterval(timer)
   }, [paused, reduced, burst])
 
@@ -59,7 +61,7 @@ export default function PublicRelationsPage() {
   return (
     <>
       <SiteNav />
-      <main className="pr-page container">
+      <main className="pr-page container" style={{ '--pr-cycle': `${CLIENT_DURATION_MS}ms` }}>
         <header className="pr-page__intro">
           <h1>Break Out with<br /><span>Covert PR</span></h1>
           <p>Big ideas. Real stories. Remarkable coverage. We create breakout moments that put your brand in the spotlight, through creative PR campaigns and earned media. Explore our clients’ stories below.</p>
