@@ -1,0 +1,50 @@
+.pr-section { padding: 100px 0; }
+.pr-section__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.pr-section h2 { font-size: clamp(32px, 4vw, 52px); letter-spacing: -.04em; margin: 14px 0 20px; }
+.pr-section__copy { color: var(--ink-dim); line-height: 1.8; max-width: 490px; }
+.pr-section__list { list-style: none; margin: 24px 0 30px; display: grid; gap: 12px; color: var(--ink-dim); }
+.pr-section__list li::before { content: ''; display: inline-block; width: 5px; height: 5px; background: var(--green-bright); border-radius: 50%; margin: 0 14px 3px 0; box-shadow: 0 0 8px var(--green); }
+.pr-section__art { border-radius: 24px; border: 1px solid rgba(166,242,60,.08); background: linear-gradient(135deg, #0b120b, #0f2111); padding: 26px; }
+.pr-section__art svg { display: block; width: 100%; }
+.pr-wave { animation: pr-sound 3s ease-in-out infinite; }
+.pr-wave--2 { animation-delay: .3s; }
+.pr-wave--3 { animation-delay: .6s; }
+@keyframes pr-sound { 0%,100% { opacity: .25; } 50% { opacity: .9; } }
+.pr-page { padding-top: 190px; padding-bottom: 100px; max-width: 1080px; }
+.pr-page__intro { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 80px; }
+.pr-page h1 { font-size: clamp(38px, 5vw, 64px); line-height: 1.16; letter-spacing: -.04em; }
+.pr-page h1 span, .pr-coverage h2 { color: var(--green); }
+.pr-page__intro p { color: var(--ink-dim); line-height: 1.8; font-size: 15px; }
+.pr-burst { position: relative; display: grid; place-items: center; height: 410px; overflow: hidden; isolation: isolate; }
+.pr-burst__particles { position: absolute; inset: 0; pointer-events: none; }
+.pr-burst__particles i { position: absolute; top: 50%; left: 50%; width: var(--size); height: calc(var(--size) * 2.5); border-radius: 50%; background: var(--green-bright); box-shadow: 0 0 8px var(--green); opacity: 0; animation: pr-explode 4s var(--delay) ease-out both; }
+@keyframes pr-explode { 0% { opacity: 0; transform: rotate(var(--angle)) translateY(0) scale(.2); } 12% { opacity: 1; } 65% { opacity: .7; } 100% { opacity: 0; transform: rotate(var(--angle)) translateY(calc(-1 * var(--distance))) scale(.4); } }
+.pr-burst__label { position: relative; background: var(--green); color: #061107; padding: 12px 28px; border-radius: 999px; font-size: clamp(18px, 2.4vw, 26px); font-weight: 600; box-shadow: 0 0 32px #8bd41930; animation: pr-label 4s ease both; }
+@keyframes pr-label { 0%, 8% { opacity: 0; transform: scale(.75); } 20%, 80% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.95); } }
+.pr-burst--paused .pr-burst__label, .pr-burst--reduced .pr-burst__label { animation: none; }
+.pr-burst--reduced .pr-burst__particles { display: none; }
+.pr-controls { text-align: center; }
+.pr-clients { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 0; }
+.pr-clients button { background: none; border: 0; color: var(--ink); font-size: 13px; font-weight: 600; padding: 5px 13px; border-right: 1px solid var(--ink-faint); }
+.pr-clients button:last-child { border-right: 0; }
+.pr-clients button[aria-pressed="true"], .pr-clients button:hover { color: var(--green); }
+.pr-controls__pause { color: var(--ink-dim); background: transparent; border: 1px solid #ffffff25; border-radius: 999px; padding: 9px 18px; font-size: 12px; margin-top: 22px; }
+.pr-clients button:focus-visible, .pr-controls__pause:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.pr-coverage { margin-top: 52px; }
+.pr-coverage h2 { font-size: clamp(28px, 3.5vw, 40px); margin-bottom: 28px; letter-spacing: -.03em; }
+.pr-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 44px; }
+.pr-video iframe { width: 100%; aspect-ratio: 16/9; display: block; border: 1px solid #ffffff20; background: #0b120b; border-radius: 8px; }
+.pr-video h3 { font-size: 14px; line-height: 1.5; margin-top: 12px; font-weight: 500; }
+@media (max-width: 700px) {
+  .pr-section { padding: 65px 0; }
+  .pr-section__inner, .pr-page__intro { grid-template-columns: 1fr; gap: 32px; }
+  .pr-section__art { max-width: 460px; width: 100%; }
+  .pr-page { padding-top: 145px; padding-bottom: 65px; }
+  .pr-burst { height: 330px; }
+  .pr-clients button { font-size: 12px; padding: 8px 10px; }
+  .pr-videos { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pr-wave, .pr-burst__label { animation: none; }
+  .pr-burst__particles { display: none; }
+}

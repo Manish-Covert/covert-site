@@ -53,6 +53,7 @@ Shared server-side modules live in `lib/`:
 
 ### Data / content
 - `src/data.js` — central service/about/navigation/case-study data used across multiple pages.
+- `src/publicRelationsData.js` — nine PR clients and Vimeo coverage sourced from the legacy homepage’s Break Out Public Relations section. `PublicRelationsSection.jsx` adds the homepage CTA below services; `PublicRelationsPage.jsx` owns the burst animation, rotation, client selection and playback pause. Animation is CSS, with reduced-motion support.
 - `src/latestContent.js` — large article-detail content module; intentionally separated for lazy loading.
 - `src/newDaySolarCaseStudy.js` — detailed New Day Solar case-study content/data.
 - Static media and SEO files live in `public/`.
@@ -73,6 +74,7 @@ Routes are declared in `src/App.jsx`.
 | `/contact` | `ContactPage.jsx` | Contact page |
 | `/thank-you` | `ThankYouPage.jsx` | Form-completion page |
 | `/case-studies` | `CaseStudiesPage.jsx` | Case studies index |
+| `/break-out-pr` | `PublicRelationsPage.jsx` | Break Out PR client showcase and videos |
 | `/case-studies/:slug` | `CaseStudyPage.jsx` | Case-study detail |
 | `/the-latest` | `TheLatestPage.jsx` | Latest content index |
 | `/the-latest/:slug` | `TheLatestDetailPage.jsx` | Article/content detail |

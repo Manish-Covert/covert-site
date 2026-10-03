@@ -5,6 +5,7 @@ import { useSEO } from './useSEO'
 import { SERVICES, MEGA_SERVICES, MEGA_ABOUT, HERO_PILLS } from './data'
 import SiteFooter from './SiteFooter'
 import SiteNav from './SiteNav'
+import PublicRelationsSection from './PublicRelationsSection'
 import './App.css'
 
 // Only the homepage (defined below) and its nav/footer ship in the main
@@ -17,6 +18,7 @@ const ContactPage = lazy(() => import('./ContactPage'))
 const ThankYouPage = lazy(() => import('./ThankYouPage'))
 const CaseStudiesPage = lazy(() => import('./CaseStudiesPage'))
 const CaseStudyPage = lazy(() => import('./CaseStudyPage'))
+const PublicRelationsPage = lazy(() => import('./PublicRelationsPage'))
 const AboutPage = lazy(() => import('./AboutPage'))
 const AboutIndexPage = lazy(() => import('./AboutIndexPage'))
 const TheLatestPage = lazy(() => import('./TheLatestPage'))
@@ -75,6 +77,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/thank-you" element={<ThankYouPage />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/break-out-pr" element={<PublicRelationsPage />} />
         <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
         <Route path="/admin" element={<AdminLeadsPage />} />
         <Route path="/the-latest" element={<TheLatestPage />} />
@@ -237,6 +240,8 @@ function HomePage({
             <Link to="/services" className="btn btn--outline-pill"><span>View all services →</span></Link>
           </div>
         </section>
+
+        <PublicRelationsSection />
 
       </main>
 
